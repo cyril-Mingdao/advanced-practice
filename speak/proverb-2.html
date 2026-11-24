@@ -3,6 +3,7 @@
   【著作權聲明】
   教育部俗諺語2｜進階口說練習 — 進階口說練習：教育部台語俗諺（序號201–388）（聽辭典錄音、跟讀、自動輪播）
   詞條、俗諺、華語釋義與錄音取自教育部《臺灣台語常用詞辭典》，其著作權屬教育部（CC BY-NC-ND 2.5 TW）；跟讀評分用的範例音為辭典原檔鏡像（ref/，未剪輯改作）。
+  字型：豆腐烏 Tauhu Oo 20.05 子集（https://tauhu.tw/ ，SIL Open Font License 1.1，見 fonts/OFL.txt），全站文字一律使用。
   本網頁之程式碼、版面與教案設計 Copyright © 2026 詹宗龍（臺中明道中學）. All rights reserved.
   僅供非營利之教育教學使用；未經著作權人書面授權，不得重製、改作、散布或修改本網頁之全部或一部分。
 -->
@@ -14,14 +15,16 @@
 <meta name="copyright" content="© 2026 詹宗龍（臺中明道中學）。保留一切權利。">
 <title>教育部俗諺語2｜進階口說練習</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23111%22/%3E%3Crect x=%224%22 y=%224%22 width=%2256%22 height=%2256%22 rx=%2210%22 fill=%22none%22 stroke=%22%23FFD400%22 stroke-width=%224%22/%3E%3Ctext x=%2232%22 y=%2246%22 font-size=%2234%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23FFD400%22%3E%E9%80%B2%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="../fonts/tauhu-site.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/tauhu-site.css">
 <link href="https://tauhu.tw/tauhu-oo.css" rel="stylesheet">
 <style>
 :root{--black:#111111;--yellow:#FFD400;--white:#FFFFFF;--gray:#2A2A2A;--light:#F5F5F5;--muted:#A8A8A8;--ok:#58cc02;--no:#ff4b4b}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%}
-body{background:var(--black);color:var(--white);font-family:'tauhu-oo',"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+body{background:var(--black);color:var(--white);font-family:"TauhuSite",'tauhu-oo',"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
   display:flex;flex-direction:column;overflow:hidden;user-select:none;-webkit-user-select:none}
-button{font-family:inherit}
+button,input,select,textarea{font-family:inherit}
 /* 標題列 */
 .topbar{flex:none;display:flex;align-items:center;gap:clamp(8px,1vw,16px);padding:clamp(8px,1.1vh,14px) clamp(10px,1.4vw,28px);
   background:var(--black);border-bottom:4px solid var(--yellow);min-width:0}
@@ -76,6 +79,15 @@ button{font-family:inherit}
   .g-wrap{grid-template-columns:1fr;overflow:visible}
   .opts.m2{grid-template-columns:1fr}
 }
+@media (max-width:640px){
+  .topbar{flex-wrap:wrap;row-gap:6px;padding:8px 10px}
+  .topbar .cat{order:1}
+  .topbar .tbtn{order:2;margin-left:auto}
+  .topbar .home{order:3;margin-left:auto}
+  .topbar .tbtn~.home{margin-left:0}
+  .topbar h1{order:4;flex:1 1 100%;white-space:normal;font-size:clamp(17px,5vw,22px)}
+  .topbar .stat{order:5;flex:1 1 100%;justify-content:flex-end;margin-top:-4px}
+}
 @media (orientation:portrait) and (min-width:600px){.opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-height:520px) and (orientation:landscape){.opt{min-height:44px;font-size:17px}.tip{display:none}.g-wrap{padding:8px;grid-template-columns:minmax(0,1fr) 230px}
   .opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}.step h3,.panel h3{margin-bottom:8px}}
@@ -88,7 +100,7 @@ button{font-family:inherit}
 .card{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;overflow:hidden}
 .q-text{flex:none;width:100%;font-weight:900;color:var(--white);font-size:clamp(24px,3.2vw,60px);line-height:1.35}
 .sub-tailo{display:block;margin-top:6px;font-size:.6em;color:#d8d8d8;font-weight:700}
-.kw{color:var(--yellow);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.kw{color:var(--yellow);text-decoration:none}
 .q-def{flex:1 1 auto;width:100%;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;background:var(--gray);
   border-left:6px solid var(--yellow);border-radius:14px;padding:clamp(12px,1.4vw,24px);color:var(--light);font-size:clamp(17px,1.6vw,30px);line-height:1.55;min-height:90px}
 @media (max-height:520px){.card{overflow:visible;flex:none}.q-def{flex:none}#pg-game{min-height:max-content}}
@@ -109,6 +121,22 @@ button{font-family:inherit}
   font-size:clamp(15px,1.1vw,20px)}
 .nav-btn:hover{border-color:var(--yellow)}
 .nav-btn.next{background:var(--yellow);border-color:var(--yellow);color:var(--black)}
+.feed-msg a.ev-open{color:var(--yellow);font-size:.85em;white-space:nowrap}
+@media (max-width:640px){
+  #pg-game{gap:8px;padding:10px 12px}
+  .card{overflow-y:auto;gap:10px;justify-content:flex-start}
+  .q-text{font-size:clamp(20px,6vw,30px);line-height:1.45}
+  .sub-tailo{font-size:.62em;line-height:1.5;margin-top:8px}
+  .q-def{flex:1 0 auto;font-size:clamp(16px,4.6vw,20px);min-height:80px}
+  .card.has-ev .q-def{flex:none;min-height:0}
+  .ev-box{flex:none;overflow:visible}
+  .ev-head{gap:8px}.ev-fb{flex:1 1 100%}
+  .ev-items{grid-template-columns:1fr max-content;grid-auto-flow:row dense;row-gap:4px}
+  .ev-item .n{grid-column:1}.ev-item .s{grid-column:2}.ev-item .d{grid-column:1 / -1;font-size:.9em;margin-top:-4px}
+  .ctrl-btns{gap:22px;margin:6px 0 8px}
+  .feed-box{min-height:28px;padding:0 4px}
+  .feed-msg{font-size:16px;line-height:1.5}
+}
 
 .card.has-ev .q-def{flex:0 1 auto;min-height:56px}
 .ev-box{flex:0 1 auto;min-height:0;overflow-y:auto;width:100%;display:none;text-align:left;background:var(--white);color:var(--black);border-radius:14px;padding:clamp(10px,1vw,16px) clamp(12px,1.2vw,20px);
@@ -780,7 +808,30 @@ button{font-family:inherit}
   }
   function release() { if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; } }
 
+  const EMBED = (() => { try { return window.self !== window.top; } catch (e) { return true; } })();
+  function openFull() {
+    const st = { m: menu.cfg.mode, i: game.st.idx, q: game.st.q.map(x => db.indexOf(x)) };
+    const u = location.href.split('#')[0] + '#st=' + encodeURIComponent(JSON.stringify(st));
+    window.open(u, '_blank', 'noopener');
+    $('fd-msg').innerHTML =
+      '<span class="c-no">🎤 嵌入在網站裡的頁面不能使用麥克風，已幫你開新分頁（停在這一題），請在新分頁錄音。</span>' +
+      ` <a href="${u}" target="_blank" rel="noopener" class="ev-open">沒開出來？點這裡</a>`;
+  }
+  // 新分頁開啟時還原題目
+  (function restore() {
+    const m = location.hash.match(/#st=(.+)$/); if (!m) return;
+    try {
+      const st = JSON.parse(decodeURIComponent(m[1]));
+      const q = st.q.map(i => db[i]).filter(Boolean); if (!q.length) return;
+      menu.cfg.mode = st.m === 'auto' ? 'dual' : st.m;
+      game.st.q = q; game.st.idx = Math.min(Math.max(0, st.i | 0), q.length - 1);
+      history.replaceState(null, '', location.href.split('#')[0]);
+      window.addEventListener('DOMContentLoaded', () => { game.pg('game'); game.render(); });
+      if (document.readyState !== 'loading') { game.pg('game'); game.render(); }
+    } catch (e) { console.warn(e); }
+  })();
   game.record = function () {
+    if (EMBED && !(document.featurePolicy && document.featurePolicy.allowsFeature && document.featurePolicy.allowsFeature('microphone'))) { openFull(); return; }
     if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) { alert('這個瀏覽器不支援錄音功能，請改用電腦版 Chrome 或 Edge。'); return; }
     const d = this.st.q[this.st.idx];
     loadRef(d).catch(() => {});   // 先預載範例音
@@ -801,7 +852,7 @@ button{font-family:inherit}
       $('fd-msg').innerHTML = '<span class="c-no">🔴 錄音中…跟著唸，唸完再按一次 ⏹️</span>';
       $('ev-box').classList.remove('show'); $('ev-box').parentNode.classList.remove('has-ev');
       clearTimeout(this.st.tmr); this.st.tmr = setTimeout(() => this.stop(), MAX_SEC * 1000);
-    }).catch(err => { console.error(err); alert('無法取得麥克風權限，請確認已允許瀏覽器使用麥克風。'); });
+    }).catch(err => { console.error(err); if (EMBED) { openFull(); return; } alert('無法取得麥克風權限，請確認已允許瀏覽器使用麥克風。'); });
   };
   game.stop = function (cancel) {
     if (!this.st.rec) return;
