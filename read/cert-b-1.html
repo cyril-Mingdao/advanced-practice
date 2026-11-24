@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<!--
+  【著作權聲明】
+  歷屆認證B卷題庫｜進階閱讀練習 — 進階閱讀練習：歷屆認證B卷題庫 Part1（四選一）
+  題目參考教育部臺灣台語語言能力認證歷屆試題，其著作權屬原權利人。
+  本網頁之程式碼、版面與教案設計 Copyright © 2026 詹宗龍（臺中明道中學）. All rights reserved.
+  僅供非營利之教育教學使用；未經著作權人書面授權，不得重製、改作、散布或修改本網頁之全部或一部分。
+-->
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="author" content="詹宗龍（臺中明道中學）">
+<meta name="copyright" content="© 2026 詹宗龍（臺中明道中學）。保留一切權利。">
+<title>歷屆認證B卷題庫｜進階閱讀練習</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23111%22/%3E%3Crect x=%224%22 y=%224%22 width=%2256%22 height=%2256%22 rx=%2210%22 fill=%22none%22 stroke=%22%23FFD400%22 stroke-width=%224%22/%3E%3Ctext x=%2232%22 y=%2246%22 font-size=%2234%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23FFD400%22%3E%E9%80%B2%3C/text%3E%3C/svg%3E">
+<link href="https://tauhu.tw/tauhu-oo.css" rel="stylesheet">
+<style>
+:root{--black:#111111;--yellow:#FFD400;--white:#FFFFFF;--gray:#2A2A2A;--light:#F5F5F5;--muted:#A8A8A8;--ok:#58cc02;--no:#ff4b4b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{background:var(--black);color:var(--white);font-family:'tauhu-oo',"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+  display:flex;flex-direction:column;overflow:hidden;user-select:none;-webkit-user-select:none}
+button{font-family:inherit}
+/* 標題列 */
+.topbar{flex:none;display:flex;align-items:center;gap:clamp(8px,1vw,16px);padding:clamp(8px,1.1vh,14px) clamp(10px,1.4vw,28px);
+  background:var(--black);border-bottom:4px solid var(--yellow);min-width:0}
+.topbar .cat{flex:none;background:var(--yellow);color:var(--black);font-weight:900;font-size:clamp(13px,1.1vw,20px);padding:5px 14px;border-radius:999px;white-space:nowrap}
+.topbar h1{flex:1 1 auto;min-width:0;margin:0;color:var(--yellow);font-weight:900;font-size:clamp(17px,2vw,36px);line-height:1.2;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .stat{flex:none;display:none;gap:12px;color:var(--white);font-weight:700;font-size:clamp(13px,1vw,18px);white-space:nowrap}
+.topbar .stat b{color:var(--yellow)}
+.topbar .home{flex:none;color:var(--white);text-decoration:none;font-weight:700;font-size:clamp(13px,1vw,18px);border:2px solid var(--white);
+  border-radius:999px;padding:4px 14px;white-space:nowrap;transition:background .15s,color .15s}
+.topbar .home:hover{background:var(--white);color:var(--black)}
+.topbar .tbtn{flex:none;border:2px solid var(--yellow);background:transparent;color:var(--yellow);font-weight:700;font-size:clamp(13px,1vw,18px);
+  border-radius:999px;padding:4px 14px;cursor:pointer;white-space:nowrap}
+.topbar .tbtn:hover{background:var(--yellow);color:var(--black)}
+/* 主區 */
+#app,#app-container{flex:1 1 auto;min-height:0;position:relative;display:flex;flex-direction:column;width:100%}
+/* 入口選單：①②步驟卡＋③操作面板 */
+.g-wrap{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,24vw,440px);gap:clamp(10px,1.2vw,22px);
+  padding:clamp(10px,1.4vw,24px);overflow:auto;width:100%}
+.steps{display:flex;flex-direction:column;gap:clamp(10px,1.2vw,22px);min-width:0}
+.step,.panel{background:var(--gray);border-radius:16px;padding:clamp(12px,1.3vw,24px);border:1px solid #3a3a3a}
+.step h3,.panel h3{display:flex;align-items:center;gap:10px;margin:0 0 clamp(10px,1vw,18px);font-size:clamp(16px,1.3vw,26px);color:var(--yellow)}
+.num{flex:none;width:1.5em;height:1.5em;border-radius:50%;background:var(--yellow);color:var(--black);display:grid;place-items:center;font-size:.85em;font-weight:900}
+.opts{display:grid;gap:clamp(8px,.9vw,16px)}
+.opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.opts.n{grid-template-columns:repeat(auto-fill,minmax(clamp(92px,8.5vw,160px),1fr))}
+.opt{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;min-height:clamp(56px,7vh,96px);padding:10px 14px;
+  background:var(--white);color:var(--black);border:3px solid var(--white);border-radius:14px;cursor:pointer;font-weight:900;
+  font-size:clamp(17px,1.45vw,30px);line-height:1.2;text-align:left;transition:transform .12s,box-shadow .12s;white-space:nowrap}
+.opt *{pointer-events:none}
+.opt:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.45)}
+.opt .ic{flex:none;width:clamp(34px,2.6vw,52px);height:clamp(34px,2.6vw,52px);border-radius:50%;background:var(--black);color:var(--yellow);
+  display:grid;place-items:center;font-size:clamp(14px,1.1vw,22px);font-weight:900}
+.opt .ic svg{width:60%;height:60%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.opt .tx small{display:block;font-size:.55em;font-weight:700;color:#555;margin-top:3px;white-space:normal}
+.opt .big{font-size:1.25em}.opt .u{font-size:.55em;font-weight:700;margin-left:2px;align-self:flex-end;margin-bottom:.35em}
+.opt.sel,.opt.selected{background:var(--yellow);border-color:var(--white)}
+.opt.sel::after,.opt.selected::after{content:"✓";position:absolute;top:-9px;right:-9px;width:26px;height:26px;border-radius:50%;background:var(--black);
+  color:var(--yellow);display:grid;place-items:center;font-size:15px;font-weight:900;border:2px solid var(--yellow)}
+.panel{display:flex;flex-direction:column;gap:clamp(10px,1vw,18px);min-width:0}
+.sum{background:var(--black);border-radius:12px;padding:12px 14px;font-size:clamp(14px,1vw,19px);line-height:1.9}
+.sum span{color:var(--muted);margin-right:10px}.sum b{color:var(--white)}.sum b.none{color:#777;font-weight:400}
+.startbtn{width:100%;border:none;border-radius:14px;background:var(--yellow);color:var(--black);font-weight:900;font-size:clamp(20px,1.7vw,34px);
+  padding:clamp(14px,1.6vh,24px) 10px;cursor:pointer;box-shadow:0 5px 0 #b39500;transition:transform .1s}
+.startbtn:active{transform:translateY(4px);box-shadow:none}
+.startbtn:disabled{background:transparent;color:#777;border:2px dashed #555;box-shadow:none;cursor:default}
+.tip{color:var(--muted);font-size:clamp(12px,.9vw,16px);line-height:1.6;margin:0}
+.tip b{color:var(--yellow)}
+.corner{flex:none;text-align:right;color:#8a8a8a;font-size:12px;padding:3px 12px 4px;background:var(--black);border-top:1px solid #222}
+@media (max-width:860px),(orientation:portrait){
+  body{overflow:auto}
+  .g-wrap{grid-template-columns:1fr;overflow:visible}
+  .opts.m2{grid-template-columns:1fr}
+}
+@media (orientation:portrait) and (min-width:600px){.opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-height:520px) and (orientation:landscape){.opt{min-height:44px;font-size:17px}.tip{display:none}.g-wrap{padding:8px;grid-template-columns:minmax(0,1fr) 230px}
+  .opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}.step h3,.panel h3{margin-bottom:8px}}
+
+#menu-screen,#result-screen{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;width:100%}
+#result-screen{display:none;justify-content:center;align-items:center;gap:16px;padding:20px;text-align:center}
+.result-title{font-size:clamp(24px,3vw,48px);font-weight:900}
+.result-score{font-size:clamp(28px,4vw,64px);font-weight:900;color:var(--yellow)}
+#result-screen .startbtn{width:auto;padding:14px 40px}
+#game-screen{display:none;flex:1 1 auto;min-height:0;flex-direction:row;gap:clamp(10px,1.4vw,24px);padding:clamp(10px,1.4vw,24px)}
+.options-area{width:38%;display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-height:0}
+.option-card{flex:1 1 0;min-height:0;display:flex;align-items:center;padding:0 16px;background:var(--white);color:var(--black);border:3px solid var(--white);
+  border-radius:14px;box-shadow:0 4px 0 #888;cursor:pointer;font-size:clamp(1.4rem,3.6vh,2.8rem);font-weight:700;transition:transform .1s}
+.option-card:hover{border-color:var(--yellow)}
+.option-card:active{transform:translateY(4px);box-shadow:none}
+.option-card.wrong{background:#ffdfe0;border-color:var(--no);color:var(--no);box-shadow:0 4px 0 #ea2b2b}
+.option-tag{flex:none;width:44px;height:44px;margin-right:14px;border-radius:50%;background:var(--black);color:var(--yellow);border:2px solid var(--black);
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem}
+.option-text{flex:1 1 auto;line-height:1.15;overflow:hidden;max-height:100%}
+.question-area{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:center;background:var(--gray);border-left:6px solid var(--yellow);
+  border-radius:16px;padding:clamp(12px,1.6vw,30px);overflow:hidden}
+.question-text{width:100%;max-height:100%;overflow-y:auto;font-size:clamp(1.7rem,4.6vh,4.2rem);line-height:1.5;color:var(--white);text-align:left}
+.footer-controls{display:none;flex:none;justify-content:flex-end;gap:10px;padding:0 clamp(10px,1.4vw,24px) 8px}
+.nav-btn{border:2px solid #555;background:var(--gray);color:var(--white);border-radius:12px;padding:8px 18px;font-weight:900;cursor:pointer;font-size:clamp(14px,1vw,18px)}
+.nav-btn:hover{border-color:var(--yellow)}
+@media (max-width:768px) and (orientation:portrait){
+  #game-screen{flex-direction:column-reverse}
+  .options-area{width:100%;height:55%;flex:none}
+  .question-area{height:45%;flex:none}
+  .option-card{font-size:clamp(1.1rem,2.8vh,1.8rem)}
+  .question-text{font-size:clamp(1.15rem,3.6vh,2.6rem)}
+  body{overflow:hidden}
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+<header class="topbar">
+  <span class="cat">閱讀練習</span>
+  <h1>歷屆認證B卷題庫 Part1</h1>
+  <div class="stat" id="status-bar"><span>題數 <b id="q-counter">1/30</b></span><span>得分 <b id="score-counter">0</b></span></div>
+  <button class="tbtn" onclick="backToMenu()">選單</button>
+  <a class="home" href="../index.html">← 進階練習</a>
+</header>
+<div id="app-container">
+  <div id="menu-screen">
+    <div class="g-wrap">
+      <div class="steps">
+        <section class="step"><h3><span class="num">1</span>選擇題數</h3>
+          <div class="opts n">
+        <div class="opt" onclick="mdPickCount(this, 30, '30題')"><span class="big">30</span><span class="u">題</span></div>
+        <div class="opt" onclick="mdPickCount(this, 50, '50題')"><span class="big">50</span><span class="u">題</span></div>
+        <div class="opt" onclick="mdPickCount(this, 100, '100題')"><span class="big">100</span><span class="u">題</span></div>
+        <div class="opt" onclick="mdPickCount(this, 150, '150題')"><span class="big">150</span><span class="u">題</span></div>
+        <div class="opt" onclick="mdPickCount(this, 200, '200題')"><span class="big">200</span><span class="u">題</span></div>
+        <div class="opt" onclick="mdPickCount(this, 'all', '全部（209題）')"><span class="big">全部</span></div>
+          </div></section>
+      </div>
+      <aside class="panel"><h3><span class="num">2</span>開始練習</h3>
+        <div class="sum"><div><span>題數</span><b id="sum-count" class="none">尚未選擇</b></div><div><span>題庫</span><b>209 題</b></div></div>
+        <button class="startbtn" id="md-start" disabled onclick="startGame(md.count)">開始遊戲</button>
+        <p class="tip">讀題目，從左邊四個選項選出<b>上適當</b>的答案；第一擺就答著才得分。</p>
+      </aside>
+    </div>
+  </div>
+  <div id="result-screen">
+    <div class="result-title">測驗結束！</div>
+    <div class="result-score">您的總得分：<span id="final-score">0</span> 分</div>
+    <button class="startbtn" onclick="backToMenu()">返回選單</button>
+  </div>
+  <div id="game-screen">
+    <div class="options-area" id="options-container"></div>
+    <div class="question-area"><div class="question-text" id="question-text">題目載入中...</div></div>
+  </div>
+  <div class="footer-controls" id="game-controls">
+    <button class="nav-btn" onclick="prevQuestion()">上一題</button>
+    <button class="nav-btn" onclick="nextQuestion()">下一題</button>
+  </div>
+</div>
+<div class="corner">© 2026 詹宗龍（臺中明道中學）</div>
+
+<script>
+/* 黑黃白選單共用：題數選擇＋摘要＋開始鈕 — © 2026 詹宗龍（臺中明道中學） */
+var md = { count: null };
+function mdPickCount(el, n, label) {
+  md.count = n;
+  el.parentNode.querySelectorAll('.opt').forEach(function (b) { b.classList.remove('sel'); });
+  el.classList.add('sel');
+  var s = document.getElementById('sum-count'); s.textContent = label; s.className = '';
+  document.getElementById('md-start').disabled = false;
+}
+function mdSetMode(label) { var s = document.getElementById('sum-mode'); if (s) { s.textContent = label; s.className = ''; } }
+</script>
+<script>
+    // 資料庫內容 (1-209)
+    const rawData = [
+{id:1, q:"伊自細漢就和厝裡的人講臺語，這馬講甲足__________的，後來去做臺語配音員，人足愛倩伊的。空格仔內底佗一个選項上適當？", a:"精光", b:"奢颺", c:"端的", d:"撆紮", ans:"C", ansText:"端的"},
+{id:2, q:"阮囝佇學校拍籃球無細膩跋倒，__________tauh一下缺一角。少年人愛媠，佇頭前歹看，好佳哉去齒科補好矣，這馬就敢笑矣。空格仔內底佗一个選項上適當？", a:"後齻", b:"屎桮齒", c:"奶齒", d:"角齒", ans:"B", ansText:"屎桮齒"},
+{id:3, q:"阿母共_____囥佇衫櫥仔內，按呢虼蚻才袂走入去，毋過衫穿佇身軀䆀味䆀味。空格仔內底佗一个選項上適當？", a:"臭礬", b:"臭油", c:"臭腥仔", d:"臭藥丸仔", ans:"A", ansText:"臭礬"},
+{id:4, q:"某的，咱囝的個性誠「十角」，定共你氣惱，嘛誠多謝你費心神咧共斟酌，體諒我較無閒。請問「十角」佮下底佗一个選項上倚意？", a:"雜插", b:"雜唸", c:"散仙", d:"龜毛", ans:"C", ansText:"散仙"},
+{id:5, q:"恁孫當咧學行路，佇大埕捒彼台有聲的_____，有夠古錐。有練有差，另工就走敢若飛囉！你敢逐會著？請問空格仔內底佗一个選項上適當？", a:"銅管仔車", b:"烏頭仔車", c:"野雞仔車", d:"雞鵤仔車", ans:"D", ansText:"雞鵤仔車"},
+{id:6, q:"古早人欲有_____衫通穿，著家己經布來做，費氣閣厚工。空格仔內底佗一个選項無適當？", a:"一領", b:"兩領", c:"一兩領", d:"一領仔", ans:"B", ansText:"兩領"},
+{id:7, q:"彼張銀票毋但舊舊舊，閣皺襞襞，專_____，敢會使佮你換新的？我的khî-móo-tsih會較好。空格仔內底佗一个選項上適當？", a:"áu-bân", b:"áu-pôo", c:"áu-ut", d:"áu-hûn", ans:"D", ansText:"áu-hûn"},
+{id:8, q:"生理人_____較活，若阮作穡人，看天食飯，就較_____。空格仔內底佗一个選項上適當？", a:"喙水；乏", b:"錢水；乏", c:"油湯；渴", d:"油滓；渴", ans:"B", ansText:"錢水；乏"},
+{id:9, q:"下底佗一種樹欉的葉仔佇秋冬的季節會轉紅？看著誠有詩意，閣有誠濟人會起去山頂看。", a:"ka-tang", b:"png-á", c:"khóo-līng-á", d:"tshîng-á/ tsîng-á", ans:"B", ansText:"png-á"},
+{id:10, q:"Khì káng-á-pinn bé「hiān-lâu-á」, m̄-nā tshinn mā ke tsin sio̍k. 「  」的漢字用下底佗一 个選項上適當？", a:"獻樓仔", b:"獻漏仔", c:"現撈仔", d:"現流仔", ans:"D", ansText:"現流仔"},
+{id:11, q:"阿芬仔，愛留寡予人探聽咧，緊共房間的彼幾包_______提出來擲，毋通囤咧，才袂規間遐_______，咧欲生蟲矣。空格仔內底佗一个選項上適當？", a:"糞埽；垃圾", b:"垃圾；驚人", c:"糞埽；齷齪", d:"垃圾；囉嗦", ans:"A", ansText:"糞埽；垃圾"},
+{id:12, q:"伊是出名的________，一寡細間的店，予伊那拐那唬，遐拈遐佔，攏予食食去矣。 空格仔內底佗一个選項上適當？", a:"剪綹仔", b:"生理虎", c:"喑噁的", d:"浮浪貢的", ans:"B", ansText:"生理虎"},
+{id:13, q:"下底佗一句的閩南語用字、語詞、語法是正確的？", a:"我日時做工課上無閒，下晡下班才會去賊仔市買菜，遐的物件有影較俗", b:"風颱咧欲來矣，咱兜的冰箱空空空，咱著緊來去款寡菜，才袂無物通食", c:"逐家先品予好，若奕輸毋通起屁面哦", d:"伊這改的表現真漏氣，有夠失體面", ans:"B", ansText:"風颱咧欲來矣，咱兜的冰箱空空空，咱著緊來去款寡菜，才袂無物通食"},
+{id:14, q:"因為疫情嚴重，政府規定出門愛掛喙罨。少年家阿俊想講若照規定行，伊的緣投仔 面就無人看會著矣，哪會有查某囡仔會來佮伊開講咧？伊不時都共喙罨剝落來提佇 手裡，目睭褫甲大大蕊咧相、咧唌查某囡仔。伊無掛喙罨，人驚予伊的瀾鬚噴著， 顛倒無人敢倚近伊。欠喙罨的保護，尾仔伊真正予人穢著，有夠害。咱會當用佗一句話形容阿俊的情形？", a:"無補顛倒惱", b:"捾籃仔假燒金", c:"三八假賢慧", d:"大目新娘揣無灶", ans:"A", ansText:"無補顛倒惱"},
+{id:15, q:"「食飯若武松拍虎，作穡若桃花過渡。」這句俗諺是咧形容啥？", a:"武松真勇猛", b:"食好做輕可", c:"桃花姊仔會撐渡", d:"勤儉較有底，浪費不成家", ans:"B", ansText:"食好做輕可"},
+{id:16, q:"類似「食飯若武松拍虎」的語意，食飯若_____，會當添佗一个詞彙？", a:"龜咧peh壁", b:"猛虎落山", c:"魚仔泅水", d:"飛龍在天", ans:"B", ansText:"猛虎落山"},
+{id:17, q:"類似「作穡若桃花過渡」的語意，作穡若...，會當添佗一个詞彙？", a:"龜咧趖", b:"雞筅塗", c:"三戰呂布", d:"蜈蜞咬蛤", ans:"A", ansText:"龜咧趖"},
+{id:18, q:"無錢嘛會當做善事，親像我攏會捐_____做_____，空格仔照順序愛添佗兩个詞？ (甲)義工 (乙)環保 (丙)發票 (丁)血", a:"甲丙", b:"丙丁", c:"丙甲", d:"丁丙", ans:"C", ansText:"丙甲"},
+{id:19, q:"佮親近的人手牽手，按呢相攬相唚，煞袂輸是邀請死神來跳最後的thàn-gòo。這段 話有可能是咧形容啥物時期的情境？", a:"愛情", b:"人災", c:"戰爭", d:"舞會", ans:"B", ansText:"人災"},
+{id:20, q:"用青春佮血汗經過彼場戰爭的臺灣人，干焦_____留予in做為記。空格仔會當添佗幾个詞？ (甲)疏開這个詞 (乙)手指一跤 (丙)空喙的khî (丁)塚仔埔", a:"甲乙丙", b:"乙丙丁", c:"甲丙丁", d:"甲乙丁", ans:"C", ansText:"甲丙丁"},
+{id:21, q:"下跤遮的臺北市的地號名，佗一个發音佮使用的漢字讀音有對應？", a:"木柵", b:"大龍峒", c:"景美", d:"關渡", ans:"A", ansText:"木柵"},
+{id:22, q:"「未食________，破裘毋甘放」是講猶未過啥物年節/食過啥物物件，熱人就無算真正到矣？", a:"上元/圓仔", b:"清明/潤餅", c:"五月節/肉粽", d:"中秋/中秋餅", ans:"C", ansText:"五月節/肉粽"},
+{id:23, q:"以下佗一个閩南語詞毋是「輕聲詞」？", a:"遐的", b:"李家", c:"拍無去", d:"往過", ans:"D", ansText:"往過"},
+{id:24, q:"下面佗一个標音是錯誤的？", a:"超音波 tshiau-in-pho", b:"親家公 tshin-ke-kong", c:"中中仔 tiong-tiong--á", d:"天公生 Thinn-kong-sinn", ans:"A", ansText:"超音波 tshiau-in-pho"},
+{id:25, q:"下面佗一組的標音是錯誤的？", a:"父老 hū-ló / 養老 ióng-ló", b:"下水 hē-suí / 下願 hē-guān", c:"到今 kàu-tann / 今仔 tann-á", d:"割香 kuah-hiunn / 拈香 liam-hiunn", ans:"B", ansText:"下水 hē-suí / 下願 hē-guān"},
+{id:26, q:"佗一个選項的「予」，佮捌的選項的「予」用法無仝？", a:"坐予正，得人疼。", b:"樹頭徛予在，毋驚樹尾做風颱。", c:"收瀾收予焦，予你生一个有𡳞脬(lān-pha) 。", d:"好心予雷唚。", ans:"D", ansText:"好心予雷唚。"},
+{id:27, q:"有人共你講「Tsit tsân tāi-tsì āu-ji̍t tsiah kóng.」請問這層代誌當時會處理？", a:"明天", b:"後天", c:"大後天", d:"以後", ans:"D", ansText:"以後"},
+{id:28, q:"以下佗一个 kah 的用字佮其他三个選項無仝？", a:"我欲 kah 伊來去看電影。", b:"伊 kah 毋答應，阮只好揣別人。", c:"我的腹肚疼 kah 欲死。", d:"伊耍 kah 半暝才轉去。", ans:"A", ansText:"我欲 kah 伊來去看電影。"},
+{id:29, q:"Tsu-lô-san 是臺灣佗一个所在的舊地名？", a:"南投", b:"嘉義", c:"斗六", d:"斗南", ans:"B", ansText:"嘉義"},
+{id:30, q:"下面佗一个選項，咱臺灣話較無按呢咧講？", a:"淡薄仔古錐古錐", b:"足馬西馬西", c:"有夠哩哩囉囉", d:"略仔三八三八", ans:"B", ansText:"足馬西馬西"},
+{id:31, q:"下面佗一个選項的「趁」，意思佮捌的選項無仝？", a:"趁燒緊食", b:"趁流水", c:"閹雞趁鳳飛", d:"趁這馬好時機", ans:"C", ansText:"閹雞趁鳳飛"},
+{id:32, q:"下面佗一句無合臺語的講法？", a:"你好矣未？", b:"你捌伊無？", c:"伊會拍我袂？", d:"伊有來吧？", ans:"D", ansText:"伊有來吧？"},
+{id:33, q:"下面佗一个選項的「三」毋是虛詞？", a:"三不五時", b:"三心兩意", c:"三人共五目", d:"三講四毋著", ans:"C", ansText:"三人共五目"},
+{id:34, q:"「亻因（in）兜的囝孫仔，逐个都誠ˍˍˍˍˍ。」這句話的空格仔內底揀佗一个選項上適當？", a:"出張", b:"出腳", c:"出業", d:"出在", ans:"B", ansText:"出腳"},
+{id:35, q:"下面佗一个選項無影較冷？", a:"有夠冷", b:"誠冷", c:"足冷", d:"冷冷", ans:"D", ansText:"冷冷"},
+{id:36, q:"下跤佗一句佮其他三句無仝意思？", a:"袂曉駛船嫌溪彎", b:"天地所設毋是弟子作孽", c:"家己面無肉，怨嘆人大尻川", d:"袂曉挨弦仔假絞線", ans:"B", ansText:"天地所設毋是弟子作孽"},
+{id:37, q:"阿爸定定唸阿母是____，不時去人兜長短話捎咧一直講袂煞。請問空格仔選佗一个上正確？", a:"長短跤", b:"長尻川", c:"尻川長", d:"大跤婆", ans:"B", ansText:"長尻川"},
+{id:38, q:"彼欉樹仔，樹頂有鳥仔佇遐____，逐工透早就會聽著鳥仔聲。請問空格仔選佗一个上正確？", a:"做穡", b:"作穡", c:"做岫", d:"做巢", ans:"C", ansText:"做岫"},
+{id:39, q:"「你欠我的錢，後日（āu--jı̍t） 愛還。」意思是...？", a:"閣兩工就愛還", b:"以後才還", c:"閣幾工仔愛還", d:"免還", ans:"A", ansText:"閣兩工就愛還"},
+{id:40, q:"人若共你講：「你真𠢕（gâu）囥歲！」意思是講...？", a:"你共貨囥真好勢", b:"你看起來無遐濟歲", c:"你已經有歲", d:"伊感覺你無誠實", ans:"B", ansText:"你看起來無遐濟歲"},
+{id:41, q:"阿華的阿母誠煩惱阿華「腹肚做藥櫥」，請問阿華可能是按怎？", a:"開藥房", b:"食藥廠的頭路", c:"囤真濟藥仔", d:"破病", ans:"D", ansText:"破病"},
+{id:42, q:"下面佗一个選項的臺語用字是錯誤的？", a:"啥物好空的攏「佇遐」", b:"伴音樂「踅來踅去」", c:"想欲郎君做「尪婿」", d:"阿媽毋「捌字」", ans:"C", ansText:"想欲郎君做「尪婿」"},
+{id:43, q:"「人濟話就濟， 三色人講五色話」的意思是咧講？", a:"十喙九尻川", b:"講著食，舂破額", c:"三七講，四六聽", d:"三人共五目，無長短跤話", ans:"A", ansText:"十喙九尻川"},
+{id:44, q:"「媠，媠無十全；䆀，䆀無加圇。」這句的「十全」拼音正確的是下面佗一个選項？", a:"sı̍p-tsuân", b:"tsa̍p-tsn̂g", c:"tsa̍p–tsuân", d:"sı̍p--tsn̂g", ans:"B", ansText:"tsa̍p-tsn̂g"},
+{id:45, q:"下跤佗一句話是咧形容一个人講話譀浡？", a:"番仔火枝講做大西門跤", b:"一句話講著三角六尖", c:"三色人講五色話", d:"枕頭鬼勝過三界公", ans:"A", ansText:"番仔火枝講做大西門跤"},
+{id:46, q:"下面這幾个詞彙的臺羅拼音，佗一个完全正確？", a:"拼音 phin-im", b:"肯定 khún-tīng", c:"挽救 bán-kiù", d:"越南 Gua̍ t-lâm", ans:"C", ansText:"挽救 bán-kiù"},
+{id:47, q:"下面框起來的字，佗一字的韻母佮另外三個無仝？", a:"「南」爿", b:"「擔」心", c:"「甘」願", d:"「坦」白", ans:"D", ansText:"「坦」白"},
+{id:48, q:"下面佗一句俗語的臺語用字有錯誤？", a:"心歹無人知，喙歹上厲害。", b:"日頭赤炎炎，隨人顧性命。", c:"大人儉一喙，囡仔食甲飫。", d:"一某無人知，兩某相卸代。", ans:"B", ansText:"日頭赤炎炎，隨人顧性命。"},
+{id:49, q:"「伊講話定定『放臭屁』」，請問下面佗一个選項佮「放臭屁」的意思上接近？", a:"激面腔", b:"講嘐潲", c:"講白賊", d:"激五仁", ans:"B", ansText:"講嘐潲"},
+{id:50, q:"下面佗一个選項引號內底的漢字，兩字的字音攏仝款？", a:"硃「砂」 ／「砂」糖", b:"「看」護／ 「看」戲", c:"「破」壞 ／「破」費", d:"群「眾」／ 「眾」人", ans:"C", ansText:"「破」壞／ 「破」費"},
+{id:51, q:"下面佗一个選項的臺語漢字，攏照教育部的規範用字來寫？", a:"作工課若貧惰，一世人袂快活。", b:"伊歸工戇神戇神，叫攏袂應。", c:"見若抵著王的，伊就會生氣。", d:"我嘛是姑不而將，你莫怪我。", ans:"D", ansText:"我嘛是姑不而將，你莫怪我。"},
+{id:52, q:"下面佗一句的講法較正確？", a:"伊比我大箍。", b:"伊比我加大箍。", c:"伊並我較大箍。", d:"伊比我真大箍。", ans:"C", ansText:"伊並我較大箍。"},
+{id:53, q:"「伊閣咧腫頷矣。」的「腫頷」佮下面佗一个詞的意思較倚？", a:"大頷胿", b:"嘐潲", c:"吊頷", d:"腫癗", ans:"B", ansText:"嘐潲"},
+{id:54, q:"下面佗一句的寫法完全符合教育部的規範用字？", a:"閣講嘛無較縒。", b:"無枷攑交椅。", c:"嬈俳無落魄的久。", d:"甘苦頭，快活尾。", ans:"A", ansText:"閣講嘛無較縒。"},
+{id:55, q:"攝影師喝講：「來！逐家笑ˍˍˍˍˍ！」空格仔內添啥物入去上適當？", a:"一個", b:"一个", c:"一下", d:"一咧", ans:"C", ansText:"一下"},
+{id:56, q:"「按中國武漢爆發的新型冠狀病毒的疫情佇全世界湠開，有超過兩百萬的人著災，致使濟濟人共喙罨掛起來，甚至毋敢出門，驚家己去予人穢著。」這段話內底總共出現過幾个入聲字？", a:"6 个", b:"7 个", c:"8个", d:"9 个", ans:"D", ansText:"9个"},
+{id:57, q:"下面佗一个選項上無會有「兩个人」？", a:"「咱」學校", b:"「阮」班", c:"「恁」小妹", d:"「亻因（in）」朋友", ans:"A", ansText:"「咱」學校"},
+{id:58, q:"下面佗一个選項引號內底的字讀做輕聲？", a:"「林」先生的查某囝欲嫁人矣。", b:"「允」人較慘欠人。", c:"我險險仔予伊驚「死」。", d:"用橐仔貯就會「使」。", ans:"C", ansText:"我險險仔予伊驚「死」。"},
+{id:59, q:"下面佗一个選項引號內底的字的「韻母」完全相仝？", a:"虼「蚻」 ／咒「誓」", b:"「鐵」馬／ 「缺」角", c:"「鴨」仔 ／烏「鴉」喙", d:"敆「作」／ 「做」醮", ans:"B", ansText:"「鐵」馬／ 「缺」角"},
+{id:60, q:"「Thiann-kóng Tâi-uân lâng tsi̍t tang ài tsia̍ h tiāu tsi̍t tiâu ko-sok kong-lōo, kám ū-iánn?」這句話內底有幾字是讀本調、無變調的？", a:"4 字", b:"5字", c:"6 字", d:"7 字", ans:"A", ansText:"4 字"},
+{id:61, q:"「伊那講，喉那滇。」上蓋有可能的原因是…？", a:"破病", b:"傷心", c:"歡喜", d:"滿足", ans:"B", ansText:"傷心"},
+{id:62, q:"下面佗一个選項較無符合臺語口語的講法？", a:"一枝小雨傘", b:"一條手巾仔", c:"予我唚一下", d:"我有一句話", ans:"A", ansText:"一枝小雨傘"},
+{id:63, q:"下面佗一个「出」字是唸本調？", a:"伊出去看戲矣", b:"伊走出去矣", c:"伊共物件提出去矣", d:"伊欲出去矣", ans:"D", ansText:"伊欲出去矣"},
+{id:64, q:"請問下面這幾个詞的臺羅拼音，佗一个完全正確？", a:"特別 tia̍t-pia̍t", b:"流傳 liû-tshuân", c:"拭面 tshit-bīn", d:"借錢 tsiò-tsînn", ans:"C", ansText:"拭面 tshit-bīn"},
+{id:65, q:"請問下面佗一个選項是臺語的「是非問句」？", a:"你欲去屏東抑是高雄", b:"你有去過臺北無", c:"伊明仔載會來袂", d:"你欲去臺北是無", ans:"D", ansText:"你欲去臺北是無"},
+{id:66, q:"請問下面佗一種講法無合臺語的講法？", a:"你食會了這碗麵袂", b:"你這碗麵食會了袂", c:"這碗麵你食會了袂", d:"你這碗麵食會了袂", ans:"A", ansText:"你食會了這碗麵袂"},
+{id:67, q:"若準後壁有符號「--」，表示後壁讀輕聲。請問下面佗一个選項是臺語錯誤的講法？", a:"拍倒帝國主義", b:"共帝國主義拍--倒", c:"拍--倒帝國主義", d:"帝國主義共拍予倒", ans:"C", ansText:"拍--倒帝國主義"},
+{id:68, q:"請問下面佗一句俗語毋是咧講天氣？", a:"風颱無回南，十日九日澹", b:"一枝草，一點露", c:"未食五月粽，破裘毋甘放", d:"春天後母面", ans:"B", ansText:"一枝草，一點露"},
+{id:69, q:"下面佗一組的漢字的臺羅拼音是完全正確？", a:"熟似 sit-sāi", b:"收據 siu-gù", c:"前年 tsûn--nî", d:"購買 kò-bué", ans:"C", ansText:"前年 tsûn--nî"},
+{id:70, q:"閩南語有足濟字詞攏有毋但一个讀音，一般分做白話音佮文讀音，大部分的語詞攏會固定選用其中一款音讀。請問下面選項中引號內底的字，佗一个是文讀音？", a:"「開」講", b:"「教」示", c:"「弄」獅", d:"「命」運", ans:"A", ansText:"「開」講"},
+{id:71, q:"請問下面佗一个選項的漢字是完全使用教育部推薦的閩南語用字？", a:"做儂愛大範，毋通磕袂著就受氣", b:"昨暝歸暗睏袂入眠，今仔日頷頸筋煞絚絚", c:"阿明傷過壓霸，佮伊閣較講嘛無較縒", d:"早時，阮落雨天定定著去抾路螺來飼鴨仔", ans:"C", ansText:"阿明傷過壓霸，佮伊閣較講嘛無較縒"},
+{id:72, q:"請問「風颱天的菜價有影貴甲驚死人！」這句，總共有幾字讀本調？", a:"2", b:"3", c:"4", d:"5", ans:"B", ansText:"3"},
+{id:73, q:"下底佗一句是鼓勵咱做代誌愛有耐心，沓沓仔做就會成功？", a:"毛毛仔雨落久，塗嘛會澹", b:"和尚頭掠蝨母", c:"溜溜瞅瞅，食兩蕊目睭", d:"陰鴆陰鴆，咬人三寸深", ans:"A", ansText:"毛毛仔雨落久，塗嘛會澹"},
+{id:74, q:"一年有二十四節氣，下底舉例的四个節氣，佗一組是照時間先後排的？", a:"白露、驚蟄、芒種、穀雨", b:"驚蟄、芒種、白露、穀雨", c:"白露、穀雨、芒種、驚蟄", d:"驚蟄、穀雨、芒種、白露", ans:"D", ansText:"驚蟄、穀雨、芒種、白露"},
+{id:75, q:"有人揣頭路揣足久矣，猶是揣無，咱愛按怎勸伊較好勢？", a:"甘願做牛，毋驚無犁通拖", b:"目睭看佇粿，跤踏著火", c:"讀冊，讀佇尻脊骿", d:"敢做匏桸，就毋通驚水燙", ans:"A", ansText:"甘願做牛，毋驚無犁通拖"},
+{id:76, q:"下面佗一組的親情是無仝勻的？", a:"同姒佮大娘姑", b:"阿妗佮姆仔", c:"新婦佮小嬸", d:"後生佮外甥女仔", ans:"C", ansText:"新婦佮小嬸"},
+{id:77, q:"以下各臺灣閩南語語詞的發音，佗一个韻尾佮其他三個無仝?", a:"安", b:"尪", c:"咱", d:"屘", ans:"B", ansText:"尪"},
+{id:78, q:"下面佗一个「頭」的用法佮其他三个無仝?", a:"「號頭」", b:"「桌頭」", c:"「會頭」", d:"「角頭」", ans:"A", ansText:"「號頭」"},
+{id:79, q:"下面佗一个選項無合臺語的講法？", a:"我功課寫了矣", b:"我寫了功課", c:"功課我寫了矣", d:"功課寫了矣", ans:"B", ansText:"我寫了功課"},
+{id:80, q:"「阿信厝的攏是靠伊___，伊足拍拚。」空格仔內佗一个上無適當?", a:"討食", b:"趁食", c:"食倯", d:"食穿", ans:"C", ansText:"食倯"},
+{id:81, q:"請問「澄」的臺羅拼音下面佗一个是正確的？", a:"tîng", b:"tíng", c:"tìng", d:"tīng", ans:"A", ansText:"tîng"},
+{id:82, q:"下面佗一間宮廟的讀音是錯誤的?", a:"行天宮 hîng-thian-kiong", b:"長和宮 tiông-hô-kiong", c:"媽祖宮 má-tsóo-king", d:"關渡宮 kuan-tōo-king", ans:"D", ansText:"關渡宮 kuan-tōo-king"},
+{id:83, q:"地名定定因為文白音的差別，予外地人造成困擾。請問下面佗一个台中的地名，第一字的念法和別个無仝？", a:"大肚", b:"大雅", c:"大安", d:"大甲", ans:"A", ansText:"大肚"},
+{id:84, q:"佇閩南語內面，定定有二个字意思相倚，總是「華語用仝一个字，閩南語用無仝字」 的情形，親像華語的「吐」，閩南語會分作「吐」（thòo）和「呸」（phuì）二个 無仝的字。請問下面佗一組閩南語詞，毋是這種關係？", a:"癢/撓", b:"揹/偝", c:"擠/櫼", d:"捾/扞", ans:"D", ansText:"捾/扞"},
+{id:85, q:"「溝通」讀音是…？", a:"koo-thong", b:"kau-thong", c:"koo-thang", d:"kau-thang", ans:"A", ansText:"koo-thong"},
+{id:86, q:"俗語講：「得失土地公，飼無ˍˍˍˍˍ 。」請問空格仔內揀佗一个選項上適當？", a:"雞", b:"鴨", c:"豬", d:"狗", ans:"A", ansText:"雞"},
+{id:87, q:"「鹽加一_____仔就好矣。」請問空格仔內揀佗一个選項上適當？", a:"桶", b:"撮", c:"塊", d:"節", ans:"B", ansText:"撮"},
+{id:88, q:"「明仔載會落雨_____ ？」請問空格仔內揀佗一个選項上適當？", a:"未", b:"袂", c:"矣", d:"呢", ans:"B", ansText:"袂"},
+{id:89, q:"「天_____ 光矣，你猶毋緊起來。」請問空格仔內揀佗一个選項上適當？", a:"都", b:"咧", c:"閣", d:"著", ans:"A", ansText:"都"},
+{id:90, q:"下面佗一个選項予人感覺愛穿上濟衫？", a:"秋凊", b:"冷", c:"𫝏(gàn)", d:"寒", ans:"C", ansText:"𫝏(gàn)"},
+{id:91, q:"下面佗一句講話的口氣無予人感覺是咧齷齪啥物？", a:"無，你無愛呢", b:"好啦，來矣啦", c:"謼，好啦，你講的準算", d:"諾，花你挽的乎", ans:"D", ansText:"諾，花你挽的乎"},
+{id:92, q:"下面佗一个選項無合臺語的講法？", a:"伊來矣嗎？", b:"彼本冊敢你的？", c:"你會艱苦袂？", d:"你食飽未？", ans:"A", ansText:"伊來矣嗎？"},
+{id:93, q:"下面佗一个選項無讀輕聲？", a:"物件「無去」", b:"「驚死」百外人", c:"查某囝「做人」矣", d:"共糞埽提提「出去」", ans:"B", ansText:"「驚死」百外人"},
+{id:94, q:"「請你共門____」？空格仔內愛揀佗一个選項才是正確的？", a:"khui-khui", b:"khui--khui", c:"pué-khui", d:"pàng--khui", ans:"B", ansText:"khui--khui"},
+{id:95, q:"「作弊」這个詞正確的標音是下面佗一个選項？", a:"tsok-pè", b:"tsoh-piah", c:"tsok- piah", d:"tsoh-pè", ans:"A", ansText:"tsok-pè"},
+{id:96, q:"「三_____詩」空格仔內愛揀佗一个選項才是正確的？", a:"逝", b:"襇", c:"隻", d:"垺", ans:"A", ansText:"逝"},
+{id:97, q:"「你_____磕袂著就欲佮人冤啦。」空格仔內揀佗一个選項上適當？", a:"免", b:"莫", c:"無", d:"袂", ans:"B", ansText:"莫"},
+{id:98, q:"「_____咱想欲按怎？」空格仔內揀佗一个選項上適當？", a:"免", b:"莫", c:"袂", d:"無", ans:"D", ansText:"無"},
+{id:99, q:"下面佗一个選項無合臺語的講法？", a:"青-sún-sún", b:"白-siak-siak", c:"烏-sô-sô", d:"紅-mà- mà", ans:"D", ansText:"紅-mà- mà"},
+{id:100, q:"下面佗一組做記號的字讀音攏相仝?", a:"杭「菊」/郵「局」", b:"「捷」運/「節」日", c:"「成」功/「程」度", d:"緊「急」/階「級」", ans:"D", ansText:"緊「急」/階「級」"},
+{id:101, q:"「好囝_____濟，濟囝餓死爸」空格仔內揀佗一个選項上適當？", a:"免", b:"莫", c:"袂", d:"無", ans:"A", ansText:"免"},
+{id:102, q:"俗語講：「七坐八爬九_____。」請問空格仔內揀佗一个選項上適當？", a:"懸低", b:"蝦膎", c:"夯枷", d:"發牙", ans:"D", ansText:"發牙"},
+{id:103, q:"俗語講：「倖豬夯灶，倖_____不孝。」請問空格仔內揀佗一个選項上適當？", a:"牛", b:"人", c:"囝", d:"囡", ans:"C", ansText:"囝"},
+{id:104, q:"俗語講：「七月半_____，毋知死活。」請問空格仔內揀佗一个選項上適當？", a:"囡仔", b:"尪仔", c:"雞仔", d:"鴨仔", ans:"D", ansText:"鴨仔"},
+{id:105, q:"下面佗一个選項符合臺語的講法？", a:"有買無？", b:"去臺北有足遠嗎？", c:"飯敢食呢？", d:"這領衫有新嗎？", ans:"A", ansText:"有買無？"},
+{id:106, q:"「_____青菜 -tshenn-tshài」請問空格仔內揀佗一个選項上適當？", a:"煠", b:"渫", c:"偞", d:"緤", ans:"A", ansText:"煠"},
+{id:107, q:"「阮去𥴊(kám)仔店_____米」請問空格仔內揀佗一个選項上適當？", a:"糶", b:"糴", c:"燿", d:"鑃", ans:"B", ansText:"糴"},
+{id:108, q:"「食肉食三層，看戲看亂彈」的「亂彈」，下面佗一个選項的拼音是正確的？", a:"lān-thân", b:"lān- thuânn", c:"lān- than", d:"luan-tuânn", ans:"A", ansText:"lān-thân"},
+{id:109, q:"「若毋是我運途行佇_____，這注決定就好額矣」請問空格仔內揀佗一个選項上適當？", a:"子字", b:"卯字", c:"丑字", d:"寅字", ans:"B", ansText:"卯字"},
+{id:110, q:"「弓蕉都猶無到分，食著_____。」請問空格仔內揀佗一個選項上適當？", a:"粕粕", b:"沙沙", c:"末末", d:"澩澩", ans:"C", ansText:"末末"},
+{id:111, q:"下面佗一个選項無合臺語的講法？", a:"我物件欲予伊，伊切氣毋共我收", b:"目睭皮掣，好事來，歹事煞，觀音佛祖來擺撥", c:"最近代誌冗氣，實在真齷齪", d:"有影真無頭神，代誌隨講隨袂記得", ans:"C", ansText:"最近代誌冗氣，實在真齷齪"},
+{id:112, q:"「我無咧傷閒閣。」請問這句話上有可能隱含的話語是下面佗一項？", a:"去加夯枷", b:"來食飯", c:"去趁錢", d:"走去睏", ans:"A", ansText:"去加夯枷"},
+{id:113, q:"請問下面佗一句上合臺灣閩南語的語法？", a:"一本冊有我共你鬥買", b:"你一本冊有我共你買", c:"我有共你鬥買一本冊", d:"我有幫你買一本冊", ans:"C", ansText:"我有共你鬥買一本冊"},
+{id:114, q:"「我_____伊拍煞，警察就來矣。」請問空格仔內揀佗一个上無適當？", a:"和", b:"共", c:"給", d:"佮", ans:"C", ansText:"給"},
+{id:115, q:"下面佗一个是書面的歧義句，毋過佇口語上會當用變調的差別來消除歧義？", a:"伊愛食飯", b:"臺北人真濟", c:"姻緣天註定", d:"食緊挵破碗", ans:"B", ansText:"臺北人真濟"},
+{id:116, q:"請問下面這幾个詞的臺羅拼音，佗一个有錯誤？", a:"百萬 pah-bān", b:"隔壁 keh-piah", c:"插花 tshà-hue", d:"退色 thè-sik", ans:"C", ansText:"插花 tshà-hue"},
+{id:117, q:"「阿明仔閣咧_____矣，莫去惹伊較順。」請問空格仔內揀佗一个較適當？", a:"起毛婸", b:"起無空", c:"看袂起", d:"起凊瘼", ans:"B", ansText:"起無空"},
+{id:118, q:"請問佗一个選項的臺語量詞是上妥當的？", a:"一「身」尪仔", b:"一「面」眠床", c:"一「个」手指", d:"一「口」電火", ans:"A", ansText:"一「身」尪仔"},
+{id:119, q:"「我昨昏去_____山，一尾刺毛蟲_____起來我的跤盤頂，害我癢甲_____袂煞。」請問空格仔內照順序應該愛添啥物字較 適合？", a:"爬、peh、抓", b:"跋、爬、爪", c:"擘、爬、抓", d:"peh、趖、扒", ans:"D", ansText:"peh、趖、扒"},
+{id:120, q:"請問佗一个選項的「仔（á）前變調」，參「椅仔」的「椅」變做仝款的聲調？", a:"「刀」仔", b:"「印」仔", c:"「蝦」仔", d:"「葉」仔", ans:"B", ansText:"「印」仔"},
+{id:121, q:"請問佗一个選項的「去」，是「去過矣」？", a:"bē 去", b:"beh 去", c:"bat 去", d:"iáu-buē 去", ans:"C", ansText:"bat去"},
+{id:122, q:"請問佗一个選項的臺語句型上妥當？", a:"若莫考試的話，敢好？", b:"你若無愛，無，莫去。", c:"如果我若是來，伊就毋來。", d:"是毋是無人佇咧嗎？", ans:"B", ansText:"你若無愛，無，莫去。"},
+{id:123, q:"請問佗一个選項的臺語時間詞的使用，無妥當？", a:"「從」明仔載開始，我就無閒。", b:"「從」冬節「到」清明一直落雨。", c:"我一直等「到」舊年，伊才轉來。", d:"「從」少年開始，伊就做這途。", ans:"A", ansText:"「從」明仔載開始，我就無閒。"},
+{id:124, q:"請問佗一个選項的臺語「有無」疑問句，佇心理上，認為「伊應該已經食過矣」？", a:"伊 kám 有食？", b:"伊 kám 無食？", c:"伊 kánn 無食 honnh？", d:"伊 kám 是無食？", ans:"B", ansText:"伊 kám 無食？"},
+{id:125, q:"請問佗一个選項的漢字，完全使用教育部推薦的臺語用字？", a:"我真欣羨旅遊節目的主持人，會當世界耍透透。", b:"「潑水節」活動予逐家歸身軀攏澹糊糊。", c:"路邊擔仔滿滿是，予我喙涎插插滴。", d:"舊鞋撣甲變山崙，人共叫做草鞋墩，就是這馬的草屯。", ans:"A", ansText:"我真欣羨旅遊節目的主持人，會當世界耍透透。"},
+{id:126, q:"請問佗一个選項的臺羅拼音完全正確？", a:"米粉炒（bí-hún-tsá）", b:"筒仔米糕（tang-á-bí-ko）", c:"蚵仔煎（ō-á-tsian）", d:"鼎邊趖（tiánn-pinn-sô）", ans:"D", ansText:"鼎邊趖（tiánn-pinn-sô）"},
+{id:127, q:"請問選項內底的囡仔出世了後的禮俗，佗一个禮俗上晏做？", a:"滿月", b:"度晬", c:"做四月日", d:"三朝", ans:"B", ansText:"度晬"},
+{id:128, q:"臺灣語數字「一」到「十」當中，入聲字有幾个？", a:"3個", b:"4個", c:"5個", d:"6個", ans:"C", ansText:"5個"},
+{id:129, q:"下面佗一个選項的韻尾佮其他三个無仝？", a:"「來賓」的「賓」", b:"「聲音」的「音」", c:"「面巾」的「巾」", d:"「原因」的「因」", ans:"B", ansText:"「聲音」的「音」"},
+{id:130, q:"「人為財死，鳥為食亡。」這句話內底，讀變調的字是佗一个字？", a:"人", b:"為", c:"鳥", d:"食", ans:"B", ansText:"為"},
+{id:131, q:"「兩_____工」請問空格仔內揀佗一个較適當？", a:"逝", b:"襇", c:"橛", d:"垺", ans:"A", ansText:"逝"},
+{id:132, q:"「百_____裙」請問空格仔內揀佗一个較適當？", a:"逝", b:"襇", c:"橛", d:"垺", ans:"B", ansText:"襇"},
+{id:133, q:"「碗予你洗,塗跤我來掃。」請問這句話讀本調的有幾个音?", a:"2個", b:"3個", c:"4個", d:"5個", ans:"C", ansText:"4個"},
+{id:134, q:"請問下面這幾个詞的臺羅拼音，佗一个有錯誤？", a:"落氣làu-khuì", b:"落勾làu-kau", c:"落喉lo̍ h-âu", d:"落伍lo̍h-ngóo", ans:"D", ansText:"落伍lo̍h-ngóo"},
+{id:135, q:"「柿仔都猶未熟,食了會_____。」請問空格仔內揀佗一个較適當？", a:"佮喙", b:"咬喙", c:"喙白", d:"喙殘", ans:"B", ansText:"咬喙"},
+{id:136, q:"請問下面佗一句無合臺語的語法？", a:"伊踏著沉重的跤步聲。", b:"這款代誌曷使著問?", c:"今你是好矣未?", d:"臺東阮都猶毋捌行跤到。", ans:"A", ansText:"伊踏著沉重的跤步聲。"},
+{id:137, q:"臺灣閩南語的用字下面佗一个選項有錯誤？", a:"伊食物件有夠討債，定定賰一半就欲丟挕捒", b:"你毋通遐爾仔愛哭", c:"伊誠勇敢，拄著困難攏毋驚", d:"生理失敗了後，伊的日子就過甲真虯儉", ans:"A", ansText:"伊食物件有夠討債，定定賰一半就欲丟挕捒"},
+{id:138, q:"下面佗一个選項用字毋著？", a:"欲按怎對你講出心內話", b:"烏暗小路又歹行", c:"海風無情笑阮憨", d:"喙脣胭脂朱朱紅", ans:"C", ansText:"海風無情笑阮憨"},
+{id:139, q:"「_____ ，加減趁,較袂散啦！」請問空格仔內填佗一个上適當?", a:"有比無好", b:"有較贏無", c:"有贏過無", d:"有比無較好", ans:"B", ansText:"有較贏無"},
+{id:140, q:"下面佗一組引號內面的字,臺語發音完全仝款?", a:"年「紀」、日「記」", b:"「幼」秀、「誘」拐", c:"油「垢」、烏「狗」", d:"「怨」恨、「苑」裡", ans:"C", ansText:"油「垢」、烏「狗」"},
+{id:141, q:"阿明共阿華講:「阮阿爸明仔載欲來揣咱老師。」請問阿明佮阿華上有可能是啥物關係?", a:"兄弟仔讀無仝班", b:"無仝家庭的同學", c:"兄弟仔讀仝班", d:"無親情關係,嘛毋是同學", ans:"B", ansText:"無仝家庭的同學"},
+{id:142, q:"請問下面佗一个詞的臺羅拼音無正確?", a:"kim-tsînn", b:"im-ga̍ k", c:"kìm-tsí", d:"sim-bûm", ans:"D", ansText:"sim-bûm"},
+{id:143, q:"「過年閣無偌久就欲到矣,予我懷念囡仔時代的過年。」請問這句話內面有幾字愛唸本調?", a:"四字", b:"五字", c:"六字", d:"七字", ans:"B", ansText:"五字"},
+{id:144, q:"「俗語講:第一戇,食薰歕風;第二戇,挵球相碰;第三戇,插甘蔗予__磅。」請問空格仔內揀佗一个上適當?", a:"社會", b:"會教", c:"會社", d:"教會", ans:"C", ansText:"會社"},
+{id:145, q:"「頭家!西瓜切一周來賣。」請問遮的「一周」上有可能是外濟?", a:"半爿", b:"四分之一", c:"規个", d:"一粒", ans:"B", ansText:"四分之一"},
+{id:146, q:"臺灣禮俗內面的「𤆬(tshuā)路雞」是用佇啥物場合？", a:"做度晬", b:"做生日", c:"婚禮", d:"喪禮", ans:"C", ansText:"婚禮"},
+{id:147, q:"「咱麥玩傷晏,才袂惹阿母生氣,卡停仔乎阿母夯箠仔逐咧拍!」引號內這段話的漢字,無符合教育部推薦的用字, 攏共有幾个字?", a:"4 個", b:"5 個", c:"6 個", d:"7個", ans:"C", ansText:"6 個"},
+{id:148, q:"請問下面佗一句的語法袂通？", a:"伊的食食誠無正常", b:"這予我來接接就好", c:"你毋通閣延延矣", d:"咱看看電影就好矣", ans:"D", ansText:"咱看看電影就好矣"},
+{id:149, q:"「逐家_____就相招出去散步矣。」請問空格仔內揀佗一个上適當？", a:"食飽飯", b:"食了飯", c:"食飯飽", d:"食飯完", ans:"C", ansText:"食飯飽"},
+{id:150, q:"請問下面這幾个「上」字，佗一个讀音佮另外三個無仝？", a:"上山", b:"上卌", c:"上桌", d:"上媠", ans:"D", ansText:"上媠"},
+{id:151, q:"請問下面佗一句的「去」字是唸輕聲？", a:"無主無意，人招就去。", b:"雷公咧霆矣，緊轉去較順。", c:"轉去到厝了後，煞走袂開跤。", d:"一粒落屎星，落對彼爿去。", ans:"B", ansText:"雷公咧霆矣，緊轉去較順。"},
+{id:152, q:"「拄才猶閣百捅个佇遐，這馬差不多賰_____个爾爾。」請問空格仔內揀佗一个上適當？", a:"百二", b:"倚百", c:"百外", d:"成百", ans:"D", ansText:"成百"},
+{id:153, q:"「今買_____買矣，無你敢有伊法？」請問空格仔內添佗一个較適當？", a:"抑", b:"都", c:"就", d:"著", ans:"B", ansText:"都"},
+{id:154, q:"「俗語講：六月_____假有心。」請問空格仔內塌佗一个上適合？", a:"割菜", b:"芥菜", c:"蓋菜", d:"刈菜", ans:"B", ansText:"芥菜"},
+{id:155, q:"講人「一句話三尖六角」，這是咧共人？", a:"呵咾", b:"懷疑", c:"剾洗", d:"抗議", ans:"C", ansText:"剾洗"},
+{id:156, q:"請問下面佗一句的語法袂通？", a:"伊逐工騎著腳踏車，那騎那看風景。", b:"伊共我鐵馬騎歹去矣。", c:"惡馬惡人騎，胭脂馬拄著關老爺。", d:"騎車載物件著細膩，毋通重頭輕。", ans:"A", ansText:"伊逐工騎著腳踏車，那騎那看風景。"},
+{id:157, q:"下跤臺語漢字佮臺語羅馬字發音對應的選項，佗一个是正確的？", a:"甚至／sīn-tsì", b:"容易／liông-ī", c:"機構／ki-kòo", d:"感覺／kám-kah", ans:"C", ansText:"機構／ki-kòo"},
+{id:158, q:"請問下面佗一句的語法袂通？", a:"阿明並阮阿兄較懸。", b:"我都袂記得矣你。", c:"這粒西瓜甜甲。", d:"你有耍過電動嗎？", ans:"D", ansText:"你有耍過電動嗎？"},
+{id:159, q:"下面佗一个選項的「烏」，是正面的描述？", a:"烏嘛嘛(oo mà-mà)", b:"烏㽎㽎(oo sìm-sìm)", c:"烏趖趖(oo sô-sô)", d:"烏漉漉(oo lok-lok)", ans:"B", ansText:"烏㽎㽎(oo sìm-sìm)"},
+{id:160, q:"俗語講：「三色人講五色話。」意思是？", a:"日後無長短跤話", b:"一句話三角六尖", c:"人濟話就濟", d:"關門著閂，講話著看", ans:"C", ansText:"人濟話就濟"},
+{id:161, q:"俗語講：「食著藥，青草一葉；食毋著藥，人參一石。」是咧講？", a:"做代誌愛掠著要領", b:"佮人交陪毋通虛情假意", c:"食藥仔愛撙節劑量，毋通食傷濟", d:"小病毋通拖到無藥醫才欲去看先生", ans:"A", ansText:"做代誌愛掠著要領"},
+{id:162, q:"臺語咧講一个人真厚面皮，會當講這个人是？", a:"蠻皮神", b:"猪哥神", c:"展風神", d:"大面神", ans:"D", ansText:"大面神"},
+{id:163, q:"臺灣是thong世界出名的美麗島嶼，「島嶼」的臺語羅馬字是？", a:"tó-sū", b:"tóo-ù", c:"thó-sū", d:"tâu-û", ans:"A", ansText:"tó-sū"},
+{id:164, q:"俗語：「Suí, suí bô tsa̍ p-tsn̂g; bái, bái bô ka-nn̂g.」佇遮的「tsa̍p-tsn̂g」的「tsn̂g」， 臺語漢字是？", a:"從", b:"狀", c:"全", d:"鑽", ans:"C", ansText:"全"},
+{id:165, q:"『小舌』的臺語叫做「nâ-âu-tì-á」，伊的臺語漢字寫做？", a:"喉嚨猪仔", b:"嚨喉蒂仔", c:"喉嚨蔕仔", d:"嚨喉胝仔", ans:"B", ansText:"嚨喉蒂仔"},
+{id:166, q:"「Lí m̄-thang iau-káu siàu-siūnn ti-kuann-kut.」遮的「siàu-siūnn」的臺語漢字是？", a:"誚想", b:"賬想", c:"數想", d:"少想", ans:"C", ansText:"數想"},
+{id:167, q:"臺語有讀冊音佮白話音，下跤佗一个選項是讀冊音？", a:"山／san", b:"熱／jua̍ h", c:"食／tsia̍ h", d:"問／mn̄g", ans:"A", ansText:"山／san"},
+{id:168, q:"下跤佗一个選項是臺語的講法？", a:"敢做得？", b:"可以吧？", c:"好嗎？", d:"好無？", ans:"D", ansText:"好無？"},
+{id:169, q:"下跤佗一个選項毋是咧講「過去」？", a:"íng-kuè", b:"hiàng-sî", c:"tíng-huê", d:"tsit-kú", ans:"D", ansText:"tsit-kú"},
+{id:170, q:"下跤佗一个臺語語詞毋是按日語來的？", a:"ne-khú-tái", b:"phōng-kó", c:"khí-móo-tsih", d:"la-jí-ooh", ans:"B", ansText:"phōng-kó"},
+{id:171, q:"下面各例句的括符內，佗一括符內的字是「白話音」？", a:"屏「東」", b:"「方」世玉", c:"中「毒」", d:"「雨」中鳥", ans:"B", ansText:"「方」世玉"},
+{id:172, q:"請問下面佗一个詞的濁聲母字上濟？", a:"年尾囡仔", b:"人情世事", c:"軟塗深掘", d:"起跤動手", ans:"A", ansText:"年尾囡仔"},
+{id:173, q:"「遮有十粒石頭仔，請你兩粒兩粒共抾做伙；大粒的鬥大粒的，細粒的鬥細粒的。」這段話內面七个「粒」字，有幾字唸本調？", a:"四字", b:"五字", c:"六字", d:"七字", ans:"B", ansText:"五字"},
+{id:174, q:"「伊ㄧ工有通趁三兩百箍仔，就愛偷暢矣啦！」這句話內面，有幾字唸輕聲？", a:"三字", b:"四字", c:"五字", d:"超過五字", ans:"D", ansText:"超過五字"},
+{id:175, q:"請問下面佗一句的語意袂通？", a:"昨昏暗伊有來", b:"今仔日伊有來", c:"今仔日伊會來", d:"明仔載伊有來", ans:"D", ansText:"明仔載伊有來"},
+{id:176, q:"請問下面佗一个詞的前兩字嘛是一个臺語詞？", a:"黏黐黐", b:"白鑠鑠", c:"爛糊糊", d:"紅記記", ans:"A", ansText:"黏黐黐"},
+{id:177, q:"「明仔載阿明仔欲娶新婦，敢無放帖仔予你？」請問這句話是咧講明仔載啥物人欲結婚？", a:"阿明仔", b:"阿明仔 in 查某囝", c:"阿明仔 in 囝", d:"阿明仔 in 孫", ans:"C", ansText:"阿明仔 in 囝"},
+{id:178, q:"「咱」佮「你」，有當時仔互相替換了後，指涉的對象並無改變。請問下面佗一句無適用這个規則？", a:"咱毋通互相落氣！", b:"咱毋通按呢想！", c:"咱蹛佗位？", d:"咱敢會使目睭金金看伊按呢咧受苦？", ans:"C", ansText:"咱蹛佗位？"},
+{id:179, q:"請問下面佗一句的寫法完全符合教育部的推薦用字？", a:"伊聽一下規个人攏憨去。", b:"陰鴆狗，咬人袂吼。", c:"阿公仔攑鋤頭，欲掘芋。", d:"伊返頭隨無看見人。", ans:"B", ansText:"陰鴆狗，咬人袂吼。"},
+{id:180, q:"請問下面這幾个詞的臺羅拼音，佗一个有錯誤？", a:"重耽 tîng-tânn", b:"閃爍 siám-sih", c:"落魄 lò-phik", d:"節脈 tsat-me̍h", ans:"C", ansText:"落魄 lò-phik"},
+{id:181, q:"「你做你的，欲講_____伊講。」請問空格仔內添佗一个較適當？", a:"原在", b:"據在", c:"自在", d:"常在", ans:"B", ansText:"據在"},
+{id:182, q:"請問下面的比較句內底，佗一句無合臺灣閩南語的講法？", a:"阿華和阿明平懸", b:"阿華較懸過阿英", c:"阿華並阿英較懸", d:"阿英矮過阿華", ans:"D", ansText:"阿英矮過阿華"},
+{id:183, q:"下面臺灣閩南語詞彙的使用，佗一句是正確的？", a:"伊足愛抾「銅管仔」，因為伊是咧做鼓吹的。", b:"伊是做「牽猴仔」的，愛去動物園上班。", c:"歌仔戲的神仙攏會攑一枝若「蠓捽仔」的物件。", d:"這个裁縫的「剪綹仔」技術誠好。", ans:"C", ansText:"歌仔戲的神仙攏會攑一枝若「蠓捽仔」的物件。"},
+{id:184, q:"下面臺灣閩南語詞彙的使用，佗一句是正確的？", a:"這間店強欲倒矣，頭家做伊走，放頭家娘佇遐「沐沐泅」。", b:"這个囡仔規工共老母「扲牢牢」，真司奶。", c:"欲買電影票的人排隊排甲「挐氅氅」，實在無規矩。", d:"這台車「油洗洗」，緊共洗予清氣。", ans:"A", ansText:"這間店強欲倒矣，頭家做伊走，放頭家娘佇遐「沐沐泅」。"},
+{id:185, q:"「大頭丁仔歕雞胿，東西南北講一堆，天生一枝_____喙，講甲三更免喘氣。」(施福珍〈大頭丁仔〉)請問表示口才真好的「 喙」空格仔內底適合添入下面佗一个詞？", a:"媒人", b:"璇石", c:"鴨母", d:"港仔", ans:"B", ansText:"璇石"},
+{id:186, q:"「阿彰佮阿明這兩个換帖的感情真好，連車嘛仝色水。」請問這句話內底「換帖的」是啥物意思？", a:"in放帖仔予對方", b:"in有姻親關係", c:"in有結拜關係", d:"in的車色水媠", ans:"C", ansText:"in有結拜關係"},
+{id:187, q:"老爸對後生講：「你的橐袋仔內一定是袋磅子。」照這句話的意思，老爸對後生的態度按怎？", a:"o-ló", b:"khau-sé", c:"bô-nāi", d:"iàn-khì", ans:"B", ansText:"khau-sé"},
+{id:188, q:"「我做一塊薁蕘(ò-giô)，成本毋但三十箍，你欲叫我賣你二十箍，你欲叫我____ 喔？」請問空格仔內揀佗一个上適當？", a:"歹趁", b:"倒塌", c:"了尾", d:"食家己", ans:"B", ansText:"倒塌"},
+{id:189, q:"「阿媽老歲仔目，攏愛用____，才有法度看報紙。」請問空格仔內揀佗一个選 項上適當？", a:"召鏡", b:"耳鏡", c:"譀鏡", d:"千里鏡", ans:"C", ansText:"譀鏡"},
+{id:190, q:"「阿寶人面闊，____真濟，定定予in某嫌開銷傷重。」請問空格仔內揀佗一个上適當？", a:"人緣", b:"名聲", c:"面水", d:"陪綴", ans:"D", ansText:"陪綴"},
+{id:191, q:"「雞仔災已經對香港_____甲規个亞洲地區，逐家著愛注意。」請問空格仔內揀佗一个選項上適當？", a:"展", b:"感", c:"流", d:"湠", ans:"D", ansText:"湠"},
+{id:192, q:"「科技的社會，時間就是金錢，我哪有遐濟____時間，聽恁咧講遐的五四三的。」 請問空格仔內揀佗一个選項上適當？", a:"îng-kang", b:"phah-la-liâng", c:"pûn-ta̍h-ti", d:"liōng-siōng", ans:"D", ansText:"liōng-siōng"},
+{id:193, q:"咱有時會共雙音節的形容詞重複一擺，變做 ABAB 四音節的形容詞，親像「老實老實」。請問下面佗一个選項袂當按呢？", a:"勇敢", b:"清氣", c:"心適", d:"古意", ans:"A", ansText:"勇敢"},
+{id:194, q:"「阿安佮阿成比阿發較討債，阿成較儉阿安。」請問下面的敘述佗一个正確？", a:"阿安比阿發較儉", b:"阿發較無阿成遐儉", c:"阿成較無阿安遐冇手", d:"阿成比阿安閣較冇手", ans:"C", ansText:"阿成較無阿安遐冇手"},
+{id:195, q:"阮有一个同事in查某囝毋但______，而且體格好、英語讚、人足巧，想講去考 空中小姐穩牢的。想袂到千算萬算毋值天一劃，航空公司有要求著愛用母語自我紹介。", a:"尪仔面", b:"掰手面", c:"有人面", d:"囡仔面", ans:"A", ansText:"尪仔面"},
+{id:196, q:"阮同事四界揣人共in查某囝補習。有影是 ______，袂赴市矣啦！細漢無咧講，拄著矣才用硬練的，一下開喙就予人看破跤手，當然嘛佮空中小姐無緣！", a:"三好一公道", b:"未曾過年先放炮", c:"做官騙厝內，做生理騙熟似", d:"人來才欲掃地，人去才欲煎茶", ans:"D", ansText:"人來才欲掃地，人去才欲煎茶"},
+{id:197, q:"服務業是現代社會的趨勢，加學一種語言，加一粒頭殼，嘛加一个揣頭路______的機會。", a:"賺錢", b:"趁錢", c:"趁流水", d:"趁私奇", ans:"B", ansText:"趁錢"},
+{id:198, q:"徛佇臺灣，服務臺灣人，當然愛講臺灣話。上好是自細漢佇厝裡講予慣勢，若是這馬開始閣小可有救。有心拍石石成穿，有心開山山成園。學語言______，會曉講幾若種語言的人就是人才！", a:"有空無榫", b:"有好無䆀", c:"三好加一好", d:"四兩ńg-á無除", ans:"B", ansText:"有好無䆀"},
+{id:199, q:"一萬若是箍箍，看會著，愛幾若工才趁有，毋過開一下就______去矣。一萬若是跤步，看袂著，一工就趁有，閣會當儉佇身軀這个銀行生利息，予咱用一世人。", a:"了", b:"焦", c:"煞", d:"散", ans:"B", ansText:"焦"},
+{id:200, q:"時代咧變誠緊，我十冬前買的計步器是______電池的，若好膽閣共古董提出來用，會予人笑倯。資訊時代是用巧機仔配健康手錶仔，接起去雲端，連睏眠的狀況嘛有記錄。", a:"鬥", b:"囥", c:"櫼", d:"放", ans:"A", ansText:"鬥"},
+{id:201, q:"根據研究，一工一萬步就是追求健康的好撇步。錶仔若設予好勢，傷貧惰無振動、 坐咧鬱傷久，伊會共你提醒，達成目標閣會共你恭喜。      老師的工課較恬靜，本底想講上課的教室換來換去，來來去去運動量應該有夠。毋過，手錶仔袂講白賊，一下測才知影傷自信矣。規工遮粒遐積才五千爾爾，莫怪______會愈來愈肥軟。", a:"tíng-pat-kuà", b:"tiong-khoo", c:"bué-tsui", d:"kha-tóo", ans:"B", ansText:"tiong-khoo"},
+{id:202, q:"若毋是為著遮的囡仔、為著這个家庭，伊______甘願放翁放囝？", a:"哪會", b:"哪著", c:"煞會", d:"嘛會", ans:"A", ansText:"哪會"},
+{id:203, q:"細囝逐工攏著愛飼奶，翁婿三个囡仔，擔頭嘛真沈重，______ ，嫁出去的小妹徛仝庄內，小妹暫時共上細漢的囡仔抱去照顧，已經欲成冬矣！", a:"無疑悟", b:"無定著", c:"好佳哉", d:"真僥倖", ans:"C", ansText:"好佳哉"},
+{id:204, q:"小妹暫時共上細漢的囡仔抱去照顧，已經欲成冬矣！日子一下久，細漢囝 開始依依呀呀學講話以後，_______ 共小妹當做是家己的老母", a:"koh", b:"tsiah", c:"ia̍h", d:"suah", ans:"D", ansText:"suah"},
+{id:205, q:"共小妹當做是家己的老母，照這款_____ ， 有可能兩冬後，工課期滿，囡仔就袂認得家己的老母到底是啥人矣？", a:"範勢", b:"勢面", c:"角勢", d:"聲勢", ans:"A", ansText:"範勢"},
+{id:206, q:"這馬，阮查某囝一工一工漸漸仔大漢，_____捌代誌", a:"沓沓仔", b:"寬寬仔", c:"勻勻仔", d:"干干仔", ans:"A", ansText:"沓沓仔"},
+{id:207, q:"______ 愛照鏡， ______ 愛耍物件。", a:"因為...就", b:"干焦...嘛", c:"雖然...煞", d:"毋但...閣", ans:"D", ansText:"毋但...閣"},
+{id:208, q:"伊愛耍的物仔大項細項規厝間，逐日逐項攏愛耍一遍，就因為按呢，阮規家伙仔實在是真無閒。上蓋慘的是我，______ 著逐工和伊佇鏡的頭前搬戲。", a:"ia̍h", b:"koh", c:"to", d:"m̄", ans:"B", ansText:"koh"},
+{id:209, q:"______ ，伊就毋願乖乖去眠床頂睏。", a:"莫怪", b:"抑無", c:"袂直", d:"若無", ans:"D", ansText:"若無"}
+    ];
+
+    let gameQuestions = [];
+    let currentQuestionIndex = 0;
+    let isQuestionAnswered = false;
+    let currentScore = 0;
+    let isFirstAttempt = true; 
+    let audioContext = null;
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    function playSound(type) {
+        if (!audioContext) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        const osc = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        osc.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        if (type === 'correct') {
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(600, audioContext.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + 0.1);
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            osc.start();
+            osc.stop(audioContext.currentTime + 0.3);
+        } else {
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(150, audioContext.currentTime);
+            osc.frequency.linearRampToValueAtTime(100, audioContext.currentTime + 0.2);
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            osc.start();
+            osc.stop(audioContext.currentTime + 0.3);
+        }
+    }
+
+    function startGame(count) {
+        if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        let pool = [...rawData];
+        shuffleArray(pool);
+        
+        if (count !== 'all') {
+            gameQuestions = pool.slice(0, parseInt(count));
+        } else {
+            gameQuestions = pool;
+        }
+
+        currentQuestionIndex = 0;
+        currentScore = 0; 
+        
+        document.getElementById('menu-screen').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'none'; 
+        document.getElementById('game-screen').style.display = 'flex';
+        document.getElementById('game-controls').style.display = 'flex';
+        document.getElementById('status-bar').style.display = 'flex'; 
+
+        renderQuestion();
+    }
+
+    function showResult() {
+        document.getElementById('game-screen').style.display = 'none';
+        document.getElementById('game-controls').style.display = 'none';
+        
+        document.getElementById('result-screen').style.display = 'flex';
+        document.getElementById('final-score').textContent = currentScore;
+    }
+
+    function renderQuestion() {
+        isQuestionAnswered = false;
+        isFirstAttempt = true; 
+        
+        const qData = gameQuestions[currentQuestionIndex];
+        
+        document.getElementById('q-counter').textContent = `${currentQuestionIndex + 1}/${gameQuestions.length}`;
+        document.getElementById('score-counter').textContent = currentScore;
+
+        const qTextEl = document.getElementById('question-text');
+        qTextEl.textContent = qData.q;
+
+        // --- Question Smart Scaling ---
+        qTextEl.style.fontSize = ""; 
+        if (window.innerWidth <= 768) {
+            const len = qData.q.length;
+            if (len > 50) {
+                qTextEl.style.fontSize = "clamp(1.2rem, 3vh, 1.8rem)";
+            } else if (len > 30) {
+                qTextEl.style.fontSize = "clamp(1.3rem, 3.5vh, 2.2rem)";
+            }
+        }
+        // -----------------------
+
+        let optionsArr = [
+            { text: qData.a, isCorrect: qData.ansText === qData.a },
+            { text: qData.b, isCorrect: qData.ansText === qData.b },
+            { text: qData.c, isCorrect: qData.ansText === qData.c },
+            { text: qData.d, isCorrect: qData.ansText === qData.d }
+        ];
+
+        const hasCorrect = optionsArr.some(o => o.isCorrect);
+        if (!hasCorrect) {
+            const map = { 'A':0, 'B':1, 'C':2, 'D':3 };
+            const correctIndex = map[qData.ans.trim().toUpperCase()];
+            optionsArr[0].isCorrect = (correctIndex === 0);
+            optionsArr[1].isCorrect = (correctIndex === 1);
+            optionsArr[2].isCorrect = (correctIndex === 2);
+            optionsArr[3].isCorrect = (correctIndex === 3);
+        }
+
+        shuffleArray(optionsArr);
+
+        const optionsContainer = document.getElementById('options-container');
+        optionsContainer.innerHTML = '';
+
+        const labels = ['A', 'B', 'C', 'D'];
+        
+        optionsArr.forEach((opt, index) => {
+            const card = document.createElement('div');
+            card.className = 'option-card';
+            
+            // --- Option Smart Scaling ---
+            // 檢查選項長度並設定內聯樣式
+            const textLen = opt.text.length;
+            if (textLen > 25) {
+                // 字數極長，縮小字體
+                card.style.fontSize = "clamp(1rem, 2.5vh, 1.8rem)";
+            } else if (textLen > 15) {
+                // 字數稍長，微調字體
+                card.style.fontSize = "clamp(1.2rem, 3vh, 2.2rem)";
+            }
+            // 否則使用 CSS 預設的 clamp
+            
+            const tag = document.createElement('div');
+            tag.className = 'option-tag';
+            tag.textContent = labels[index];
+            
+            const text = document.createElement('div');
+            text.className = 'option-text';
+            text.textContent = opt.text;
+
+            card.appendChild(tag);
+            card.appendChild(text);
+
+            card.onclick = () => handleAnswer(card, opt.isCorrect);
+
+            optionsContainer.appendChild(card);
+        });
+    }
+
+    function handleAnswer(element, isCorrect) {
+        if (isQuestionAnswered) return;
+
+        if (isCorrect) {
+            playSound('correct');
+            if (isFirstAttempt) {
+                currentScore += 1;
+                document.getElementById('score-counter').textContent = currentScore;
+            }
+
+            element.style.backgroundColor = '#d7ffb8';
+            element.style.borderColor = '#58cc02';
+            element.style.color = '#58a700';
+            element.querySelector('.option-tag').style.borderColor = '#58cc02';
+            element.querySelector('.option-tag').style.color = '#58cc02';
+            
+            isQuestionAnswered = true; 
+
+            setTimeout(function() {
+                nextQuestion();
+            }, 800);
+
+        } else {
+            playSound('wrong');
+            isFirstAttempt = false;
+            element.classList.add('wrong');
+        }
+    }
+
+    function nextQuestion() {
+        if (currentQuestionIndex < gameQuestions.length - 1) {
+            currentQuestionIndex++;
+            renderQuestion();
+        } else {
+            showResult(); 
+        }
+    }
+
+    function prevQuestion() {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            renderQuestion();
+        }
+    }
+
+    function backToMenu() {
+        document.getElementById('game-screen').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'none';
+        document.getElementById('status-bar').style.display = 'none';
+        document.getElementById('game-controls').style.display = 'none';
+        document.getElementById('menu-screen').style.display = 'flex';
+    }
+
+</script>
+</body>
+</html>

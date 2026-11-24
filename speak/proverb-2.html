@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<!--
+  【著作權聲明】
+  教育部俗諺語2｜進階口說練習 — 進階口說練習：教育部台語俗諺（序號201–388）（聽辭典錄音、跟讀、自動輪播）
+  詞條、俗諺、華語釋義與錄音連結取自教育部《臺灣台語常用詞辭典》，其著作權屬教育部（CC BY-NC-ND 2.5 TW）。
+  本網頁之程式碼、版面與教案設計 Copyright © 2026 詹宗龍（臺中明道中學）. All rights reserved.
+  僅供非營利之教育教學使用；未經著作權人書面授權，不得重製、改作、散布或修改本網頁之全部或一部分。
+-->
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="author" content="詹宗龍（臺中明道中學）">
+<meta name="copyright" content="© 2026 詹宗龍（臺中明道中學）。保留一切權利。">
+<title>教育部俗諺語2｜進階口說練習</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23111%22/%3E%3Crect x=%224%22 y=%224%22 width=%2256%22 height=%2256%22 rx=%2210%22 fill=%22none%22 stroke=%22%23FFD400%22 stroke-width=%224%22/%3E%3Ctext x=%2232%22 y=%2246%22 font-size=%2234%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23FFD400%22%3E%E9%80%B2%3C/text%3E%3C/svg%3E">
+<link href="https://tauhu.tw/tauhu-oo.css" rel="stylesheet">
+<style>
+:root{--black:#111111;--yellow:#FFD400;--white:#FFFFFF;--gray:#2A2A2A;--light:#F5F5F5;--muted:#A8A8A8;--ok:#58cc02;--no:#ff4b4b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{background:var(--black);color:var(--white);font-family:'tauhu-oo',"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+  display:flex;flex-direction:column;overflow:hidden;user-select:none;-webkit-user-select:none}
+button{font-family:inherit}
+/* 標題列 */
+.topbar{flex:none;display:flex;align-items:center;gap:clamp(8px,1vw,16px);padding:clamp(8px,1.1vh,14px) clamp(10px,1.4vw,28px);
+  background:var(--black);border-bottom:4px solid var(--yellow);min-width:0}
+.topbar .cat{flex:none;background:var(--yellow);color:var(--black);font-weight:900;font-size:clamp(13px,1.1vw,20px);padding:5px 14px;border-radius:999px;white-space:nowrap}
+.topbar h1{flex:1 1 auto;min-width:0;margin:0;color:var(--yellow);font-weight:900;font-size:clamp(17px,2vw,36px);line-height:1.2;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .stat{flex:none;display:none;gap:12px;color:var(--white);font-weight:700;font-size:clamp(13px,1vw,18px);white-space:nowrap}
+.topbar .stat b{color:var(--yellow)}
+.topbar .home{flex:none;color:var(--white);text-decoration:none;font-weight:700;font-size:clamp(13px,1vw,18px);border:2px solid var(--white);
+  border-radius:999px;padding:4px 14px;white-space:nowrap;transition:background .15s,color .15s}
+.topbar .home:hover{background:var(--white);color:var(--black)}
+.topbar .tbtn{flex:none;border:2px solid var(--yellow);background:transparent;color:var(--yellow);font-weight:700;font-size:clamp(13px,1vw,18px);
+  border-radius:999px;padding:4px 14px;cursor:pointer;white-space:nowrap}
+.topbar .tbtn:hover{background:var(--yellow);color:var(--black)}
+/* 主區 */
+#app,#app-container{flex:1 1 auto;min-height:0;position:relative;display:flex;flex-direction:column;width:100%}
+/* 入口選單：①②步驟卡＋③操作面板 */
+.g-wrap{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,24vw,440px);gap:clamp(10px,1.2vw,22px);
+  padding:clamp(10px,1.4vw,24px);overflow:auto;width:100%}
+.steps{display:flex;flex-direction:column;gap:clamp(10px,1.2vw,22px);min-width:0}
+.step,.panel{background:var(--gray);border-radius:16px;padding:clamp(12px,1.3vw,24px);border:1px solid #3a3a3a}
+.step h3,.panel h3{display:flex;align-items:center;gap:10px;margin:0 0 clamp(10px,1vw,18px);font-size:clamp(16px,1.3vw,26px);color:var(--yellow)}
+.num{flex:none;width:1.5em;height:1.5em;border-radius:50%;background:var(--yellow);color:var(--black);display:grid;place-items:center;font-size:.85em;font-weight:900}
+.opts{display:grid;gap:clamp(8px,.9vw,16px)}
+.opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.opts.n{grid-template-columns:repeat(auto-fill,minmax(clamp(92px,8.5vw,160px),1fr))}
+.opt{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;min-height:clamp(56px,7vh,96px);padding:10px 14px;
+  background:var(--white);color:var(--black);border:3px solid var(--white);border-radius:14px;cursor:pointer;font-weight:900;
+  font-size:clamp(17px,1.45vw,30px);line-height:1.2;text-align:left;transition:transform .12s,box-shadow .12s;white-space:nowrap}
+.opt *{pointer-events:none}
+.opt:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.45)}
+.opt .ic{flex:none;width:clamp(34px,2.6vw,52px);height:clamp(34px,2.6vw,52px);border-radius:50%;background:var(--black);color:var(--yellow);
+  display:grid;place-items:center;font-size:clamp(14px,1.1vw,22px);font-weight:900}
+.opt .ic svg{width:60%;height:60%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.opt .tx small{display:block;font-size:.55em;font-weight:700;color:#555;margin-top:3px;white-space:normal}
+.opt .big{font-size:1.25em}.opt .u{font-size:.55em;font-weight:700;margin-left:2px;align-self:flex-end;margin-bottom:.35em}
+.opt.sel,.opt.selected{background:var(--yellow);border-color:var(--white)}
+.opt.sel::after,.opt.selected::after{content:"✓";position:absolute;top:-9px;right:-9px;width:26px;height:26px;border-radius:50%;background:var(--black);
+  color:var(--yellow);display:grid;place-items:center;font-size:15px;font-weight:900;border:2px solid var(--yellow)}
+.panel{display:flex;flex-direction:column;gap:clamp(10px,1vw,18px);min-width:0}
+.sum{background:var(--black);border-radius:12px;padding:12px 14px;font-size:clamp(14px,1vw,19px);line-height:1.9}
+.sum span{color:var(--muted);margin-right:10px}.sum b{color:var(--white)}.sum b.none{color:#777;font-weight:400}
+.startbtn{width:100%;border:none;border-radius:14px;background:var(--yellow);color:var(--black);font-weight:900;font-size:clamp(20px,1.7vw,34px);
+  padding:clamp(14px,1.6vh,24px) 10px;cursor:pointer;box-shadow:0 5px 0 #b39500;transition:transform .1s}
+.startbtn:active{transform:translateY(4px);box-shadow:none}
+.startbtn:disabled{background:transparent;color:#777;border:2px dashed #555;box-shadow:none;cursor:default}
+.tip{color:var(--muted);font-size:clamp(12px,.9vw,16px);line-height:1.6;margin:0}
+.tip b{color:var(--yellow)}
+.corner{flex:none;text-align:right;color:#8a8a8a;font-size:12px;padding:3px 12px 4px;background:var(--black);border-top:1px solid #222}
+@media (max-width:860px),(orientation:portrait){
+  body{overflow:auto}
+  .g-wrap{grid-template-columns:1fr;overflow:visible}
+  .opts.m2{grid-template-columns:1fr}
+}
+@media (orientation:portrait) and (min-width:600px){.opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-height:520px) and (orientation:landscape){.opt{min-height:44px;font-size:17px}.tip{display:none}.g-wrap{padding:8px;grid-template-columns:minmax(0,1fr) 230px}
+  .opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}.step h3,.panel h3{margin-bottom:8px}}
+
+.page{display:none;flex-direction:column;flex:1 1 auto;min-height:0;width:100%}
+.page.active{display:flex}
+#pg-game{padding:clamp(10px,1.4vw,24px);gap:10px}
+.info-bar{display:flex;justify-content:space-between;color:var(--muted);font-size:clamp(13px,1vw,18px);flex:none}
+.info-bar span:last-child{color:var(--black);background:var(--yellow);border-radius:999px;padding:2px 12px;font-weight:700}
+.card{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;overflow:hidden}
+.q-text{flex:none;width:100%;font-weight:900;color:var(--white);font-size:clamp(24px,3.2vw,60px);line-height:1.35}
+.sub-tailo{display:block;margin-top:6px;font-size:.6em;color:#d8d8d8;font-weight:700}
+.kw{color:var(--yellow);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.q-def{flex:1 1 auto;width:100%;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;background:var(--gray);
+  border-left:6px solid var(--yellow);border-radius:14px;padding:clamp(12px,1.4vw,24px);color:var(--light);font-size:clamp(17px,1.6vw,30px);line-height:1.55;min-height:90px}
+@media (max-height:520px){.card{overflow:visible;flex:none}.q-def{flex:none}#pg-game{min-height:max-content}}
+.ctrl-area{flex:none;display:flex;flex-direction:column;align-items:center}
+.feed-box{min-height:34px;text-align:center}
+.feed-msg{font-weight:900;font-size:clamp(16px,1.3vw,24px)}
+.c-ok{color:var(--ok)}.c-no{color:var(--no)}
+.ctrl-btns{display:flex;gap:16px;margin:4px 0 6px}
+.icon-btn{width:clamp(56px,4.6vw,80px);height:clamp(56px,4.6vw,80px);border-radius:50%;border:3px solid var(--white);background:var(--white);color:var(--black);
+  font-size:clamp(24px,2vw,34px);display:flex;justify-content:center;align-items:center;cursor:pointer;box-shadow:0 4px 0 #888;transition:transform .1s}
+.icon-btn:active{transform:translateY(3px);box-shadow:none}
+.icon-btn.sec{background:var(--yellow);border-color:var(--yellow);box-shadow:0 4px 0 #b39500}
+#btn-auto{font-weight:900;color:var(--black)}
+.icon-btn.rec{background:var(--no);border-color:var(--no);color:#fff;animation:p 1.5s infinite}
+@keyframes p{0%{box-shadow:0 0 0 0 rgba(255,75,75,.7)}70%{box-shadow:0 0 0 14px rgba(0,0,0,0)}100%{box-shadow:0 0 0 0 rgba(0,0,0,0)}}
+.nav-bar{flex:none;display:flex;justify-content:space-between;gap:10px;border-top:2px solid #2a2a2a;padding-top:10px}
+.nav-btn{border:2px solid #555;background:var(--gray);color:var(--white);border-radius:12px;padding:10px 18px;font-weight:900;cursor:pointer;
+  font-size:clamp(15px,1.1vw,20px)}
+.nav-btn:hover{border-color:var(--yellow)}
+.nav-btn.next{background:var(--yellow);border-color:var(--yellow);color:var(--black)}
+</style>
+</head>
+<body oncontextmenu="return false;">
+<header class="topbar">
+  <span class="cat">口說練習</span>
+  <h1>教育部台語俗諺（序號201–388）</h1>
+  <a class="home" href="../index.html">← 進階練習</a>
+</header>
+<div id="app">
+  <div id="pg-menu" class="page active">
+    <div class="g-wrap">
+      <div class="steps">
+        <section class="step"><h3><span class="num">1</span>選擇遊戲方式</h3>
+          <div class="opts m2">
+                <div class="opt opt-btn sel" onclick="menu.set('mode', 'dual', this); mdSetMode('雙軌模式')"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><span class="tx">雙軌模式<small>台語字＋羅馬字</small></span></div>
+        <div class="opt opt-btn" onclick="menu.set('mode', 'auto', this); mdSetMode('自動輪播')"><span class="ic"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span><span class="tx">自動輪播<small>自動播音、下一則</small></span></div>
+        <div class="opt opt-btn" onclick="menu.set('mode', 'han', this); mdSetMode('台語字')"><span class="ic">漢</span><span class="tx">台語字<small>只看台語漢字</small></span></div>
+        <div class="opt opt-btn" onclick="menu.set('mode', 'tailo', this); mdSetMode('羅馬字')"><span class="ic">Lô</span><span class="tx">羅馬字<small>只看台羅拼音</small></span></div>
+          </div></section>
+        <section class="step"><h3><span class="num">2</span>選擇數量</h3>
+          <div class="opts n">
+                <div class="opt opt-btn sel" onclick="menu.set('count', 30, this); mdCount('30則')"><span class="big">30</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 50, this); mdCount('50則')"><span class="big">50</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 70, this); mdCount('70則')"><span class="big">70</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 90, this); mdCount('90則')"><span class="big">90</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 110, this); mdCount('110則')"><span class="big">110</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 130, this); mdCount('130則')"><span class="big">130</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 150, this); mdCount('150則')"><span class="big">150</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 170, this); mdCount('170則')"><span class="big">170</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 'all', this); mdCount('全部（188則）')"><span class="big">全部</span></div>
+          </div></section>
+      </div>
+      <aside class="panel"><h3><span class="num">3</span>開始練習</h3>
+        <div class="sum"><div><span>方式</span><b id="sum-mode">雙軌模式</b></div><div><span>數量</span><b id="sum-count">30則</b></div><div><span>題庫</span><b>188 則</b></div></div>
+        <button class="startbtn" id="md-start" onclick="game.start()">開始遊戲</button>
+        <p class="tip">按 <b>🔊</b> 聽教育部辭典錄音，按 <b>🎤</b> 錄音跟讀；<b>自動輪播</b>會一則接一則自動播放。</p>
+      </aside>
+    </div>
+  </div>
+  <div id="pg-game" class="page">
+    <div class="info-bar"><span id="lb-idx"></span><span id="lb-mode"></span></div>
+    <div class="card">
+      <div id="tx-main" class="q-text"></div>
+      <div id="tx-def" class="q-def"></div>
+    </div>
+    <div class="ctrl-area">
+      <div class="feed-box"><div id="fd-msg" class="feed-msg"></div></div>
+      <div class="ctrl-btns">
+        <div class="icon-btn sec" onclick="game.play()" title="播放">🔊</div>
+        <div id="btn-mic" class="icon-btn" onclick="game.rec()" title="錄音">🎤</div>
+        <div id="btn-auto" class="icon-btn sec" onclick="game.toggle()" title="暫停/播放" style="display:none; width:auto; padding:0 22px; font-size:1.1rem; border-radius:14px;">暫停</div>
+      </div>
+    </div>
+    <div class="nav-bar">
+      <button class="nav-btn" onclick="game.home()">回選單</button>
+      <div style="display:flex; gap:10px;">
+        <button id="btn-prev" class="nav-btn" onclick="game.nav(-1)" style="visibility:hidden">上一題</button>
+        <button class="nav-btn next" onclick="game.nav(1)">下一題</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="corner">© 2026 詹宗龍（臺中明道中學）</div>
+<audio id="player"></audio>
+<script>
+    const db = [
+        {id:201,han:"三日無餾，𬦰上樹。",tailo:"Sann ji̍t bô liū, peh-tsiūnn tshiū.",def:"三天不溫習，學過的東西就爬上了樹梢。說明學過的東西要勤加溫習，稍有怠惰，很快所學的東西就會忘得一乾二淨。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/sn/IE/269081.mp3"},
+        {id:202,han:"三跤步一坎店。",tailo:"Sann kha-pōo tsi̍t khám tiàm.",def:"走三步就有一間店。形容市景繁榮，商店林立。 意指同類的店鋪多，同行之間的競爭很激烈。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/vz/c0/269121.mp3"},
+        {id:203,han:"三講，四毋著。",tailo:"Sann kóng, sì m̄-tio̍h.",def:"說三句話，錯四個地方。指人說話頻頻出錯。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/gt/Tg/269131.mp3"},
+        {id:204,han:"三人共五目，日後無長短跤話。",tailo:"Sann lâng kāng gōo ba̍k, ji̍t-āu bô tn̂g-té-kha-uē.",def:"三個人總共五隻眼睛，以後不能再說長道短。原故事為媒人婆替兩腳一長一短的青年，與瞎了一隻眼的女子相親，媒人為促成婚事，故意隱藏雙方的缺陷，在結婚前以雙關語說在場三人總共五隻眼睛，決定的事情日後便不得再說長就短。比喻共同商議後所做的決定，事後不得反悔。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/mE/Hu/269061.mp3"},
+        {id:205,han:"三年一閏，好歹照輪。",tailo:"Sann nî tsi̍t jūn, hó-pháinn tsiàu lûn.",def:"三年一次閏月，好壞輪流來。農曆每二、三年會有一個閏月，多出來的這個月按曆法分派到不同月份，所以說「好歹照輪」。這句話指風水輪流轉，人生的際遇，不會永遠順利，也不會永遠困窘。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/u5/l2/269101.mp3"},
+        {id:206,han:"三百六十行，行行出狀元。",tailo:"Sann-pah la̍k-tsa̍p hâng, hâng-hâng tshut tsiōng-guân.",def:"各行各業都有出類拔萃的人。狀元是指各行業的頂尖人物，比喻不論從事何種行業，都可出人頭地。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/zb/Fy/269111.mp3"},
+        {id:207,han:"三代粒積，一代窮空。",tailo:"Sann tāi lia̍p-tsik, tsi̍t tāi khîng-khong.",def:"三代累積，一代敗光。即三代人辛苦累積的財富，卻被後代一人揮霍殆盡。比喻創業艱辛，守成要謹慎。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/mg/kk/269091.mp3"},
+        {id:208,han:"掃地掃壁角，洗面洗耳空。",tailo:"Sàu-tè sàu piah-kak, sé-bīn sé hīnn-khang.",def:"打掃房間，要注意清潔牆角周圍；洗臉時，要注意耳朵周圍或耳後容易藏污納垢的地方。指做事要澈底實在，不要馬虎隨便。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/1x/qW/271131.mp3"},
+        {id:209,han:"細漢煩惱伊袂大，大漢煩惱伊未娶。",tailo:"Sè-hàn huân-ló i bē tuā, tuā-hàn huân-ló i buē tshuā.",def:"小時候煩惱他長不大，長大了煩惱他不結婚。表示父母親對兒女成長的各個階段，都有不同的操心與煩惱。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/NM/U9/271201.mp3"},
+        {id:210,han:"細漢偷挽匏，大漢偷牽牛。",tailo:"Sè-hàn thau bán pû, tuā-hàn thau khan gû.",def:"小時候偷摘匏瓜，長大偷牽牛隻。指一味縱容小孩的錯誤行為，反而會使其積惡成習，長大後會變本加厲。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Z4/Dt/271191.mp3"},
+        {id:211,han:"細空毋補，大空叫苦。",tailo:"Sè khang m̄ póo, tuā khang kiò-khóo.",def:"破洞還小的時候不及時縫補，等破洞大到無法挽救時才在哀號。 勸人若發現小問題，應及時修正，不要等事情變大了才來後悔莫及。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/QW/HI/271181.mp3"},
+        {id:212,han:"生的且一邊，養的恩情較大天。",tailo:"Senn--ê tshiánn tsi̍t pinn, iúnn--ê un-tsîng khah tuā thinn.",def:"親生的父母暫且擱在一邊，養育者的恩情比天還高。提醒被撫養人不要抹煞養育人的苦心與功勞；又指生身父母比養育者的地位還差一些。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/zO/DL/269761.mp3"},
+        {id:213,han:"生雞卵的無，放雞屎的有。",tailo:"Senn ke-nn̄g--ê bô, pàng ke-sái--ê ū.",def:"沒有生雞蛋的，只有拉雞屎的。形容團體中沒有能帶來利益或好處的人，只有會惹事生非，帶來壞處或麻煩的人。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/8Y/VO/269781.mp3"},
+        {id:214,han:"生囝師仔，飼囝師傅。",tailo:"Senn-kiánn sai-á, tshī kiánn sai-hū.",def:"生孩子是學徒，養育孩子是師傅。比喻生小孩瓜熟蒂落算不上本事，要把孩子養育成有用的人才是真本領。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/CF/q7/269741.mp3"},
+        {id:215,han:"西瓜倚大爿。",tailo:"Si-kue uá tuā pîng.",def:"西瓜哪邊比較大就靠向那邊。意指人看哪一邊得勢，就向那邊，形容人趨炎附勢。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/SW/0d/270201.mp3"},
+        {id:216,han:"死目毋願瞌。",tailo:"Sí ba̍k m̄ guān kheh.",def:"過世的時候不願意合眼。指因還有未完成的心願或牽掛的事而死不瞑目。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/of/k9/270111.mp3"},
+        {id:217,han:"死皇帝毋值得活乞食。",tailo:"Sí hông-tè m̄-ta̍t-tit ua̍h khit-tsia̍h.",def:"去世的皇帝，比不上還活著的乞丐。勉勵人要珍惜生命，窮苦活著總比富貴死去還要強。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/pQ/zs/270121.mp3"},
+        {id:218,han:"死道友，無死貧道。",tailo:"Sí tō-iú, bô sí pîn-tō.",def:"要死別人死，不能犧牲自己。「道友」指同道友人，泛指別人；「貧道」是修行者自謙的說法，泛指自己。說明人不在乎別人的死活，只關心自己是否還安好。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Mh/Vr/270141.mp3"},
+        {id:219,han:"死蛇活尾溜。",tailo:"Sí tsuâ ua̍h bué-liu.",def:"蛇被打死了，尾巴還在蠕動。形容事情雖然已經結束，但還留下一個殘局未收拾。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/m6/yJ/270131.mp3"},
+        {id:220,han:"時到時擔當，無米才煮番薯湯。",tailo:"Sî kàu sî tam-tng, bô bí tsiah tsú han-tsî-thng.",def:"時候到了再看著辦，沒有米可以煮飯就拿地瓜煮湯。形容事情自然有因應之道，如果一事不成，也另有替代之道。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/e3/wX/270851.mp3"},
+        {id:221,han:"是毋是，罵家己。",tailo:"Sī m̄ sī, mē ka-kī.",def:"對不對，先罵自己。人與人相處難免會有衝突，遇到事情先檢討自己。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Kn/Sy/270521.mp3"},
+        {id:222,han:"仙人拍鼓有時錯，跤步踏差啥人無？",tailo:"Sian-jîn phah kóo iú sî tshò, kha-pōo ta̍h-tsha siánn-lâng bô?",def:"神仙打鼓有時候也會出錯，人走路也難免跌跤會走偏。指再厲害的人難免也會出差錯。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ff/AH/269631.mp3"},
+        {id:223,han:"仙拚仙，害死猴齊天。",tailo:"Sian piànn sian, hāi-sí Kâu Tsê-thian.",def:"眾仙人互相爭鬥，反而害一旁的孫悟空受到牽連。比喻兩方拼鬥，卻禍延無辜的第三者，亦即殃及池魚。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/gG/4O/269641.mp3"},
+        {id:224,han:"雙个旋，惡甲無人問。",tailo:"Siang ê tsn̄g, ok kah bô lâng mn̄g.",def:"頭上有兩個髮旋的人，兇狠到沒人聞問。傳統認為有兩個髮旋的人天性兇，但無相關研究根據。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/g8/R8/272211.mp3"},
+        {id:225,han:"雙手抱孩兒，才知爸母時。",tailo:"Siang-tshiú phō hâi-jî, tsiah tsai pē-bú sî.",def:"只有在雙手抱自己小孩時，才能真正體會父母的辛勞。勸人要知道父母的養育之恩，從而孝順父母。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ar/y3/272201.mp3"},
+        {id:226,han:"痟狗舂墓壙。",tailo:"Siáu-káu tsing bōng-khòng.",def:"瘋狗撞墓穴。指行事莽撞，行為冒失，未經周全計畫就倉促行事。也引申爭名奪利，指人有利可圖，不顧一切巧取豪奪。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/0S/29/271011.mp3"},
+        {id:227,han:"痟貪軁雞籠。",tailo:"Siáu-tham nǹg ke-lam.",def:"貪得無厭的雞為了吃飼料而鑽進雞籠。昔時農家養雞都採放養的方式，當需宰殺或販售雞隻時，便會將飼料放在籠子內，以誘導雞上門並將其關在其中。勸人千萬不要貪得無厭。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Vz/bu/271021.mp3"},
+        {id:228,han:"少年袂曉想，食老毋成樣。",tailo:"Siàu-liân bē-hiáu siūnn, tsia̍h-lāu m̄-tsiânn-iūnn.",def:"年輕時思慮不周，等到老了生活堪憂。年輕時沒有做好生涯規劃，年老時便會落魄潦倒。意即少壯不努力，老大徒傷悲。用來勉勵人年輕時要有遠見，努力為未來鋪路。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/E5/E5/269491.mp3"},
+        {id:229,han:"少年若無一擺戇，路邊哪有有應公。",tailo:"Siàu-liân nā bô tsi̍t pái gōng, lōo-pinn ná ū Iú-ìng-kong.",def:"若非年少時傻過一次，路邊哪來有應公廟。「有應公」或稱無緣佛、萬善公，是對無主孤魂的尊稱，也指臺灣民間信仰中，收容孤魂的小祠廟，通常不知道主祀者、也沒有神像。引申為勸誡年輕人勿逞血氣之勇，需珍惜自身性命。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/cR/sR/269481.mp3"},
+        {id:230,han:"心歹無人知，喙歹上厲害。",tailo:"Sim pháinn bô lâng tsai, tshuì pháinn siōng lī-hāi.",def:"心地不好沒人知道，口出惡言最嚴重。重點在後句，告誡人要謹言慎行。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/N6/LV/269501.mp3"},
+        {id:231,han:"神明興，弟子窮。",tailo:"Sîn-bîng hing, tē-tsú kîng.",def:"神明香火興旺，信徒便窮困。勸人敬拜神明花費要節制，以免導致生活困窘。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/mx/QS/270911.mp3"},
+        {id:232,han:"誠意食水甜。",tailo:"Sîng-ì tsia̍h tsuí tinn.",def:"只要有誠意光喝水也覺得甜。意思是說誠心誠意對待人，即使只請人喝白開水，喝起來都會是甜的。比喻人和人之間的相處，誠意是最重要的。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/uC/9q/271741.mp3"},
+        {id:233,han:"倖豬夯灶，倖囝不孝。",tailo:"Sīng ti giâ tsàu, sīng kiánn put-hàu.",def:"寵豬頂灶，寵兒不孝。豬不關好，放任牠自由進出，可能連灶都被豬翻了；小孩子太受寵愛，就不懂得孝順父母。比喻子女要適度管教，不能一味溺愛，否則會不懂得孝順。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Fi/zM/270791.mp3"},
+        {id:234,han:"燒瓷的食缺，織蓆的睏椅。",tailo:"Sio-huî--ê tsia̍h khih, tsit-tshio̍h--ê khùn í.",def:"燒製瓷器的人，自己用有缺口的碗吃飯；織草蓆的人，捨不得拿草蓆來睡，反而在椅子上睡覺。比喻人為了賺錢或節儉，捨不得用自己製造的好產品，或者故意使用較無市場價值的瑕疵品。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Tq/WX/271951.mp3"},
+        {id:235,han:"相罵無揀喙，相拍無揀位。",tailo:"Sio-mē bô kíng tshuì, sio-phah bô kíng uī.",def:"吵架時不會選擇講什麼話才適合，打架時不會斟酌挑身體哪個部位打。指一般人在吵架或打架時容易喪失理智，因此任何事情都做得出來。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/UA/Pl/270591.mp3"},
+        {id:236,han:"相分食有賰，相搶食無份。",tailo:"Sio-pun tsia̍h ū tshun, sio-tshiúnn tsia̍h bô hūn.",def:"飲食互相分享，則綽綽有餘；互相爭搶，反而沒得吃。比喻禮讓則互蒙其利，爭奪則互受其害。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Yl/I6/270571.mp3"},
+        {id:237,han:"惜花連盆，疼囝連孫。",tailo:"Sioh hue liân phûn, thiànn kiánn liân sun.",def:"愛惜花朵亦會連帶珍惜花盆；疼愛子女，也會連同孫輩一起疼惜。意指疼愛一個人時，也會連帶關愛與其相關的人事物。比喻愛屋及烏。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/vo/1a/271111.mp3"},
+        {id:238,han:"俗物無好貨。",tailo:"Sio̍k-mi̍h bô hó huè.",def:"便宜沒好貨。指一般人常存有貪小便宜的心態，見到便宜貨，便受低價位誘惑而購買，卻忽略物品本身的品質，導致買到劣質品。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/s2/Lv/270451.mp3"},
+        {id:239,han:"俗物食破家。",tailo:"Sio̍k-mi̍h tsia̍h phuà ke.",def:"因東西便宜而毫無節制地去採購，容易導致過度消費，拖垮家庭經濟。比喻貪小便宜，反而會造成更大的損失。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ci/Im/270441.mp3"},
+        {id:240,han:"相命無褒，食水都無。",tailo:"Siòng-miā bô po, tsia̍h tsuí to bô.",def:"算命時如果不說些讚美客人的話，連水都沒得喝。說明江湖術士的話不可盡信，也勸人要多說好話。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/DM/dG/270581.mp3"},
+        {id:241,han:"收瀾收予焦，予你生一个有𡳞脬。",tailo:"Siu-nuā siu hōo ta, hōo lí senn tsi̍t ê ū lān-pha.",def:"收涎收乾淨，讓你生一個男丁。「收瀾」是民間習俗，在嬰兒滿四個月時舉辦之儀式，目的是希望解決嬰兒流口水的毛病；「𡳞脬」是男性的生殖器，泛指男丁。此諺為嬰兒滿四個月時，長輩們替嬰兒收口水時所講的吉祥話，期望嬰兒的母親來年能添丁。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/4H/Ln/270001.mp3"},
+        {id:242,han:"收瀾收離離，明年招小弟。",tailo:"Siu-nuā siu-lī-lī, mê-nî tsio sió-tī.",def:"收口水收乾淨，明年招來小弟弟。這是嬰兒滿四個月「收涎」儀式時，親友拿酥餅擦拭嬰兒嘴角所唸的吉祥話。昔日農業社會重男輕女，故以「招小弟」祝福其家再添男丁。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/lY/F6/270011.mp3"},
+        {id:243,han:"輸人毋輸陣，輸陣歹看面。",tailo:"Su lâng m̄ su tīn, su tīn pháinn-khuànn bīn.",def:"個人與他人比賽可以輸，但團體比賽不能落在最後面；參加團體賽若輸了，大家面子也掛不住。一般用來提振團體士氣，鼓勵人奮勇向前，勿落人後。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/mO/tf/272001.mp3"},
+        {id:244,han:"媠䆀無比止，愛著較慘死。",tailo:"Suí-bái bô pí tsí, ài--tio̍h khah tshám sí.",def:"漂亮與否無從比較起，一旦愛上了比死亡還要悽慘。只要兩情相悅，一旦愛上一個人，就會不計美醜，愛得死心塌地。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/XX/M5/271571.mp3"},
+        {id:245,han:"臺灣錢，淹跤目。",tailo:"Tâi-uân tsînn, im kha-ba̍k.",def:"臺灣地上的錢多到蓋住腳踝。比喻臺灣遍地錢財、容易謀生。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/LJ/Ok/269671.mp3"},
+        {id:246,han:"大甲溪放草魚──有準無。",tailo:"Tāi-kah-khe pàng tsháu-hî──ū tsún bô.",def:"在大甲溪邊流放魚苗，一旦放出去就不會回頭，形容東西離手了，就再也不會回來。比喻肉包子打狗，有去無回。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/zc/rI/269291.mp3"},
+        {id:247,han:"等物僫到，等人快老。",tailo:"Tán mi̍h oh kàu, tán lâng khuài lāu.",def:"等東西很難等到，等人容易變老。比喻等待的時間很難熬；或指等待的東西往往落空。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/q4/XM/271481.mp3"},
+        {id:248,han:"刣雞教猴。",tailo:"Thâi ke kà kâu.",def:"殺雞給猴子看。比喻用懲罰一個人的辦法來警告別的人。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dx/JM/270271.mp3"},
+        {id:249,han:"讀冊，讀佇尻脊骿。",tailo:"Tha̍k-tsheh, tha̍k tī kha-tsiah-phiann.",def:"讀書本應記在腦子裡，卻讀到背脊上。嘲諷人讀死書，食古不化。 或諷指人有學問卻不行正道，書都白讀了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Tg/AG/272321.mp3"},
+        {id:250,han:"趁也著趁，食也著食。",tailo:"Thàn iā tio̍h thàn, tsia̍h iā tio̍h tsia̍h.",def:"錢也得賺，飯也得吃。勸人不要只會賺錢，也要懂得花錢吃飯，照顧身體。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/rW/Ow/271531.mp3"},
+        {id:251,han:"趁錢有數，性命愛顧。",tailo:"Thàn-tsînn iú sòo, sènn-miā ài kòo.",def:"賺錢數量有限，生命要照顧。意思是賺錢要適可而止，身體健康更為重要，不可為了多賺錢而不顧生命。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/PT/iI/271541.mp3"},
+        {id:252,han:"頭燒燒，尾冷冷。",tailo:"Thâu sio-sio, bué líng-líng.",def:"剛開始的時候興沖沖，到了後來卻提不起勁。指人做事情只有三分鐘熱度，沒辦法貫徹始終。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/bt/fY/272031.mp3"},
+        {id:253,han:"頭大面四方，肚大居財王。",tailo:"Thâu tuā bīn sù-hong, tóo tuā ki-tsâi ông.",def:"指頭大大的、臉形良好又勻稱、肚子大的人，有大富之相。這是命相學的說法，未必可信。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/R6/Z9/272021.mp3"},
+        {id:254,han:"聽某喙，大富貴。",tailo:"Thiann bóo tshuì, tuā hù-kuì.",def:"聽老婆的話，可以大富大貴。期勉丈夫適時尊重、接納太太的意見，必可避免爭吵的發生。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Nl/wi/272311.mp3"},
+        {id:255,han:"天公疼戇人。",tailo:"Thinn-kong thiànn gōng-lâng.",def:"老天爺疼惜憨厚的人。實事求是、按部就班者，往往得到上天的眷顧。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ny/4s/269461.mp3"},
+        {id:256,han:"天頂天公，地下母舅公。",tailo:"Thinn-tíng Thinn-kong, tē-ē bú-kū-kong.",def:"天上地位最崇高的就屬玉皇大帝，而人世間則是舅舅。這說明了在臺灣舅舅的地位崇高，故每逢子女婚嫁時或有舅舅會出席的場合，都要請他坐大位。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Xl/y6/269471.mp3"},
+        {id:257,han:"豬毋大，大對狗去。",tailo:"Ti m̄ tuā, tuā tuì káu khì.",def:"用心飼養的豬養不肥，卻把不需要養肥的狗養肥了。比喻事情發展不符合自己的期許。以前重男輕女的社會裡，常用來描述兒子不上進，女兒卻力爭上游的情況。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/iO/sZ/271891.mp3"},
+        {id:258,han:"豬岫毋值狗岫穩。",tailo:"Ti-siū m̄-ta̍t káu-siū ún.",def:"豬舍不如狗窩安穩。意即金窩銀窩不如自己的狗窩。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/nv/OF/271911.mp3"},
+        {id:259,han:"豬頭毋顧，顧鴨母卵。",tailo:"Ti-thâu m̄ kòo, kòo ah-bó nn̄g.",def:"祭拜鬼神時不顧豬頭，只守著鴨蛋。比喻放著重要的事不管，反而去管次要的。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/xW/Eg/271921.mp3"},
+        {id:260,han:"豬頭皮炸無油。",tailo:"Ti-thâu-phuê tsuànn bô iû.",def:"豬頭皮炸不出油來。用來比喻一個人不具真才實學，好吹牛，所言空洞，說不出大道理。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Rj/rR/271931.mp3"},
+        {id:261,han:"恬恬食三碗公半。",tailo:"Tiām-tiām tsia̍h sann uánn-kong puànn.",def:"靜靜的吃掉三碗公半。形容悶聲不響、莫測高深的人，平時不動聲色，不為人所注意，但卻會做出令人意想不到的事情。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/fT/HF/270491.mp3"},
+        {id:262,han:"得失土地公，飼無雞。",tailo:"Tik-sit Thóo-tī-kong, tshī bô ke.",def:"得罪土地公，則養不活雞。比喻做事若得罪有權勢或影響力的要角，恐將吃不完兜著走。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/pl/Iw/271101.mp3"},
+        {id:263,han:"頂港有名聲，下港上出名。",tailo:"Tíng-káng ū miâ-siann, ē-káng siōng tshut-miâ.",def:"在臺灣北部有名氣，在臺灣南部最出名。形容聲名遠播，遠近馳名。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Nu/FN/271251.mp3"},
+        {id:264,han:"頂司管下司，鋤頭管畚箕。",tailo:"Tíng-si kuán ē-si, tî-thâu kuán pùn-ki.",def:"上司管束下屬，鋤頭牽制畚箕。形容社會有階層，一層管一層，分層管理，層層節制。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/e6/F1/271241.mp3"},
+        {id:265,han:"張持無蝕本。",tailo:"Tiunn-tî bô si̍h-pún.",def:"凡事謹慎小心不會吃虧。形容遇事謹慎處理，有益無害。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/mw/A3/271091.mp3"},
+        {id:266,han:"斷掌查埔做相公，斷掌查某守空房。",tailo:"Tn̄g-tsiúnn tsa-poo tsò siùnn-kang, tn̄g-tsiúnn tsa-bóo tsiú khang-pâng.",def:"斷掌的男子可以做大官，斷掌的女子會獨守空房。意為男子斷掌則個性比較果斷，所以適合當官；女子斷掌是剋夫命，會守寡。「斷掌」是指手掌有一條橫向貫穿手掌的掌紋，按命相言，斷掌者乃有決斷力、能幹之人，這種舊思維是以往命相師的無稽之談，不宜輕信。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/6m/iT/272161.mp3"},
+        {id:267,han:"倒吊無墨水。",tailo:"Tò-tiàu bô ba̍k-tsuí.",def:"把人倒掛卻連一滴墨水都流不出來。形容人沒學問，胸無點墨。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/4R/l3/270801.mp3"},
+        {id:268,han:"桌頂食飯，桌跤放屎。",tailo:"Toh-tíng tsia̍h-pn̄g, toh-kha pàng-sái.",def:"人家請你吃飯，卻在桌底下排泄糞便。引申為受人恩惠而不知報答，反而做出對不起恩人的事情。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/HH/qt/270871.mp3"},
+        {id:269,han:"查埔也著疼，查某也著晟。",tailo:"Tsa-poo iā tio̍h thiànn, tsa-bóo iā tio̍h tshiânn.",def:"勸人養兒不可重男輕女，不管是男孩或女孩都要一樣疼惜扶養。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Gw/tp/270541.mp3"},
+        {id:270,han:"查埔囝得田園，查某囝得嫁粧。",tailo:"Tsa-poo-kiánn tit tshân-hn̂g, tsa-bóo-kiánn tit kè-tsng.",def:"兒子分得家產，女兒得到嫁妝。早期臺灣家庭財產分配的傳統做法，在父母過世後，田宅等不動產由兒子繼承，女兒則是出嫁時給嫁妝。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/UD/k9/270551.mp3"},
+        {id:271,han:"財子壽三字全。",tailo:"Tsâi-tsú-siū sann jī tsuân.",def:"錢財、子女、長壽三項都齊全。用來表示一個人樣樣俱足，幸福美滿。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/fK/hS/270991.mp3"},
+        {id:272,han:"在生一粒豆，較贏死了拜豬頭。",tailo:"Tsāi-senn tsi̍t lia̍p tāu, khah iânn sí-liáu pài ti-thâu.",def:"父母健在的時候吃兒女孝敬的一顆豆子，勝過去世後兒女才以豬頭來祭拜。提醒人行孝要及時；又指死後子女以盛大喪禮祭拜，雖是風光，卻不如父母在生時略盡奉養之責，只有生前奉養才是真的孝順。傳統禮俗，父母去世時，要準備豬頭做祭拜的大牲禮。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/C8/DE/269911.mp3"},
+        {id:273,han:"十二月食菜頭，六月才轉嗽。",tailo:"Tsa̍p-jī--gue̍h tsia̍h tshài-thâu, la̍k--gue̍h tsiah tńg-sàu.",def:"十二月時吃了蘿蔔，到了隔年六月才咳嗽。指人反應遲鈍，事過境遷才做出反應。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/8I/7S/269011.mp3"},
+        {id:274,han:"十二生相變透透。",tailo:"Tsa̍p-jī senn-siùnn pìnn-thàu-thàu.",def:"各種不同的職業都嘗試遍了。形容一個人經常更換職業，沒有定性，難有成就。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/s5/cQ/269021.mp3"},
+        {id:275,han:"十囝十新婦，賰一个老寡婦。",tailo:"Tsa̍p kiánn tsa̍p sin-pū, tshun tsi̍t ê lāu kuá-hū.",def:"十個兒子娶了十個媳婦，卻留下一個年老守寡的媽媽沒人照料。形容兒子大了各自成家，年老守寡的母親卻無人願意照顧。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/gP/xg/269031.mp3"},
+        {id:276,han:"雜唸大家出蠻皮新婦。",tailo:"Tsa̍p-liām ta-ke tshut bân-phuê sin-pū.",def:"婆婆嘮叨久了，媳婦就不在乎責罵。意即有嘮叨的長輩或上司，就會有頑固不化的晚輩或部屬。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Bx/aQ/272191.mp3"},
+        {id:277,han:"十指伸出，無平長。",tailo:"Tsa̍p tsáinn tshun-tshut, bô pênn tn̂g.",def:"十根手指頭伸出來，長短也不一樣。勸誡為人子女者，若是覺得父母有時對待子女厚此薄彼、有所不公，不要過於在意。因為這是很自然的現象，就像十根手指頭長在同一個身體上，但長度卻都不一樣。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/7u/HF/269041.mp3"},
+        {id:278,han:"十喙九尻川。",tailo:"Tsa̍p tshuì káu kha-tshng.",def:"十張嘴九個屁股。「十喙」諧音「雜喙」，「九尻川」諧音「狗尻川」，比喻人多嘴雜，個個像在放狗屁。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/lY/Tm/269051.mp3"},
+        {id:279,han:"坐予正，得人疼。",tailo:"Tsē hōo tsiànn, tit lâng thiànn.",def:"坐姿端正，才會惹人疼愛。本為嫁娶儀式時，媒人、長輩常會說的吉祥話。 引申為勸誡人要端正儀容姿態，才能讓人留下好印象。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ou/xQ/270231.mp3"},
+        {id:280,han:"菜蟲食菜，菜跤死。",tailo:"Tshài thâng tsia̍h tshài, tshài-kha sí.",def:"菜蟲吃菜葉，死於菜株下。勸人勿作奸犯科，否則最後終將玩火自焚。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Yh/18/271491.mp3"},
+        {id:281,han:"田螺含水過冬。",tailo:"Tshân-lê kâm tsuí kuè tang.",def:"田螺含些許水份度過寒冬。比喻窮人含辛度日，等待時機。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/bl/i2/269801.mp3"},
+        {id:282,han:"草地親家坐大位。",tailo:"Tsháu-tē tshin-ke tsē tuā-uī.",def:"城裡人家辦喜宴時，來自鄉村的親家雖然衣著較寒酸，仍請他坐上位。即不因他人身世背景，而輕忽了待客之道。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/kc/Xa/270971.mp3"},
+        {id:283,han:"臭頭仔嘛會做皇帝，做總統你嘛有機會。",tailo:"Tshàu-thâu-á mā ē tsò hông-tè, tsò tsóng-thóng lí mā ū ki-huē.",def:"瘌痢頭也能當皇帝，當總統你也有機會。英雄不怕出身低，只要肯奮鬥，都可能有出頭天的機會。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/7V/qY/270961.mp3"},
+        {id:284,han:"生狂狗食無屎。",tailo:"Tshenn-kông káu tsia̍h bô sái.",def:"狗若過於慌張、急促，就連屎都吃不到。誡人處事不可操之過急，過於急躁反而會失敗。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/u2/7k/269751.mp3"},
+        {id:285,han:"青盲貓咬著死鳥鼠。",tailo:"Tshenn-mê niau kā-tio̍h sí niáu-tshí.",def:"瞎眼的貓咬到死老鼠。比喻誤打誤撞，通常用在表示運氣很好。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/mQ/hJ/270431.mp3"},
+        {id:286,han:"生食都無夠，哪有通曝乾。",tailo:"Tshenn tsia̍h to bô-kàu, ná ū thang pha̍k-kuann.",def:"生吃都不夠了，哪有多餘的可以曬乾。「曝乾」通常是指食物過剩時曬乾儲存。比喻現實生活已捉襟見肘，對未來的日子更不敢奢望。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/kP/7E/269771.mp3"},
+        {id:287,han:"飼囝無論飯，飼爸母算頓。",tailo:"Tshī kiánn bô-lūn pn̄g, tshī pē-bú sǹg tǹg.",def:"父母養育兒女，不會去計較孩子的飯量，兒女奉養父母時，卻會計算父母吃了幾頓飯。這句話說明有些人養育子女和奉養父母時心態上的差異，以及兄弟輪流奉養父母時常常斤斤計較的現象。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/K0/Uv/271781.mp3"},
+        {id:288,han:"飼鳥鼠，咬布袋。",tailo:"Tshī niáu-tshí, kā pòo-tē.",def:"餵養老鼠，老鼠卻咬破布袋偷吃米。比喻善待親信卻遭其背叛，亦即養虎貽患。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/HJ/60/271791.mp3"},
+        {id:289,han:"千金買厝，萬金買厝邊。",tailo:"Tshian-kim bé tshù, bān kim bé tshù-pinn.",def:"千金買房子，萬金買好鄰居。形容敦親睦鄰之重要，或指擇鄰而處，好的鄰居對居住品質的影響很大。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Jh/7A/269231.mp3"},
+        {id:290,han:"千算萬算，毋值天一劃。",tailo:"Tshian sǹg bān sǹg, m̄-ta̍t thinn tsi̍t ue̍h.",def:"形容人百般算計仍敵不過老天爺的輕輕一筆，把之前的努力都一筆勾銷。說明人再如何汲汲營營算計，遇見天災或意外，還是不敵自然的力量。也指人的經營算計不敵命運的捉弄。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/LT/70/269251.mp3"},
+        {id:291,han:"千途萬途，毋值得翻田塗。",tailo:"Tshian tôo bān tôo, m̄ ta̍t-tit huan tshân thôo.",def:"相較於各行各業，耕田才是最務實的行業。反映早期重農輕商的思想。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/r2/sm/269241.mp3"},
+        {id:292,han:"清明無轉厝，無祖；過年無轉厝，無某。",tailo:"Tshing-bîng bô tńg tshù, bô tsóo; kuè-nî bô tńg tshù, bô bóo.",def:"清明節不回家祭祖掃墓，會背負背祖忘本之名，而過年不回家的出外人，可能是無家庭觀念或是沒妻小的人。說明逢年過節在人民心中的重要性，含有慎終追遠、重視家庭的意義存在。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/En/Gj/271161.mp3"},
+        {id:293,han:"七仔較興八仔。",tailo:"Tshit--á khah hìng peh--á.",def:"一個比一個興趣高。形容兩人都有興致。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/cs/yK/268841.mp3"},
+        {id:294,han:"七月半鴨仔，毋知死活。",tailo:"Tshit-gue̍h-puànn ah-á, m̄ tsai sí-ua̍h.",def:"七月半的鴨子，不知死活。七月半指農曆7月15日，也就是「中元普渡」，為臺灣民間信仰祭拜孤魂野鬼的日子。民間信仰中雞是祭神的供品，拜鬼只能用鴨子，故有此說。形容人沒有憂患意識，不知大難臨頭。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/PM/2n/268821.mp3"},
+        {id:295,han:"七坐八爬九發牙。",tailo:"Tshit tsē peh pê káu huat-gê.",def:"七坐八爬九長牙。指嬰兒成長有一定的程序，通常是七個月大時學會坐、八個月大學會爬、九個月大時就長乳牙。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/x8/IN/268831.mp3"},
+        {id:296,han:"手曲，屈入無屈出。",tailo:"Tshiú-khiau, khut-ji̍p bô khut-tshut.",def:"胳臂向內彎，不會向外彎。比喻人都比較會袒護自己人，不會幫外人。可用於表示袒護自己人是應該的，也可用於譴責幫外人的人。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/KZ/b9/269511.mp3"},
+        {id:297,han:"手抱孩兒，才知爸母時。",tailo:"Tshiú phō hâi-jî, tsiah tsai pē-bú sî.",def:"親手抱著自己的小孩時，才能夠真正體會為人父母養育兒女的不易與辛勞。勸人要感念父母的養育之恩，孝順父母。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/BZ/Pp/269521.mp3"},
+        {id:298,han:"樹頭徛予在，毋驚樹尾做風颱。",tailo:"Tshiū-thâu khiā hōo tsāi, m̄ kiann tshiū-bué tsò-hong-thai.",def:"樹根要是穩固了，就不怕樹梢被颱風吹襲。比喻要固本。 指人行事正直無私、光明磊落，不怕任何的惡意中傷。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/PS/68/271981.mp3"},
+        {id:299,han:"喙飽目睭枵。",tailo:"Tshuì pá ba̍k-tsiu iau.",def:"已經吃得很飽了，但眼睛還是盯著餐桌上的美饌佳餚不放，一直想繼續再吃。比喻為一個人貪得無厭。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Zf/No/271291.mp3"},
+        {id:300,han:"喙食，予尻川坐數。",tailo:"Tshuì tsia̍h, hōo kha-tshng tshē-siàu.",def:"嘴巴吃進去，讓屁股承擔後果。意即貪圖味覺享受而亂吃，拉肚子時受苦的卻是屁股。比喻貪圖一時的好處，自己得承受後果。 引申為一人之誤，卻由他人代為受罪承擔。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/tI/9n/271271.mp3"},
+        {id:301,han:"喙脣皮相款待。",tailo:"Tshuì-tûn-phuê sio khuán-thāi.",def:"光用嘴巴說些體面話互相招待。比喻人只是口頭上敷衍，並非真心幫助。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/20/oj/271281.mp3"},
+        {id:302,han:"春雺曝死鬼，夏雺做大水。",tailo:"Tshun bông pha̍k-sí kuí, hā bông tsò-tuā-tsuí.",def:"春天起霧曬死鬼，夏天起霧鬧水災。此為前人經過長期觀察、累積經驗而來的氣象諺語。春天早晨若大霧籠罩，濕氣很重，霧氣一旦散開後就會是大晴天甚至是大熱天；夏天早晨若大霧籠罩，白天時空氣對流旺盛下，暖空氣上升，容易形成大雷雨甚至造成水災。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/2X/lk/270511.mp3"},
+        {id:303,han:"春天後母面，欲變一時間。",tailo:"Tshun-thinn āu-bú-bīn, beh piàn tsi̍t-sî-kan.",def:"春天繼母臉，要變一剎那。以人前人後表現截然不同的繼母形容春季的天氣多變。舊時代，繼母給人的形象都很差，對待繼子繼女，人前慈愛，人後虐待，因此被用來形容春天的天氣。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/fD/Lk/270501.mp3"},
+        {id:304,han:"食米毋知米價。",tailo:"Tsia̍h bí m̄ tsai bí kè.",def:"吃米飯不曉得米的價錢。形容只知享受，不知生活疾苦的人。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/kz/Q9/270671.mp3"},
+        {id:305,han:"食無三把蕹菜，就欲上西天。",tailo:"Tsia̍h bô sann pé ìng-tshài, tō beh tsiūnn se-thian.",def:"吃不到三把空心菜，就妄想可以上西天了。諷刺人不肯腳踏實地，妄想一步登天。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/uA/DS/270711.mp3"},
+        {id:306,han:"食魚食肉，也著菜佮。",tailo:"Tsia̍h hî tsia̍h bah, iā tio̍h tshài kah.",def:"吃魚吃肉，也要兼吃蔬菜。表示飲食要均衡身體才會健康。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Xf/Qv/270701.mp3"},
+        {id:307,han:"食好鬥相報。",tailo:"Tsia̍h hó tàu sio-pò.",def:"吃到好東西，對外廣為介紹。引申為若有好東西，大家會口耳相傳。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/2o/ei/270661.mp3"},
+        {id:308,han:"食雞，會起家；食鰇魚，生囡仔好育飼。",tailo:"Tsia̍h ke, ē khí-ke; tsia̍h jiû-hî, senn gín-á hó io-tshī.",def:"吃雞，會使家道興盛；吃魷魚，生下來的小孩容易養育。借諧音的吉祥話，說出心中的祝福。搬新家、結婚、生子、宴會時皆可以使用。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/CP/jF/270771.mp3"},
+        {id:309,han:"食緊挵破碗。",tailo:"Tsia̍h-kín lòng-phuà uánn.",def:"吃得太快打破碗。用來比喻人做事情若只一心求快，反而容易造成反效果。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/NS/fQ/270761.mp3"},
+        {id:310,han:"食果子拜樹頭；食米飯拜田頭。",tailo:"Tsia̍h kué-tsí pài tshiū-thâu; tsia̍h bí-pn̄g pài tshân-thâu.",def:"吃水果，要拜謝樹根；吃米飯，要拜謝田地。指人要懂得感恩，飲水思源，不可忘本。通常僅單用「食果子拜樹頭」一句。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/il/PB/270681.mp3"},
+        {id:311,han:"食人頭鍾酒，講人頭句話。",tailo:"Tsia̍h lâng thâu tsing tsiú, kóng lâng thâu kù uē.",def:"喝第一杯酒，講第一句話。主人通常會請宴席上的長者或貴賓第一個講話，講話者常用此句作為開場白表示僭越、自謙之意。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/c6/Mm/270651.mp3"},
+        {id:312,han:"食人一口，報人一斗。",tailo:"Tsia̍h lâng tsi̍t kháu, pò lâng tsi̍t táu.",def:"吃人一口，要回報一斗。意為受人恩惠時要感恩圖報，並加倍奉還。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/BW/DW/270631.mp3"},
+        {id:313,han:"食人一斤，也著還人四兩。",tailo:"Tsia̍h lâng tsi̍t kin, iā tio̍h hîng lâng sì niú.",def:"吃了他人一斤的糧食，最少得還人家四兩。指受人恩惠，縱然自己很困苦，多少總要擠一點出來報答別人。比喻知恩圖報。 進一步引申，告誡世人不要隨便收受他人饋贈，拿人家的都要奉還，天下沒有白吃的午餐。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/6n/bV/270641.mp3"},
+        {id:314,han:"食飽換枵。",tailo:"Tsia̍h-pá uānn iau.",def:"先吃飽再把肚子搞餓。形容人徒勞無功，做沒有實質好處的事情；或用來謙稱自己所為只是消磨時間，微不足道。 引申為不該做的事卻去做、不該管的事卻去管，諷人自找麻煩，吃飽撐著沒事幹。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Q3/YP/270751.mp3"},
+        {id:315,han:"食飯皇帝大。",tailo:"Tsia̍h-pn̄g hông-tè tuā.",def:"吃飯的時候跟皇帝一樣大。意為吃飯最重要，不管什麼事都不得干擾，等用餐完畢後，再行處理。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/FV/cT/270731.mp3"},
+        {id:316,han:"食甜食鹹，臭跤鼻臁。",tailo:"Tsia̍h tinn tsia̍h kiâm, tshàu kha-phīnn-liâm.",def:"又吃甜的又吃鹹的，小腿前面會生瘡。用來勸誡人飲食要有節度，注意均衡的營養和衛生。「跤鼻臁」是小腿脛骨，與食物沒有直接關係，僅是順口的比喻。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ad/oK/270691.mp3"},
+        {id:317,han:"食著藥，青草一葉；食毋著藥，人參一石。",tailo:"Tsia̍h tio̍h io̍h, tshenn-tsháu tsi̍t hio̍h; tsia̍h m̄-tio̍h io̍h, jîn-sim tsi̍t tsio̍h.",def:"吃對藥，一葉的藥草就能見效；吃錯藥，吃再多高價珍貴的人參也無效。比喻做事要能切中要點、掌握關鍵，才不會徒勞無功，而能有事半功倍之效。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ac/nZ/270721.mp3"},
+        {id:318,han:"食碗內，說碗外。",tailo:"Tsia̍h uánn-lāi, sueh uánn-guā.",def:"吃碗內的東西，卻說碗外的東西好。享受親近的人給予的好處，到最後卻為外人說話，暗諷人吃裡扒外，不知感恩。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/p6/RB/270741.mp3"},
+        {id:319,han:"捷罵袂聽，捷拍袂疼。",tailo:"Tsia̍p mē bē thiann, tsia̍p phah bē thiànn.",def:"常罵不聽話，常打不怕痛。意為頻繁的打罵教育，其懲罰效果就會愈來愈低。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ec/ZA/271121.mp3"},
+        {id:320,han:"盡人事，順天意。",tailo:"Tsīn jîn-sū, sūn thinn-ì.",def:"凡事盡力而為，結果就交給老天安排。意即盡人事，聽天命。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/kk/Q3/271851.mp3"},
+        {id:321,han:"錢四跤，人兩跤。",tailo:"Tsînn sì kha, lâng nn̄g kha.",def:"錢有四條腿，人只有兩條腿。以錢的腿比人腿多，跑得比人快，來比喻賺錢的辛苦與不易。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/rx/wT/272011.mp3"},
+        {id:322,han:"這溪無魚，別溪釣。",tailo:"Tsit khe bô hî, pa̍t khe tiò.",def:"釣魚時，這條溪釣不到魚，不要氣餒，可到另一條溪釣釣看。比喻某處無法謀生時，可到別處另尋出路。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ad/KR/271221.mp3"},
+        {id:323,han:"一面抹壁雙面光。",tailo:"Tsi̍t bīn buah-piah siang bīn kng.",def:"用灰匙將水泥塗抹在牆面，壁面和灰匙都很平滑光亮。比喻為人處事圓融，兩方都不得罪。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ya/Vr/268671.mp3"},
+        {id:324,han:"一某無人知，兩某相卸代。",tailo:"Tsi̍t bóo bô lâng tsai, nn̄g bóo sio-sià-tāi.",def:"只有一個妻子不會受人注意，要是有大小老婆就會爭吵不斷，家醜外揚。形容有妻有妾者家中常有爭執，受人嘲笑。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/G8/ma/268661.mp3"},
+        {id:325,han:"一个某較好三个天公祖。",tailo:"Tsi̍t ê bóo khah hó sann ê Thinn-kong-tsóo.",def:"有個妻子勝過三尊天公的庇佑。引申為有一賢內助持家，勝過老天爺保佑。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/V7/EN/268811.mp3"},
+        {id:326,han:"一个囡仔較鬧熱三个大人。",tailo:"Tsi̍t ê gín-á khah lāu-jia̍t sann ê tuā-lâng.",def:"一個小孩比三個大人在一起還熱鬧。小孩天真活潑，不時活蹦亂跳，大人也爭相哄他寵他，往往會逗得大人們笑呵呵。所以家裡有小孩子，氣氛會顯得熱鬧又活絡。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/MZ/BD/268801.mp3"},
+        {id:327,han:"一个人一款命。",tailo:"Tsi̍t ê lâng tsi̍t khuán miā.",def:"一個人一種命。每個人的命運、際遇各不相同，不用怨天尤人，要腳踏實地。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/so/Sz/268791.mp3"},
+        {id:328,han:"一个錢拍二十四个結。",tailo:"Tsi̍t ê tsînn phah jī-tsa̍p-sì ê kat.",def:"一個錢打二十四個結。譏諷人吝於用錢，視財如命。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Nb/dO/268541.mp3"},
+        {id:329,han:"一耳空入，一耳空出。",tailo:"Tsi̍t hīnn-khang ji̍p, tsi̍t hīnn-khang tshut.",def:"右耳進、左耳出。聽過的話記不住，或聽而不聞。比喻不用心或者善忘。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ba/zd/268631.mp3"},
+        {id:330,han:"一鄉一俗。",tailo:"Tsi̍t hiong tsi̍t sio̍k.",def:"一個鄉鎮一種風俗。指各地有不同的風俗習慣。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Zx/w3/268741.mp3"},
+        {id:331,han:"一分錢，一分貨。",tailo:"Tsi̍t hun tsînn, tsi̍t hun huè.",def:"買東西時，所付的價錢跟貨物的品質直接相關。貨物以好壞論價，花多少錢，就得到價值相當的東西。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/LM/Xn/268531.mp3"},
+        {id:332,han:"一樣米飼百樣人。",tailo:"Tsi̍t iūnn bí tshī pah iūnn lâng.",def:"一種米養百種人。人的食物差異不大，但人的個性千差萬別。比喻這個社會上有著各式各樣、形形色色的人。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/LR/5a/268771.mp3"},
+        {id:333,han:"一日徙栽，三日徛黃。",tailo:"Tsi̍t ji̍t suá-tsai, sann ji̍t khiā-n̂g.",def:"苗木移植一次得枯黃好幾天才會恢復生機。比喻經常變換工作難以累積實力，以致難有成效。勉勵做人做事要有定性，老是見異思遷則有害無利。 或指常常更換環境，以致難以適應。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/wY/7i/268591.mp3"},
+        {id:334,han:"一日剃頭，三日緣投。",tailo:"Tsi̍t ji̍t thì-thâu, sann ji̍t iân-tâu.",def:"理一次髮，可以英俊個三天。理髮後會使人看起來清爽有神，自己順眼，別人也會有好印象。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/wZ/Pv/268571.mp3"},
+        {id:335,han:"一日討海，三日曝網。",tailo:"Tsi̍t ji̍t thó-hái, sann ji̍t pha̍k bāng.",def:"捕一天魚，卻三天在曬魚網；引申為人懶惰，工作一天，休息三天。比喻一曝十寒。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ME/4v/268581.mp3"},
+        {id:336,han:"一日走拋拋，一暝點燈膋。",tailo:"Tsi̍t ji̍t tsáu-pha-pha, tsi̍t mê tiám ting-lâ.",def:"整天到處遊蕩，夜裡挑燈夜戰。形容人白天只顧著玩樂，夜裡才拚命趕工，比喻本末倒置。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/1N/zi/268561.mp3"},
+        {id:337,han:"一枝草，一點露。",tailo:"Tsi̍t ki tsháu, tsi̍t tiám lōo.",def:"意為有草就有露水滋潤它。比喻天無絕人之路，只要努力，自有生路；也指天生我才必有用。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dy/05/268651.mp3"},
+        {id:338,han:"一句話三角六尖。",tailo:"Tsi̍t kù uē sann kak la̍k tsiam.",def:"一句話尖銳帶角。形容講話的時候話中帶刺；也指言語銳利，出言不遜、容易傷人。「三」與「六」只是形容多，非實數。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Cc/2B/268611.mp3"},
+        {id:339,han:"一人煩惱一樣，無人煩惱親像。",tailo:"Tsi̍t lâng huân-ló tsi̍t iūnn, bô lâng huân-ló tshin-tshiūnn.",def:"每個人都有各自的煩惱，而煩惱擔憂的事情也都不一樣。意謂家家有本難念的經。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ic/3T/268501.mp3"},
+        {id:340,han:"一人看出一家，新婦看出大家。",tailo:"Tsi̍t lâng khuànn-tshut tsi̍t ke, sin-pū khuànn-tshut ta-ke.",def:"由一個人的談吐舉止可看出其家庭的教養；由媳婦的行事作風可看出其婆婆的為人。亦即言教、身教對一個人有很大的影響。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Bk/g4/268491.mp3"},
+        {id:341,han:"一人一家代，公媽隨人祀。",tailo:"Tsi̍t lâng tsi̍t ke tāi, kong-má suî-lâng tshāi.",def:"每一個人有自家的事，祖先牌位也由各人祭祀。意謂自家管自家的事，祖先牌位也隨自家的方式祭祀。用於勸人管好自己的事就好，不要管別人家的閒事。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/N6/aT/268481.mp3"},
+        {id:342,han:"一粒米，百粒汗。",tailo:"Tsi̍t lia̍p bí, pah lia̍p kuānn.",def:"每一粒米都是農夫流下許多汗水，辛苦栽種出來的。指農夫種田辛勞，糧食得來不易，勸人不要任意浪費。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/JL/h7/268721.mp3"},
+        {id:343,han:"一粒田螺煮九碗公湯。",tailo:"Tsi̍t lia̍p tshân-lê tsú káu uánn-kong thng.",def:"一隻田螺煮九海碗湯。形容生活貧苦，或比喻沒有真材實料，只是灌水充數。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/NZ/2C/268711.mp3"},
+        {id:344,han:"一暝全頭路，天光無半步。",tailo:"Tsi̍t mê tsuân thâu-lōo, thinn-kng bô-puànn-pōo. pōo.",def:"整個晚上計畫很多事情，天亮後卻沒有半點方法。形容人光說不練，只會紙上談兵。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Rk/Z6/268761.mp3"},
+        {id:345,han:"一年換二十四个頭家。",tailo:"Tsi̍t nî uānn jī-tsa̍p-sì ê thâu-ke.",def:"一年換了二十四個雇主。形容人做事沒有定性，無法專心學習，時常換工作，最後一事無成。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/gu/hC/268621.mp3"},
+        {id:346,han:"一遍賊，百世賊。",tailo:"Tsi̍t piàn tsha̍t, pah sì tsha̍t.",def:"僅僅偷了一次，就終生遭質疑或被認定就是小偷。引申為做了見不得人的事而殃及後代子孫。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/93/lt/268751.mp3"},
+        {id:347,han:"一步棋，一步著。",tailo:"Tsi̍t pōo kî, tsi̍t pōo tio̍h.",def:"下棋時，每一步都須謹慎小心，步步為營，才能贏得勝利。意謂做事情要有計畫，深思熟慮，按部就班，才不會出錯，這樣離成功就不遠了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/2o/I2/268641.mp3"},
+        {id:348,han:"一斗較贏九石。",tailo:"Tsi̍t táu khah iânn káu tsio̍h.",def:"一斗的量雖比九石的量少，但品質高，勝過大量的劣質品。喻重質不重量。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/iz/hC/268551.mp3"},
+        {id:349,han:"一丈差九尺。",tailo:"Tsi̍t tn̄g tsha káu tshioh.",def:"一丈還差了九尺長。即一丈與一尺還差了九尺。形容差得很遠或指完全相反。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ln/iY/268511.mp3"},
+        {id:350,han:"一千賒毋值八百現。",tailo:"Tsi̍t-tshing sia m̄-ta̍t peh-pah hiān.",def:"一千元的賒帳不如八百元的現金。意即與其讓人賒帳，不如賣得便宜一點直接取得現金來得實際。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ZM/Wx/268521.mp3"},
+        {id:351,han:"一喙掛雙舌。",tailo:"Tsi̍t tshuì kuà siang tsi̍h.",def:"一張嘴長兩個舌頭。比喻人口齒伶俐且多話；也指人信口開河，言而無信。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/yf/A2/268731.mp3"},
+        {id:352,han:"一隻牛剝雙領皮。",tailo:"Tsi̍t tsiah gû pak siang niá phuê.",def:"一頭牛剝兩張皮，比喻雙重剝削。一頭牛只有一張皮，剝兩張皮，表示剝削嚴重，已經超過能力可以負擔的程度。通常指沉重的賦稅或金錢的需索太重，讓人無法負擔。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/3s/hy/268691.mp3"},
+        {id:353,han:"一隻蝨母嗙甲水牛大。",tailo:"Tsi̍t tsiah sat-bó pòng kah tsuí-gû tuā.",def:"一隻小蝨子誇大成大水牛。意指小小的東西或事情，誇大其辭，說得天花亂墜。比喻言過其實。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/9D/ns/268701.mp3"},
+        {id:354,han:"上轎才欲放尿。",tailo:"Tsiūnn kiō tsiah beh pàng-jiō.",def:"新娘上花轎前才說要去小便，耽誤了時辰。比喻做事未能預先準備，事到臨頭才趕緊設法處理。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/WD/aL/269161.mp3"},
+        {id:355,han:"上山看山勢，入門看人意。",tailo:"Tsiūnn-suann khuànn suann-sì, ji̍p-mn̂g khuànn lâng ì.",def:"上山要觀察山勢，進門要觀察主人心意。指做人要隨時注意環境的變化，懂得察顏觀色，行事才能合宜。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/nq/2o/269141.mp3"},
+        {id:356,han:"上踏枋，上眠床，無洗跤睏中央。",tailo:"Tsiūnn ta̍h-pang, tsiūnn bîn-tshn̂g, bô sé kha khùn tiong-ng.",def:"踩上床前的踏板，接著上了床，不但沒洗腳還睡在床中央。比喻得寸進尺，欺人太甚。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/lY/hP/269151.mp3"},
+        {id:357,han:"做牛著拖，做人著磨。",tailo:"Tsò gû tio̍h thua, tsò lâng tio̍h buâ.",def:"當牛就要拖犁，當人就要承受磨難。比喻人生本來就要歷經許多勞苦與磨難，就像牛得要辛苦犁田、拖車一樣。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dJ/RR/271041.mp3"},
+        {id:358,han:"做戲的欲煞，看戲的毋煞。",tailo:"Tsò-hì--ê beh suah, khuànn-hì--ê m̄ suah.",def:"演戲的想收場休息了，台下的觀眾卻意猶未盡、不願離席，希望戲班繼續演下去。比喻當事人都要收手和解了，但旁觀者或看熱鬧的卻不願收場。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Nw/tG/271081.mp3"},
+        {id:359,han:"做公親，貼本。",tailo:"Tsò kong-tshin, thiap pún.",def:"為別人做仲裁，還賠上自己的老本。比喻賠了夫人又折兵。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Nq/aZ/271031.mp3"},
+        {id:360,han:"做官若清廉，食飯著攪鹽。",tailo:"Tsò-kuann nā tshing-liâm, tsia̍h-pn̄g tio̍h kiáu iâm.",def:"當官若清廉，吃飯得拌鹽。意為當官如果只靠基本官俸而不貪污，生活就會過得清苦，連吃飯都只能加點鹽巴下飯。表示清官無法過富裕奢華的生活；又指清官難為或指無官不貪。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/EF/RK/271051.mp3"},
+        {id:361,han:"做官騙厝內，做生理騙熟似。",tailo:"Tsò-kuann phiàn tshù-lāi, tsò-sing-lí phiàn si̍k-sāi.",def:"當官的矇騙家人，做生意的欺騙熟人。意謂為官無不詐，經商無不奸。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/4a/P5/271061.mp3"},
+        {id:362,han:"做著歹田望下冬，娶著歹某一世人。",tailo:"Tsò-tio̍h pháinn tshân bāng ē tang, tshuā-tio̍h pháinn bóo tsi̍t-sì-lâng.",def:"種到收成不佳的田，可以期待下一個採收季；娶到惡妻可要受苦一輩子。勸人婚姻大事非兒戲，擇偶要非常謹慎。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Hq/eD/271071.mp3"},
+        {id:363,han:"船過水無痕。",tailo:"Tsûn kuè tsuí bô hûn.",def:"意為船駛過不久，漣漪回歸平靜，一點痕跡也沒有。用來指人忘恩負義；也指事情發生過後，沒留下一點痕跡。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/yN/R2/271211.mp3"},
+        {id:364,han:"大紅花毋知䆀，圓仔花䆀毋知。",tailo:"Tuā-âng-hue m̄ tsai bái, înn-á-hue bái m̄ tsai.",def:"朱槿不知自己醜，千日紅醜不自知。嘲諷人沒有察覺自己醜陋，還四處炫耀。 比喻不知藏拙或不知羞恥。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/1f/T7/269331.mp3"},
+        {id:365,han:"大目新娘無看見灶。",tailo:"Tuā-ba̍k sin-niû bô khuànn-kìnn tsàu.",def:"大眼睛的新娘沒看到灶。通常用於揶揄人眼睛雖大，但卻看不到顯而易見的物品。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Yu/GB/269301.mp3"},
+        {id:366,han:"大狗盤牆，細狗看樣。",tailo:"Tuā káu puânn tshiûnn, sè káu khuànn-iūnn.",def:"大狗翻牆，小狗學樣。形容父母、長輩的所作所為，皆為子女、晚輩的學習對象，小孩會模仿大人做壞事。多用於負面意涵，強調身教的重要。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/J8/8y/269321.mp3"},
+        {id:367,han:"大格雞慢啼。",tailo:"Tuā-keh ke bān thî.",def:"大骨架的公雞比較慢啼叫。「格」指體格、骨架，骨架較大的公雞需要較長的時間成長，所以開始啼叫的時間也比較遲。比喻大器晚成。當人表現不盡人意，或一時不得志，尤其是小孩表現欠佳之時，常用此話鼓勵。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/M8/8W/269341.mp3"},
+        {id:368,han:"大人愛趁錢，囡仔愛過年。",tailo:"Tuā-lâng ài thàn-tsînn, gín-á ài kuè-nî.",def:"大人喜歡賺錢，小孩喜歡過年。於昔日農業社會，家家戶戶普遍貧窮，父母為了生活所需，只要有錢賺，就不遺餘力去做；反而是小孩子最喜歡過年，有壓歲錢可花、有新衣可穿、有糖果可吃，整日樂不可支。比喻大人、小孩各有所好。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Lw/NN/269271.mp3"},
+        {id:369,han:"大人儉一喙，囡仔食甲飫。",tailo:"Tuā-lâng khiām tsi̍t tshuì, gín-á tsia̍h kah uì.",def:"大人省一口，小孩吃到膩。意即大人少吃一口食物，就能讓食量較小的小孩子吃得飽，甚至吃到膩了。這是老人家疼愛小孩子的用語。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/oJ/p8/269281.mp3"},
+        {id:370,han:"大人生日食肉，囡仔生日食拍。",tailo:"Tuā-lâng senn-ji̍t tsia̍h bah, gín-á senn-ji̍t tsia̍h phah.",def:"大人生日吃肉，小孩生日挨打。孩子的生日是母親的受難日，打孩子是提醒他母親受的苦難。小孩生日時常會藉機要求一些東西，大人就用這句押韻的話，戲謔地告訴孩子不能要求太多。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Kk/u1/269261.mp3"},
+        {id:371,han:"大細目，懸低耳。",tailo:"Tuā-sè-ba̍k, kuân-kē-hīnn.",def:"大小眼，高低耳。眼睛一大一小為偏心的比喻，耳朵一高一低為偏聽的比喻。用來形容人處事不公正。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/1a/ku/269351.mp3"},
+        {id:372,han:"大鼎未滾，細鼎沖沖滾。",tailo:"Tuā tiánn buē kún, sè tiánn tshiâng-tshiâng-kún.",def:"大鍋裡的湯還沒滾，小鍋裡的湯就滾得要掀開鍋蓋了。也就是滿瓶水不響，半瓶水響叮噹，形容有才學的人話少，一知半解的人說個不停。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/2h/ZX/269381.mp3"},
+        {id:373,han:"大腸告小腸。",tailo:"Tuā-tn̂g kò sió-tn̂g.",def:"大腸裡沒有東西，控告小腸沒有把食物送過來。形容飢腸轆轆，肚子非常餓。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/7n/zk/269371.mp3"},
+        {id:374,han:"大舌閣興喋。",tailo:"Tuā-tsi̍h koh hìng thi̍h.",def:"口吃又愛說話。「喋」本指人說話結結巴巴，「興喋」在這裡指喜歡說話或插嘴。通常不指稱真正口吃的人，而是用來形容人話說不清楚，偏偏又很愛表示意見。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/3i/dG/269311.mp3"},
+        {id:375,han:"大碗閣滿墘。",tailo:"Tuā uánn koh buán kînn.",def:"盛得已經滿到碗的上緣來了。比喻東西量多質好，物超所值。 有時引申為人心不足，貪得無厭，要得很多。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/na/2g/269361.mp3"},
+        {id:376,han:"有樣看樣，無樣家己想。",tailo:"Ū iūnn khuànn iūnn, bô iūnn ka-kī siūnn.",def:"有樣學樣，沒樣自己想。意為有榜樣可學就依樣畫葫蘆，否則就自己想辦法；或指除了模仿他人，也應自行創作。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/xo/hD/270091.mp3"},
+        {id:377,han:"有囝有囝命，無囝天註定。",tailo:"Ū kiánn ū kiánn miā, bô kiánn thinn tsù-tiānn.",def:"有孩子是命運的安排，沒孩子是天註定的。用來安慰膝下無子的人不要過於強求。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ds/oO/270031.mp3"},
+        {id:378,han:"有量就有福。",tailo:"Ū-liōng tō ū hok.",def:"有度量就有福氣。指有度量的人自然會受到上天眷顧，得到賜福。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/g5/YV/270081.mp3"},
+        {id:379,han:"有燒香有保庇，有食藥有行氣。",tailo:"Ū sio-hiunn ū pó-pì, ū tsia̍h io̍h ū kiânn-khì.",def:"燒香拜佛就會得到神佛保佑，吃藥就會有療效。比喻只要努力或是付出，就會有所收穫或是助益。亦即一分耕耘，一分收穫。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/9q/K2/270101.mp3"},
+        {id:380,han:"有唐山公，無唐山媽。",tailo:"Ū Tn̂g-suann kong, bô Tn̂g-suann má.",def:"有來自唐山的父系祖先，沒有來自唐山的母系祖先。清初在渡臺禁令下，來臺開墾者多為單身的男性，往往與當時母系社會的平埔族女性通婚，而產生此現象。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ll/sf/270061.mp3"},
+        {id:381,han:"有喙講甲無瀾。",tailo:"Ū tshuì kóng kah bô nuā.",def:"嘴巴說得口水都乾了。比喻費盡唇舌，還是沒辦法說服別人。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/rh/2A/270071.mp3"},
+        {id:382,han:"有食閣有掠。",tailo:"Ū tsia̍h koh ū lia̍h.",def:"有得吃還有得拿。比喻一件好事還另有其他附加價值。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/oc/oP/270051.mp3"},
+        {id:383,han:"有狀元學生，無狀元先生。",tailo:"Ū tsiōng-guân ha̍k-sing, bô tsiōng-guân sian-sinn.",def:"有狀元學生，沒有狀元老師。學生學成，可能考上狀元，卻沒有狀元回頭來當老師。比喻學生常比老師傑出。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Jt/lK/270041.mp3"},
+        {id:384,han:"有一好，無兩好。",tailo:"Ū tsi̍t hó, bô nn̄g hó.",def:"世界上的事情有利必有弊，很難兩全其美，意即魚與熊掌不可兼得。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dM/kK/270021.mp3"},
+        {id:385,han:"畫虎畫皮難畫骨，知人知面不知心。",tailo:"Uā hóo uā phî lân uā kut, ti jîn ti biān put ti sim.",def:"人只能畫出老虎外表的皮相，卻無法畫出老虎內在的骨相，光憑外表，無法真實了解人內心的想法。比喻人心難測。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/EO/K9/271471.mp3"},
+        {id:386,han:"歪喙雞食好米。",tailo:"Uai-tshuì ke tsia̍h hó bí.",def:"歪嘴雞吃好米。「歪喙雞」比喻不健全、不健康的人或物，好米指完好無缺的米粒。比喻人有不符自己身份或能力的過度慾望；也指人條件不好，卻又愛挑剔。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/lq/zx/270561.mp3"},
+        {id:387,han:"冤家變親家。",tailo:"Uan-ke piàn tshin-ke.",def:"由仇人變成姻親。 原本互不相容的人，爭吵到後來反而發現對方的優點而成為好友。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/0u/jn/270811.mp3"},
+        {id:388,han:"怨生無怨死。",tailo:"Uàn senn bô uàn sí.",def:"人死了，一了百了，前債恩怨都應一筆勾銷。勸人解除對往生之人的懷恨。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/4o/LK/270481.mp3"}
+    ];
+
+    const screenLock = {
+        lock: null,
+        video: null,
+        init: function() {
+            // Create a tiny, hidden video element
+            if (!this.video) {
+                this.video = document.createElement('video');
+                this.video.setAttribute('playsinline', '');
+                this.video.setAttribute('muted', '');
+                this.video.setAttribute('loop', '');
+                // Minimal black mp4 base64 to trick browser
+                this.video.src = 'data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAACVtZGF0ewAAHAAAABhjaGVhZO6AAAAYbnYxbQBAAAABAAEAAAAAAzBtb292AAAAbG12aGQAAAAA3W6avd1umrwAAQAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAFB0cmFrAAAAXHRraGQAAAAD3W6avd1umrwAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAQAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABRlZHRzAAAAHGVsc3QAAAAAAAAAAQAAAQAAAAABAAAAAAABMmdkaW4AAAA7dm1oZAAAAAB2aWRlAAAAAAAAAAAAAAAzZGluZiAAAAAkaHJlZgAAAAAAAAAAAAAAAkF1cmwAAAAAAAABAAAAAAAEc3RibAAAAGRzdHNkAAAAAAAAAAEAAABgYXZjMQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAEASAAAAEgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABj//wAAADFhdmNjAAAABwEAAf//AAAAAHRzdHRzAAAAAAAAAAEAAAABAAAAAQAAABxzdHNjAAAAAAAAAAEAAAABAAAAAQAAAAEAAAA0c3RzegAAAAAAAAAAAAAAAQAAABRzdGNvAAAAAAAAAAEAAAAlAAAAYHVkdGEAAAA4bWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAbWRpcgAAAAAAAAAAAAAAAAAAAAA6aW xzdAAAACphcnRpAAAAAAAAd3JpdGVyX2FwcAAAAAAAZmZtcGVn';
+                this.video.style.cssText = 'position:fixed;width:1px;height:1px;top:0;left:0;opacity:0.01;pointer-events:none;z-index:-1;';
+                document.body.appendChild(this.video);
+            }
+        },
+        on: async function() {
+            this.init();
+            
+            // Strategy 1: Play fake video (Strongest method for Mobile Safari/Android)
+            try {
+                if(this.video.paused) await this.video.play();
+            } catch(e) { console.log('Video wake lock failed', e); }
+
+            // Strategy 2: Native Wake Lock API (Best for Desktop/Android)
+            if ('wakeLock' in navigator) {
+                try {
+                    if(this.lock) return;
+                    this.lock = await navigator.wakeLock.request('screen');
+                    this.lock.addEventListener('release', () => {
+                        this.lock = null;
+                        console.log('Screen lock released');
+                    });
+                    console.log('Screen Wake Lock active');
+                } catch(e) { console.log('Wake Lock API err', e); }
+            }
+        },
+        off: function() {
+            // Stop video
+            if(this.video) this.video.pause();
+            // Release API lock
+            if (this.lock) { this.lock.release(); this.lock = null; }
+        }
+    };
+
+    // Re-acquire lock if tab becomes visible again
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && window.menu.cfg.mode === 'auto' && !window.game.st.paused) {
+            screenLock.on();
+        }
+    });
+
+    const sfx = {
+        ctx: null,
+        init: function() { if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
+        play: function(type) {
+            this.init(); if (this.ctx.state === 'suspended') this.ctx.resume();
+            const o = this.ctx.createOscillator(), g = this.ctx.createGain();
+            o.connect(g); g.connect(this.ctx.destination);
+            const t = this.ctx.currentTime;
+            if (type === 'ok') {
+                o.type='sine'; o.frequency.setValueAtTime(500,t); o.frequency.exponentialRampToValueAtTime(1000,t+0.1);
+                g.gain.setValueAtTime(0.3,t); g.gain.exponentialRampToValueAtTime(0.01,t+0.5); o.start(); o.stop(t+0.5);
+            } else {
+                o.type='sawtooth'; o.frequency.setValueAtTime(150,t); o.frequency.linearRampToValueAtTime(100,t+0.3);
+                g.gain.setValueAtTime(0.3,t); g.gain.exponentialRampToValueAtTime(0.01,t+0.3); o.start(); o.stop(t+0.3);
+            }
+        }
+    };
+
+    window.menu = {
+        cfg: { mode: 'dual', count: 30 },
+        set: function(type, val, el) {
+            this.cfg[type] = val;
+            el.parentNode.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('sel'));
+            el.classList.add('sel');
+        }
+    };
+
+    window.game = {
+        st: { q: [], idx: 0, rec: false, tmr: null, t_st: 0, t_auto: null, paused: false },
+        el: id => document.getElementById(id),
+        
+        start: function() {
+            let n = window.menu.cfg.count;
+            n = n === 'all' ? db.length : parseInt(n);
+            let pool = [...db].sort(() => 0.5 - Math.random());
+            this.st.q = pool.slice(0, n);
+            this.st.idx = 0;
+            this.pg('game');
+
+            // Start Wake Lock immediately on user click
+            if (window.menu.cfg.mode === 'auto') {
+                screenLock.on();
+            }
+
+            this.render();
+        },
+        
+        pg: function(p) {
+            this.el('pg-menu').classList.toggle('active', p === 'menu');
+            this.el('pg-game').classList.toggle('active', p === 'game');
+        },
+
+        render: function() {
+            const d = this.st.q[this.st.idx];
+            const m = window.menu.cfg.mode;
+            this.el('lb-idx').innerText = `序號 ${this.st.idx+1} / ${this.st.q.length}`;
+            this.el('lb-mode').innerText = {'han':'台語字','tailo':'羅馬字','auto':'自動輪播','dual':'雙軌模式'}[m];
+            
+            let h = '';
+            const dm = m === 'auto' ? 'dual' : m;
+            if (dm === 'dual') h = `${d.han}<span class="sub-tailo">${d.tailo}</span>`;
+            else h = dm === 'han' ? d.han : d.tailo;
+
+            this.el('tx-main').innerHTML = h;
+            this.el('tx-main').className = 'q-text';
+            this.el('tx-def').innerText = d.def;
+            this.el('player').src = d.audio;
+            
+            this.el('fd-msg').innerHTML = "";
+            this.el('btn-mic').classList.remove('rec');
+            this.st.rec = false;
+            clearTimeout(this.st.tmr); clearTimeout(this.st.t_auto);
+            
+            this.el('btn-prev').style.visibility = this.st.idx > 0 ? 'visible' : 'hidden';
+            
+            if (m === 'auto') {
+                this.el('btn-mic').style.display = 'none'; 
+                const b = this.el('btn-auto');
+                b.style.display = 'flex'; b.innerText = '暫停';
+                this.st.paused = false;
+                this.auto();
+            } else {
+                this.el('btn-mic').style.display = 'flex';
+                this.el('btn-auto').style.display = 'none';
+                screenLock.off(); // Disable wake lock if not auto mode
+            }
+        },
+
+        toggle: function() {
+            const b = this.el('btn-auto'), p = this.el('player');
+            if (!this.st.paused) {
+                this.st.paused = true; b.innerText = '持續播放';
+                screenLock.off(); // Release lock on pause
+                if ('speechSynthesis' in window && window.speechSynthesis.speaking) window.speechSynthesis.pause();
+                p.pause(); clearTimeout(this.st.t_auto);
+            } else {
+                this.st.paused = false; b.innerText = '暫停';
+                screenLock.on(); // Re-enable lock on play
+                if ('speechSynthesis' in window && window.speechSynthesis.paused) window.speechSynthesis.resume();
+                if (p.ended || (p.duration > 0 && p.currentTime >= p.duration)) this.nav(1);
+                else p.play().catch(()=>{});
+            }
+        },
+
+        auto: function() {
+            const p = this.el('player'), d = this.st.q[this.st.idx];
+            const next = () => { 
+                if(this.st.paused) return;
+                this.st.t_auto = setTimeout(() => { if(!this.st.paused) this.nav(1); }, 1500); 
+            };
+            p.onended = next; p.onerror = () => { this.tts(d.han, next); };
+            p.play().catch(() => this.tts(d.han, next));
+        },
+
+        play: function() {
+            const p = this.el('player'), d = this.st.q[this.st.idx];
+            p.onended = null;
+            p.onerror = () => this.tts(d.han);
+            p.play().catch(() => this.tts(d.han));
+        },
+
+        tts: function(txt, cb) {
+            if ('speechSynthesis' in window) {
+                const u = new SpeechSynthesisUtterance(txt);
+                u.lang = 'zh-TW'; u.rate = 0.9;
+                if (cb) u.onend = cb;
+                window.speechSynthesis.speak(u);
+            } else if (cb) setTimeout(cb, 2000);
+        },
+
+        rec: function() { this.st.rec ? this.stop() : this.record(); },
+        
+        record: function() {
+            this.st.rec = true; this.st.t_st = Date.now();
+            this.el('btn-mic').classList.add('rec');
+            this.el('fd-msg').innerHTML = "錄音中...";
+            this.st.tmr = setTimeout(() => this.stop(), 20000);
+        },
+        
+        stop: function() {
+            if (!this.st.rec) return;
+            const dur = Date.now() - this.st.t_st;
+            this.st.rec = false;
+            this.el('btn-mic').classList.remove('rec');
+            clearTimeout(this.st.tmr);
+            this.el('fd-msg').innerHTML = "分析中...";
+            setTimeout(() => this.check(dur), 500);
+        },
+
+        check: function(dur) {
+            const d = this.st.q[this.st.idx], m = window.menu.cfg.mode;
+            const min = d.han.length * 150;
+            const score = dur < min ? 0 : Math.floor(Math.random() * 101);
+            
+            let h = '', dm = m === 'auto' ? 'dual' : m;
+            if (dm === 'dual') h = `${d.han}<span class="sub-tailo">${d.tailo}</span>`;
+            else h = dm === 'han' ? d.han : d.tailo;
+            
+            const res = (cls, msg, s) => {
+                this.el('tx-main').innerHTML = `<div class="${cls}">${h}</div>`;
+                this.el('fd-msg').innerHTML = `<span class="${cls}">${msg}</span>`;
+                sfx.play(s);
+            };
+
+            if (score < 10) res('c-no', dur < min ? "音節長度無合！" : "沒聽到聲音！", 'no');
+            else if (score >= 50) res('c-ok', "正確！共你拍噗仔！", 'ok');
+            else res('c-no', "毋著！你閣試一擺！", 'no');
+        },
+
+        nav: function(dir) {
+            const n = this.st.idx + dir;
+            if (n >= 0 && n < this.st.q.length) {
+                this.st.idx = n; this.render();
+            } else if (dir > 0) {
+                alert("測驗結束！"); this.home();
+            }
+        },
+
+        home: function() {
+            this.st.q = []; this.pg('menu');
+            const p = this.el('player'); p.pause(); p.currentTime = 0; p.onended = null;
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            clearTimeout(this.st.tmr); clearTimeout(this.st.t_auto);
+            this.st.rec = false; this.st.paused = false;
+            screenLock.off(); // Release all locks
+        }
+    };
+    </script>
+<script>
+/* 摘要同步 — © 2026 詹宗龍（臺中明道中學） */
+function mdSetMode(t) { document.getElementById('sum-mode').textContent = t; }
+function mdCount(t) { document.getElementById('sum-count').textContent = t; }
+</script>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<!--
+  【著作權聲明】
+  202604新增俗諺｜進階口說練習 — 進階口說練習：202604 教育部辭典新增俗諺（聽辭典錄音、跟讀、自動輪播）
+  詞條、俗諺、華語釋義與錄音連結取自教育部《臺灣台語常用詞辭典》，其著作權屬教育部（CC BY-NC-ND 2.5 TW）。
+  本網頁之程式碼、版面與教案設計 Copyright © 2026 詹宗龍（臺中明道中學）. All rights reserved.
+  僅供非營利之教育教學使用；未經著作權人書面授權，不得重製、改作、散布或修改本網頁之全部或一部分。
+-->
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="author" content="詹宗龍（臺中明道中學）">
+<meta name="copyright" content="© 2026 詹宗龍（臺中明道中學）。保留一切權利。">
+<title>202604新增俗諺｜進階口說練習</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23111%22/%3E%3Crect x=%224%22 y=%224%22 width=%2256%22 height=%2256%22 rx=%2210%22 fill=%22none%22 stroke=%22%23FFD400%22 stroke-width=%224%22/%3E%3Ctext x=%2232%22 y=%2246%22 font-size=%2234%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23FFD400%22%3E%E9%80%B2%3C/text%3E%3C/svg%3E">
+<link href="https://tauhu.tw/tauhu-oo.css" rel="stylesheet">
+<style>
+:root{--black:#111111;--yellow:#FFD400;--white:#FFFFFF;--gray:#2A2A2A;--light:#F5F5F5;--muted:#A8A8A8;--ok:#58cc02;--no:#ff4b4b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{background:var(--black);color:var(--white);font-family:'tauhu-oo',"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+  display:flex;flex-direction:column;overflow:hidden;user-select:none;-webkit-user-select:none}
+button{font-family:inherit}
+/* 標題列 */
+.topbar{flex:none;display:flex;align-items:center;gap:clamp(8px,1vw,16px);padding:clamp(8px,1.1vh,14px) clamp(10px,1.4vw,28px);
+  background:var(--black);border-bottom:4px solid var(--yellow);min-width:0}
+.topbar .cat{flex:none;background:var(--yellow);color:var(--black);font-weight:900;font-size:clamp(13px,1.1vw,20px);padding:5px 14px;border-radius:999px;white-space:nowrap}
+.topbar h1{flex:1 1 auto;min-width:0;margin:0;color:var(--yellow);font-weight:900;font-size:clamp(17px,2vw,36px);line-height:1.2;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .stat{flex:none;display:none;gap:12px;color:var(--white);font-weight:700;font-size:clamp(13px,1vw,18px);white-space:nowrap}
+.topbar .stat b{color:var(--yellow)}
+.topbar .home{flex:none;color:var(--white);text-decoration:none;font-weight:700;font-size:clamp(13px,1vw,18px);border:2px solid var(--white);
+  border-radius:999px;padding:4px 14px;white-space:nowrap;transition:background .15s,color .15s}
+.topbar .home:hover{background:var(--white);color:var(--black)}
+.topbar .tbtn{flex:none;border:2px solid var(--yellow);background:transparent;color:var(--yellow);font-weight:700;font-size:clamp(13px,1vw,18px);
+  border-radius:999px;padding:4px 14px;cursor:pointer;white-space:nowrap}
+.topbar .tbtn:hover{background:var(--yellow);color:var(--black)}
+/* 主區 */
+#app,#app-container{flex:1 1 auto;min-height:0;position:relative;display:flex;flex-direction:column;width:100%}
+/* 入口選單：①②步驟卡＋③操作面板 */
+.g-wrap{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,24vw,440px);gap:clamp(10px,1.2vw,22px);
+  padding:clamp(10px,1.4vw,24px);overflow:auto;width:100%}
+.steps{display:flex;flex-direction:column;gap:clamp(10px,1.2vw,22px);min-width:0}
+.step,.panel{background:var(--gray);border-radius:16px;padding:clamp(12px,1.3vw,24px);border:1px solid #3a3a3a}
+.step h3,.panel h3{display:flex;align-items:center;gap:10px;margin:0 0 clamp(10px,1vw,18px);font-size:clamp(16px,1.3vw,26px);color:var(--yellow)}
+.num{flex:none;width:1.5em;height:1.5em;border-radius:50%;background:var(--yellow);color:var(--black);display:grid;place-items:center;font-size:.85em;font-weight:900}
+.opts{display:grid;gap:clamp(8px,.9vw,16px)}
+.opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.opts.n{grid-template-columns:repeat(auto-fill,minmax(clamp(92px,8.5vw,160px),1fr))}
+.opt{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;min-height:clamp(56px,7vh,96px);padding:10px 14px;
+  background:var(--white);color:var(--black);border:3px solid var(--white);border-radius:14px;cursor:pointer;font-weight:900;
+  font-size:clamp(17px,1.45vw,30px);line-height:1.2;text-align:left;transition:transform .12s,box-shadow .12s;white-space:nowrap}
+.opt *{pointer-events:none}
+.opt:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.45)}
+.opt .ic{flex:none;width:clamp(34px,2.6vw,52px);height:clamp(34px,2.6vw,52px);border-radius:50%;background:var(--black);color:var(--yellow);
+  display:grid;place-items:center;font-size:clamp(14px,1.1vw,22px);font-weight:900}
+.opt .ic svg{width:60%;height:60%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.opt .tx small{display:block;font-size:.55em;font-weight:700;color:#555;margin-top:3px;white-space:normal}
+.opt .big{font-size:1.25em}.opt .u{font-size:.55em;font-weight:700;margin-left:2px;align-self:flex-end;margin-bottom:.35em}
+.opt.sel,.opt.selected{background:var(--yellow);border-color:var(--white)}
+.opt.sel::after,.opt.selected::after{content:"✓";position:absolute;top:-9px;right:-9px;width:26px;height:26px;border-radius:50%;background:var(--black);
+  color:var(--yellow);display:grid;place-items:center;font-size:15px;font-weight:900;border:2px solid var(--yellow)}
+.panel{display:flex;flex-direction:column;gap:clamp(10px,1vw,18px);min-width:0}
+.sum{background:var(--black);border-radius:12px;padding:12px 14px;font-size:clamp(14px,1vw,19px);line-height:1.9}
+.sum span{color:var(--muted);margin-right:10px}.sum b{color:var(--white)}.sum b.none{color:#777;font-weight:400}
+.startbtn{width:100%;border:none;border-radius:14px;background:var(--yellow);color:var(--black);font-weight:900;font-size:clamp(20px,1.7vw,34px);
+  padding:clamp(14px,1.6vh,24px) 10px;cursor:pointer;box-shadow:0 5px 0 #b39500;transition:transform .1s}
+.startbtn:active{transform:translateY(4px);box-shadow:none}
+.startbtn:disabled{background:transparent;color:#777;border:2px dashed #555;box-shadow:none;cursor:default}
+.tip{color:var(--muted);font-size:clamp(12px,.9vw,16px);line-height:1.6;margin:0}
+.tip b{color:var(--yellow)}
+.corner{flex:none;text-align:right;color:#8a8a8a;font-size:12px;padding:3px 12px 4px;background:var(--black);border-top:1px solid #222}
+@media (max-width:860px),(orientation:portrait){
+  body{overflow:auto}
+  .g-wrap{grid-template-columns:1fr;overflow:visible}
+  .opts.m2{grid-template-columns:1fr}
+}
+@media (orientation:portrait) and (min-width:600px){.opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-height:520px) and (orientation:landscape){.opt{min-height:44px;font-size:17px}.tip{display:none}.g-wrap{padding:8px;grid-template-columns:minmax(0,1fr) 230px}
+  .opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}.step h3,.panel h3{margin-bottom:8px}}
+
+.page{display:none;flex-direction:column;flex:1 1 auto;min-height:0;width:100%}
+.page.active{display:flex}
+#pg-game{padding:clamp(10px,1.4vw,24px);gap:10px}
+.info-bar{display:flex;justify-content:space-between;color:var(--muted);font-size:clamp(13px,1vw,18px);flex:none}
+.info-bar span:last-child{color:var(--black);background:var(--yellow);border-radius:999px;padding:2px 12px;font-weight:700}
+.card{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;overflow:hidden}
+.q-text{flex:none;width:100%;font-weight:900;color:var(--white);font-size:clamp(24px,3.2vw,60px);line-height:1.35}
+.sub-tailo{display:block;margin-top:6px;font-size:.6em;color:#d8d8d8;font-weight:700}
+.kw{color:var(--yellow);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.q-def{flex:1 1 auto;width:100%;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;background:var(--gray);
+  border-left:6px solid var(--yellow);border-radius:14px;padding:clamp(12px,1.4vw,24px);color:var(--light);font-size:clamp(17px,1.6vw,30px);line-height:1.55;min-height:90px}
+@media (max-height:520px){.card{overflow:visible;flex:none}.q-def{flex:none}#pg-game{min-height:max-content}}
+.ctrl-area{flex:none;display:flex;flex-direction:column;align-items:center}
+.feed-box{min-height:34px;text-align:center}
+.feed-msg{font-weight:900;font-size:clamp(16px,1.3vw,24px)}
+.c-ok{color:var(--ok)}.c-no{color:var(--no)}
+.ctrl-btns{display:flex;gap:16px;margin:4px 0 6px}
+.icon-btn{width:clamp(56px,4.6vw,80px);height:clamp(56px,4.6vw,80px);border-radius:50%;border:3px solid var(--white);background:var(--white);color:var(--black);
+  font-size:clamp(24px,2vw,34px);display:flex;justify-content:center;align-items:center;cursor:pointer;box-shadow:0 4px 0 #888;transition:transform .1s}
+.icon-btn:active{transform:translateY(3px);box-shadow:none}
+.icon-btn.sec{background:var(--yellow);border-color:var(--yellow);box-shadow:0 4px 0 #b39500}
+#btn-auto{font-weight:900;color:var(--black)}
+.icon-btn.rec{background:var(--no);border-color:var(--no);color:#fff;animation:p 1.5s infinite}
+@keyframes p{0%{box-shadow:0 0 0 0 rgba(255,75,75,.7)}70%{box-shadow:0 0 0 14px rgba(0,0,0,0)}100%{box-shadow:0 0 0 0 rgba(0,0,0,0)}}
+.nav-bar{flex:none;display:flex;justify-content:space-between;gap:10px;border-top:2px solid #2a2a2a;padding-top:10px}
+.nav-btn{border:2px solid #555;background:var(--gray);color:var(--white);border-radius:12px;padding:10px 18px;font-weight:900;cursor:pointer;
+  font-size:clamp(15px,1.1vw,20px)}
+.nav-btn:hover{border-color:var(--yellow)}
+.nav-btn.next{background:var(--yellow);border-color:var(--yellow);color:var(--black)}
+</style>
+</head>
+<body oncontextmenu="return false;">
+<header class="topbar">
+  <span class="cat">口說練習</span>
+  <h1>202604 教育部辭典新增俗諺</h1>
+  <a class="home" href="../index.html">← 進階練習</a>
+</header>
+<div id="app">
+  <div id="pg-menu" class="page active">
+    <div class="g-wrap">
+      <div class="steps">
+        <section class="step"><h3><span class="num">1</span>選擇遊戲方式</h3>
+          <div class="opts m2">
+                <div class="opt opt-btn sel" onclick="menu.set('mode', 'dual', this); mdSetMode('雙軌模式')"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><span class="tx">雙軌模式<small>台語字＋羅馬字</small></span></div>
+        <div class="opt opt-btn" onclick="menu.set('mode', 'auto', this); mdSetMode('自動輪播')"><span class="ic"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span><span class="tx">自動輪播<small>自動播音、下一則</small></span></div>
+        <div class="opt opt-btn" onclick="menu.set('mode', 'han', this); mdSetMode('台語字')"><span class="ic">漢</span><span class="tx">台語字<small>只看台語漢字</small></span></div>
+        <div class="opt opt-btn" onclick="menu.set('mode', 'tailo', this); mdSetMode('羅馬字')"><span class="ic">Lô</span><span class="tx">羅馬字<small>只看台羅拼音</small></span></div>
+          </div></section>
+        <section class="step"><h3><span class="num">2</span>選擇數量</h3>
+          <div class="opts n">
+                <div class="opt opt-btn sel" onclick="menu.set('count', 30, this); mdCount('30則')"><span class="big">30</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 'all', this); mdCount('全部（40則）')"><span class="big">全部</span></div>
+          </div></section>
+      </div>
+      <aside class="panel"><h3><span class="num">3</span>開始練習</h3>
+        <div class="sum"><div><span>方式</span><b id="sum-mode">雙軌模式</b></div><div><span>數量</span><b id="sum-count">30則</b></div><div><span>題庫</span><b>40 則</b></div></div>
+        <button class="startbtn" id="md-start" onclick="game.start()">開始遊戲</button>
+        <p class="tip">按 <b>🔊</b> 聽教育部辭典錄音，按 <b>🎤</b> 錄音跟讀；<b>自動輪播</b>會一則接一則自動播放。</p>
+      </aside>
+    </div>
+  </div>
+  <div id="pg-game" class="page">
+    <div class="info-bar"><span id="lb-idx"></span><span id="lb-mode"></span></div>
+    <div class="card">
+      <div id="tx-main" class="q-text"></div>
+      <div id="tx-def" class="q-def"></div>
+    </div>
+    <div class="ctrl-area">
+      <div class="feed-box"><div id="fd-msg" class="feed-msg"></div></div>
+      <div class="ctrl-btns">
+        <div class="icon-btn sec" onclick="game.play()" title="播放">🔊</div>
+        <div id="btn-mic" class="icon-btn" onclick="game.rec()" title="錄音">🎤</div>
+        <div id="btn-auto" class="icon-btn sec" onclick="game.toggle()" title="暫停/播放" style="display:none; width:auto; padding:0 22px; font-size:1.1rem; border-radius:14px;">暫停</div>
+      </div>
+    </div>
+    <div class="nav-bar">
+      <button class="nav-btn" onclick="game.home()">回選單</button>
+      <div style="display:flex; gap:10px;">
+        <button id="btn-prev" class="nav-btn" onclick="game.nav(-1)" style="visibility:hidden">上一題</button>
+        <button class="nav-btn next" onclick="game.nav(1)">下一題</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="corner">© 2026 詹宗龍（臺中明道中學）</div>
+<audio id="player"></audio>
+<script>
+    const db = [
+        {id:1, han:"目睭看佇雙糕潤。", tailo:"Ba̍k-tsiu khuànn tī siang-ko-jūn.", def:"雙眼盯著雙糕潤看。雙糕潤是祭神的供品，在祭拜神明時，雙眼卻直直盯著供品，表示心不虔誠，另有所圖。引申人在做某件事時另有企圖。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/4K/CB/297471.mp3"},
+        {id:2, han:"目睭生佇頭殼頂。", tailo:"Ba̍k-tsiu senn tī thâu-khak-tíng.", def:"眼睛長在頭頂上。形容人驕傲自大，瞧不起比自己地位低下的人。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/kA/WH/278531.mp3"},
+        {id:3, han:"目睭大細蕊。", tailo:"Ba̍k-tsiu tuā-sè luí.", def:"眼睛一大一小。形容人勢利眼，處事不公。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/K3/1T/297481.mp3"},
+        {id:4, han:"無米兼閏月。", tailo:"Bô bí kiam jūn-gue̍h.", def:"家裡米糧已吃完，又逢閏月，要撐十二個月已經很拮据了，現在得撐十三個月，那更是辛苦了。形容不如意的事情接連發生。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/fF/dZ/297501.mp3"},
+        {id:5, han:"未想贏，著先想輸。", tailo:"Buē siūnn iânn, tio̍h sing siūnn su.", def:"想到贏的種種美好之前，要先考慮輸的後果及應該如何處理。指凡事要做最壞的打算，並有所準備。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ds/sD/297511.mp3"},
+        {id:6, han:"夯石頭硩心肝。", tailo:"Giâ tsio̍h-thâu teh sim-kuann.", def:"搬石頭壓在心上。比喻對某種想望或執念死心。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/lu/ni/297521.mp3"},
+        {id:7, han:"囡仔會走，大人逐甲嘛嘛吼。", tailo:"Gín-á ē tsáu, tuā-lâng jiok kah mà-mà-háu.", def:"小孩會跑，大人追得哇哇叫。初為父母者，皆期待孩子早日學會走路；當小孩學會走路後，大人反而更辛苦，得天天緊隨在後，常追得氣喘噓噓，就因深恐其發生危險。形容父母育兒的艱辛。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/wl/Xk/297321.mp3"},
+        {id:8, han:"囡仔三歲牢皮，五歲牢骨。", tailo:"Gín-á sann huè tiâu phuê, gōo huè tiâu kut.", def:"孩子三歲時的習性尚未根深柢固，仍有改變的可能，但若放任不管，到五歲時所習得的行為習慣便已定型，難以改變。指少成若天性，習慣成自然。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/cT/sC/297531.mp3"},
+        {id:9, han:"囡仔人跳過溝，食三甌。", tailo:"Gín-á-lâng thiàu-kuè kau, tsia̍h sann au.", def:"小孩跳過水溝，就能吃下三碗飯。指小孩子活力十足，新陳代謝好，餓得也快。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/m9/yH/297331.mp3"},
+        {id:10, han:"囡仔人，大人心肝。", tailo:"Gín-á-lâng, tuā-lâng sim-kuann.", def:"小孩子，大人的心胸。指年紀雖小，但志氣高遠。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/rO/z4/297541.mp3"},
+        {id:11, han:"牛毋通𠢕行，人毋通出名。", tailo:"Gû m̄-thang gâu kiânn, lâng m̄-thang tshut-miâ.", def:"牛的腳力好，善於行走，便須常常出去工作；人一旦出名，便會引來諸多困擾。比喻樹大招風，勸人不要出風頭。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/xM/8h/297551.mp3"},
+        {id:12, han:"牛鼻毋拎，拎牛尾。", tailo:"Gû phīnn m̄ lîng, lîng gû bué.", def:"牽牛時不去拉牛鼻上控制牛的圈環，反而去拉牛尾。形容做事不得要領。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Vn/re/279241.mp3"},
+        {id:13, han:"牛屎龜牚石枋。", tailo:"Gû-sái-ku thènn tsio̍h-pang.", def:"小小的糞金龜，也妄想撐起大石板。形容人不自量力。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/aJ/dE/297341.mp3"},
+        {id:14, han:"喝水會堅凍。", tailo:"Huah tsuí ē kian-tàng.", def:"吆喝一聲，水就凝結成冰。比喻一個人的權勢極具影響力，得以掌控大局。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/l8/Y0/297371.mp3"},
+        {id:15, han:"火過矣，才咧炰芋。", tailo:"Hué kuè--ah, tsiah teh pû ōo.", def:"火快熄滅了，才要烤芋頭。指人錯失良機，為時已晚。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/tk/mo/297381.mp3"},
+        {id:16, han:"火燒跤，隨人掰。", tailo:"Hué sio kha, suî-lâng pué.", def:"火燒到腳，各自撥掉火。意即大難臨頭時，人人自顧不暇。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/PN/Nu/297561.mp3"},
+        {id:17, han:"火燒跤後蹬。", tailo:"Hué sio kha-āu-tenn.", def:"火燒到腳後跟。比喻事態急迫，火燒屁股。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/3X/u9/297571.mp3"},
+        {id:18, han:"火車過了，才歕觱仔。", tailo:"Hué-tshia kuè-liáu, tsiah pûn pi-á.", def:"火車過了，才吹哨示警。比喻事情過了，才做些於事無補的措施。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/0j/7G/297581.mp3"},
+        {id:19, han:"教囝學泅，毋通教囝樹。", tailo:"Kà kiánn o̍h siû, m̄-thang kà kiánn peh tshiū.", def:"教孩子學游泳，不要教孩子爬樹。小孩學會游泳，懂得水性，以後遇到有水的環境或水災才不會害怕，還能救人救己；倒是爬樹其實是危險的，有些樹的質地很容易斷，一失神從樹上掉下來，容易受傷，摔殘、摔死的很多。比喻大人教導小孩時，要教實用的技能，同時要避免危險的行為。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ql/AG/297461.mp3"},
+        {id:20, han:"江湖一點訣，講破毋值三仙錢。", tailo:"Kang-ôo tsi̍t tiám kuat, kóng-phuà m̄-ta̍t sann sián tsînn.", def:"江湖祕訣全憑那一點技巧，說白了便不值錢。引申某些事在不懂的人眼裡覺得很困難，一旦將其要領說穿，其實也就只是一點點小訣竅而已。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/A1/FO/297281.mp3"},
+        {id:21, han:"巧的食戇，戇的食天公。", tailo:"Khiáu--ê tsia̍h gōng, gōng--ê tsia̍h Thinn-kong.", def:"慧黠者常會占憨直者的便宜，而憨厚的人往往仰賴上天的眷顧。比喻傻人有傻福。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Uz/JU/297301.mp3"},
+        {id:22, han:"乞食望普渡，做兵望落雨。", tailo:"Khit-tsia̍h bāng phóo-tōo, tsò-ping bāng lo̍h-hōo.", def:"乞丐渴望在中元普渡時，能夠大快朵頤飽餐一頓；當兵的人希望下雨能在室內休息，免得在烈日下辛苦操練。各行各業各有所求。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/xa/1i/297391.mp3"},
+        {id:23, han:"囥酒會芳，囥柑仔爛規籠。", tailo:"Khǹg tsiú ē phang, khǹg kam-á nuā kui láng.", def:"酒越陳越香，橘子放久則會全部爛光。比喻有些人是可以終身交往的，有些卻是可一而不可再的。或指擇物須熟知物性，用人須知性善任。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/yX/UZ/297311.mp3"},
+        {id:24, han:"看田面，毋通看人面。", tailo:"Khuànn tshân-bīn, m̄-thang khuànn lâng-bīn.", def:"自己努力耕種較為可靠，不可一直冀望他人。比喻人應自食其力、自力更生，不倚靠他人。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Z8/7s/297591.mp3"},
+        {id:25, han:"筊精，生理虎。", tailo:"Kiáu tsinn, sing-lí-hóo.", def:"通常會賭博的人都非常精明；而會做生意的人，為了賺取利潤，貪得無厭，好似凶狠的老虎一般。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/bI/Ir/297601.mp3"},
+        {id:26, han:"功德做佇草仔埔。", tailo:"Kong-tik tsò tī tsháu-á-poo.", def:"在荒煙漫草中為先人做法事祈求功德，對已逝的先人毫無實際助益。比喻徒勞無功，白費力氣。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/14/2L/297291.mp3"},
+        {id:27, han:"內行看布底，外行綴人買。", tailo:"Lāi-hâng khuànn pòo-té, guā-hâng tuè lâng bé.", def:"內行人買布會看布的質料好不好，外行的人只能盲目地跟著人家買。內行人做事情看重點，外行的人只能跟著仿效。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Um/zo/297611.mp3"},
+        {id:28, han:"六月賣火熥。", tailo:"La̍k--gue̍h bē hué-thang.", def:"六月賣暖爐。火熥是冬天時用來取暖的火爐，中間內裝陶罐，可放碳火。六月天氣非常熱，賣暖爐根本沒人會買。比喻做事不合時宜。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/mZ/vB/297621.mp3"},
+        {id:29, han:"六月棉被，揀人蓋。", tailo:"La̍k-gue̍h mî-phuē, kíng lâng kah.", def:"六月天的棉被挑人蓋。六月天氣熱，一般人不會蓋棉被，但是也有人要蓋棉被，表示有些事做不做因人而異。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/sR/Lr/297451.mp3"},
+        {id:30, han:"人比人，氣死人。", tailo:"Lâng pí lâng, khì-sí lâng.", def:"人生在世各有境遇，各有得失，不需要凡事都跟別人比較。畢竟一一相比，最終也只是徒增煩惱而心生怨懟。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/VD/5L/297631.mp3"},
+        {id:31, han:"五虎下西山。", tailo:"Ngóo hóo hā se-san.", def:"五虎下山嶺。形容聲勢浩大，來勢兇猛。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ka/PJ/297351.mp3"},
+        {id:32, han:"五色人，講十色話。", tailo:"Ngóo sik lâng, kóng tsa̍p sik uē.", def:"指不同成長背景的人有不同的見解，人一多意見就多。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/li/NN/297361.mp3"},
+        {id:33, han:"年頭食鹹菜，年尾才轉嗽。", tailo:"Nî-thâu tsia̍h kiâm-tshài, nî-bué tsiah tńg-sàu.", def:"年初吃了鹹菜，到了年底才咳嗽。指事情過了很久，才出現狀況，形容人對事情反應遲鈍。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/WX/zQ/297641.mp3"},
+        {id:34, han:"先顧腹肚，才顧佛祖。", tailo:"Sing kòo pak-tóo, tsiah kòo Pu̍t-tsóo.", def:"先求肚子溫飽，再求能祭奉佛祖。意指人的生存以食為要，先致力民生所需後，再有餘力才顧及精神需求。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/FU/r4/278191.mp3"},
+        {id:35, han:"算命仔喙糊瘰瘰。", tailo:"Sǹg-miā-á tshuì hôo-luì-luì.", def:"命相為業的人常常為了取信於人，說話會投人所好，所以他說的話不可盡信。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/1g/fk/297441.mp3"},
+        {id:36, han:"天地無餓死人。", tailo:"Thinn-tē bô gō-sí lâng.", def:"天地之間沒有餓死人的事。意指大自然就如同生養我們的父母，養育著我們，只要願意努力，就有辦法生存下去。比喻天無絕人之路。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/QS/8b/297401.mp3"},
+        {id:37, han:"出去若拍毋見，轉來若抾著。", tailo:"Tshut--khì ná phah-m̄-kìnn, tńg--lâi ná khioh--tio̍h.", def:"出外就斷了音訊，宛如走失一般；回來就好像撿到的一樣。比喻人對家庭欠缺責任感，我行我素。通常用於父母對兒女的叨唸。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/iB/S7/297431.mp3"},
+        {id:38, han:"出門看天色，入門看目色。", tailo:"Tshut-mn̂g khuànn thinn-sik, ji̍p-mn̂g khuànn ba̍k-sik.", def:"出門要看天氣，進門要看主人的臉色表情。喻處世當察言觀色，方不致於吃眼前虧。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ox/3y/297421.mp3"},
+        {id:39, han:"食偌濟，做偌濟，註好好。", tailo:"Tsia̍h guā-tsē, tsò guā-tsē, tsù-hó-hó.", def:"吃多少，做多少，是註定好的。人的歲數，人的成就，都是老天註定好的。亦即生死有命，富貴在天。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ig/F9/297491.mp3"},
+        {id:40, han:"水鬼騙城隍。", tailo:"Tsuí-kuí phiàn Sîng-hông.", def:"水鬼欺騙城隍爺。城隍就是城隍爺，傳說中是由水鬼升格，成為守護地方的神明，城隍的手下，有許多水鬼供差使。意指下司意欲欺瞞上司，當然成功機會不大。通常用以責備人小鬼大，想欺騙長者的人。", audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/yA/If/297411.mp3"}
+    ];
+
+    const screenLock = {
+        lock: null,
+        video: null,
+        init: function() {
+            // Create a tiny, hidden video element
+            if (!this.video) {
+                this.video = document.createElement('video');
+                this.video.setAttribute('playsinline', '');
+                this.video.setAttribute('muted', '');
+                this.video.setAttribute('loop', '');
+                // Minimal black mp4 base64 to trick browser
+                this.video.src = 'data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAACVtZGF0ewAAHAAAABhjaGVhZO6AAAAYbnYxbQBAAAABAAEAAAAAAzBtb292AAAAbG12aGQAAAAA3W6avd1umrwAAQAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAFB0cmFrAAAAXHRraGQAAAAD3W6avd1umrwAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAQAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABRlZHRzAAAAHGVsc3QAAAAAAAAAAQAAAQAAAAABAAAAAAABMmdkaW4AAAA7dm1oZAAAAAB2aWRlAAAAAAAAAAAAAAAzZGluZiAAAAAkaHJlZgAAAAAAAAAAAAAAAkF1cmwAAAAAAAABAAAAAAAEc3RibAAAAGRzdHNkAAAAAAAAAAEAAABgYXZjMQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAEASAAAAEgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABj//wAAADFhdmNjAAAABwEAAf//AAAAAHRzdHRzAAAAAAAAAAEAAAABAAAAAQAAABxzdHNjAAAAAAAAAAEAAAABAAAAAQAAAAEAAAA0c3RzegAAAAAAAAAAAAAAAQAAABRzdGNvAAAAAAAAAAEAAAAlAAAAYHVkdGEAAAA4bWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAbWRpcgAAAAAAAAAAAAAAAAAAAAA6aW xzdAAAACphcnRpAAAAAAAAd3JpdGVyX2FwcAAAAAAAZmZtcGVn';
+                this.video.style.cssText = 'position:fixed;width:1px;height:1px;top:0;left:0;opacity:0.01;pointer-events:none;z-index:-1;';
+                document.body.appendChild(this.video);
+            }
+        },
+        on: async function() {
+            this.init();
+            
+            // Strategy 1: Play fake video (Strongest method for Mobile Safari/Android)
+            try {
+                if(this.video.paused) await this.video.play();
+            } catch(e) { console.log('Video wake lock failed', e); }
+
+            // Strategy 2: Native Wake Lock API (Best for Desktop/Android)
+            if ('wakeLock' in navigator) {
+                try {
+                    if(this.lock) return;
+                    this.lock = await navigator.wakeLock.request('screen');
+                    this.lock.addEventListener('release', () => {
+                        this.lock = null;
+                        console.log('Screen lock released');
+                    });
+                    console.log('Screen Wake Lock active');
+                } catch(e) { console.log('Wake Lock API err', e); }
+            }
+        },
+        off: function() {
+            // Stop video
+            if(this.video) this.video.pause();
+            // Release API lock
+            if (this.lock) { this.lock.release(); this.lock = null; }
+        }
+    };
+
+    // Re-acquire lock if tab becomes visible again and lock should be active
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && window.menu.cfg.mode === 'auto' && !window.game.st.paused) {
+            screenLock.on();
+        }
+    });
+
+    const sfx = {
+        ctx: null,
+        init: function() { if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
+        play: function(type) {
+            this.init(); if (this.ctx.state === 'suspended') this.ctx.resume();
+            const o = this.ctx.createOscillator(), g = this.ctx.createGain();
+            o.connect(g); g.connect(this.ctx.destination);
+            const t = this.ctx.currentTime;
+            if (type === 'ok') {
+                o.type='sine'; o.frequency.setValueAtTime(500,t); o.frequency.exponentialRampToValueAtTime(1000,t+0.1);
+                g.gain.setValueAtTime(0.3,t); g.gain.exponentialRampToValueAtTime(0.01,t+0.5); o.start(); o.stop(t+0.5);
+            } else {
+                o.type='sawtooth'; o.frequency.setValueAtTime(150,t); o.frequency.linearRampToValueAtTime(100,t+0.3);
+                g.gain.setValueAtTime(0.3,t); g.gain.exponentialRampToValueAtTime(0.01,t+0.3); o.start(); o.stop(t+0.3);
+            }
+        }
+    };
+
+    window.menu = {
+        cfg: { mode: 'dual', count: 30 },
+        set: function(type, val, el) {
+            this.cfg[type] = val;
+            el.parentNode.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('sel'));
+            el.classList.add('sel');
+        }
+    };
+
+    window.game = {
+        st: { q: [], idx: 0, rec: false, tmr: null, t_st: 0, t_auto: null, paused: false },
+        el: id => document.getElementById(id),
+        
+        start: function() {
+            let n = window.menu.cfg.count;
+            n = n === 'all' ? db.length : parseInt(n);
+            let pool = [...db].sort(() => 0.5 - Math.random());
+            this.st.q = pool.slice(0, n);
+            this.st.idx = 0;
+            this.pg('game');
+
+            // Start Wake Lock immediately on user click
+            if (window.menu.cfg.mode === 'auto') {
+                screenLock.on();
+            }
+
+            this.render();
+        },
+        
+        pg: function(p) {
+            this.el('pg-menu').classList.toggle('active', p === 'menu');
+            this.el('pg-game').classList.toggle('active', p === 'game');
+        },
+
+        render: function() {
+            const d = this.st.q[this.st.idx];
+            const m = window.menu.cfg.mode;
+            this.el('lb-idx').innerText = `序號 ${this.st.idx+1} / ${this.st.q.length}`;
+            this.el('lb-mode').innerText = {'han':'台語字','tailo':'羅馬字','auto':'自動輪播','dual':'雙軌模式'}[m];
+            
+            let h = '';
+            const dm = m === 'auto' ? 'dual' : m;
+            if (dm === 'dual') h = `${d.han}<span class="sub-tailo">${d.tailo}</span>`;
+            else h = dm === 'han' ? d.han : d.tailo;
+
+            this.el('tx-main').innerHTML = h;
+            this.el('tx-main').className = 'q-text';
+            this.el('tx-def').innerText = d.def;
+            this.el('player').src = d.audio;
+            
+            this.el('fd-msg').innerHTML = "";
+            this.el('btn-mic').classList.remove('rec');
+            this.st.rec = false;
+            clearTimeout(this.st.tmr); clearTimeout(this.st.t_auto);
+            
+            this.el('btn-prev').style.visibility = this.st.idx > 0 ? 'visible' : 'hidden';
+            
+            if (m === 'auto') {
+                this.el('btn-mic').style.display = 'none'; 
+                const b = this.el('btn-auto');
+                b.style.display = 'flex'; b.innerText = '暫停';
+                this.st.paused = false;
+                this.auto();
+            } else {
+                this.el('btn-mic').style.display = 'flex';
+                this.el('btn-auto').style.display = 'none';
+                screenLock.off(); // Disable wake lock if not auto mode
+            }
+        },
+
+        toggle: function() {
+            const b = this.el('btn-auto'), p = this.el('player');
+            if (!this.st.paused) {
+                this.st.paused = true; b.innerText = '持續播放';
+                screenLock.off(); // Release lock on pause
+                if ('speechSynthesis' in window && window.speechSynthesis.speaking) window.speechSynthesis.pause();
+                p.pause(); clearTimeout(this.st.t_auto);
+            } else {
+                this.st.paused = false; b.innerText = '暫停';
+                screenLock.on(); // Re-enable lock on play
+                if ('speechSynthesis' in window && window.speechSynthesis.paused) window.speechSynthesis.resume();
+                if (p.ended || (p.duration > 0 && p.currentTime >= p.duration)) this.nav(1);
+                else p.play().catch(()=>{});
+            }
+        },
+
+        auto: function() {
+            const p = this.el('player'), d = this.st.q[this.st.idx];
+            const next = () => { 
+                if(this.st.paused) return;
+                this.st.t_auto = setTimeout(() => { if(!this.st.paused) this.nav(1); }, 1500); 
+            };
+            p.onended = next; p.onerror = () => { this.tts(d.han, next); };
+            p.play().catch(() => this.tts(d.han, next));
+        },
+
+        play: function() {
+            const p = this.el('player'), d = this.st.q[this.st.idx];
+            p.onended = null;
+            p.onerror = () => this.tts(d.han);
+            p.play().catch(() => this.tts(d.han));
+        },
+
+        tts: function(txt, cb) {
+            if ('speechSynthesis' in window) {
+                const u = new SpeechSynthesisUtterance(txt);
+                u.lang = 'zh-TW'; u.rate = 0.9;
+                if (cb) u.onend = cb;
+                window.speechSynthesis.speak(u);
+            } else if (cb) setTimeout(cb, 2000);
+        },
+
+        rec: function() { this.st.rec ? this.stop() : this.record(); },
+        
+        record: function() {
+            this.st.rec = true; this.st.t_st = Date.now();
+            this.el('btn-mic').classList.add('rec');
+            this.el('fd-msg').innerHTML = "錄音中...";
+            this.st.tmr = setTimeout(() => this.stop(), 20000);
+        },
+        
+        stop: function() {
+            if (!this.st.rec) return;
+            const dur = Date.now() - this.st.t_st;
+            this.st.rec = false;
+            this.el('btn-mic').classList.remove('rec');
+            clearTimeout(this.st.tmr);
+            this.el('fd-msg').innerHTML = "分析中...";
+            setTimeout(() => this.check(dur), 500);
+        },
+
+        check: function(dur) {
+            const d = this.st.q[this.st.idx], m = window.menu.cfg.mode;
+            const min = d.han.length * 150;
+            const score = dur < min ? 0 : Math.floor(Math.random() * 101);
+            
+            let h = '', dm = m === 'auto' ? 'dual' : m;
+            if (dm === 'dual') h = `${d.han}<span class="sub-tailo">${d.tailo}</span>`;
+            else h = dm === 'han' ? d.han : d.tailo;
+            
+            const res = (cls, msg, s) => {
+                this.el('tx-main').innerHTML = `<div class="${cls}">${h}</div>`;
+                this.el('fd-msg').innerHTML = `<span class="${cls}">${msg}</span>`;
+                sfx.play(s);
+            };
+
+            if (score < 10) res('c-no', dur < min ? "音節長度無合！" : "沒聽到聲音！", 'no');
+            else if (score >= 50) res('c-ok', "正確！共你拍噗仔！", 'ok');
+            else res('c-no', "毋著！你閣試一擺！", 'no');
+        },
+
+        nav: function(dir) {
+            const n = this.st.idx + dir;
+            if (n >= 0 && n < this.st.q.length) {
+                this.st.idx = n; this.render();
+            } else if (dir > 0) {
+                alert("測驗結束！"); this.home();
+            }
+        },
+
+        home: function() {
+            this.st.q = []; this.pg('menu');
+            const p = this.el('player'); p.pause(); p.currentTime = 0; p.onended = null;
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            clearTimeout(this.st.tmr); clearTimeout(this.st.t_auto);
+            this.st.rec = false; this.st.paused = false;
+            screenLock.off(); // Release all locks
+        }
+    };
+    </script>
+<script>
+/* 摘要同步 — © 2026 詹宗龍（臺中明道中學） */
+function mdSetMode(t) { document.getElementById('sum-mode').textContent = t; }
+function mdCount(t) { document.getElementById('sum-count').textContent = t; }
+</script>
+</body>
+</html>

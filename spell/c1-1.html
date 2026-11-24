@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<!--
+  【著作權聲明】
+  C1詞庫1｜進階拼寫練習 — 進階拼寫練習：C1詞庫 Part1（序號001–442）（台語字↔羅馬字打字）
+  詞條與釋義參考教育部《臺灣台語常用詞辭典》及國立成功大學台語詞彙資料，其著作權屬原權利人；聲音播放使用自製 snd-plus.js（音檔即時連結教育部辭典官方錄音，著作權屬教育部）。
+  本網頁之程式碼、版面與教案設計 Copyright © 2026 詹宗龍（臺中明道中學）. All rights reserved.
+  僅供非營利之教育教學使用；未經著作權人書面授權，不得重製、改作、散布或修改本網頁之全部或一部分。
+-->
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="author" content="詹宗龍（臺中明道中學）">
+<meta name="copyright" content="© 2026 詹宗龍（臺中明道中學）。保留一切權利。">
+<title>C1詞庫1｜進階拼寫練習</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23111%22/%3E%3Crect x=%224%22 y=%224%22 width=%2256%22 height=%2256%22 rx=%2210%22 fill=%22none%22 stroke=%22%23FFD400%22 stroke-width=%224%22/%3E%3Ctext x=%2232%22 y=%2246%22 font-size=%2234%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23FFD400%22%3E%E9%80%B2%3C/text%3E%3C/svg%3E">
+<link href="https://tauhu.tw/tauhu-oo.css" rel="stylesheet">
+<script src="https://cyril-mingdao.github.io/taigi-class-games/assets/snd-plus.js"></script>
+<style>
+:root{--black:#111111;--yellow:#FFD400;--white:#FFFFFF;--gray:#2A2A2A;--light:#F5F5F5;--muted:#A8A8A8;--ok:#58cc02;--no:#ff4b4b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{background:var(--black);color:var(--white);font-family:'tauhu-oo',"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+  display:flex;flex-direction:column;overflow:hidden;user-select:none;-webkit-user-select:none}
+button{font-family:inherit}
+/* 標題列 */
+.topbar{flex:none;display:flex;align-items:center;gap:clamp(8px,1vw,16px);padding:clamp(8px,1.1vh,14px) clamp(10px,1.4vw,28px);
+  background:var(--black);border-bottom:4px solid var(--yellow);min-width:0}
+.topbar .cat{flex:none;background:var(--yellow);color:var(--black);font-weight:900;font-size:clamp(13px,1.1vw,20px);padding:5px 14px;border-radius:999px;white-space:nowrap}
+.topbar h1{flex:1 1 auto;min-width:0;margin:0;color:var(--yellow);font-weight:900;font-size:clamp(17px,2vw,36px);line-height:1.2;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .stat{flex:none;display:none;gap:12px;color:var(--white);font-weight:700;font-size:clamp(13px,1vw,18px);white-space:nowrap}
+.topbar .stat b{color:var(--yellow)}
+.topbar .home{flex:none;color:var(--white);text-decoration:none;font-weight:700;font-size:clamp(13px,1vw,18px);border:2px solid var(--white);
+  border-radius:999px;padding:4px 14px;white-space:nowrap;transition:background .15s,color .15s}
+.topbar .home:hover{background:var(--white);color:var(--black)}
+.topbar .tbtn{flex:none;border:2px solid var(--yellow);background:transparent;color:var(--yellow);font-weight:700;font-size:clamp(13px,1vw,18px);
+  border-radius:999px;padding:4px 14px;cursor:pointer;white-space:nowrap}
+.topbar .tbtn:hover{background:var(--yellow);color:var(--black)}
+/* 主區 */
+#app,#app-container{flex:1 1 auto;min-height:0;position:relative;display:flex;flex-direction:column;width:100%}
+/* 入口選單：①②步驟卡＋③操作面板 */
+.g-wrap{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,24vw,440px);gap:clamp(10px,1.2vw,22px);
+  padding:clamp(10px,1.4vw,24px);overflow:auto;width:100%}
+.steps{display:flex;flex-direction:column;gap:clamp(10px,1.2vw,22px);min-width:0}
+.step,.panel{background:var(--gray);border-radius:16px;padding:clamp(12px,1.3vw,24px);border:1px solid #3a3a3a}
+.step h3,.panel h3{display:flex;align-items:center;gap:10px;margin:0 0 clamp(10px,1vw,18px);font-size:clamp(16px,1.3vw,26px);color:var(--yellow)}
+.num{flex:none;width:1.5em;height:1.5em;border-radius:50%;background:var(--yellow);color:var(--black);display:grid;place-items:center;font-size:.85em;font-weight:900}
+.opts{display:grid;gap:clamp(8px,.9vw,16px)}
+.opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.opts.n{grid-template-columns:repeat(auto-fill,minmax(clamp(92px,8.5vw,160px),1fr))}
+.opt{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;min-height:clamp(56px,7vh,96px);padding:10px 14px;
+  background:var(--white);color:var(--black);border:3px solid var(--white);border-radius:14px;cursor:pointer;font-weight:900;
+  font-size:clamp(17px,1.45vw,30px);line-height:1.2;text-align:left;transition:transform .12s,box-shadow .12s;white-space:nowrap}
+.opt *{pointer-events:none}
+.opt:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.45)}
+.opt .ic{flex:none;width:clamp(34px,2.6vw,52px);height:clamp(34px,2.6vw,52px);border-radius:50%;background:var(--black);color:var(--yellow);
+  display:grid;place-items:center;font-size:clamp(14px,1.1vw,22px);font-weight:900}
+.opt .ic svg{width:60%;height:60%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.opt .tx small{display:block;font-size:.55em;font-weight:700;color:#555;margin-top:3px;white-space:normal}
+.opt .big{font-size:1.25em}.opt .u{font-size:.55em;font-weight:700;margin-left:2px;align-self:flex-end;margin-bottom:.35em}
+.opt.sel,.opt.selected{background:var(--yellow);border-color:var(--white)}
+.opt.sel::after,.opt.selected::after{content:"✓";position:absolute;top:-9px;right:-9px;width:26px;height:26px;border-radius:50%;background:var(--black);
+  color:var(--yellow);display:grid;place-items:center;font-size:15px;font-weight:900;border:2px solid var(--yellow)}
+.panel{display:flex;flex-direction:column;gap:clamp(10px,1vw,18px);min-width:0}
+.sum{background:var(--black);border-radius:12px;padding:12px 14px;font-size:clamp(14px,1vw,19px);line-height:1.9}
+.sum span{color:var(--muted);margin-right:10px}.sum b{color:var(--white)}.sum b.none{color:#777;font-weight:400}
+.startbtn{width:100%;border:none;border-radius:14px;background:var(--yellow);color:var(--black);font-weight:900;font-size:clamp(20px,1.7vw,34px);
+  padding:clamp(14px,1.6vh,24px) 10px;cursor:pointer;box-shadow:0 5px 0 #b39500;transition:transform .1s}
+.startbtn:active{transform:translateY(4px);box-shadow:none}
+.startbtn:disabled{background:transparent;color:#777;border:2px dashed #555;box-shadow:none;cursor:default}
+.tip{color:var(--muted);font-size:clamp(12px,.9vw,16px);line-height:1.6;margin:0}
+.tip b{color:var(--yellow)}
+.corner{flex:none;text-align:right;color:#8a8a8a;font-size:12px;padding:3px 12px 4px;background:var(--black);border-top:1px solid #222}
+@media (max-width:860px),(orientation:portrait){
+  body{overflow:auto}
+  .g-wrap{grid-template-columns:1fr;overflow:visible}
+  .opts.m2{grid-template-columns:1fr}
+}
+@media (orientation:portrait) and (min-width:600px){.opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-height:520px) and (orientation:landscape){.opt{min-height:44px;font-size:17px}.tip{display:none}.g-wrap{padding:8px;grid-template-columns:minmax(0,1fr) 230px}
+  .opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}.step h3,.panel h3{margin-bottom:8px}}
+
+#menu-screen{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;width:100%}
+#game-screen{display:none;flex:1 1 auto;min-height:0;flex-direction:column;width:100%;background:var(--black)}
+.top-bar{flex:none;display:flex;align-items:center;gap:12px;padding:10px clamp(10px,1.4vw,24px)}
+.back-btn{border:2px solid #555;background:var(--gray);color:var(--white);border-radius:10px;width:42px;height:38px;display:grid;place-items:center;cursor:pointer}
+.back-btn:hover{border-color:var(--yellow);color:var(--yellow)}
+.progress-container{flex:1 1 auto;height:14px;background:#333;border-radius:7px;overflow:hidden}
+.progress-bar{height:100%;width:0;background:var(--yellow);transition:width .3s}
+.progress-text{min-width:72px;text-align:right;font-weight:900;color:var(--yellow)}
+.game-content{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px clamp(10px,1.4vw,24px) 10px;overflow:hidden;position:relative}
+.info-row{width:100%;display:flex;justify-content:space-between;align-items:center;font-size:clamp(13px,1vw,18px);color:var(--muted)}
+#q-cert{background:var(--yellow);color:var(--black);font-weight:700;border-radius:999px;padding:2px 12px}
+.definition-box{width:100%;min-height:64px;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--gray);
+  border-left:6px solid var(--yellow);border-radius:14px;padding:8px 14px;color:var(--light);line-height:1.4}
+.question-container{flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:16px;width:100%;min-height:0}
+.audio-btn{flex:none;width:52px;height:52px;border-radius:50%;border:none;background:var(--yellow);box-shadow:0 4px 0 #b39500;display:grid;place-items:center;cursor:pointer}
+.audio-btn:active{transform:translateY(3px);box-shadow:none}
+.audio-icon{font-size:1.4rem}
+.question-box{font-size:clamp(28px,4vw,80px);font-weight:900;color:var(--white);min-height:45px;display:flex;align-items:center;justify-content:center;text-align:center}
+.missing-text{color:var(--yellow);font-size:1rem;font-weight:700}
+.input-area{width:100%}
+#user-input{width:100%;padding:12px 16px;font-size:clamp(20px,1.7vw,32px);border:3px solid var(--white);border-radius:14px;background:var(--white);color:var(--black);
+  outline:none;text-align:center;font-family:inherit;user-select:text;-webkit-user-select:text}
+#user-input:focus{border-color:var(--yellow);box-shadow:0 0 0 3px rgba(255,212,0,.35)}
+#result-display{display:none;width:100%;padding:12px 16px;font-size:clamp(20px,1.7vw,32px);border-radius:14px;background:var(--white);color:var(--black);text-align:center;font-weight:700}
+.char-correct{color:#3d9a00}.char-wrong{color:var(--no);text-decoration:underline}
+.feedback-msg{min-height:30px;font-weight:900;font-size:clamp(16px,1.3vw,24px);text-align:center}
+.msg-correct{color:var(--ok)}.msg-wrong{color:var(--no)}
+.controls-row{display:flex;gap:10px;width:100%;margin-top:auto}
+.ctrl-btn{flex:1;padding:12px 0;border-radius:12px;font-weight:900;font-size:clamp(15px,1.2vw,22px);cursor:pointer;border:2px solid transparent}
+.ctrl-btn:active{transform:translateY(3px)}
+.btn-prev{background:var(--gray);color:var(--white);border-color:#555}
+.btn-clear{background:transparent;color:var(--white);border-color:var(--white)}
+.btn-answer{background:var(--black);color:var(--yellow);border-color:var(--yellow)}
+.btn-next{background:var(--yellow);color:var(--black);border-color:var(--yellow)}
+.btn-disabled{background:#333;color:#777;pointer-events:none}
+#result-screen{display:none;flex:1 1 auto;flex-direction:column;justify-content:center;align-items:center;gap:14px;text-align:center;padding:20px}
+#result-screen h2{margin:0;font-size:clamp(30px,3.6vw,60px);color:var(--yellow)}
+#result-screen p{margin:0;font-size:clamp(17px,1.4vw,26px)}
+#result-screen .startbtn{width:auto;padding:14px 40px}
+#drag-handle{display:none}
+@media (min-width:900px) and (min-height:600px){.definition-box{font-size:clamp(18px,1.5vw,30px)!important;min-height:clamp(64px,12vh,160px)}
+  .audio-btn{width:clamp(52px,4.4vw,84px);height:clamp(52px,4.4vw,84px)}.audio-icon{font-size:clamp(1.4rem,2vw,2.4rem)}}
+@media (max-width:768px){
+  .question-container{flex:none}
+  #game-screen{height:50vh;position:absolute;top:0;left:0;right:0;z-index:100;border-bottom:3px solid var(--yellow)}
+  .game-content{justify-content:space-evenly;padding-bottom:34px;gap:4px}
+  .definition-box,.question-container,.input-area,.info-row{flex-shrink:1}
+  #drag-handle{display:flex;position:absolute;bottom:0;left:0;width:100%;height:30px;background:var(--gray);justify-content:center;align-items:center;cursor:ns-resize;touch-action:none}
+  #drag-handle::after{content:"";width:44px;height:5px;background:var(--yellow);border-radius:3px}
+  .audio-btn{width:40px;height:40px}.audio-icon{font-size:1.1rem}
+}
+</style>
+</head>
+<body oncontextmenu="return false;">
+<header class="topbar">
+  <span class="cat">拼寫練習</span>
+  <h1>C1詞庫 Part1（序號001–442）</h1>
+  <a class="home" href="../index.html">← 進階練習</a>
+</header>
+<div id="app-container">
+  <div id="menu-screen">
+    <div class="g-wrap">
+      <div class="steps">
+        <section class="step"><h3><span class="num">1</span>選擇遊戲方式</h3>
+          <div class="opts m2">
+            <div class="opt selected" id="mode-tw" onclick="selectMode('tw'); mdSetMode('看台語字拍羅馬字')"><span class="ic">漢</span><span class="tx">看台語字拍羅馬字<small>題目是台語漢字，輸入台羅拼音</small></span></div>
+            <div class="opt" id="mode-ro" onclick="selectMode('ro'); mdSetMode('看羅馬字拍台語字')"><span class="ic">Lô</span><span class="tx">看羅馬字拍台語字<small>題目是台羅拼音，輸入台語漢字</small></span></div>
+          </div></section>
+        <section class="step"><h3><span class="num">2</span>選擇題數</h3>
+          <div class="opts n">
+        <div class="opt" onclick="mdPickCount(this, 50, '50詞')"><span class="big">50</span><span class="u">詞</span></div>
+        <div class="opt" onclick="mdPickCount(this, 100, '100詞')"><span class="big">100</span><span class="u">詞</span></div>
+        <div class="opt" onclick="mdPickCount(this, 150, '150詞')"><span class="big">150</span><span class="u">詞</span></div>
+        <div class="opt" onclick="mdPickCount(this, 200, '200詞')"><span class="big">200</span><span class="u">詞</span></div>
+        <div class="opt" onclick="mdPickCount(this, 250, '250詞')"><span class="big">250</span><span class="u">詞</span></div>
+        <div class="opt" onclick="mdPickCount(this, 300, '300詞')"><span class="big">300</span><span class="u">詞</span></div>
+        <div class="opt" onclick="mdPickCount(this, 350, '350詞')"><span class="big">350</span><span class="u">詞</span></div>
+        <div class="opt" onclick="mdPickCount(this, 400, '400詞')"><span class="big">400</span><span class="u">詞</span></div>
+        <div class="opt" onclick="mdPickCount(this, 'all', '全部（442詞）')"><span class="big">全部</span></div>
+          </div></section>
+      </div>
+      <aside class="panel"><h3><span class="num">3</span>開始練習</h3>
+        <div class="sum"><div><span>方式</span><b id="sum-mode">看台語字拍羅馬字</b></div><div><span>題數</span><b id="sum-count" class="none">尚未選擇</b></div><div><span>題庫</span><b>442 詞</b></div></div>
+        <button class="startbtn" id="md-start" disabled onclick="startGame(md.count)">開始遊戲</button>
+        <p class="tip"><b>限台語輸入法</b>：請先安裝教育部台語輸入法再作答（安裝連結在進階練習首頁）。按 Enter 送出、🔊 聽發音。</p>
+      </aside>
+    </div>
+  </div>
+  <div id="game-screen">
+    <div class="top-bar">
+      <button class="back-btn" onclick="returnToMenu()" title="返回選單">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      </button>
+      <div class="progress-container"><div class="progress-bar" id="progress-bar"></div></div>
+      <div class="progress-text" id="progress-text">1 / 50</div>
+    </div>
+    <div class="game-content">
+      <div class="info-row"><span id="q-id">序號：1</span><span id="q-cert">認證：成大</span></div>
+      <div class="definition-box" id="definition-box">華語釋義載入中...</div>
+      <div class="question-container">
+        <button class="audio-btn" id="audio-btn" onclick="playAudio()"><span class="audio-icon">🔊</span></button>
+        <div class="question-box" id="question-display">題目</div>
+      </div>
+      <div class="input-area">
+        <input type="text" id="user-input" placeholder="在此輸入..." autocomplete="off" autocapitalize="none" spellcheck="false">
+        <div id="result-display"></div>
+      </div>
+      <div class="feedback-msg" id="feedback-msg"></div>
+      <div class="controls-row">
+        <button class="ctrl-btn btn-prev" onclick="prevQuestion()">上一頁</button>
+        <button class="ctrl-btn btn-clear" onclick="clearInput()">清除</button>
+        <button class="ctrl-btn btn-answer" id="action-btn" onclick="showAnswer()">解答</button>
+        <button class="ctrl-btn btn-next" onclick="nextQuestion()">下一頁</button>
+      </div>
+    </div>
+    <div id="drag-handle"></div>
+  </div>
+  <div id="result-screen">
+    <h2>恭喜完成！</h2>
+    <p>你已經完成本次練習</p>
+    <button class="startbtn" onclick="returnToMenu()">返回選單</button>
+  </div>
+</div>
+<div class="corner">© 2026 詹宗龍（臺中明道中學）</div>
+
+<script>
+/* 黑黃白選單共用：題數選擇＋摘要＋開始鈕 — © 2026 詹宗龍（臺中明道中學） */
+var md = { count: null };
+function mdPickCount(el, n, label) {
+  md.count = n;
+  el.parentNode.querySelectorAll('.opt').forEach(function (b) { b.classList.remove('sel'); });
+  el.classList.add('sel');
+  var s = document.getElementById('sum-count'); s.textContent = label; s.className = '';
+  document.getElementById('md-start').disabled = false;
+}
+function mdSetMode(label) { var s = document.getElementById('sum-mode'); if (s) { s.textContent = label; s.className = ''; } }
+</script>
+<script>
+    // --- 音效產生器 (Audio Context) ---
+    // 答對音效：高頻叮咚
+    // 答錯音效：低頻嗡嗡
+    var audioCtx = null; // Changed let to var to avoid redeclaration issues
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration) {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        
+        // 音量漸弱
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrectSound() {
+        // 播放兩聲高音
+        playTone(880, 'sine', 0.1);
+        setTimeout(() => playTone(1760, 'sine', 0.4), 100);
+    }
+
+    function playWrongSound() {
+        // 播放一聲低頻鋸齒波
+        playTone(150, 'sawtooth', 0.4);
+    }
+
+
+    // --- 題目資料庫 (CSV raw data) ---
+    // 序號,羅馬字,台語字,華語釋義,認證
+    var rawData = `1,a-lú-mih,,鋁。金屬元素之一。其色銀白，質輕不鏽，富延展性，傳熱及導電性極佳。可加工製成電線、鋁箔、日常用器皿等,成大
+2,khin-gîn/khin-gûn,輕銀,鋁。金屬元素之一。其色銀白，質輕不鏽，富延展性，傳熱及導電性極佳。可加工製成電線、鋁箔、日常用器皿等,教育部
+3,a-sa-puh-luh,,形容人或事物粗俗、不入流。例：你莫佇遐做一寡仔阿沙不魯的代誌。,成大
+4,a-sa-puh-luh,阿沙不魯,形容人或事物粗俗、不入流。例：你莫佇遐做一寡仔阿沙不魯的代誌。,教育部
+5,a-sià,阿舍,公子哥兒、紈褲子弟、紈褲子弟。富貴人家的子弟，浮華而不知人間疾苦,
+6,ánn,,(哄)小妹去睏；匼ánn，匼日頭(遮太陽)；囡仔匼予睏；匼孤爿(偏袒),成大
+7,ai-pi,哀悲,(悲哀),
+8,àm-hun,暗昏,(黃昏),
+9,âm-khang,涵空,(涵洞)、涵空龜 âm-khang-ku(井底之蛙),
+10,ām-kin/ām-kun,頷巾,(圍巾),
+11,ām-kui,頷胿,(脖子的前面部分),
+12,an-tah,安搭,1.安頓。例：我才搬來，猶未安搭好勢。2.安撫。例：暫且共伊安搭一下，賰的後擺才閣講。,
+13,a-niâ,阿娘,(母親),
+14,ang-á-thâu,尪仔頭,1.玩偶的頭。2.面孔、五官長相。例：尪仔頭袂䆀。同：尪仔面 ang-á-bīn 3.瞳孔。,
+15,ang-î,尪姨,靈媒、巫婆。能通鬼神，以替人祈福消災、占卜等為職業的女子。例：牽尪姨，順話尾。(靈媒常要抓住對方的心意，揣摩對方的意思，讓自己說的話與對方配合。比喻揣摩情況來決定說話內容)；尪姨順話尾，假童害眾人,
+16,àng-tōo,甕肚,1.形容人自私、小器，隱瞞祕密或好處不肯告訴別人。例：伊彼个人誠甕肚，有好空的攏毋共人講。2.陰險、陰毒。例：伊真甕肚，我真驚會去予伊害著。,
+17,âng-gê,,紅潤。豐滿而帶有紅色的光澤。本詞目常重疊使用。例：伊的面色紅牙紅牙，看著真勇健。,成大
+18,âng-gê,紅牙,紅潤。豐滿而帶有紅色的光澤。本詞目常重疊使用。例：伊的面色紅牙紅牙，看著真勇健。,教育部
+19,âng-kam,,魚類。為新興養殖魚種，體長可達一百五十公分，肉質堅實鮮美，極富油脂，為各類生魚片中之極品,成大
+20,âng-kam,紅魽,魚類。為新興養殖魚種，體長可達一百五十公分，肉質堅實鮮美，極富油脂，為各類生魚片中之極品,教育部
+21,ang-keh-toh,,祭桌。擺設祭品以祭祀神明、供奉祖先的桌子,成大
+22,ang-kè-toh,尪架桌,祭桌。擺設祭品以祭祀神明、供奉祖先的桌子,教育部
+23,áu-bân,拗蠻,野蠻、蠻橫無理。個性固執而不通情理的人。例：伊就是傷拗蠻才會遐顧人怨,
+24,àu/àu huè/àu hè,漚/漚貨,爛貨。壞的東西或不好的東西。也用來罵人,
+25,àu-kóo,漚古,1.腐朽破舊，毫無價值。例：這古董予你看做漚古物！2.形容拙劣、差勁，令人嫌惡的人、事、物。例：你毋通做彼種漚古代。(你不要做那種下三濫的事),
+26,àu-sái,漚屎,低劣,成大
+27,àu-sái-pōo,漚屎步,惡劣手段、方法或計謀。例：漚屎步盡展,教育部
+28,bái-tsâi,,1.難看。例：你坐按呢有夠䆀才。2.事情不好或情況不妙。例：真䆀才 tsin bái-tsâi(情況不妙),成大
+29,bái-tsâi,䆀才,1.難看。例：你坐按呢有夠䆀才。2.事情不好或情況不妙。例：真䆀才 tsin bái-tsâi(情況不妙),教育部
+30,ba̍k-kînn,目墘,(眼眶),
+31,ba̍k-kng,目光,(眼神),
+32,bān-mi̍h,萬物,宇宙間的一切物類,成大
+33,bān-bu̍t,萬物,宇宙間的一切物類,教育部
+34,bān-tshian,萬千,(數量很多),
+35,ba̍uh-thâu,貿頭,包商,成大
+36,bāu-thâu,貿頭,包商,教育部
+37,bē-tshun-tshia,,通常指經過言詞勸說之後，仍無法改變對方的態度或想法。例：佮伊講話，見講嘛講袂伸捙。,成大
+38,bē-tshun-tshia/buē-tshun-tshia,袂伸捙,通常指經過言詞勸說之後，仍無法改變對方的態度或想法。例：佮伊講話，見講嘛講袂伸捙。,教育部
+39,bí-ká,米絞,(碾米機；碾米廠),
+40,bīn-tsik,面積,(地面、物體表面或平面圖形的大小),
+41,bīn-kin/bīn-ku,面巾,(毛巾。盥洗時用來擦拭手臉的布),
+42,bīn-thàm,面探,(察言觀色；當面問清楚),
+43,bíng-hóo,猛虎,(猛勇的虎),
+44,bîng-liâu,明瞭,(明白了解),
+45,Bîng-tī thian-hông,明治天皇,,
+46,Bîng-tiâu,明朝,(朝代名),
+47,bīng-tê,命題,出題目,成大
+48,bīng-tê/bīng-tuê,命題,出題目,教育部
+49,biō-káu,廟口,(寺廟的前面),
+50,bú-kū,母舅,稱謂。母親的兄弟。俗稱「阿舅」(a-kū),
+51,bô-bóo-bô-kâu,無某無猴,單身、沒有家累。指一個人沒有妻子兒女。例：無某無猴，穿衫破肩胛頭。(沒有妻子，衣服破了也沒人補。是單身漢自我調侃的俏皮話),
+52,bô-kái,無解,(沒有解答),
+53,bô-liōng,無量,小氣、沒度量，吝嗇，不大方。例：伊彼个人真無量，攏毋肯共人鬥相共。(他那個人很沒度量，都不肯幫別人的忙),
+54,bo̍k/bo̍k-hui,莫/莫非,難道。加強語氣的反問詞。例：莫非代誌是伊做的，無，伊哪會攏無出面？,
+55,bo̍k-kuài,莫怪,難怪、怪不得。例：原來是欲佮查某囡仔去看電影，莫怪伊喙笑目笑,
+56,bo̍k/bo̍k-su/bo̍k-tiûnn,牧/牧師/牧場,基督新教的傳教士稱為牧師，取牧者與教師二義; 牧養牛、羊的場所,
+57,bo̍k-bo̍k-siû,,1.在水中掙扎，載沉載浮的游。例：我看著有人佇水底沐沐泅。2.比喻身處困境，求助無門。例：伊做伊走，放我佇遮沐沐泅。,成大
+58,bo̍k-bo̍k-siû,沐沐泅,1.在水中掙扎，載沉載浮的游。例：我看著有人佇水底沐沐泅。2.比喻身處困境，求助無門。例：伊做伊走，放我佇遮沐沐泅。,教育部
+59,bông/suann-bông/bông-bū,雺/山雺/雺霧,大霧、霧氣。例：山雺(山上的霧氣)、雺霧(霧氣),
+60,bông-hûn,亡魂,死者的靈魂。例：牽亡魂(牽引亡魂、通靈。是傳統喪禮的一部分),
+61,bōng-khòng,墓壙,墓穴。埋葬棺木的洞穴。例：痟狗舂墓壙。(瘋狗爭著要進墓穴吃屍體。比喻爭先恐後),
+62,bú-kū-kong,母舅公,舅公。稱謂。奶奶或是外婆的兄弟。例：天頂天公，地下母舅公。(天上天公最大，人間母舅公最大。傳統上對母舅公都十分尊敬，常做家庭糾紛的公親或見證人),
+63,bú-tshī,武市,(從事外送、大宗買賣，主動開發客源的商行),
+64,bûn-tshī,文市,(零售商行),
+65,buā-tsháu,,銳葉小槐花。木本植物。長一到兩公尺，葉子互生，三出複葉，葉片披針形，花黃色或綠白色，產在臺灣中北部的山野。主要治療吐血、肝病、婦女病、腹痛、燙傷潰爛等。民間也作為避邪草。浸泡在熱水後，擦拭手腳或全身，以求消災去厄,成大
+66,bua̍h-tsháu,茉草,銳葉小槐花。木本植物。長一到兩公尺，葉子互生，三出複葉，葉片披針形，花黃色或綠白色，產在臺灣中北部的山野。主要治療吐血、肝病、婦女病、腹痛、燙傷潰爛等。民間也作為避邪草。浸泡在熱水後，擦拭手腳或全身，以求消災去厄,教育部
+67,buán-tshing,滿清,清朝,成大
+68,Buán-tshing,滿清,清朝,教育部
+69,bué-khuì,尾氣,(後勁),成大
+70,bué-khuì/bé-khuì,尾氣,,教育部
+71,bûn-jîn,文人,讀書人或從事文學的人,成大
+72,bûn-jîn/bûn-lîn,文人,讀書人或從事文學的人,教育部
+73,bûn-su,文書,(統稱公文、契約等文件),
+74,bûn-tshī,文市,(零售商行),
+75,ē-ji̍t/ē-li̍t,下日,(改天),
+76,gâ,牙,螺絲紋。例：這螺絲是正 gâ 抑是倒 gâ,
+77,gán-tsiân/gán-tsîng,眼前,,
+78,gé-sé,,(諷刺；譏笑),
+79,gè,,啃甘蔗,成大
+80,gè/gè kam-tsià,嚙/嚙甘蔗,啃甘蔗,教育部
+81,gê/gê-tsô,牙/牙槽,齒槽。包圍牙根，使牙根嵌入的凸凹腔。例：鐵齒銅牙槽(比喻頑固嘴硬的人)。,
+82,gê-siâu,,表示討厭的粗俗用語。例：我誠㤉潲伊彼款做代誌的態度,成大
+83,gê-siâu,㤉潲,表示討厭的粗俗用語。例：我誠㤉潲伊彼款做代誌的態度,教育部
+84,gí,語,人類用嘴說出來的話，由語音、語彙和語法所組成，是表達情意、傳遞思想的重要工具,成大
+85,gí-giân/gú-giân,語言,人類用嘴說出來的話，由語音、語彙和語法所組成，是表達情意、傳遞思想的重要工具,教育部
+86,gí-gī,語義,語言內字組與符號之間的關係,成大
+87,gí-gī/gú-gī,語義,語言內字組與符號之間的關係,教育部
+88,gí-im,語音,字在口語中所念的音,成大
+89,gí-im/gú-im,語音,字在口語中所念的音,教育部
+90,gī-niū,,消遣、排遣。排解愁悶、消磨時間。例：一陣老大人佇公園仔內面開講、行棋做議量,成大
+91,tsò-gī-niū/tsuè-gī-niū,做議量,消遣、排遣。排解愁悶、消磨時間。例：一陣老大人佇公園仔內面開講、行棋做議量,教育部
+92,gia̍h-kî-kun-á,gia̍h 旗軍仔,本指大官出巡時舉旗的小兵，引申為隨聲附和的小人物，或舞台上跑龍套的小角色。例：大腳數共攑旗軍仔借錢。(大角色跟小角色借錢。俗語，比喻擅於賺錢的人不如懂得節儉的人),成大
+93,gia̍h-kî-kun-á,攑旗軍仔,本指大官出巡時舉旗的小兵，引申為隨聲附和的小人物，或舞台上跑龍套的小角色。例：大腳數共攑旗軍仔借錢。(大角色跟小角色借錢。俗語，比喻擅於賺錢的人不如懂得節儉的人),教育部
+94,giám-ngē,,1.堅強。例：弓蕉去予風颱掃倒了了，咱著較儼硬咧，重來。2.硬朗。例：我老罔老，跤手猶真儼硬。,成大
+95,giám-ngē/giám-ngī,儼硬,1.堅強。例：弓蕉去予風颱掃倒了了，咱著較儼硬咧，重來。2.硬朗。例：我老罔老，跤手猶真儼硬。,教育部
+96,giâm-kun,閻君,閻羅、閻羅王。地獄中的鬼王，在佛經中是地獄的審判者，掌管人間的生死、壽命，及獎善罰惡諸事,成大
+97,Giâm-kun,閻君,閻羅、閻羅王。地獄中的鬼王，在佛經中是地獄的審判者，掌管人間的生死、壽命，及獎善罰惡諸事,教育部
+98,giat-láu,,(滾蛋；淘汰),
+99,gîm-tsînn,砛簷,(指舊式房屋屋簷下的臺階處),
+100,gīm,扲,把東西緊緊地握在手中。例：伊共錢扲牢牢 gīm-tiâu-tiâu,成大
+101,gīm/gîm,扲,把東西緊緊地握在手中。例：伊共錢扲牢牢 gīm-tiâu-tiâu,教育部
+102,gín-á-phí,,小毛頭。指小孩，但含有貶意。例：一个囡仔疕，閣足𠢕變鬼變怪。,成大
+103,gín-á-phí,囡仔疕,小毛頭。指小孩，但含有貶意。例：一个囡仔疕，閣足𠢕變鬼變怪。,教育部
+104,gín-á-tioh,,(天真浪漫),
+105,gîng-sim,凝心,抑鬱、鬱結。因為心煩而不開朗。例：這件代誌予伊足凝心的。(這件事情讓他很抑鬱),
+106,gió-toh,,上等,成大
+107,siōng-tíng,上等,,教育部
+108,gōng-gōng-á,戇戇仔,(笨笨的、傻傻地),
+109,gōo-sî-tsuí,午時水,(指端午節的中午由井裡打上來的水，據說飲用此水有益身體),
+110,gû-pi,,1.昆蟲名。體形為長橢圓形。胸腹部有花紋，夏季常出現於水邊。會吸食牛、馬血液，對牛、馬家畜為害甚大。2.形容吝嗇的人，就像牛螕吸血一樣只有進沒有出。例：伊敢若牛螕咧，欲叫伊出錢是無可能的代誌。,成大
+111,gû-pi,牛螕,1.昆蟲名。體形為長橢圓形。胸腹部有花紋，夏季常出現於水邊。會吸食牛、馬血液，對牛、馬家畜為害甚大。2.形容吝嗇的人，就像牛螕吸血一樣只有進沒有出。例：伊敢若牛螕咧，欲叫伊出錢是無可能的代誌。,教育部
+112,guî-ki,危機,,
+113,gûn-hâng/gîn-hâng,銀行,,成大
+114,gîn-hâng/gûn-hâng,銀行,,教育部
+115,gûn-phiò/gîn-phiò,銀票,鈔票。也就是紙幣,成大
+116,gîn-phiò/gûn-phiò,銀票,鈔票。也就是紙幣,教育部
+117,hâ-tsû,瑕疵,,成大
+118,hâ-tshû,瑕疵,,教育部
+119,hânn,,(懸而未決),
+120,hiân--jî-bē-kuat,懸而未決,,
+121,hannh,,表示驚訝的反問。例：唅？你講啥？,成大
+122,hannh,唅,表示驚訝的反問。例：唅？你講啥？,教育部
+123,tik-ha̍h/tsàng-ha̍h/tsià-ha̍h,竹箬/粽箬/蔗箬,竹籜/粽笚、粽籜/包覆在甘蔗莖外的硬葉,
+124,hái-hái,海海,形容諸般事務並沒有特別值得期待的地方，一切只是普普通通而已。例：人生海海(人生也不過就是如此而已)。,
+125,hái-iah,,計程車,成大
+126,hài-ià,,計程車,教育部
+127,hái-kat-á,,西裝頭,成大
+128,hái-kat-lá,,西裝頭,教育部
+129,hâi-jî,孩兒,孩子,成大
+130,hâi-jî/hâi-lî,孩兒,孩子,
+131,hainn-hainn-kiò,哼哼叫,痛苦的呻吟聲；不滿的抱怨聲。例：你莫佇遐哼哼叫，我聽甲足煩呢！(你不要在那邊哼哼叫，我聽得煩死了！),
+132,hak,,購置房子/購置田產,成大
+133,hak-tshù/hak tshân-hn̂g,蓄厝/蓄田園,購置房子/購置田產,教育部
+134,Hàn-tiâu,漢朝,(朝代名),
+135,hân-san,,畏縮、不大方，害怕花費導致過於簡陋簡樸而不體面。例：無彩伊家財萬貫，煞顛倒寒酸，一箍銀都毋肯寄付。,成大
+136,hân-suan,寒酸,畏縮、不大方，害怕花費導致過於簡陋簡樸而不體面。例：無彩伊家財萬貫，煞顛倒寒酸，一箍銀都毋肯寄付。,教育部
+137,hàu-lâm/hàu-lâm-sîn/hàu-lâm-bīn,孝男/孝男神/孝男面,(孝子。為父母親服喪的兒子)/(愛哭鬼)/(哭喪著臉。帶有貶意的說法。例：孝男面，無人緣。),
+138,hé-kì,夥計,1.受人僱用，替人做事的人。2.姘婦。例：鬥夥計(已婚男人包養情婦)。,成大
+139,hué-kì/hé-kì,夥計,1.受人僱用，替人做事的人。2.姘婦。例：鬥夥計(已婚男人包養情婦)。,教育部
+140,hē-lo̍h,下落,去向、去處。例：下落不明(不知去向),
+141,hî-ùn,魚塭,在海邊平地上，挖掘出來引水養殖魚類的池塘,成大
+142,hî-ùn/hû-ùn,魚塭,在海邊平地上，挖掘出來引水養殖魚類的池塘,
+143,hiam-lua̍h-lua̍h,,形容很辣,成大
+144,hiam-lua̍h-lua̍h,薟辣辣,形容很辣,教育部
+145,hiàm,,1.喊、叫。2.出聲驅趕。3.召喚。4.叫做、稱做。5.開口叫人、打招呼。,成大
+146,hiàm,喊,1.喊、叫。2.出聲驅趕。3.召喚。4.叫做、稱做。5.開口叫人、打招呼。,
+147,hiáng-liāng,響亮,(1. 聲音宏亮。2. 具知名度),
+148,hiat,,丟掉。例：門跤口彼袋糞埽順紲提出去擲㧒捔,成大
+149,hiat/tàn-hiat-ka̍k,㧒/擲㧒捔,丟掉。例：門跤口彼袋糞埽順紲提出去擲㧒捔,教育部
+150,hia̍t/tiám-hia̍t,穴/點穴,1.地理師堪定的墓穴位置。2.指拳術師用手指點人身上的穴位，使其麻木。,
+151,hiau,僥,1.原本是平整的物體因外力或放久了而變彎。2.翻動、搜尋。3.背約、毀約。,
+152,hiau-sim,僥心,變心。改變原來對某人的感情與心意。例：伊已經僥心愛別人矣。,
+153,hiau-hīng,僥倖,1.表可憐、惋惜、遺憾。例：真僥倖，嫁彼款的翁。2.行事不義，有負其他人。例：你做這種僥倖代，以後會袂好死。,
+154,hiau/hiau-hiông,梟/梟雄,(強悍兇狠狡詐的領袖人物),
+155,hin,,(那裡頭。例：相片 hin 內底有我少年時的紀持),成大
+156,hing,興,(興盛),
+157,hìng-thī,,多話、枝枝節節，雜七雜八的言語，且內容多是無關緊要的閒扯淡,成大
+158,thi̍h-siông,喋詳,多話、枝枝節節，雜七雜八的言語，且內容多是無關緊要的閒扯淡,教育部
+159,hîng-ui,形威,(威風；威嚴。成大),
+160,hīng,貺,逢喜事主人送親友禮物宣告喜訊。例：貺紅卵(送紅蛋)、貺油飯(送油飯)。,
+161,hit-tia̍p,,那時、那陣子,成大
+162,hit-tang-tsūn/hit-tah,彼當陣/彼搭,那時、那陣子。常合音為「向陣」/處、那裡。離說話者比較遠的地方。例：咱來去踅彼搭的夜市仔，好無？,教育部
+163,hó-tāi,好代,1.好事、善行事。例：做好代才會出好囝孫。2.好消息。例：這是好代，趕緊講予眾人知。,
+164,hô-hong/hô-jîn/hô-lîn/hô-hóng/hô-tsāi/hô-tshù,何方/何人/何況/何在/何處,用於比較之詞。常會對所比較的事物，有進一步的推論。例：這台車大人都騎袂行矣，何況是一个囡仔。;(在那裡),
+165,hō-thâu,號頭,1.記號、標誌。2.商標。3.號角、喇叭。,
+166,hònn-hiân,好玄,(好奇),
+167,ho̍k/khue-ho̍k,復/恢復,,
+168,hòng-sàng-thâu,放送頭,1.本指廣播電臺的放送亭、廣播站，後多指擴音器。2.引申指愛搬弄是非的人、大嘴巴。,
+169,huat-hông,發癀,(發炎。傷口因感染而產生發紅、腫脹或疼痛等症狀),
+170,hōng-sū,奉祀,(供奉祭祀),
+171,hóo/hóo--lâng/hóo-tshìn-thâu,唬/唬人/唬秤頭,(騙人、哄人)/(偷斤兩。指做生意偷斤減兩，占顧客便宜。例：有的生理人做生理會唬秤頭，所以買物件愛細膩),
+172,hòo,戽,1.把水從水池或井中引上來並潑灑。2.把東西丟出去、把人轟出去。3.事情隨便做一做。須重疊使用。4.形容人的下巴突出，像戽斗一樣。,
+173,hôo-liù-liù,,形容說得天花亂墜、誇大不實,成大
+174,hôo-luì-luì,糊瘰瘰,形容說得天花亂墜、誇大不實,教育部
+175,Hōo-bué,滬尾,新北市淡水,成大
+176,Hōo-bué/Hōo-bé,滬尾,新北市淡水,教育部
+177,hōo-hōo,戶戶,每家每戶,成大
+178,ke-ke-hōo-hōo,家家戶戶,每家每戶,教育部
+179,hu-loh,,(洗澡),成大
+180,hù-jū,富裕,錢財充足,成大
+181,hù-jū/hù-lū,富裕,錢財充足,教育部
+182,hū-jîn,婦人,成年女子，多指已婚的女性,成大
+183,hū-jîn/hū-lîn,婦人,成年女子，多指已婚的女性,教育部
+184,huānn-tiānn,,(打定),成大
+185,huānn/huānn-puânn/huānn-tiánn-tsàu,扞/扞盤/扞鼎灶,(操盤、掌管。例：所有的代誌攏是伊咧扞盤，佮我無底代)/(掌灶、掌廚。例：阮兜是阮阿爸咧扞鼎灶),
+186,huâinn-hîng,橫行,(不循正道而行),
+187,huan-siā,番社,(原住民的部落),
+188,huan-tshia,,通常指經過言詞勸說之後，仍無法改變對方的態度或想法,成大
+189,bē-huan-tshia/buē-huan-tshia,袂翻捙,通常指經過言詞勸說之後，仍無法改變對方的態度或想法,教育部
+190,huán-bīn,反面,(突變、翻臉),
+191,huán-luān,反亂,(叛亂、造反),
+192,huān-hiâm,犯嫌,(犯忌、犯疑、受人詬病、嫌疑),
+193,huat-kànn,發酵,醣類被菌類或細菌在無氧情況下代謝後，變成另一種有機物，經常生成酒精，這種作用稱為「發酵」，或單稱「發 huat」,成大
+194,huat-kànn,發酵,醣類被菌類或細菌在無氧情況下代謝後，變成另一種有機物，經常生成酒精，這種作用稱為「發酵」，或單稱「發 huat」,教育部
+195,Hue-liân-káng,花蓮港,,成大
+196,Hua-liân-káng/Hua-lian-káng/Hue-lian-káng,花蓮港,,教育部
+197,hué-hu,火灰,灰燼。指物體燃燒後所餘留的屑末,成大
+198,hué-hu/hé-hu,火烌,灰燼。指物體燃燒後所餘留的屑末,教育部
+199,hué-kì,伙計,勾搭姘頭,成大
+200,tàu-hué-kì/tàu-hé-kì,鬥夥計,勾搭姘頭,教育部
+201,huè-thâu,歲頭,歲數、年齡。指年齡的大小,成大
+202,huè-thâu/hè-thâu,歲頭,歲數、年齡。指年齡的大小,教育部
+203,huê,,(接觸並拖過；擦撞，成大),
+204,huê tshiú-ki-á,手機仔,(滑手機),教育部
+205,huê-tńg,回轉,回去、回轉、返回,成大
+206,huê-tńg/hê-tńg,回轉,回去、回轉、返回,教育部
+207,huē-tsê,會齊,(同心同力、集合),
+208,huí,毀,(破壞、毀滅。例：毀滅 huí-bia̍t、毀了了 huí-liáu-liáu),
+209,huì-sîn,費神,花費精神。有時也當做麻煩別人，或感謝他人幫忙的客套話。例：我家己想辦法，毋免你費神。,
+210,hun-hun/hun-jiáu/hun-liáu/kiù-hun,紛紛/紛擾/糾紛,(接連不斷的樣子)/(混亂、凌亂)/(有爭執的事情),
+211,hun-puânn,薰盤,(菸灰缸),
+212,hûn-phik,魂魄,(附於人體的精神靈氣),
+213,hūn-gîng-thôo,混凝塗,(水泥),成大
+214,i/piān-i,衣/便衣,(平時所穿的衣服)、我身騎白馬走三關，改換素衣回中原,
+215,I-sik-lia̍t,以色列,,
+216,I-tāi-lī,義大利,,
+217,î-it,唯一,獨一無二,成大
+218,uî-it,唯一,獨一無二,教育部
+219,î-tshî,維持,維護保持,成大
+220,î-tshî/uî-tshî,維持,維護保持,教育部
+221,ia̍h,,(也，成大),
+222,ia̍h/a̍h/ah/iā,抑/也,,教育部
+223,ián-piàn,演變,(事物在時間流逝的過程中所產生的變化),
+224,iàu-hāi,要害,,
+225,ín--lâng,允人,答應別人,成大
+226,ín--lâng/ún--lâng/ín-thâu-lōo/ín-tsún/ún-tsún,允人/允頭路/允准,答應別人/找工作/允許、准許,教育部
+227,íng-pái,往擺,以前、早先。例：往擺伊足無愛來阮兜。,
+228,ióng-si̍t,養殖,(飼養、繁殖水產動植物),
+229,iông-ha̍p,融合,(融化匯合),
+230,iông-ún,容允,允許。容許、許可。例：就我所知，伊無可能容允你烏白來。,成大
+231,iông-ín/iông-ún,容允,允許。容許、許可。例：就我所知，伊無可能容允你烏白來。,教育部
+232,it-lia̍p-it,一粒一,1.最好的、第一流的。例：這擺欲替伊開刀的醫生攏是一粒一的。2.最投契的。例：阿英佮我是一粒一的好朋友。,
+233,it-tsīn,一盡,(悉數),
+234,iu-iu-á,,隱隱作痛。例：我的腹肚幽幽仔疼,成大
+235,iu-iu-á-thiànn,幽幽仔疼,隱隱作痛。例：我的腹肚幽幽仔疼,教育部
+236,iù-jī,幼膩,細嫩、細膩,成大
+237,iù-jī/iù-lī,幼膩,細嫩、細膩,教育部
+238,iû-sé-sé,油洗洗,形容人油水很多，即外快很多的意思。例：伊趁甲油洗洗。,成大
+239,iû-sé-sé/iû-sué-sué,油洗洗,形容人油水很多，即外快很多的意思。例：伊趁甲油洗洗。,教育部
+240,iūnn-siùnn,樣相,(模樣；姿態),
+241,jî-í,而已,表示限制或讓步，相當於口語的「罷了」,成大
+242,jî-í/lî-í,而已,表示限制或讓步，相當於口語的「罷了」,教育部
+243,jî-ká-ká,,形容很亂,成大
+244,jû-ká-ká/lû-ká-ká,挐絞絞,形容很亂,教育部
+245,jî-tsháng-tsháng,,形容非常雜亂，毫無條理。例：規間厝舞甲挐氅氅,成大
+246,jû-tsháng-tsháng/lû-tsháng-tsháng,挐氅氅,形容非常雜亂，毫無條理。例：規間厝舞甲挐氅氅,教育部
+247,jī-jī-pat,二二八,臺灣近代史上影響深遠的歷史事件。起因於一件圓環緝煙意外事件，而引發全島抗爭行動,成大
+248,Jī-jī-pat/Lī-lī-pat,二二八,臺灣近代史上影響深遠的歷史事件。起因於一件圓環緝煙意外事件，而引發全島抗爭行動,教育部
+249,jiàn-bà,,(夾克),
+250,jia̍t-huà,熱化,,成大
+251,jia̍t-huà/lia̍t-huà,熱化,,教育部
+252,jû-tshú,如此,1.不過爾爾。不過就是這樣而已。例：不過是如此如此爾爾。2.如此云云，表示就是這樣。例：代誌就是如此如此,成大
+253,jû-tshú-jû-tshú/lû-tshú-lû-tshú,如此如此,1.不過爾爾。不過就是這樣而已。例：不過是如此如此爾爾。2.如此云云，表示就是這樣。例：代誌就是如此如此,教育部
+254,ka-ia̍h,,指生意興隆的樣子。例：這間店的生理真交易。,成大
+255,ka-ia̍h,交易,指生意興隆的樣子。例：這間店的生理真交易。,教育部
+256,ka-tang,茄苳,(木本植物。一種半落葉性的喬木，枝幹直立，枝葉開展且茂密，樹皮呈赤褐色，幹面則呈現鱗狀剝落。是臺灣鄉間常見的樹種),
+257,ka-tông,家童,(童僕),
+258,ka-tsâi,家財,,成大
+259,ka-tsâi bān-kuàn,家財萬貫,,教育部
+260,ka-tsáu,虼蚤,(跳蚤),
+261,kà-ha̍k,教學,教師將知識、技能傳授給學生,成大
+262,kàu-ha̍k/kà-o̍h,教學,教師將知識、技能傳授給學生,教育部
+263,kā-tshuì,咬喙,指吃了尚未成熟的水果，例如香蕉或是柿子，嘴裡有一種澀澀的感覺。例：柿仔若猶未熟，食著會咬喙。,
+264,kânn,,1.兼有、包含、連帶。例：這味有含佇內底。(這個成分包含在裡面)；痰含血 thâm kânn hueh(痰中帶血)。2.帶著、帶在身邊。例：一个死翁的查某人閣含兩个囡仔，日子無好過。,成大
+265,kânn,含,1.兼有、包含、連帶。例：這味有含佇內底。(這個成分包含在裡面)；痰含血 thâm kânn hueh(痰中帶血)。2.帶著、帶在身邊。例：一个死翁的查某人閣含兩个囡仔，日子無好過。,教育部
+266,kâi,kâi 量詞,一 kâi 遮大 kâi,成大
+267,kak-gîn,角銀,銅板。銅製的錢幣。今多泛稱硬幣,成大
+268,gîn-kak-á/gûn-kak-á,銀角仔,銅板。銅製的錢幣。今多泛稱硬幣,教育部
+269,kang-gē,工藝,消遣。例：無聊的時陣，就來變工藝。,
+270,kau-kài,交界,(交界、分界線),
+271,kau-penn/kau-pinn,交繃,1.愛挑剔、計較，喜歡唱反調，讓人感到為難。例：伊真交繃，正經叫伊主意伊閣毋敢。2.因為不滿而與人發生糾紛。例：頂日仔阮捌得失伊，伊毋才定定來咧交繃。 (前些日子我們曾經得罪他，因此他才常常來找麻煩。)；起交繃 khí kau-penn(起糾紛、因不滿而抗拒)。,
+272,kau-tiāng/kau-tiōng,交仗,託付。例：你定定散散，阿爸的代誌欲按怎交仗予你。,
+273,kau-tînn,交纏,1.指人死後陰魂糾纏不清。也指人際關係、疾病事物等糾纏煩擾不休。例：死都死囉！毋通閣來交纏。；查某人做月內的時，若無細膩著著月內風，是會交纏一世人喔！2.事情錯綜複雜。例：代誌誠交纏。,
+274,káu/tshàu-iû-káu,垢/臭油垢,(積久發臭難以清潔的油汙。例：你的枕頭囊臭油垢味誠重),
+275,kàu-ki̍k,到極,(非常、至極),
+276,kàu-kìng,較勁,(比較本領或能力的高下),
+277,kāu-uē-sái,厚話屎,廢話太多。例：講話毋通傷厚話屎。,
+278,kê/kha-kê/giâ-kê,枷/跤枷/夯枷,(腳鐐。一種用來防止人脫逃而拘束其雙腳的戒具)/(自找麻煩。把沈重的負擔攬在身上，引申為自找麻煩),
+279,ke̍h-bī,扴味,因為摻合不同食材，造成味道彼此不相合。例：用雞湯來煮魚敢會扴味？,
+280,ke̍h-kô,扴膏,(礙手礙腳),
+281,ke̍h-kuāinn,扴拐,(彆扭),
+282,kiann-tiûnn,驚場,(怯場),
+283,kiann-too,京都,(京師，首府),
+284,Kiann-too,京都,(日本都市名稱),
+285,kiânn-iû,行遊,(遊歷；夢遊),
+286,kiânn-tshun,行春,(走春),
+287,kiānn-tsâng,健欉,(枝繁葉茂),
+288,kiàn/ì-kiàn/hán-kiàn,見/意見/罕見,(看法)/(少見),
+289,kik-sái,激屎,(倨傲、高傲、擺架子),
+290,ki̍k-pōo,極步,(窮途末路),
+291,kim-àm,今暗,(今晚),
+292,kim-āu,今後,(從今以後),
+293,kim-sè,今世,(現代、當代),
+294,kin-ji̍t/kim-ji̍t,今日,今天,成大
+295,kin-á-ji̍t/kin-á-li̍t,今仔日,今天,教育部
+296,king-thâu,肩頭,(肩膀),
+297,kîng,窮,人窮志不窮 Jîn kîng tsì put kîng. (人雖貧窮，卻志向高遠),
+298,kiù-tsú,救主,1.比喻拯救他人脫離困境的人。2.在基督教中，指的是耶穌,成大
+299,kiù-sè-tsú,救世主,1.比喻拯救他人脫離困境的人。2.在基督教中，指的是耶穌,教育部
+300,kok/kok-hā,閣/閣下,(稱呼大官、書面語尊稱他人),
+301,kok-pih,各馝,孤僻、滑稽。形容一個人的性情、脾氣特別古怪、乖戾，或指稱人的個性滑稽、詼諧。例：伊彼个人真各馝。,
+302,kong/kim-kong-tsio̍h,剛/金剛石,(鑽石),
+303,kong-kang,公工,(共同聘僱的工人),
+304,kong-khui/kong-khai,公開,(平均分攤)/(公開),
+305,kong-tn̂g,公堂,(法庭),
+306,koo-khu̍t,孤𣮈,1.無父無母無兄弟姊妹、親戚的光棍。例：孤𣮈絕種(孤獨一人絕子又絕孫。咒詛罵人的話) 2.孤僻。不喜歡交際。例：孤𣮈人(不喜歡交際的人),
+307,kòo-khiam,過謙,過於謙虛。例：阿榮伯上過謙，對人有夠客氣。,
+308,ku-sui,龜祟,不乾脆。例：伊做人真龜祟。,
+309,kú-hîng,舉行,舉辦某種活動,成大
+310,kí-hîng/kú-hîng,舉行,舉辦某種活動,教育部
+311,kù-tsāi,據在,任由、任憑。隨意而為，不受拘束。例：這件代誌欲按怎做據在你。,成大
+312,kì-tsāi/kù-tsāi,據在,任由、任憑。隨意而為，不受拘束。例：這件代誌欲按怎做據在你。,教育部
+313,kū-iok,舊約,(舊約聖經),
+314,kuà-gāi,掛礙,掛心、牽掛。例：你共心內的掛礙講出來逐家參考看覓。；佛經寫罣礙。,
+315,kuà-tiàu/kuah-tiàu,掛吊/割吊,(思念；戀慕；愛戀；想念；惦記),
+316,kuann-lâng,官人,(官吏的老婆對她老公的稱號),成大
+317,kuann--lâng,官人,(官吏)(台日),
+318,kuānn tsuí,捾水,1.用水桶提水。例：較早攏愛捾水洗身軀。2.水腫。因液體在身體的細胞組織中發生異常的積聚現象，而引起全身或局部的腫脹症狀。,
+319,kuah-ín,割引,(打折),
+320,Kuan-biō,關廟,(臺南市行政區),
+321,kuán-hat,管轄,(管理統轄),
+322,kuān-kuann,縣官,(縣官),
+323,kuat-ì,決意,(決心),
+324,kuat-tuàn,決斷,(1.決定；2.斷然),
+325,kuè-kè,會計,1.管理財務帳目和出納事宜。2.管理財務帳目和出納職務的人員,
+326,kue̍h,橛,用來計算橫截後物品的段數。例：一橛甘蔗(一截甘蔗)、一尾魚仔切做兩橛(一條魚切成兩段),
+327,kuí-á/kuí-nā,幾仔/幾若,(許多),
+328,kuì-khì,貴氣,1.高貴的氣質。2.指因為價值高，而會被特別珍惜。例：天然的璇石無濟又閣歹挖，所以真貴氣。(天然的鑽石不多又難開採，所以很珍貴)3.形容難以養成的人，或難以繁殖有成的其他動植物。例：這款蘭花真貴氣，無好種。(這種蘭花帶貴氣，很不容易培育),
+329,kun-hông,君皇,(君皇),
+330,kún-ká,滾絞,翻騰、掙扎、滾動、扭絞。例：我的腹肚疼甲若像咧滾絞。,
+331,kún-liòng,滾躘,(掙扎、亂滾亂踢),
+332,kha-tshng/kha-tshuinn,尻川,(屁股),
+333,kháinn,,彎著指頭，用關節叩、打、敲等。例：對伊的頭殼敱落去。,成大
+334,kháinn,敱,彎著指頭，用關節叩、打、敲等。例：對伊的頭殼敱落去。,教育部
+335,khan-bán,牽挽,互牽互挽，比喻能持久、有耐力。例：你莫看伊瘦，伊瘦罔瘦，猶閣誠有牽挽。,
+336,khan-gāi,牽礙,妨害、阻礙,成大
+337,gāi/ngāi,礙,妨害、阻礙,教育部
+338,khan-si,牽絲,(拉長絲。本指蜘蛛結網拉絲，後也用來指起司、麥芽糖等食物拉出細絲),
+339,khan-tsiânn,牽成,栽培、提拔。例：伊猶閣少年，向望你共伊牽成。,成大
+340,khan-sîng,牽成,栽培、提拔。例：伊猶閣少年，向望你共伊牽成。,教育部
+341,khe-khó,稽考,1.考究、研究。例：臺語的漢字真僫稽考。(臺語的漢字很難稽考)(近義詞：究勘 kiù-khàm) 2.查究、計較。例：家己管教好，毋驚別人來稽考。(自己管教得好，就不怕別人來查究)；伊有共咱坐毋著就好，過去的代誌莫閣稽考矣。(他跟咱們道歉過就好，過去的事別再計較了)(近義詞:窮究 khîng-kiù),
+342,khé-pín,啟稟,(啟奏，稟告),
+343,khé-tsàu,啟奏,(向君王進言或稟告),
+344,khe̍h,挈,拿取，獲得。例：挈物件(拿東西)、挈批的(郵差),
+345,khí-sing/thâu-khí-sing,起先/頭起先,(開始)/(起初、剛開始),
+346,khiā-sǹg,徛算,可以算作。就算作……、就當作……。例：替伊買的物件若無提錢來，就徛算是送伊的。；徛算講 khiā-sǹg-kóng:就好像說、也就是說。,
+347,khiàn-sńg,譴損,1.忌諱。例：有的人誠厚譴損，做啥物代誌攏著閣看日。2.做法術以躲避災禍，趨吉避凶。例：做譴損(迷信禁忌以巫術做蠱來趨吉避凶),
+348,kāu-khiàn-sńg,厚譴損,迷信、忌諱。例：伊這个人足厚譴損，逐項代誌攏著看日,
+349,khiàn,,抬頭,成大
+350,khiàn,頏,抬頭、做事漫不經心,
+351,khiàng,勥,精明能幹、能力很行、很強的樣子。多用於形容女性，現今表示有點過分的能幹。例：伊真勥，逐家攏真呵咾。,
+352,khiàng-kha,勥跤,形容一個人精明能幹，一般用在形容女人，有貶義。例：阿嬌大漢新婦誠勥 跤。,
+353,khînn-ke,擒家,操持家務。例：伊真𠢕拑家。,成大
+354,khînn-ke,拑家,操持家務。例：伊真𠢕拑家。,教育部
+355,khim-tshe,欽差,(使節，由皇帝特命出外辦理重大事務的官員),
+356,khîng,,清理、整理。例：共你的物件窮窮咧。(把你的東西整理一下。)；窮菜尾(把剩菜清完)。,成大
+357,khîng,窮,清理、整理。例：共你的物件窮窮咧。(把你的東西整理一下。)；窮菜尾(把剩菜清完)。,教育部
+358,khioh,抾,撿拾，抾囡仔(1.接生。幫助產婦分娩，使胎兒安全出生。例：阮阿母較早專門咧共人抾囡仔 2.生育。生育嬰兒。例：老母舊年才抾囡仔爾爾),
+359,khioh-si̍p,,節省、節儉。例：阿珠人真抾拾，袂烏白開錢,成大
+360,khioh-si̍p,抾拾,節省、節儉。例：阿珠人真抾拾，袂烏白開錢,教育部
+361,khit-kiû,乞求,(懇求、請求),
+362,khit-tsih,,(小氣，成大),成大
+363,khó-lâu,洘流,退潮。例：洘流頭(開始退潮的時候)、洘流尾(退完潮的時候)。,
+364,khó-tsu̍t-tsu̍t,洘秫秫,形容路人行人非常多，既不方便穿越，也不容易前進。例：過年時仔，街仔路人洘秫秫。,
+365,khónn,可,(鹿港偏泉腔，成大)，可惡,成大
+366,khó/khónn/khó-í/khó-kiàn/khó-lîng,可/可以/可見/可能,或許、也許,教育部
+367,khong-khám,,罵人呆傻、愚笨。例：你真正有夠悾歁。,成大
+368,khong-khám,悾歁,罵人呆傻、愚笨。例：你真正有夠悾歁。,教育部
+369,khóo-lo̍h,苦力,從事粗工的搬運工人。借自英語 coolie,成大
+370,ku-lí,苦力,從事粗工的搬運工人。借自英語 coolie,教育部
+371,khoo-lo̍h,箍絡,奴才。以前的人在搬運物品的時候需要使用繩子來綑綁，這種繩子稱為「箍絡索」，所以「箍絡」被引申有「搬運工」的意思，而後才再被引申成「奴才」的意思,教育部
+372,khóo-tshóo,苦楚,(虐待；苦毒；苛責),
+373,khu-lá-tsì/khuh-lá-tsì,,(來自日語，離合器),
+374,kuà-ì,掛意,掛念、介意。心中有繫念，將不愉快或憂慮之事存於心中，而不能釋懷。例：你毋通掛意，我會趕緊轉來。,
+375,khuann-khuann-á,寬寬仔,慢慢地。例：你寬寬仔來就好。,
+376,khuann-khuann-á-sī,寬寬仔是,慢慢來。叫人不要著急。例：寬寬仔是就好，毋免趕。,
+377,khuànn-hiān-hiān,看現現,看透。形容人把事物看得一清二楚。例：我做的代誌逐家看現現，毋驚人講閒仔話。,
+378,khuànn-tshut-tshut,看出出,看穿、看透。識破別人的舉止、行動。例：我早就共你看出出矣。,
+379,khui-á,開仔,開瓶器。使用於玻璃瓶裝的酒或飲料,成大
+380,tsiú-khui-á,酒開仔,開瓶器。使用於玻璃瓶裝的酒或飲料,教育部
+381,la-thian,拉天,(聊天；不知惜福),
+382,la-lûn,,溫溫的。微溫而不熱,成大
+383,lâ-lûn-á-sio,拉圇仔燒,溫溫的。微溫而不熱,教育部
+384,lāi-thâu/lāi-té/lāi-tué,內頭/內底,(裏面),
+385,la̍k-la̍k-tshuah,,因恐懼而身體發顫。例：伊去予蛇驚甲慄慄掣。,成大
+386,la̍k-la̍k-tshuah,慄慄掣,因恐懼而身體發顫。例：伊去予蛇驚甲慄慄掣。,教育部
+387,lám-sin,,身體虛弱。例：伊真荏身，磕袂著就破病。,成大
+388,lám-sin,荏身,身體虛弱。例：伊真荏身，磕袂著就破病。,教育部
+389,làm-á-tē/làm-thôo/khan-ku-lo̍h-làm,湳仔地/湳塗/牽龜落湳,溼地、沼澤地，也通稱含水份較多的土地/爛泥、泥濘的土/引誘烏龜陷入泥沼之中，比喻用騙術引誘別人落入圈套，以謀取利益；或是帶壞人家。例：伊想欲牽龜落湳，你莫予伊騙去,
+390,lâm-á-khòng,,(預拌混凝塗),
+391,lán-si,懶屍,1.懶洋洋。倦怠、無精打采的樣子。例：伊這站仔誠懶屍，啥物代誌攏無欲做。2.懶惰。例：彼个人真懶屍，欲食毋振動。,
+392,láng-tsuâ,人蛇,(走私人口的人),
+393,lāng-hong,弄風,1.使吹乾。例：你的頭毛澹澹，去弄風弄弄咧，較快焦。2.吹 風。例：身軀洗了隨出去弄風會去寒著。,
+394,lāng-lâu,弄鐃,僧道人士在儀式後所進行耍弄鐃鈸等的特技表演，多見於辦完喪事之後,
+395,lāng-sai-hâu,弄獅頭,操控舞獅,成大
+396,lāng-sai,弄獅,操控舞獅,教育部
+397,làu-ē-hâi,落下頦,1.下巴脫臼。2.引申為笑話說得很精彩，讓人笑得下巴都要掉了。例：笑甲落下頦(笑得下巴快掉了)。3.指人在撒謊。例：我聽你咧落下頦，錢明明就是你提的，閣諍無。,
+398,lé-mi̍h,禮物,餽贈的物品,成大
+399,lé-bu̍t,禮物,餽贈的物品,教育部
+400,lia̍h-guā/tsi̍t-lia̍h guā tn̂g,掠外/一掠外長,(以外)/(一掌長),
+401,lia̍h-tsò,,當做、以為。例：我掠做無人知影彼件代誌。,成大
+402,lia̍h-tsò/lia̍h-tsuè,掠做,當做、以為。例：我掠做無人知影彼件代誌。,教育部
+403,liám/liám-tshìn-kin,斂/斂秤斤,偷斤兩。指做生意偷斤減兩，占顧客便宜。例：有的生理人做生理會唬秤頭，所以買物件愛細膩,成大
+404,hóo-tshìn-thâu/tsia̍h-tshìn-thâu,唬秤頭/食秤頭,偷斤兩。指做生意偷斤減兩，占顧客便宜。例：有的生理人做生理會唬秤頭，所以買物件愛細膩,教育部
+405,liām-thâu/liām-king/liām-tsiù/liām-tsu,念頭/念經/念咒/念珠,(心中的想法、打算),
+406,liām-tsiù/àm-liām/liām-iâu/liām-kua/tsa̍p-liām,唸咒/暗唸/唸謠/唸歌/雜唸,(念咒語),
+407,lián-kiō,輦轎,(神轎。放有神像或神符的轎子，通常由四個人來抬，而且抬的人會上下左右地搖晃，或者橫衝直撞，在傳統民間信仰中多用以問神扶乩),
+408,liân-huê,連回,四處丟人現眼。有時用來問對方去了何處，是一種取笑戲謔的用法。例：你是閣走去佗位連回？,
+409,liap,攝,打摺、摺疊。例：裙攝襇(將裙子打摺子)、紙攝痕(紙摺紋痕)；上卌袂攝 tsiūnn-siap-bē-liap/tsiūnn-siap-buē-liap:卌為四十的意思，上卌表示人到中年的意思。這句話表示人到中年萬事休，生理機能走下坡，心理也逐漸失去青年時期意氣風發的理想。,
+410,liap-kíng,攝襇,1.打摺。一種製作衣服的方式，先在布料上疊層，再加以縫紉。2.長皺紋。例：面皮開始咧攝襇矣。,
+411,liâu-liâu-á,聊聊仔,(慢慢地、謹慎小心地。例：燒茶聊聊仔啉),
+412,liāu-siáu,料小,1.不牢靠、不結實、單薄。例：你做這个架仔傷料小，物件囥濟囥重就會崩去。2.不起眼、不大方。例：送彼做禮物傷料小，恐驚無夠看。,
+413,lîm-lî,淋漓,,
+414,lîng-jio̍k,凌辱,,成大
+415,lîng-jio̍k/lîng-lio̍k,凌辱,,教育部
+416,lîng-lik/lîng-tī/lîng-tî,凌勒/凌治/凌遲,(凌虐)/(欺負、作弄)/(一種古代的酷刑。行刑方法不一，但求使被殺之人痛苦地慢慢死去。有的先斬斷手足，有的以刀剮全身再砍頭),
+417,lióng-hong,兩方,(雙方),
+418,lióng-kong,兩光,1.形容人精神渙散，漫不經心。例：伊這个人兩光兩光。2.形容東西品質不好。例：毋通買彼種兩光的產品。,
+419,liōng-kî-iok,量其約,(大概、大約。例：你量其約報一个價予我),
+420,liōng-tsá,,趁早、及早、提早。例：這種代誌你毋著冗早講，這馬欲反悔已經袂赴矣。,成大
+421,liōng-tsá,冗早,趁早、及早、提早。例：這種代誌你毋著冗早講，這馬欲反悔已經袂赴矣。,教育部
+422,li̍p-tsì,立志,(立定志願。例：男兒立志出鄉關。),
+423,li̍p-su-tsn̄g,立書狀,(立書狀),
+424,liu-liu/ti̍t-liu-liu,溜溜/直溜溜,(到處亂跑。例：四界溜溜去)；溜溜瞅瞅，食兩蕊目睭。(比喻人要會察顏觀色，眼觀四面，耳聽八方),
+425,liú-lak,,處理、掌管。負面的用法較為常用。例：伊彼个人誠歹扭搦，你家己愛有心理準備。,成大
+426,liú-la̍k,扭搦,處理、掌管。負面的用法較為常用。例：伊彼个人誠歹扭搦，你家己愛有心理準備。,教育部
+427,liù-liù/liù-phí-á/liù-phuê/liù-phê,溜溜/遛疕仔/遛皮,家伙輸甲光/ (1.小鬼、小鬼頭。對小孩不客氣的稱呼。2. 傷口的瘡痂脫落)/(脫皮、破皮。皮膚脫離掉落),成大
+428,lo,lo,索求,成大
+429,lo/tho,叨,纏著要錢,教育部
+430,lò-kha--ê,身勞 骹的,長腿，形容人長得很高,成大
+431,lò-kha,躼跤,長腿，形容人長得很高,教育部
+432,tn̂g-lò-sò/lò-lò-tn̂g,長躼埽/躼躼長,(形容物體很長、很高的樣子)/(形容很長),
+433,lo̍h-bué,落尾,後來、最後。例：落尾我就去高雄讀冊,成大
+434,lo̍h-bué/lo̍h-bé,落尾,後來、最後。例：落尾我就去高雄讀冊,教育部
+435,lok-koh-sok-koh,,雜七雜八,成大
+436,lo̍k-koh-sok-koh,漉哥束哥,雜七雜八,教育部
+437,lòng-khòng,,空曠,成大
+438,khuah-lòng-lòng/khuah-bóng-bóng/lòng-khòng,闊閬閬/闊莽莽/閬曠,非常寬闊/(形容非常遼闊，一望無垠。例：一片闊莽莽的草埔)/(寬闊、寬大),
+439,lông-hu,農夫,(種植農作物的人),
+440,lông-puē,,落魄。形容人窮困潦倒不得志。例：你是按怎遮爾狼狽？,成大
+441,lông-puē/liông-puē,狼狽,落魄。形容人窮困潦倒不得志。例：你是按怎遮爾狼狽？,教育部
+442,lōng-liu-lian,,遊手好閒,成大`;
+
+    var questionData = []; // Changed let to var
+    var currentGameData = []; // Changed let to var
+    var currentIndex = 0; // Changed let to var
+    var currentMode = 'tw'; // Changed let to var
+    var totalQuestions = 0; // Changed let to var
+    var isAnswered = false; // Changed let to var
+
+    // --- 資料解析 ---
+    function parseCSV() {
+        const lines = rawData.split('\n');
+        lines.forEach(line => {
+            if (!line.trim()) return;
+            
+            // 簡單的 CSV 解析，處理逗號
+            // 格式: 序號,羅馬字,台語字,華語釋義,認證
+            // 注意：某些欄位內容可能有逗號，這邊做簡易處理：
+            // 因為格式固定，我們用較寬鬆的 split，並重新組合
+            
+            // 更好的方式：利用正則表達式或狀態機，但此處資料結構相對簡單
+            // 觀察資料，有時候華語釋義裡有逗號。
+            // 策略：先 split by comma，如果長度 > 5，則 序號=0, 羅馬字=1, 台語字=2, 認證=最後一個, 中間全部合併為華語釋義
+            
+            let parts = line.split(',');
+            if (parts.length < 2) return;
+
+            let id = parts[0];
+            let ro = parts[1];
+            let tw = parts[2];
+            let cert = parts[parts.length - 1]; // 假設最後一個是認證
+            let def = parts.slice(3, parts.length - 1).join(','); // 中間是釋義
+
+            // 清理資料
+            questionData.push({
+                id: id.trim(),
+                ro: ro.trim(),
+                tw: tw.trim(),
+                def: def.trim(),
+                cert: cert.trim()
+            });
+        });
+    }
+
+    // --- 遊戲邏輯 ---
+
+    function selectMode(mode) {
+        currentMode = mode;
+        document.getElementById('mode-tw').classList.remove('selected');
+        document.getElementById('mode-ro').classList.remove('selected');
+        document.getElementById('mode-' + mode).classList.add('selected');
+    }
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    function startGame(count) {
+        // 1. 準備題目
+        let shuffled = shuffle([...questionData]);
+        if (count === 'all') {
+            currentGameData = shuffled;
+        } else {
+            currentGameData = shuffled.slice(0, count);
+        }
+        
+        totalQuestions = currentGameData.length;
+        currentIndex = 0;
+
+        // 2. 切換介面
+        document.getElementById('menu-screen').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'none';
+        document.getElementById('game-screen').style.display = 'flex';
+
+        // 3. 載入第一題
+        loadQuestion();
+        initAudio(); // 嘗試初始化 AudioContext
+    }
+
+    function returnToMenu() {
+        document.getElementById('game-screen').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'none';
+        document.getElementById('menu-screen').style.display = 'flex';
+    }
+
+    function loadQuestion() {
+        isAnswered = false;
+        const q = currentGameData[currentIndex];
+        
+        // 重置 UI
+        document.getElementById('user-input').value = '';
+        document.getElementById('user-input').style.display = 'block';
+        document.getElementById('result-display').style.display = 'none';
+        document.getElementById('result-display').innerHTML = '';
+        document.getElementById('feedback-msg').textContent = '';
+        
+        // 按鈕狀態：載入時為「解答」鈕，功能為 showAnswer
+        const actionBtn = document.getElementById('action-btn');
+        actionBtn.textContent = '解答';
+        actionBtn.className = 'ctrl-btn btn-answer';
+        actionBtn.onclick = showAnswer;
+        
+        // 綁定鍵盤輸入事件：按下 Enter 即送出 (checkAnswer)
+        document.getElementById('user-input').onkeydown = function(e) {
+            if (e.key === 'Enter') {
+                checkAnswer();
+            }
+        };
+        
+        // 進度
+        document.getElementById('progress-text').textContent = `${currentIndex + 1} / ${totalQuestions}`;
+        document.getElementById('progress-bar').style.width = `${((currentIndex) / totalQuestions) * 100}%`;
+
+        // 資訊列
+        document.getElementById('q-id').textContent = `序號：${q.id}`;
+        document.getElementById('q-cert').textContent = q.cert || '教育部/成大';
+
+        // 華語釋義 (自動調整字體)
+        const defBox = document.getElementById('definition-box');
+        const defText = q.def || '台華共通詞';
+        defBox.textContent = defText;
+        
+        if (defText.length > 50) defBox.style.fontSize = '0.9rem';
+        else if (defText.length > 30) defBox.style.fontSize = '1rem';
+        else defBox.style.fontSize = '1.2rem';
+
+        // 題目顯示
+        const qDisplay = document.getElementById('question-display');
+        if (currentMode === 'tw') {
+            // 台語字模式：顯示台語字，輸入羅馬字
+            if (!q.tw) {
+                qDisplay.innerHTML = '<span class="missing-text">無台語字，請聽音檔</span>';
+            } else {
+                qDisplay.textContent = q.tw;
+            }
+            document.getElementById('user-input').placeholder = "請輸入羅馬字";
+        } else {
+            // 羅馬字模式：顯示羅馬字，輸入台語字
+            qDisplay.textContent = q.ro;
+            document.getElementById('user-input').placeholder = "請輸入台語字";
+        }
+        
+        document.getElementById('user-input').focus();
+    }
+
+    function playAudio() {
+        const q = currentGameData[currentIndex];
+        let audioUrl = q.ro;
+        // 若遇到目標羅馬字有"/"時，僅播放"/"之前的第1個羅馬字組
+        if (audioUrl.includes('/')) {
+            audioUrl = audioUrl.split('/')[0].trim();
+        }
+        
+        // 自製 snd-plus.js 的 holo()（教育部辭典錄音）
+        if (typeof holo === 'function') {
+            holo(document.getElementById('audio-btn'), audioUrl);
+        } else {
+            console.error("snd-plus.js 未載入");
+        }
+    }
+
+    function clearInput() {
+        if (isAnswered) {
+            // 如果已經回答過(且答錯)，允許重新作答
+            isAnswered = false;
+            document.getElementById('user-input').style.display = 'block';
+            document.getElementById('result-display').style.display = 'none';
+            document.getElementById('feedback-msg').textContent = '';
+            
+            // 重新作答時，按鈕依然保持為「解答」鈕，因為還沒答對
+            const actionBtn = document.getElementById('action-btn');
+            actionBtn.textContent = '解答';
+            actionBtn.className = 'ctrl-btn btn-answer';
+            actionBtn.onclick = showAnswer;
+            
+            document.getElementById('user-input').focus();
+        } else {
+            document.getElementById('user-input').value = '';
+            document.getElementById('user-input').focus();
+        }
+    }
+
+    function normalizeString(str) {
+        // 移除多餘空白，轉小寫 (針對羅馬字)
+        if (!str) return '';
+        return str.trim().toLowerCase().replace(/\s+/g, ' ');
+    }
+
+    function checkAnswer() {
+        if (isAnswered) return; // 防止重複送出
+
+        const q = currentGameData[currentIndex];
+        const userVal = document.getElementById('user-input').value.trim();
+        let correctVal = (currentMode === 'tw') ? q.ro : q.tw;
+        
+        // 處理多選答案 (ex: khin-gîn/khin-gûn)
+        let possibleAnswers = correctVal.split('/').map(s => s.trim());
+        
+        let isCorrect = false;
+        let targetAnswer = possibleAnswers[0]; // 預設比對第一個
+
+        for (let ans of possibleAnswers) {
+            if (normalizeString(userVal) === normalizeString(ans)) {
+                isCorrect = true;
+                targetAnswer = ans;
+                break;
+            }
+        }
+        
+        // 顯示結果
+        isAnswered = true;
+        const inputElem = document.getElementById('user-input');
+        const resultElem = document.getElementById('result-display');
+        const msgElem = document.getElementById('feedback-msg');
+        const actionBtn = document.getElementById('action-btn');
+
+        inputElem.style.display = 'none';
+        resultElem.style.display = 'block';
+        
+        let diffHtml = '';
+        if (isCorrect) {
+            // 答對邏輯
+            playCorrectSound(); // 播放正確音效
+            
+            diffHtml = `<span class="char-correct">${userVal}</span>`;
+            msgElem.innerHTML = '<span class="msg-correct">正確！共你拍噗仔！</span>';
+            
+            // 答對時，按鈕不再變成「下一頁」，維持「解答」狀態
+            // 但因為已經答對，使用者可能需要等待自動跳轉，或者按右下角的「下一頁」
+            
+            // 答對自動下一題
+            setTimeout(() => {
+                if(isAnswered && isCorrect) nextQuestion();
+            }, 1000);
+
+        } else {
+            // 答錯邏輯
+            playWrongSound(); // 播放錯誤音效
+            
+            // 比對顯示錯誤字元
+            let maxLen = Math.max(userVal.length, targetAnswer.length);
+            for (let i = 0; i < maxLen; i++) {
+                let uChar = userVal[i] || '';
+                let tChar = targetAnswer[i] || '';
+                
+                if (uChar === '') {
+                    diffHtml += `<span class="char-wrong">&nbsp;</span>`; 
+                } else if (uChar.toLowerCase() === tChar.toLowerCase()) {
+                    diffHtml += `<span class="char-correct">${uChar}</span>`;
+                } else {
+                    diffHtml += `<span class="char-wrong">${uChar}</span>`;
+                }
+            }
+            
+            msgElem.innerHTML = '<span class="msg-wrong">毋著！你閣試一擺！</span>';
+            // 答錯時，按鈕依然保持「解答」
+            actionBtn.textContent = '解答';
+            actionBtn.className = 'ctrl-btn btn-answer';
+            actionBtn.onclick = showAnswer;
+        }
+
+        resultElem.innerHTML = diffHtml;
+    }
+
+    function showAnswer() {
+        // 直接公布答案
+        const q = currentGameData[currentIndex];
+        const resultElem = document.getElementById('result-display');
+        const inputElem = document.getElementById('user-input');
+        const msgElem = document.getElementById('feedback-msg');
+        let correctVal = (currentMode === 'tw') ? q.ro : q.tw;
+        
+        isAnswered = true;
+        inputElem.style.display = 'none';
+        resultElem.style.display = 'block';
+        
+        // 顯示正確答案
+        resultElem.innerHTML = `<span class="char-correct">${correctVal}</span>`;
+        msgElem.innerHTML = '<span class="msg-correct">答案如上</span>';
+        
+        // 按鈕按下後，不再變更為「下一頁」，維持原樣
+    }
+
+    function nextQuestion() {
+        if (currentIndex < totalQuestions - 1) {
+            currentIndex++;
+            loadQuestion();
+        } else {
+            // 遊戲結束
+            document.getElementById('game-screen').style.display = 'none';
+            document.getElementById('result-screen').style.display = 'flex';
+        }
+    }
+
+    function prevQuestion() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            loadQuestion();
+        }
+    }
+
+    // 初始化拖曳功能與 CSV 解析
+    window.onload = function() {
+        parseCSV();
+        initResize();
+    };
+
+    // 拖曳調整視窗高度功能
+    function initResize() {
+        const handle = document.getElementById('drag-handle');
+        const gameScreen = document.getElementById('game-screen');
+        
+        // 僅在有 handle 的時候執行 (手機版)
+        if (!handle || getComputedStyle(handle).display === 'none') return;
+
+        let startY, startHeight;
+        
+        const onTouchStart = (e) => {
+            startY = e.touches[0].clientY;
+            startHeight = gameScreen.getBoundingClientRect().height;
+            document.addEventListener('touchmove', onTouchMove, { passive: false });
+            document.addEventListener('touchend', onTouchEnd);
+        };
+
+        const onTouchMove = (e) => {
+            e.preventDefault(); // 防止滾動
+            const currentY = e.touches[0].clientY;
+            const deltaY = currentY - startY;
+            let newHeight = startHeight + deltaY;
+
+            // 限制最小與最大高度
+            const minH = 300; // 確保內容不會被壓扁到無法顯示
+            const maxH = window.innerHeight * 0.8; // 最多佔 80%
+            
+            if (newHeight < minH) newHeight = minH;
+            if (newHeight > maxH) newHeight = maxH;
+
+            gameScreen.style.height = `${newHeight}px`;
+        };
+
+        const onTouchEnd = () => {
+            document.removeEventListener('touchmove', onTouchMove);
+            document.removeEventListener('touchend', onTouchEnd);
+        };
+
+        handle.addEventListener('touchstart', onTouchStart, { passive: false });
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<!--
+  【著作權聲明】
+  202505新增詞條｜進階口說練習 — 進階口說練習：202505 教育部辭典新增詞條（聽辭典錄音、跟讀、自動輪播）
+  詞條、俗諺、華語釋義與錄音連結取自教育部《臺灣台語常用詞辭典》，其著作權屬教育部（CC BY-NC-ND 2.5 TW）。
+  本網頁之程式碼、版面與教案設計 Copyright © 2026 詹宗龍（臺中明道中學）. All rights reserved.
+  僅供非營利之教育教學使用；未經著作權人書面授權，不得重製、改作、散布或修改本網頁之全部或一部分。
+-->
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="author" content="詹宗龍（臺中明道中學）">
+<meta name="copyright" content="© 2026 詹宗龍（臺中明道中學）。保留一切權利。">
+<title>202505新增詞條｜進階口說練習</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%23111%22/%3E%3Crect x=%224%22 y=%224%22 width=%2256%22 height=%2256%22 rx=%2210%22 fill=%22none%22 stroke=%22%23FFD400%22 stroke-width=%224%22/%3E%3Ctext x=%2232%22 y=%2246%22 font-size=%2234%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23FFD400%22%3E%E9%80%B2%3C/text%3E%3C/svg%3E">
+<link href="https://tauhu.tw/tauhu-oo.css" rel="stylesheet">
+<style>
+:root{--black:#111111;--yellow:#FFD400;--white:#FFFFFF;--gray:#2A2A2A;--light:#F5F5F5;--muted:#A8A8A8;--ok:#58cc02;--no:#ff4b4b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{background:var(--black);color:var(--white);font-family:'tauhu-oo',"Noto Sans TC","Microsoft JhengHei","PingFang TC",sans-serif;
+  display:flex;flex-direction:column;overflow:hidden;user-select:none;-webkit-user-select:none}
+button{font-family:inherit}
+/* 標題列 */
+.topbar{flex:none;display:flex;align-items:center;gap:clamp(8px,1vw,16px);padding:clamp(8px,1.1vh,14px) clamp(10px,1.4vw,28px);
+  background:var(--black);border-bottom:4px solid var(--yellow);min-width:0}
+.topbar .cat{flex:none;background:var(--yellow);color:var(--black);font-weight:900;font-size:clamp(13px,1.1vw,20px);padding:5px 14px;border-radius:999px;white-space:nowrap}
+.topbar h1{flex:1 1 auto;min-width:0;margin:0;color:var(--yellow);font-weight:900;font-size:clamp(17px,2vw,36px);line-height:1.2;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar .stat{flex:none;display:none;gap:12px;color:var(--white);font-weight:700;font-size:clamp(13px,1vw,18px);white-space:nowrap}
+.topbar .stat b{color:var(--yellow)}
+.topbar .home{flex:none;color:var(--white);text-decoration:none;font-weight:700;font-size:clamp(13px,1vw,18px);border:2px solid var(--white);
+  border-radius:999px;padding:4px 14px;white-space:nowrap;transition:background .15s,color .15s}
+.topbar .home:hover{background:var(--white);color:var(--black)}
+.topbar .tbtn{flex:none;border:2px solid var(--yellow);background:transparent;color:var(--yellow);font-weight:700;font-size:clamp(13px,1vw,18px);
+  border-radius:999px;padding:4px 14px;cursor:pointer;white-space:nowrap}
+.topbar .tbtn:hover{background:var(--yellow);color:var(--black)}
+/* 主區 */
+#app,#app-container{flex:1 1 auto;min-height:0;position:relative;display:flex;flex-direction:column;width:100%}
+/* 入口選單：①②步驟卡＋③操作面板 */
+.g-wrap{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,24vw,440px);gap:clamp(10px,1.2vw,22px);
+  padding:clamp(10px,1.4vw,24px);overflow:auto;width:100%}
+.steps{display:flex;flex-direction:column;gap:clamp(10px,1.2vw,22px);min-width:0}
+.step,.panel{background:var(--gray);border-radius:16px;padding:clamp(12px,1.3vw,24px);border:1px solid #3a3a3a}
+.step h3,.panel h3{display:flex;align-items:center;gap:10px;margin:0 0 clamp(10px,1vw,18px);font-size:clamp(16px,1.3vw,26px);color:var(--yellow)}
+.num{flex:none;width:1.5em;height:1.5em;border-radius:50%;background:var(--yellow);color:var(--black);display:grid;place-items:center;font-size:.85em;font-weight:900}
+.opts{display:grid;gap:clamp(8px,.9vw,16px)}
+.opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.opts.n{grid-template-columns:repeat(auto-fill,minmax(clamp(92px,8.5vw,160px),1fr))}
+.opt{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;min-height:clamp(56px,7vh,96px);padding:10px 14px;
+  background:var(--white);color:var(--black);border:3px solid var(--white);border-radius:14px;cursor:pointer;font-weight:900;
+  font-size:clamp(17px,1.45vw,30px);line-height:1.2;text-align:left;transition:transform .12s,box-shadow .12s;white-space:nowrap}
+.opt *{pointer-events:none}
+.opt:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.45)}
+.opt .ic{flex:none;width:clamp(34px,2.6vw,52px);height:clamp(34px,2.6vw,52px);border-radius:50%;background:var(--black);color:var(--yellow);
+  display:grid;place-items:center;font-size:clamp(14px,1.1vw,22px);font-weight:900}
+.opt .ic svg{width:60%;height:60%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.opt .tx small{display:block;font-size:.55em;font-weight:700;color:#555;margin-top:3px;white-space:normal}
+.opt .big{font-size:1.25em}.opt .u{font-size:.55em;font-weight:700;margin-left:2px;align-self:flex-end;margin-bottom:.35em}
+.opt.sel,.opt.selected{background:var(--yellow);border-color:var(--white)}
+.opt.sel::after,.opt.selected::after{content:"✓";position:absolute;top:-9px;right:-9px;width:26px;height:26px;border-radius:50%;background:var(--black);
+  color:var(--yellow);display:grid;place-items:center;font-size:15px;font-weight:900;border:2px solid var(--yellow)}
+.panel{display:flex;flex-direction:column;gap:clamp(10px,1vw,18px);min-width:0}
+.sum{background:var(--black);border-radius:12px;padding:12px 14px;font-size:clamp(14px,1vw,19px);line-height:1.9}
+.sum span{color:var(--muted);margin-right:10px}.sum b{color:var(--white)}.sum b.none{color:#777;font-weight:400}
+.startbtn{width:100%;border:none;border-radius:14px;background:var(--yellow);color:var(--black);font-weight:900;font-size:clamp(20px,1.7vw,34px);
+  padding:clamp(14px,1.6vh,24px) 10px;cursor:pointer;box-shadow:0 5px 0 #b39500;transition:transform .1s}
+.startbtn:active{transform:translateY(4px);box-shadow:none}
+.startbtn:disabled{background:transparent;color:#777;border:2px dashed #555;box-shadow:none;cursor:default}
+.tip{color:var(--muted);font-size:clamp(12px,.9vw,16px);line-height:1.6;margin:0}
+.tip b{color:var(--yellow)}
+.corner{flex:none;text-align:right;color:#8a8a8a;font-size:12px;padding:3px 12px 4px;background:var(--black);border-top:1px solid #222}
+@media (max-width:860px),(orientation:portrait){
+  body{overflow:auto}
+  .g-wrap{grid-template-columns:1fr;overflow:visible}
+  .opts.m2{grid-template-columns:1fr}
+}
+@media (orientation:portrait) and (min-width:600px){.opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-height:520px) and (orientation:landscape){.opt{min-height:44px;font-size:17px}.tip{display:none}.g-wrap{padding:8px;grid-template-columns:minmax(0,1fr) 230px}
+  .opts.m2{grid-template-columns:repeat(2,minmax(0,1fr))}.step h3,.panel h3{margin-bottom:8px}}
+
+.page{display:none;flex-direction:column;flex:1 1 auto;min-height:0;width:100%}
+.page.active{display:flex}
+#pg-game{padding:clamp(10px,1.4vw,24px);gap:10px}
+.info-bar{display:flex;justify-content:space-between;color:var(--muted);font-size:clamp(13px,1vw,18px);flex:none}
+.info-bar span:last-child{color:var(--black);background:var(--yellow);border-radius:999px;padding:2px 12px;font-weight:700}
+.card{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:12px;align-items:center;text-align:center;overflow:hidden}
+.q-text{flex:none;width:100%;font-weight:900;color:var(--white);font-size:clamp(24px,3.2vw,60px);line-height:1.35}
+.sub-tailo{display:block;margin-top:6px;font-size:.6em;color:#d8d8d8;font-weight:700}
+.kw{color:var(--yellow);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.q-def{flex:1 1 auto;width:100%;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;background:var(--gray);
+  border-left:6px solid var(--yellow);border-radius:14px;padding:clamp(12px,1.4vw,24px);color:var(--light);font-size:clamp(17px,1.6vw,30px);line-height:1.55;min-height:90px}
+@media (max-height:520px){.card{overflow:visible;flex:none}.q-def{flex:none}#pg-game{min-height:max-content}}
+.ctrl-area{flex:none;display:flex;flex-direction:column;align-items:center}
+.feed-box{min-height:34px;text-align:center}
+.feed-msg{font-weight:900;font-size:clamp(16px,1.3vw,24px)}
+.c-ok{color:var(--ok)}.c-no{color:var(--no)}
+.ctrl-btns{display:flex;gap:16px;margin:4px 0 6px}
+.icon-btn{width:clamp(56px,4.6vw,80px);height:clamp(56px,4.6vw,80px);border-radius:50%;border:3px solid var(--white);background:var(--white);color:var(--black);
+  font-size:clamp(24px,2vw,34px);display:flex;justify-content:center;align-items:center;cursor:pointer;box-shadow:0 4px 0 #888;transition:transform .1s}
+.icon-btn:active{transform:translateY(3px);box-shadow:none}
+.icon-btn.sec{background:var(--yellow);border-color:var(--yellow);box-shadow:0 4px 0 #b39500}
+#btn-auto{font-weight:900;color:var(--black)}
+.icon-btn.rec{background:var(--no);border-color:var(--no);color:#fff;animation:p 1.5s infinite}
+@keyframes p{0%{box-shadow:0 0 0 0 rgba(255,75,75,.7)}70%{box-shadow:0 0 0 14px rgba(0,0,0,0)}100%{box-shadow:0 0 0 0 rgba(0,0,0,0)}}
+.nav-bar{flex:none;display:flex;justify-content:space-between;gap:10px;border-top:2px solid #2a2a2a;padding-top:10px}
+.nav-btn{border:2px solid #555;background:var(--gray);color:var(--white);border-radius:12px;padding:10px 18px;font-weight:900;cursor:pointer;
+  font-size:clamp(15px,1.1vw,20px)}
+.nav-btn:hover{border-color:var(--yellow)}
+.nav-btn.next{background:var(--yellow);border-color:var(--yellow);color:var(--black)}
+</style>
+</head>
+<body oncontextmenu="return false;">
+<header class="topbar">
+  <span class="cat">口說練習</span>
+  <h1>202505 教育部辭典新增詞條</h1>
+  <a class="home" href="../index.html">← 進階練習</a>
+</header>
+<div id="app">
+  <div id="pg-menu" class="page active">
+    <div class="g-wrap">
+      <div class="steps">
+        <section class="step"><h3><span class="num">1</span>選擇遊戲方式</h3>
+          <div class="opts m2">
+                <div class="opt opt-btn sel" onclick="menu.set('mode', 'dual', this); mdSetMode('雙軌模式')"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span><span class="tx">雙軌模式<small>台語字＋羅馬字</small></span></div>
+        <div class="opt opt-btn" onclick="menu.set('mode', 'auto', this); mdSetMode('自動輪播')"><span class="ic"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span><span class="tx">自動輪播<small>自動播音、下一則</small></span></div>
+        <div class="opt opt-btn" onclick="menu.set('mode', 'han', this); mdSetMode('台語字')"><span class="ic">漢</span><span class="tx">台語字<small>只看台語漢字</small></span></div>
+        <div class="opt opt-btn" onclick="menu.set('mode', 'tailo', this); mdSetMode('羅馬字')"><span class="ic">Lô</span><span class="tx">羅馬字<small>只看台羅拼音</small></span></div>
+          </div></section>
+        <section class="step"><h3><span class="num">2</span>選擇數量</h3>
+          <div class="opts n">
+                <div class="opt opt-btn sel" onclick="menu.set('count', 30, this); mdCount('30則')"><span class="big">30</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 50, this); mdCount('50則')"><span class="big">50</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 70, this); mdCount('70則')"><span class="big">70</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 90, this); mdCount('90則')"><span class="big">90</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 110, this); mdCount('110則')"><span class="big">110</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 130, this); mdCount('130則')"><span class="big">130</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 150, this); mdCount('150則')"><span class="big">150</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 170, this); mdCount('170則')"><span class="big">170</span><span class="u">則</span></div>
+        <div class="opt opt-btn" onclick="menu.set('count', 'all', this); mdCount('全部（299則）')"><span class="big">全部</span></div>
+          </div></section>
+      </div>
+      <aside class="panel"><h3><span class="num">3</span>開始練習</h3>
+        <div class="sum"><div><span>方式</span><b id="sum-mode">雙軌模式</b></div><div><span>數量</span><b id="sum-count">30則</b></div><div><span>題庫</span><b>299 則</b></div></div>
+        <button class="startbtn" id="md-start" onclick="game.start()">開始遊戲</button>
+        <p class="tip">按 <b>🔊</b> 聽教育部辭典錄音，按 <b>🎤</b> 錄音跟讀；<b>自動輪播</b>會一則接一則自動播放。</p>
+      </aside>
+    </div>
+  </div>
+  <div id="pg-game" class="page">
+    <div class="info-bar"><span id="lb-idx"></span><span id="lb-mode"></span></div>
+    <div class="card">
+      <div id="tx-main" class="q-text"></div>
+      <div id="tx-def" class="q-def"></div>
+    </div>
+    <div class="ctrl-area">
+      <div class="feed-box"><div id="fd-msg" class="feed-msg"></div></div>
+      <div class="ctrl-btns">
+        <div class="icon-btn sec" onclick="game.play()" title="播放">🔊</div>
+        <div id="btn-mic" class="icon-btn" onclick="game.rec()" title="錄音">🎤</div>
+        <div id="btn-auto" class="icon-btn sec" onclick="game.toggle()" title="暫停/播放" style="display:none; width:auto; padding:0 22px; font-size:1.1rem; border-radius:14px;">暫停</div>
+      </div>
+    </div>
+    <div class="nav-bar">
+      <button class="nav-btn" onclick="game.home()">回選單</button>
+      <div style="display:flex; gap:10px;">
+        <button id="btn-prev" class="nav-btn" onclick="game.nav(-1)" style="visibility:hidden">上一題</button>
+        <button class="nav-btn next" onclick="game.nav(1)">下一題</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="corner">© 2026 詹宗龍（臺中明道中學）</div>
+<audio id="player"></audio>
+<script>
+    const db = [
+        {id:"1",han:"阮先行，你<b class='kw'>押尾後</b>鬥顧一下",tailo:"Guán sing kiânn, lí <b class='kw'>ah-bué-āu</b> tàu kòo--tsi̍t-ē.",def:"我們走在前頭，你殿後幫忙看顧一下",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/2w/X7/28361-1-1.mp3"},
+        {id:"2",han:"買賣田地的字紙，雙方攏愛親身<b class='kw'>押名</b>，才有準算",tailo:"Bé-bē tshân-tē ê jī-tsuá, siang-hong lóng ài tshin-sin <b class='kw'>ah-miâ</b>, tsiah ū tsún-sǹg.",def:"買賣田地的合約，都要雙方親自簽名，才有效力",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dp/GN/29187-1-1.mp3"},
+        {id:"3",han:"流行性感冒病毒的<b class='kw'>暗作期</b>大約是一工到三工",tailo:"Liû-hîng-sìng kám-mōo pēnn-to̍k ê <b class='kw'>àm-tsoh-kî</b> tāi-iok sī tsi̍t kang kàu sann kang.",def:"流行性感冒病毒的潛伏期大約是一至三天",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/8U/SA/29455-1-1.mp3"},
+        {id:"4",han:"一般來講，查埔囡仔轉大人的時會變聲，是因為<b class='kw'>頷珠</b>開始發育矣",tailo:"It-puann lâi kóng, tsa-poo gín-á tńg-tuā-lâng ê sî ē piàn-siann, sī in-uī <b class='kw'>ām-tsu</b> khai-sí huat-io̍k--ah.",def:"一般來說，男孩子在青春期會變聲，是因為喉結開始發育了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Wp/U6/20272-1-1.mp3"},
+        {id:"5-1",han:"聽講這間廟服侍的<b class='kw'>尪婆</b>真靈聖",tailo:"Thiann-kóng tsit king biō ho̍k-sāi ê <b class='kw'>ang-pô</b> tsin lîng-siànn. ",def:"聽說這間廟供奉的女神明很靈驗",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/yh/zh/29539-1-1.mp3"},
+        {id:"5-2",han:"這層代誌你敢欲共<b class='kw'>尪婆</b>問看覓？",tailo:"Tsit tsân tāi-tsì lí kám beh kā ang-pô mn̄g khuànn-māi?",def:"這件事情你是否要向靈媒請示一下？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/7G/Om/29539-2-1.mp3"},
+        {id:"6",han:"做公親愛公平，袂使<b class='kw'>攔孤爿</b>",tailo:"Tsò kong-tshin ài kong-pênn, bē-sái <b class='kw'>ânn-koo-pîng</b>.",def:"當和事佬要公正，不可以偏袒某一方",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/OI/tY/28502-1-1.mp3"},
+        {id:"7",han:"天氣遐<b class='kw'>漚翕</b>，覕佇房間吹冷氣上好啦",tailo:"Thinn-khì hiah <b class='kw'>àu-hip</b>, bih tī pâng-king tshue líng-khì siōng hó--lah. ",def:"天氣悶熱難耐，躲在房間吹冷氣最棒啦",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/zu/w7/19859-1-1.mp3"},
+        {id:"8-1",han:"退休了後，會用得用退休金來維持<b class='kw'>後半世人</b>的生活",tailo:"Thè-hiu liáu-āu, ē-īng-tit iōng thè-hiu-kim lâi î-tshî <b class='kw'>āu-puànn-sì-lâng</b> ê sing-ua̍h.",def:"退休以後，可以用退休金來維持下半輩子的生活",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/vS/SE/29404-1-1.mp3"},
+        {id:"8-2",han:"伊趁退休進前蓄一棟樓仔厝稅人，按算<b class='kw'>後半世人</b>攏靠收厝稅來食穿",tailo:"I thàn thè-hiu tsìn-tsîng hak tsi̍t tòng lâu-á-tshù suè--lâng, àn-sǹg <b class='kw'>āu-puànn-sì-lâng</b> lóng khò siu tshù-suè lâi tsia̍h-tshīng. ",def:"他趁退休前購置一棟樓房租給別人，打算下半輩子倚靠收房租維持生活所需",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/TL/0o/29404-1-2.mp3"},
+        {id:"9-1",han:"阮阿公講伊食到這號歲，今都<b class='kw'>目花</b>矣，著愛用譀鏡看報紙才看有",tailo:"Guán a-kong kóng i tsia̍h kàu tsit-lō huè, tann to <b class='kw'>ba̍k-hue</b>--ah, tio̍h-ài iōng hàm-kiànn khuànn pò-tsuá tsiah khuànn-ū.",def:"我爺爺說他活到這個歲數，現今早已老眼昏花，得要用放大鏡看報紙才看得清楚",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ZT/Wd/18115-1-1.mp3"},
+        {id:"9-2",han:"雄雄<b class='kw'>目花</b>看袂明，毋才佇路裡認毋著人",tailo:"Hiông-hiông <b class='kw'>ba̍k-hue</b> khuànn bē bîng, m̄-tsiah tī lōo--lí jīn m̄-tio̍h lâng.",def:"突然眼花看不清楚，才在路上認錯人",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/zX/Iw/18115-2-1.mp3"},
+        {id:"10",han:"最近電腦繩傷久，目睭誠澀，愛點寡<b class='kw'>目藥水</b>，予目睭較爽快淡薄仔",tailo:"Tsuè-kīn tiān-náu tsîn siunn kú, ba̍k-tsiu tsiânn siap, ài tiám kuá <b class='kw'>ba̍k-io̍h-tsuí</b>, hōo ba̍k-tsiu khah sóng-khuài--tām-po̍h-á.",def:"最近電腦看太久，眼睛很乾澀，要點些眼藥水，讓眼睛比較舒服些",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/1K/rm/29365-1-1.mp3"},
+        {id:"11",han:"<b class='kw'>甭</b>閣啉矣啦，酒啉傷濟會醉呢！",tailo:"<b class='kw'>Bàng</b> koh lim--ah--lah, tsiú lim siunn tsē ē tsuì--neh!",def:"不要再喝了啦，酒喝太多會醉呢！",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/7j/G9/15312-1-1.mp3"},
+        {id:"12",han:"伊毋知拄著啥物代誌？規工按呢<b class='kw'>欲哭欲𥍉</b>，看著實在足毋甘的",tailo:"I m̄ tsai tú-tio̍h siánn-mih tāi-tsì? Kui-kang án-ne <b class='kw'>beh-khàu-beh-nih</b>, khuànn tio̍h si̍t-tsāi tsiok m̄-kam--ê.",def:"不知道他究竟怎麼了？成天那種隨時要哭的樣子，讓人看了十分心疼",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/HY/up/29444-1-1.mp3"},
+        {id:"13",han:"我上愛食巷仔口阿婆咧賣的<b class='kw'>米血</b>，食著芳閣𩚨",tailo:"Guá siōng ài tsia̍h hāng-á-kháu a-pô teh bē ê <b class='kw'>bí-hueh</b>, tsia̍h tio̍h phang koh khiū.",def:"我最喜歡吃巷子口婆婆在賣的豬血糕，吃起來香噴噴又有嚼勁",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Id/aZ/19843-1-1.mp3"},
+        {id:"14",han:"我用<b class='kw'>米管</b>量三管米囥落去電鍋煮",tailo:"Guá īng <b class='kw'>bí-kńg</b> niû sann kńg bí khǹg lo̍h-khì tiān-ko tsú.",def:"我用量米杯量了三杯的米放進電鍋裡煮",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ap/FP/29506-1-1.mp3"},
+        {id:"15",han:"小弟的<b class='kw'>面馬</b>生做真四正，看著真古錐",tailo:"Sió-tī ê <b class='kw'>bīn-bé</b> senn-tsò tsin sì-tsiànn, khuànn tio̍h tsin kóo-tsui.",def:"弟弟臉形長得很方正，看起來很可愛",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/cI/Hg/29209-1-1.mp3"},
+        {id:"16",han:"<b class='kw'>明其知</b>這毋是穩趁的生理，閣敢投資遐濟錢想欲做董事長",tailo:"<b class='kw'>Bîng-ki-tsai</b> tse m̄ sī ún thàn ê sing-lí, koh kánn tâu-tsu hiah tsē tsînn siūnn-beh tsò táng-sū-tiúnn. ",def:"明明知道這不是穩賺不賠的生意，還敢投資那麼多錢想當董事長",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dd/I3/29353-1-1.mp3"},
+        {id:"17-1",han:"伊一下入門<b class='kw'>無分無會</b>就共我罵，實在袂堪得氣",tailo:"I tsi̍t-ē ji̍p-mn̂g <b class='kw'>bô-hun-bô-huē</b> tō kā guá mē, si̍t-tsāi bē-kham-tit khì.",def:"他一進門不分青紅皂白就罵我，實在是氣不過",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/MA/8j/29445-1-1.mp3"},
+        {id:"17-2",han:"伊<b class='kw'>無分無會</b>雄雄就離開，敢是發生啥物代誌矣？",tailo:"I <b class='kw'>bô-hun-bô-huē</b> hiông-hiông tō lī-khui, kám-sī huat-sing siánn-mih tāi-tsì--ah?",def:"他沒知會一聲突然就離開，會不會是發生什麼事情了？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/0k/pT/29445-1-2.mp3"},
+        {id:"18",han:"阿明自透早無閒到暗，規工<b class='kw'>無時閒</b>，實在真辛苦",tailo:"A-bîng tsū thàu-tsá bô-îng kàu àm, kui-kang <b class='kw'>bô-sî-îng</b>, si̍t-tsāi tsin sin-khóo. ",def:"阿明從早忙到晚，整天無一刻停歇，實在很辛苦",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/a3/mG/29116-1-1.mp3"},
+        {id:"19-1",han:"這个囡仔誠<b class='kw'>無時定</b>，一睏仔久就隨走甲無看著人影去",tailo:"Tsit ê gín-á tsiânn <b class='kw'>bô-sî-tiānn</b>, tsi̍t-khùn-á-kú tō suî tsáu kah bô khuànn-tio̍h lâng-iánn--khì.",def:"這個小孩好動到閒不下來，一下子就跑得不見蹤影",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/tw/ne/28456-1-1.mp3"},
+        {id:"19-2",han:"當咧大的囡仔人，較加嘛<b class='kw'>無時定</b>，予伊耍一時仔無要緊",tailo:"Tng-teh tuā ê gín-á-lâng, khah-ke mā <b class='kw'>bô-sî-tiānn</b>, hōo i sńg--tsi̍t-sî-á bô iàu-kín. ",def:"孩子正在長大，難免好動，讓他玩一下沒關係",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/58/Bh/28456-1-2.mp3"},
+        {id:"20",han:"你按呢<b class='kw'>無事無白</b>來共我罵，敢毋免共我會失禮？",tailo:"Lí án-ne <b class='kw'>bô-sū-bô-pe̍h</b> lâi kā guá mē, kám m̄-bián kā guá huē-sit-lé?",def:"你這樣無緣無故來罵我，難道不用跟我道歉？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/cr/MV/291461.mp3"},
+        {id:"21-1",han:"這擺比賽兩人攏平𠢕<b class='kw'>無輸贏</b>",tailo:"Tsit pái pí-sài nn̄g lâng lóng pênn gâu <b class='kw'>bô-su-iânn</b>.",def:"這次比賽雙方水平、技術相當，分不出誰勝誰負",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/r1/lh/29111-1-1.mp3"},
+        {id:"21-2",han:"講一句<b class='kw'>無輸贏</b>的，見擺跋筊若攏輸，啥人欲閣跋？",tailo:"Kóng tsi̍t kù <b class='kw'>bô-su-iânn</b>--ê, kiàn-pái pua̍h-kiáu nā lóng su, siánn-lâng beh koh pua̍h?",def:"我說一句無關緊要的話，每次賭博都輸的話，誰還想賭博？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/gt/GS/29111-2-1.mp3"},
+        {id:"22",han:"規陣遐濟人欲去人兜食飯，才攢這點仔等路，正經是<b class='kw'>無沓無屑</b>，卸咱家己的體面",tailo:"Kui-tīn hiah tsē lâng beh khì lâng tau tsia̍h-pn̄g, tsiah tshuân tsit-tiám-á tán-lōo, tsìng-king sī <b class='kw'>bô-tap-bô-sap</b>, sià lán ka-kī ê thé-biān.",def:"我們那麼多人要去別人家吃飯，才準備這一點點禮物，份量真是微不足道，反而丟盡自己的顏面",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/nZ/WN/29351-1-1.mp3"},
+        {id:"23",han:"我都共伊會失禮矣，閣毋放我煞，去四界投，實在是<b class='kw'>無臭無潲</b>",tailo:"Guá to kā i huē-sit-lé--ah, koh m̄ pàng guá suah, khì sì-kè tâu, si̍t-tsāi sī <b class='kw'>bô-tshàu-bô-siâu</b>.",def:"我都已經跟他道歉了，還不放過我，到處投訴，實在是不像樣",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/pk/dj/29113-1-1.mp3"},
+        {id:"24",han:"伊今仔精神爾爾，閣目睭<b class='kw'>微微</b>咧",tailo:"I tann-á tsing-sîn niā-niā, koh ba̍k-tsiu <b class='kw'>bui-bui</b>--leh.",def:"他剛醒過來而已，一副睡眼惺忪的樣子",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/wr/b1/29325-1-1.mp3"},
+        {id:"25-1",han:"早市的生理極加是做到九點爾爾，欲賣遮的菜著緊來去才<b class='kw'>會赴市</b>，若無就愛留咧家己食",tailo:"Tsá-tshī ê sing-lí ki̍k-ke sī tsò kàu káu tiám niā-niā, beh bē tsia-ê tshài tio̍h kín lâi-khì tsiah <b class='kw'>ē-hù-tshī</b>, nā-bô tō ài lâu leh ka-kī tsia̍h. ",def:"早市的生意頂多是做到九點而己，要賣這些菜得快點去才趕得上，要不然就得留著自己吃了",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/gE/EJ/19789-1-1.mp3"},
+        {id:"25-2",han:"你這馬看著高麗菜的價數好，才欲攢落去種，敢<b class='kw'>會赴市</b>？",tailo:"Lí tsit-má khuànn-tio̍h ko-lê-tshài ê kè-siàu hó, tsiah beh tshuân lo̍h-khì tsìng, kám <b class='kw'>ē-hù-tshī</b>?",def:"你現在看到高麗菜的價格好，才想要準備去栽種，哪趕得上時機呢？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/us/ly/19789-1-2.mp3"},
+        {id:"26",han:"這層代誌僫處理，等<b class='kw'>下日</b>才寬寬仔講予你知",tailo:"Tsit tsân tāi-tsì oh tshú-lí, tán <b class='kw'>ē-ji̍t</b> tsiah khuann-khuann-á kóng hōo lí tsai. ",def:"這件事情不容易處理，改天再慢慢告訴你",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ro/gX/17762-1-1.mp3"},
+        {id:"27",han:"伊頂半身穿白衫，<b class='kw'>下半身</b>配烏裙，看著誠大範",tailo:"I tíng-puànn-sin tshīng pe̍h sann, <b class='kw'>ē-puànn-sin</b> phuè oo kûn, khuànn tio̍h tsiânn tuā-pān.",def:"他上半身穿白襯衫，下半身搭黑裙，看起來很大方",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/NH/Cx/29430-1-1.mp3"},
+        {id:"28",han:"你莫見擺攏欲佮人<b class='kw'>夯硬篙</b>，較袂顧人怨",tailo:"Lí mài kiàn-pái lóng beh kah lâng <b class='kw'>giâ-ngē-ko</b>, khah bē kòo-lâng-uàn.",def:"你別每次都要和人唱反調，比較不會惹人討厭",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/EX/yV/28512-1-1.mp3"},
+        {id:"29-1",han:"<b class='kw'>夯石碾</b>是咱參加亞洲運動會捷著等的項目",tailo:"<b class='kw'>Giâ-tsio̍h-lián</b> sī lán tsham-ka A-tsiu Ūn-tōng-huē tsia̍p tio̍h-tíng ê hāng-bo̍k. ",def:"舉重是我們參加亞洲運動會常得獎的項目",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/tE/r2/29225-1-1.mp3"},
+        {id:"29-2",han:"有咧<b class='kw'>夯石碾</b>的人手骨攏真粗勇",tailo:"Ū teh giâ-tsio̍h-lián ê lâng tshiú-kut lóng tsin tshoo-ióng.",def:"平時練舉重的人手臂都很粗壯",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Yb/ly/29225-2-1.mp3"},
+        {id:"30",han:"樹仔跤的樹葉仔無偌濟，用<b class='kw'>鋏仔</b>鋏鋏咧就會用得矣",tailo:"Tshiū-á-kha ê tshiū-hio̍h-á bô guā-tsē, iōng <b class='kw'>giap-á</b> giap-giap--leh tō ē-īng--tit--ah.",def:"樹底下的樹葉沒有很多，拿夾子夾一夾就可以了",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Cy/GZ/29327-1-1.mp3"},
+        {id:"31",han:"細漢的時陣，我上愛聽阿母講<b class='kw'>囡仔古</b>",tailo:"Sè-hàn ê sî-tsūn, guá siōng ài thiann a-bú kóng <b class='kw'>gín-á-kóo</b>.",def:"小時候，我最喜歡聽媽媽講童話故事",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/oZ/f4/29392-1-1.mp3"},
+        {id:"32-1",han:"蹌跤雞佮覕相揣攏是較早的囡仔上愛的<b class='kw'>囡仔耍</b>",tailo:"Tshiáng-kha-ke kah bih-sio-tshuē lóng sī khah-tsá ê gín-á siōng ài ê <b class='kw'>gín-á-sńg</b>.",def:"跳房子和捉迷藏都是以前的孩子最喜愛的遊戲",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/pX/Cq/29495-1-1.mp3"},
+        {id:"32-2",han:"尪仔標、干樂佮樹奶攏是予人真數念的<b class='kw'>囡仔耍</b>",tailo:"Ang-á-phiau, kan-lo̍k kah tshiū-ling lóng sī hōo lâng tsin siàu-liām ê <b class='kw'>gín-á-sńg</b>. ",def:"圓紙牌、陀螺和橡皮筋都是讓人懷念再三的童玩",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ZY/rO/29495-2-1.mp3"},
+        {id:"33-1",han:"囡仔人咧講的<b class='kw'>囡仔話</b>，聽著真古錐",tailo:"Gín-á-lâng teh kóng ê <b class='kw'>gín-á-uē</b>, thiann tio̍h tsin kóo-tsui.",def:"小孩子講的童言童語，聽起來很可愛",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ir/Sv/29592-1-1.mp3"},
+        {id:"33-2",han:"看伊都大人大種矣，哪會串講攏<b class='kw'>囡仔話</b>咧？",tailo:"Khuànn i to tuā-lâng-tuā-tsíng--ah, ná ē tshuàn-kóng lóng <b class='kw'>gín-á-uē</b>--leh?",def:"看他已經是個大人了，怎麼會開口盡講些幼稚的話？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/EQ/Fn/29592-2-1.mp3"},
+        {id:"34",han:"<b class='kw'>牛犅𨂿</b>會損蕩柑仔欉、柳丁欉、檸檬欉佮木瓜欉等果子欉",tailo:"<b class='kw'>Gû-káng-uainnh</b> ē sńg-tn̄g kam-á tsâng, liú-ting tsâng, lê-bóng tsâng kah bo̍k-kue tsâng tíng kué-tsí tsâng.",def:"天牛會危害橘子、柳丁、檸檬和木瓜樹等果樹",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Fm/6u/19918-1-1.mp3"},
+        {id:"35-1",han:"伊這站仔<b class='kw'>外務</b>真濟，除去正職的頭路，閣有足濟社團的工課，較加嘛無閒𩑾𩑾",tailo:"I tsit-tsām-á <b class='kw'>guā-bū</b> tsin tsē, tû-khì tsiànn-tsit ê thâu-lōo, koh ū tsiok tsē siā-thuân ê khang-khuè, khah-ke mā bô-îng-tshih-tshih.",def:"他這陣仔外務很多，除了正職的工作，還有許多社團的工作，難怪會忙得暈頭轉向",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/nH/Mb/18035-1-1.mp3"},
+        {id:"35-2",han:"阮阿姊的工課是咧招保險的<b class='kw'>外務</b>，定定著四界去走傱",tailo:"Guán a-tsí ê khang-khuè sī teh tsio pó-hiám ê <b class='kw'>guā-bū</b>, tiānn-tiānn tio̍h sì-kè khì tsáu-tsông.",def:"我姐姐的工作是拉保險的外務員，常常要四處去奔波",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/D6/Cm/18035-2-1.mp3"},
+        {id:"36-1",han:"你來阮兜，車愛會記得駛入來<b class='kw'>外埕</b>，毋通擋佇路邊，警察不時都來開單",tailo:"Lí lâi guán tau, tshia ài ē-kì-tit sái ji̍p-lâi <b class='kw'>guā-tiânn</b>, m̄-thang tòng tī lōo-pinn, kíng-tshat put-sî to lâi khui-tuann. ",def:"你來我家，車得記得開進來外庭，不要停在路邊，警察時常來開罰單",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/kA/Xq/29131-1-1.mp3"},
+        {id:"36-2",han:"阿母講伊細漢的時，攏會佇庄跤舊厝的<b class='kw'>外埕</b>，共𪜶阿舅鬥曝粟仔",tailo:"A-bú kóng i sè-hàn ê sî, lóng ē tī tsng-kha kū-tshù ê <b class='kw'>guā-tiânn</b>, kā in a-kū tàu pha̍k tshik-á.",def:"媽媽說他小時候，都會在鄉下古厝的外面的空地，幫他舅舅曬稻穀",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/pk/Rk/29131-2-1.mp3"},
+        {id:"37",han:"<b class='kw'>月底</b>通常是阮公司無閒咧出貨的日子",tailo:"<b class='kw'>Gue̍h-té</b> thong-siông sī guán kong-si bô-îng teh tshut-huè ê ji̍t-tsí. ",def:"月底通常是我們公司忙著出貨的日子",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/RC/Av/17925-1-1.mp3"},
+        {id:"38",han:"透風的時，佇海邊會當看著海湧搧佇礁石頂面的<b class='kw'>海波</b>",tailo:"Thàu-hong ê sî, tī hái-pinn ē-tàng khuànn-tio̍h hái-íng siàn tī ta-tsio̍h tíng-bīn ê <b class='kw'>hái-pho</b>. ",def:"颳風的時候，在海邊可以看到海浪打在礁石上面的浪花",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/s9/RJ/29315-1-1.mp3"},
+        {id:"39",han:"<b class='kw'>海豬仔泅</b>足歹學的，毋過咧泅的姿勢真媠",tailo:"<b class='kw'>Hái-ti-á-siû</b> tsiok pháinn o̍h--ê, m̄-koh teh siû ê tsu-sè tsin suí.",def:"蝶泳很難學，不過游起來的姿勢很優美",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/BH/Bv/29437-1-1.mp3"},
+        {id:"40",han:"<b class='kw'>巷仔頭</b>的阿婆有飼一隻土狗仔，看著誠歹",tailo:"<b class='kw'>Hāng-á-thâu</b> ê a-pô ū tshī tsi̍t tsiah thóo-káu-á, khuànn tio̍h tsiânn pháinn.",def:"巷口的阿婆養了一隻土狗，看起來很兇的樣子",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ug/C3/19778-1-1.mp3"},
+        {id:"41",han:"這是阮<b class='kw'>後的</b>，這馬當咧做兵",tailo:"Tse sī guán <b class='kw'>hāu--ê</b>, tsit-má tng-teh tsò-ping.",def:"這是我兒子，現在在當兵",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Uw/nB/29326-1-1.mp3"},
+        {id:"42",han:"這跤揹仔誠媠款，一下看就知影是<b class='kw'>下心神</b>做的",tailo:"Tsit kha phāinn-á tsiânn suí-khuán, tsi̍t-ē khuànn tō tsai-iánn sī <b class='kw'>hē-sim-sîn</b> tsò--ê.",def:"這個背包很美，一看就知道是費心思做的",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/9e/pa/29408-1-1.mp3"},
+        {id:"43-1",han:"啉甲起酒痟的阿義，規暝佇巷仔口<b class='kw'>唏嚇叫</b>，聽候警察來矣，人煞走甲無看見影",tailo:"Lim kah khí-tsiú-siáu ê A-gī, kui mê tī hāng-á-kháu <b class='kw'>hì-heh-kiò</b>, thìng-hāu kíng-tshat lâi--ah, lâng suah tsáu kah bô khuànn-kìnn iánn.",def:"到發酒瘋的阿義，整晚在巷口大呼小叫，等到警察來了，他卻一溜煙逃到沒看見人影",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/mj/CL/19848-1-1.mp3"},
+        {id:"43-2",han:"外口規大陣人佇遐<b class='kw'>唏嚇叫</b>，到底是發生啥物代誌？",tailo:"Guā-kháu kui tuā tīn lâng tī hia <b class='kw'>hì-heh-kiò</b>, tàu-té sī huat-sing siánn-mih tāi-tsì?",def:"外頭一大群人在那裏喧嘩吵嚷，到底是發生什麼事情？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/nv/HO/19848-2-1.mp3"},
+        {id:"44",han:"三頓<b class='kw'>魚魚肉肉</b>按呢咧食，對健康無一定真有幫贊",tailo:"Sann tǹg <b class='kw'>hî-hî-bah-bah</b> án-ne teh tsia̍h, tuì kiān-khong bô-it-tīng tsin ū pang-tsān.",def:"三餐都大魚大肉吃得這麼豐盛，對健康不一定有助益",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/QB/qY/29533-1-1.mp3"},
+        {id:"45",han:"伊那行那耍手機仔，無細膩踢著石頭，<b class='kw'>險險仔</b>栽落去圳溝仔底",tailo:"I ná kiânn ná sńg tshiú-ki-á, bô-sè-jī that-tio̍h tsio̍h-thâu, <b class='kw'>hiám-hiám-á</b> tsai lo̍h-khì tsùn-kau-á-té. ",def:"他邊走邊玩手機，不小心踢到石頭，差一點掉進灌溉溝渠裡",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ou/pj/27380-1-1.mp3"},
+        {id:"46",han:"若<b class='kw'>耳空吼</b>閣會頭眩，愛去揣醫生檢查看是有啥物問題",tailo:"Nā <b class='kw'>hīnn-khang-háu</b> koh ē thâu-hîn, ài khì tshuē i-sing kiám-tsa khuànn sī ū siánn-mih būn-tê. ",def:"要是耳鳴又會頭暈，得去找醫生檢查看看是有什麼問題",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/qR/ga/29420-1-1.mp3"},
+        {id:"47",han:"揣翁婿上要緊的是愛彼个查埔的<b class='kw'>好才</b>閣骨力，外表無遐爾重要",tailo:"Tshuē ang-sài siōng iàu-kín--ê sī ài hit ê tsa-poo--ê <b class='kw'>hó-tsâi</b> koh kut-la̍t, guā-piáu bô hiah-nī tiōng-iàu.",def:"選擇夫婿最重要的是男方要有才能又勤勞，外表不是那麼重要",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/3l/ob/29341-1-1.mp3"},
+        {id:"48-1",han:"<b class='kw'>風颱天</b>毋通出去，因為風雨大，較危險",tailo:"<b class='kw'>Hong-thai-thinn</b> m̄-thang tshut--khì, in-uī hong-hōo tuā, khah guî-hiám.",def:"颱風天不要出去外面，因為風雨大，較危險",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/lk/Fa/29393-1-1.mp3"},
+        {id:"48-2",han:"<b class='kw'>風颱天</b>會落大雨，對欠水較有幫贊",tailo:"<b class='kw'>Hong-thai-thinn</b> ē lo̍h tuā-hōo, tuì khiàm-tsuí khah ū pang-tsān.",def:"颱風天會下大雨，對缺水比較有幫助",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/UU/fS/29393-1-2.mp3"},
+        {id:"49",han:"<b class='kw'>虎咬豬</b>",tailo:"<b class='kw'>hóo-kā-ti</b>hóo-kā-tu",def:"刈包、割包。民間常見的小吃。將兩片半圓形相連成虎口狀的特製包子，於夾層中夾進滷肉、酸菜、花生粉等餡料而製成的食物。民間常在尾牙時食用，取其形似錢包，希望可以帶來財運。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/HL/s9/293311.mp3"},
+        {id:"50",han:"外口天色暗摸摸，凡勢會落雨，你<b class='kw'>雨遮</b>著紮咧",tailo:"Guā-kháu thinn-sik àm-bong-bong, huān-sè ē lo̍h-hōo, lí <b class='kw'>hōo-jia</b> tio̍h tsah--leh. ",def:"外面天色昏暗，可能會下雨，你雨具得帶著",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/KZ/zT/29364-1-1.mp3"},
+        {id:"51",han:"破病著愛去揣醫生，毋通想講食<b class='kw'>符仔水</b>就會好",tailo:"Phuà-pēnn tio̍h-ài khì tshuē i-sing, m̄-thang siūnn-kóng tsia̍h <b class='kw'>hû-á-tsuí</b> tō ē hó.",def:"生病就要去看醫生，不要想說喝符水就會好",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Gm/Eg/29432-1-1.mp3"},
+        {id:"52-1",han:"拍賣會場的物件，攏是用<b class='kw'>喝價</b>的",tailo:"Phah-bē huē-tiûnn ê mi̍h-kiānn, lóng sī iōng <b class='kw'>huah-kè</b>--ê.",def:"拍賣會場的東西，都是用喊價的",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/h9/vG/29120-1-1.mp3"},
+        {id:"52-2",han:"阮阿母買菜的時，誠𠢕佮人<b class='kw'>喝價</b>",tailo:"Guán a-bú bé tshài ê sî, tsiânn gâu kah lâng <b class='kw'>huah-kè</b>.",def:"媽媽買菜時，很會跟人討價還價",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/eu/zh/29120-2-1.mp3"},
+        {id:"52-3",han:"<b class='kw'>喝價</b>閣有一種顛倒是價數愈喝愈懸，比論古董，價數定定喝甲會驚死人",tailo:"<b class='kw'>Huah-kè</b> koh ū tsi̍t tsióng tian-tò sī kè-siàu jú huah jú kuân, pí-lūn kóo-tóng, kè-siàu tiānn-tiānn huah kah ē kiann-sí-lâng.",def:"喊價還有一種反而是價格愈喊愈高，譬如古董，價格常常喊到嚇死人",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/oo/Y5/29120-3-1.mp3"},
+        {id:"53",han:"伊畢業了後無去揣頭路，專心準備考試，<b class='kw'>翻轉年</b>就高考及格，去做公務員矣",tailo:"I pit-gia̍p liáu-āu bô khì tshuē thâu-lōo, tsuan-sim tsún-pī khó-tshì, <b class='kw'>huan-tńg-nî</b> tō ko-khó ki̍p-keh, khì tsò kong-bū-uân--ah.",def:"他畢業之後沒有去找工作，專心準備考試，隔年就高考及格，去當公務員了",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/f2/40/29531-1-1.mp3"},
+        {id:"54-1",han:"伊轉去到厝，才<b class='kw'>發見</b>物件囥佇火車裡，煞袂記得提",tailo:"I tńg-khì kàu tshù, tsiah <b class='kw'>huat-kiàn</b> mi̍h-kiānn khǹg tī hué-tshia--lí, suah bē-kì-tit the̍h. ",def:"他回到家，才察覺東西放在火車上，卻忘了拿",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Iu/1C/29593-1-1.mp3"},
+        {id:"54-2",han:"微生物是一位荷蘭的博物學家，用伊家己製作的顯微鏡<b class='kw'>發見</b>的",tailo:"Bî-sing-bu̍t sī tsi̍t uī Hô-lân ê phok-bu̍t-ha̍k-ka, iōng i ka-kī tsè-tsok ê hián-bî-kiànn <b class='kw'>huat-kiàn</b>--ê. ",def:"微生物是一位荷蘭的博物學家，用他自己製作的顯微鏡發現的",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/9N/vk/29593-2-1.mp3"},
+        {id:"55-1",han:"這窟魚池仔<b class='kw'>活</b>足濟魚仔栽",tailo:"Tsit khut hî-tî-á <b class='kw'>hua̍t</b> tsiok tsē hî-á-tsai. ",def:"這座魚池繁殖很多魚苗",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/lZ/9C/15298-1-1.mp3"},
+        {id:"55-2",han:"伊真𠢕<b class='kw'>活</b>果子栽",tailo:"I tsin gâu <b class='kw'>hua̍t</b> kué-tsí-tsai.",def:"他很會培育果苗",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/4Y/sU/15298-1-2.mp3"},
+        {id:"55-3",han:"伊這身工夫練甲真<b class='kw'>活</b>",tailo:"I tsit sin kang-hu liān kah tsin <b class='kw'>hua̍t</b>. ",def:"他這身功夫練得很老練",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/aE/e5/15298-2-1.mp3"},
+        {id:"56",han:"聽你講甲親像誠簡單，我是聽甲<b class='kw'>花嗄嗄</b>",tailo:"Thiann lí kóng kah tshin-tshiūnn tsiânn kán-tan, guá sī thiann kah <b class='kw'>hue-sà-sà</b>. ",def:"聽你說的好像很簡單，我卻聽得一頭霧水",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Oi/PV/28348-1-1.mp3"},
+        {id:"57",han:"人講<b class='kw'>火燒心</b>就敢若有石頭硩佇你的胸坎，真僫喘氣，著愛趕緊去予醫生看。",tailo:"Lâng kóng <b class='kw'>hué-sio-sim</b> tō kánn-ná ū tsio̍h-thâu teh tī lí ê hing-khám, tsin oh tshuán-khuì, tio̍h-ài kuánn-kín khì hōo i-sing khuànn.",def:"人家說胸悶有如石頭壓在胸口，呼吸很困難，得趕快去看醫生。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/eI/0c/29227-1-1.mp3"},
+        {id:"58",han:"目一下𥍉，咱<b class='kw'>歲聲</b>都六十捅矣。",tailo:"Ba̍k tsi̍t-ē nih, lán <b class='kw'>huè-siann</b> to la̍k-tsa̍p-thóng--ah.",def:"一眨眼，我們年紀都已經六十出頭了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/m8/eV/29508-1-1.mp3"},
+        {id:"59",han:"這擺車禍致使伊頭殼內有<b class='kw'>血角</b>，愛手術共提出來。",tailo:"Tsit pái tshia-hō tì-sú i thâu-khak-lāi ū <b class='kw'>hueh-kak</b>, ài tshiú-su̍t kā the̍h--tshut-lâi.",def:"這次車禍造成他頭顱裡面有血塊，得動手術把它拿出來。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/YN/t3/29200-1-1.mp3"},
+        {id:"60",han:"醫生當咧共患者開刀，欲共窒佇伊頭殼內的<b class='kw'>血凍</b>提出來。",tailo:"I-sing tng-teh kā huān-tsiá khui-to, beh kā that tī i thâu-khak-lāi ê <b class='kw'>hueh-tàng</b> the̍h--tshut-lâi.",def:"醫生正在替患者動手術，要清除他腦中的血塊。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/8W/Du/29202-1-1.mp3"},
+        {id:"61",han:"這<b class='kw'>分分仔</b>工課爾爾，你毋通拖。",tailo:"Tse <b class='kw'>hun-hun-á</b> khang-khuè niā-niā, lí m̄-thang thua.",def:"這一點兒工作而已，你不要拖。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ab/nA/29236-1-1.mp3"},
+        {id:"62",han:"你這个<b class='kw'>夭壽骨</b>，規工啉酒毋去作穡，欲哪會有通食。",tailo:"Lí tsit ê <b class='kw'>iáu-siū-kut</b>, kui-kang lim tsiú m̄ khì tsoh-sit, beh ná ē ū thang tsia̍h.",def:"你這個短命鬼，整天喝酒不去工作，怎麼會有得吃呢。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/8O/W6/17971-1-1.mp3"},
+        {id:"63",han:"你按呢暝日無歇咧作穡，對家己的健康哪會攏無咧<b class='kw'>要意</b>？",tailo:"Lí án-ne mê-ji̍t bô hioh teh tsoh-sit, tuì ka-kī ê kiān-khong ná ē lóng bô teh <b class='kw'>iàu-ì</b>?",def:"你這樣日夜不停地工作，對自己的健康怎麼都不在意？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/6a/6z/29530-1-1.mp3"},
+        {id:"64",han:"這片<b class='kw'>藥餅</b>歹吞，會使共研做藥粉袂？",tailo:"Tsit phìnn <b class='kw'>io̍h-piánn</b> pháinn thun, ē-sái kā gíng-tsò io̍h-hún--bē?",def:"這片藥錠不好吞，可以磨成藥粉嗎？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/nw/i2/29269-1-1.mp3"},
+        {id:"65",han:"<b class='kw'>一般的</b>，文旦收成了後，愛閣囥一兩禮拜，聽候較消水咧就會加真好食。",tailo:"<b class='kw'>It-puann-ti̍k</b>, bûn-tàn siu-sîng liáu-āu, ài koh khǹg--tsi̍t-nn̄g-lé-pài, thìng-hāu khah siau-tsuí--leh tō ē ke tsin hó-tsia̍h.",def:"一般而言，文旦採收以後，還得放上一兩個星期，等到水份減少後就會更好吃。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Sr/c1/29356-1-1.mp3"},
+        {id:"66",han:"老大人食麵的時愛食<b class='kw'>幼麵</b>，按呢哺較有法。",tailo:"Lāu-tuā-lâng tsia̍h mī ê sî ài tsia̍h <b class='kw'>iù-mī</b>, án-ne pōo khah ū-huat.",def:"老年人吃麵的時候得吃細麵，這樣比較嚼得動。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Px/9T/29359-1-1.mp3"},
+        {id:"67",han:"遐爾<b class='kw'>幼茈</b>的囡仔，猶毋捌世事咧。",tailo:"Hiah-nī <b class='kw'>iù-tsínn</b> ê gín-á, iáu m̄ bat sè-sū--leh.",def:"年紀那麼幼嫩的小孩，還不懂人情世故啦。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Um/G1/29493-1-1.mp3"},
+        {id:"68",han:"你就是種著恁阿母的<b class='kw'>油耳</b>，不時都生一寡澹澹溼溼的耳屎來共你凌治。",tailo:"Lí tō sī tsíng-tio̍h lín a-bú ê <b class='kw'>iû-hīnn</b>, put-sî to senn tsi̍t-kuá tâm-tâm-sip-sip ê hīnn-sái lâi kā lí lîng-tī.",def:"你就是遺傳到你媽媽的溼耳朵，時常滋生溼黏的耳屎讓你困擾不已。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/p1/ml/29122-1-1.mp3"},
+        {id:"69",han:"今仔日天氣翕熱，<b class='kw'>日頭光</b>真鑿目。",tailo:"Kin-á-ji̍t thinn-khì hip-jua̍h, <b class='kw'>ji̍t-thâu-kng</b> tsin tsha̍k-ba̍k.",def:"今天天氣悶熱，陽光刺眼。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/84/F7/29391-1-1.mp3"},
+        {id:"70",han:"<b class='kw'>日鬚</b>迵過樹葉仔縫掖佇塗跤。",tailo:"<b class='kw'>Ji̍t-tshiu</b> thàng-kuè tshiū-hio̍h-á-phāng iā tī thôo-kha.",def:"陽光穿過樹葉縫隙灑落在地上。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/gV/3S/29390-1-1.mp3"},
+        {id:"71",han:"有的代誌袂拖得，若傷過<b class='kw'>韌鼻</b>，會做無工課。",tailo:"Ū ê tāi-tsì bē-thua--tit, nā siunn kuè <b class='kw'>jūn-phīnn</b>, ē tsò bô khang-khuè.",def:"有些事是拖延不得的，如果太不乾脆，工作會無法完成。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Dy/F3/29242-1-1.mp3"},
+        {id:"72",han:"𪜶彼陣囡仔半暝猶毋睏，佇房間裡咧<b class='kw'>絞營</b>，吵甲厝蓋強欲夯起來。",tailo:"In hit tīn gín-á puànn-mê iáu m̄ khùn, tī pâng-king--lí teh <b class='kw'>ká-iânn</b>, tshá kah tshù-kuà kiōng-beh giâ--khí-lâi.",def:"他們那群小孩半夜還不睡覺，在房間裡喧鬧，吵到屋頂快要掀開來。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/fX/oq/29102-1-1.mp3"},
+        {id:"73",han:"伊毋好好仔讀冊，煞走學綴人<b class='kw'>絞群絞黨</b>四界去𨑨迌。",tailo:"I m̄ hó-hó-á tha̍k tsheh, suah tsáu-o̍h tuè lâng <b class='kw'>ká-kûn-ká-tóng</b> sì-kè khì tshit-thô.",def:"他不好好讀書，竟逃學跟人成群結夥到處去遊玩。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/kO/yf/28337-1-1.mp3"},
+        {id:"74",han:"咱敢毋是講欲隨人出寡來投資做生理，<b class='kw'>甲是</b>攏無人欲出錢，規氣煞去莫閣講。",tailo:"Lán kám m̄ sī kóng beh suî-lâng tshut--kuá lâi tâu-tsu tsò-sing-lí, <b class='kw'>kah-sī</b> lóng bô lâng beh tshut-tsînn, kui-khì suah--khì mài koh kóng.",def:"我們不是說要每人拿出一些錢投資做生意，既然沒有人要出錢，乾脆算了別再提。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Cx/3C/29516-1-1.mp3"},
+        {id:"75",han:"叫伊落雨天莫出門，伊<b class='kw'>干仔</b>欲，實在無伊法。",tailo:"Kiò i lo̍h-hōo-thinn mài tshut-mn̂g, i <b class='kw'>kan-á</b> beh, si̍t-tsāi bô i huat.",def:"叫他下雨天不要出門，他偏偏要去，真拿他沒辦法。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/v7/Nc/19865-1-1.mp3"},
+        {id:"76",han:"今仔日是𪜶阿媽<b class='kw'>敆爐</b>的日子，毋過伊煞為著防疫愛隔離，無法度轉去拜拜。",tailo:"Kin-á-ji̍t sī in a-má <b class='kw'>kap-lôo</b> ê ji̍t-tsí, m̄-koh i suah uī-tio̍h hông-i̍k ài keh-lī, bô-huat-tōo tńg-khì pài-pài.",def:"今天是他祖母合爐的日子，但是他卻為了防疫得隔離，不能回家拜拜。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/nK/Pt/29169-1-1.mp3"},
+        {id:"77",han:"你都毋知咧，這棟遮挑俍的大樓，當初時欲動土進前是偌仔<b class='kw'>厚事路</b>咧！",tailo:"Lí to m̄ tsai--leh, tsit tòng tsiah thiau-lāng ê tuā-lâu, tong-tshe-sî beh tāng-thóo tsìn-tsîng sī guā-á <b class='kw'>kāu-sū-lōo</b>--leh!",def:"你都不知道，這棟聳立的大樓，當初要動土之前可是波折不斷啊！",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/5E/Yf/29289-1-1.mp3"},
+        {id:"78",han:"𪜶彼<b class='kw'>家口</b>是大家族，仝祧仔內的攏蹛做伙。",tailo:"In hit <b class='kw'>ke-kháu</b> sī tuā-ka-tso̍k, kāng thiāu-á-lāi--ê lóng tuà tsò-hué.",def:"他們家是大家族，親戚同宗族的全住在一起。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ym/fv/29538-1-1.mp3"},
+        {id:"79",han:"老師若講你，你千萬毋通<b class='kw'>扴話</b>。",tailo:"Lāu-su nā kóng--lí, lí tshian-bān m̄-thang <b class='kw'>ke̍h-uē</b>.",def:"老師如果責罵你，你千萬不能還嘴。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/q4/Ws/18322-1-1.mp3"},
+        {id:"80",han:"伊講的彼件代誌傷過譀古，你莫聽伊佇遐咧<b class='kw'>敲虎𡳞</b>。",tailo:"I kóng ê hit kiānn tāi-tsì siunn kuè hàm-kóo, lí mài thiann i tī hia teh <b class='kw'>khà-hóo-lān</b>.",def:"他說的那件事太過荒謬，你別聽他在那裡胡說。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/WZ/CP/29461-1-1.mp3"},
+        {id:"81",han:"起厝欲用的紅毛塗運到位矣，咱做伙來去共𪜶鬥<b class='kw'>起貨</b>。",tailo:"Khí-tshù beh iōng ê âng-mn̂g-thôo ūn kàu-uī--ah, lán tsò-hué lâi-khì kā in tàu <b class='kw'>khí-huè</b>.",def:"蓋房屋要用的水泥已經到貨了，我們一起去幫他們卸貨。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/wc/ir/29442-1-1.mp3"},
+        {id:"82",han:"囡仔人毋捌代誌，若無順伊的意，隨頓落去塗跤<b class='kw'>起挐</b>。",tailo:"Gín-á-lâng m̄ bat-tāi-tsì, nā bô sūn i ê ì, suî tǹg lo̍h-khì thôo-kha <b class='kw'>khí-jû</b>.",def:"小孩子不懂事，如果不能照他的意願，馬上就跌坐在地上鬧脾氣。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/kS/2S/29101-1-1.mp3"},
+        {id:"83",han:"伊是阮公司<b class='kw'>起基</b>的股東。",tailo:"I sī guán kong-si <b class='kw'>khí-ki</b> ê kóo-tong.",def:"他是我們公司的創始股東。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/nj/rb/29243-1-1.mp3"},
+        {id:"84",han:"我都照實講爾爾，欲哪會知影伊聽了煞<b class='kw'>起慼</b>。",tailo:"Guá to tsiàu-si̍t kóng niā-niā, beh ná ē tsai-iánn i thiann-liáu suah <b class='kw'>khí-tsheh</b>.",def:"我就是實話實說而已，怎會曉得他聽完以後就心生怨恨。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ii/Ox/29235-1-1.mp3"},
+        {id:"85",han:"我佇鐵工場學師仔的時陣，頭家娘定定揣空揣縫共我<b class='kw'>欹</b>，實在真酷刑。",tailo:"Guá tī thih-kang-tiûnn o̍h sai-á ê sî-tsūn, thâu-ke-niû tiānn-tiānn tshuē-khang-tshuē-phāng kā guá <b class='kw'>khia</b>, si̍t-tsāi tsin khok-hîng.",def:"我在鐵工場當學徒的時候，老闆娘常常雞蛋裡挑骨頭刁難我，實在很惡劣。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/EH/4Y/29383-1-1.mp3"},
+        {id:"86",han:"行路<b class='kw'>見天</b>，莫怪會跋倒。",tailo:"Kiânn-lōo <b class='kw'>khiàn-thian</b>, bo̍k-kuài ē pua̍h-tó.",def:"走路抬頭向天看，難怪會跌倒。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/uQ/Mg/29537-1-1.mp3"},
+        {id:"87",han:"伊是一个誠骨力的人，若有穡頭，免人交代，隨<b class='kw'>抾起跤</b>做。",tailo:"I sī tsi̍t ê tsiânn kut-la̍t ê lâng, nā ū sit-thâu, bián lâng kau-tài, suî <b class='kw'>khioh-khí-kha</b> tsò.",def:"他是一位很勤勞的人，一有工作，不用人家交代，就馬上去做。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/4V/7v/28350-1-1.mp3"},
+        {id:"88",han:"後個月過愛安排一下仔時間共阿公<b class='kw'>抾骨頭</b>，紲落來才閣囥入去塔裡。",tailo:"Āu kò gue̍h kuè ài an-pâi tsi̍t-ē-á sî-kan kā a-kong <b class='kw'>khioh-kut-thâu</b>, suà--lo̍h-lâi tsiah-koh khǹg ji̍p-khì thah--lí.",def:"下個月過後要安排個時間來替爺爺撿骨，之後再放到靈骨塔。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/KZ/8g/28329-1-1.mp3"},
+        {id:"89",han:"阿華佮阿明佇埤仔邊咧<b class='kw'>考水披</b>，看啥人考較遠。",tailo:"A-huâ kah A-bîng tī pi-á-pinn teh <b class='kw'>khó-tsuí-phi</b>, khuànn siánn-lâng khó khah hn̄g.",def:"阿華和阿明在池塘邊打水漂兒，看誰打得遠。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dq/2r/29206-1-1.mp3"},
+        {id:"90",han:"阿爸是一个足<b class='kw'>慷交</b>的人，阮兜不時都有真濟人客來相揣。",tailo:"A-pah sī tsi̍t ê tsiok <b class='kw'>khóng-kau</b> ê lâng, guán tau put-sî to ū tsin tsē lâng-kheh lâi sio-tshuē.",def:"爸爸個很慷慨好客的人，我家時常都有很多客人來訪。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Sr/Rd/29379-1-1.mp3"},
+        {id:"91",han:"今地球頂懸<b class='kw'>昆蟲</b>的種類通講是百百種，咱攏捌袂了呢。",tailo:"Tann tē-kiû tíng-kuân <b class='kw'>khun-thiông</b> ê tsióng-luī thang kóng sī pah-pah-tsióng, lán lóng bat bē liáu--neh.",def:"現今地球上昆蟲的種類可以說是百百種，我們都認識不完呢。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/z2/49/29449-1-1.mp3"},
+        {id:"92",han:"伊的<b class='kw'>肌膚</b>驚曝日，一下曝就烏趖趖。",tailo:"I ê <b class='kw'>ki-hu</b> kiann pha̍k-ji̍t, tsi̍t-ē pha̍k tō oo-sô-sô.",def:"他的皮膚很怕曬太陽，一曬就非常地黑。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/77/Ky/29423-1-1.mp3"},
+        {id:"93",han:"看命仙講阿義仔有<b class='kw'>居財</b>命，毋過看伊啉酒、跋筊、𨑨迌逐項會，敢誠實守會牢？",tailo:"Khuànn-miā-sian kóng A-gī--á ū <b class='kw'>ki-tsâi</b> miā, m̄-koh khuànn i lim tsiú, pua̍h-kiáu, tshit-thô ta̍k hāng ē, kám tsiânn-si̍t tsiú ē tiâu?",def:"命相師說阿義有居財命，可是他喝酒、賭博、遊玩樣樣來，錢財有可能守得住嗎？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/6A/Lj/29192-1-1.mp3"},
+        {id:"94",han:"伊昨昏無來上課，有請同學鬥<b class='kw'>寄聲</b>，提醒伊後禮拜著交期尾作業。",tailo:"I tsa-hng bô lâi siōng-khò, ū tshiánn tông-ha̍k tàu <b class='kw'>kià-siann</b>, thê-tshénn i āu lé-pài tio̍h kau kî-bué tsok-gia̍p.",def:"他昨天沒來上課，有請同學協助轉告，提醒他下周得交期末作業。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/o2/nf/29230-1-1.mp3"},
+        {id:"95",han:"你按呢<b class='kw'>噱噱叫</b>會共人吵著。",tailo:"Lí án-ne <b class='kw'>kia̍k-kia̍k-kiò</b> ē kā lâng tshá--tio̍h.",def:"你如此聒噪會吵到別人。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Io/nY/29462-1-1.mp3"},
+        {id:"96",han:"寒人的霜風誠透，致使肉砧的肉落尾攏<b class='kw'>堅風</b>去矣。",tailo:"Kuânn--lâng ê sng-hong tsiânn thàu, tì-sú bah-tiam ê bah lo̍h-bué lóng <b class='kw'>kian-hong</b>--khì--ah.",def:"冬天的冷風風勢很強，以至於豬肉店的肉最後都風乾變硬了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/PK/99/29440-1-1.mp3"},
+        {id:"97",han:"刀仔割著的空喙若較細空，就較快<b class='kw'>堅血</b>。",tailo:"To-á kuah--tio̍h ê khang-tshuì nā khah sè khang, tō khah khuài <b class='kw'>kian-hueh</b>.",def:"刀子割到的傷口如果比較小，就比較容易止血。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/QW/n4/29246-1-1.mp3"},
+        {id:"98",han:"佇這條街仔做食食的店頭，生理攏真交易，莫怪老一輩的講同業<b class='kw'>結市</b>才有錢通趁。",tailo:"Tī tsit tiâu ke-á tsò tsia̍h-si̍t ê tiàm-thâu, sing-lí lóng tsin ka-ia̍h, bo̍k-kuài lāu-tsi̍t-puè--ê kóng tông-gia̍p <b class='kw'>kiat-tshī</b> tsiah ū tsînn thang thàn.",def:"在這條街道賣飲食的店面，生意都很熱絡，怪不得長輩會說同業結市好生財。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/hm/Yv/29170-1-1.mp3"},
+        {id:"99",han:"行較<b class='kw'>緊跤</b>咧，若無會袂赴。",tailo:"Kiânn khah <b class='kw'>kín-kha</b>--leh, nā-bô ē bē-hù.",def:"走快一點，要不然會來不及。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/nV/Di/29305-1-1.mp3"},
+        {id:"100",han:"伊寫功課<b class='kw'>緊跤緊手</b>，逐擺攏是頭一个完成的。",tailo:"I siá kong-khò <b class='kw'>kín-kha-kín-tshiú</b>, ta̍k-pái lóng sī thâu tsi̍t ê uân-sîng--ê.",def:"他寫作業敏捷快速，每次都是第一個完成的。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/M5/ge/20226-1-1.mp3"},
+        {id:"101",han:"講著偌𠢕拄偌𠢕的人，<b class='kw'>見真</b>攏無影偌有才調。",tailo:"Kóng tio̍h guā gâu tú guā gâu ê lâng, <b class='kw'>kìnn-tsin</b> lóng bô-iánn guā ū tsâi-tiāu.",def:"誇口能力有多麼強大的人，實際上都不是真的多有本事。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/eD/vv/29172-1-1.mp3"},
+        {id:"102",han:"拄才是啥人<b class='kw'>叫電話</b>來？",tailo:"Tú-tsiah sī siánn-lâng <b class='kw'>kiò tiān-uē</b> lâi?",def:"剛才是誰打電話過來？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/LH/Sm/18045-1-1.mp3"},
+        {id:"103",han:"𪜶兜的電火點甲<b class='kw'>光焱焱</b>，毋過佇咧外口叫門，煞攏無人應。",tailo:"In tau ê tiān-hué tiám kah <b class='kw'>kng-iānn-iānn</b>, m̄-koh tī-leh guā-kháu kiò-mn̂g, suah lóng bô lâng ìn.",def:"他們家燈火通明，但是在外頭敲門，卻都無人回應。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/zP/EX/27373-1-1.mp3"},
+        {id:"104",han:"倚晝的日頭<b class='kw'>光爍爍</b>，照甲目睭強欲擘袂開。",tailo:"Uá-tàu ê ji̍t-thâu <b class='kw'>kng-sih-sih</b>, tsiò kah ba̍k-tsiu kiōng-beh peh bē khui.",def:"接近中午的陽光光亮刺眼，照得眼睛快要睜不開了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/CR/ln/27375-1-1.mp3"},
+        {id:"105",han:"因為我惜皮驚疼，閣煩惱空喙會患動孵膿，毋才袂愛烏白去外口<b class='kw'>貫耳</b>。",tailo:"In-uī guá sioh-phuê kiann thiànn, koh huân-ló khang-tshuì ē huān-tōng pū-lâng, m̄-tsiah bē ài oo-pe̍h khì guā-kháu <b class='kw'>kǹg-hīnn</b>.",def:"因為我很怕疼，又擔憂傷口會發炎化膿，所以不喜歡隨意去外面穿耳洞。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/LI/vT/19044-1-1.mp3"},
+        {id:"106",han:"我聽你咧<b class='kw'>講仙古</b>，無你提證據出來予我看。",tailo:"Guá thiann lí teh <b class='kw'>kóng-sian-kóo</b>, bô lí the̍h tsìng-kì tshut-lâi hōo guá khuànn.",def:"我聽你在胡說八道，不然你把證據拿出來給我看。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Vt/Ds/29543-1-1.mp3"},
+        {id:"107",han:"伊咧做的生理<b class='kw'>孤行獨市</b>，價數在伊喝，毋過若主顧客來交關，伊價數攏會放較軟。",tailo:"I teh tsò ê sing-lí <b class='kw'>koo-hâng-to̍k-tshī</b>, kè-siàu tsāi i huah, m̄-koh nā tsú-kòo-kheh lâi kau-kuan, i kè-siàu lóng ē pàng khah nńg.",def:"他做的是獨門生意，價錢隨他訂，但如果老主顧來購買，他都會把價錢降低一些。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/NQ/pc/29371-1-1.mp3"},
+        {id:"108",han:"咱佮一寡仔<b class='kw'>姑姨舅妗</b>，三不五時著愛相揣，感情才會峇。",tailo:"Lán kah tsi̍t-kuá-á <b class='kw'>koo-î-kū-kīm</b>, sam-put-gōo-sî tio̍h-ài sio-tshuē, kám-tsîng tsiah ē bā.",def:"我們跟親朋好友，偶爾要互有來往，這樣感情才會親近。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/pK/Sj/29385-1-1.mp3"},
+        {id:"109",han:"啥物瘦啉顧肝？我看是<b class='kw'>顧山</b>較緊啦！",tailo:"Siánn-mih sán-lim kòo kuann? Guá khuànn sī <b class='kw'>kòo-suann</b> khah kín--lah!",def:"什麼光喝酒不吃下酒菜可以養肝？我看是會早點成仙吧！",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/IF/QP/29290-1-1.mp3"},
+        {id:"110",han:"豬砧賣豬肉，若無先明品，袂使<b class='kw'>掛骨</b>賣予人客。",tailo:"Ti-tiam bē ti-bah, nā bô sing bîng-phín, bē-sái <b class='kw'>kuà-kut</b> bē hōo lâng-kheh.",def:"肉攤賣豬肉，如果沒有事先講明，不能肉連骨頭賣給客人。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ZI/fZ/29279-1-1.mp3"},
+        {id:"111",han:"這條新橋<b class='kw'>貫串</b>兩个鄉鎮的交通要道，並往過加真利便。",tailo:"Tsit tiâu sin kiô <b class='kw'>kuàn-tshuàn</b> nn̄g ê hiong-tìn ê kau-thong iàu-tō, phīng íng-kuè ke tsin lī-piān.",def:"這座橋連貫這兩個鄉鎮的交通要道，比以前便利許多。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Cy/6y/29452-1-1.mp3"},
+        {id:"112",han:"𪜶彼个孫真可惡，竟然想欲騙老大人共<b class='kw'>棺柴本</b>提出來予伊開。",tailo:"In hit ê sun tsin khó-ònn, kìng-jiân siūnn-beh phiàn lāu-tuā-lâng kā <b class='kw'>kuann-tshâ-pún</b> the̍h tshut-lâi hōo i khai.",def:"他那個孫子很可惡，竟然想騙老人把棺材本拿出來給他花用。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/5D/RU/29409-1-1.mp3"},
+        {id:"113",han:"阮佇阿媽遮耍，<b class='kw'>過晝</b>才會轉去，你免攢阮的中晝頓矣。",tailo:"Guán tī A-má tsia sńg, <b class='kw'>kuè-tàu</b> tsiah ē tńg--khì, lí bián tshuân guán ê tiong-tàu-tǹg--ah.",def:"我們在奶奶這邊遊玩，中午過後才會回去，你不用張羅我們的午餐了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/84/Q2/29210-1-1.mp3"},
+        {id:"114",han:"銅會<b class='kw'>過電</b>，塑膠袂過電。",tailo:"Tâng ē <b class='kw'>kuè-tiān</b>, sok-ka bē kuè-tiān.",def:"銅會導電，塑膠不會導電。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Wd/qK/29529-1-1.mp3"},
+        {id:"115",han:"阮<b class='kw'>舊厝</b>的門口埕有種真濟佈田花。",tailo:"Guán <b class='kw'>kū-tshù</b> ê mn̂g-kháu-tiânn ū tsìng tsin tsē pòo-tshân-hue.",def:"我老家的前院種了很多杜鵑花。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/RV/rg/29588-1-1.mp3"},
+        {id:"116",han:"彼尾鰗鰡誠<b class='kw'>滑溜</b>，若無掛手橐仔，免數想欲掠伊會著。",tailo:"Hit bué hôo-liu tsiânn <b class='kw'>ku̍t-liu</b>, nā bô kuà tshiú-lok-á, bián siàu-siūnn beh lia̍h i ē tio̍h.",def:"那條泥鰍全身滑溜溜，沒戴手套，休想抓得住牠。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/iu/V9/29498-1-1.mp3"},
+        {id:"117",han:"彼个外國傳教士為著欲佇臺灣傳教，台語學甲端的閣<b class='kw'>滑溜</b>",tailo:"Hit ê guā-kok thuân-kàu-sū uī-tio̍h beh tī Tâi-uân thuân-kàu, Tâi-gí o̍h kah tuan-tiah koh <b class='kw'>ku̍t-liū</b>. ",def:"那個外國傳教士為了要在臺灣傳教，臺灣台語學得道地又流利",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Qk/bu/29496-1-1.mp3"},
+        {id:"118",han:"彼个乞食一身軀穿甲<b class='kw'>襤襤褸褸</b>，予人看著真袂過心。",tailo:"Hit ê khit-tsia̍h tsi̍t-sin-khu tshīng kah <b class='kw'>lâm-lâm-luì-luì</b>, hōo lâng khuànn tio̍h tsin bē kuè-sim.",def:"那個乞丐全身衣衫襤褸，讓人看了很過意不去。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dF/Rq/29581-1-1.mp3"},
+        {id:"119",han:"稻仔開花、<b class='kw'>弄花</b>頭尾才成禮拜，花閣細蕊，罕得有人會注意著。",tailo:"Tiū-á khui-hue, <b class='kw'>lāng-hue</b> thâu-bué tsiah tsiânn lé-pài, hue koh sè luí, hán-tit ū lâng ē tsù-ì--tio̍h.",def:"水稻開花、授粉前後只有一個星期左右，花朵又小，很少有人會注意到。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/fv/CH/29376-1-1.mp3"},
+        {id:"120",han:"你千萬毋通佮彼陣<b class='kw'>人群狗黨</b>相交插。",tailo:"Lí tshian-bān m̄-thang kah hit tīn <b class='kw'>lâng-kûn-káu-tóng</b> sio-kau-tshap.",def:"你千萬別跟那些狐群狗黨相互來往。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/pL/IH/29316-1-1.mp3"},
+        {id:"121",han:"遠遠對遮看過去，山崁跤彼跡<b class='kw'>塌窩</b>的所在，阮以早就是蹛佇遐。",tailo:"Hn̄g-hn̄g tuì tsia khuànn--kuè-khì, suann-khàm-kha hit-jiah <b class='kw'>lap-o</b> ê sóo-tsāi, guán í-tsá tō sī tuà tī hia.",def:"遠遠從這裡看過去，山腳那處塌陷的地方，我們以前就是住在那裡。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/YK/kM/29366-1-1.mp3"},
+        {id:"122",han:"伊食酒閣騎oo-tóo-bái，摔一下<b class='kw'>流血流滴</b>。",tailo:"I tsia̍h tsiú koh khiâ oo-tóo-bái, siak tsi̍t-ē <b class='kw'>lâu-hueh-lâu-tih</b>.",def:"他喝酒還騎機車，摔得頭破血流。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/N6/7E/29416-1-1.mp3"},
+        {id:"123",han:"三月痟媽祖，一四界的媽祖宮攏<b class='kw'>鬧熱滾滾</b>。",tailo:"Sann--gue̍h siáu Má-tsóo, tsi̍t-sì-kè ê Má-tsóo-king lóng <b class='kw'>lāu-jia̍t-kún-kún</b>.",def:"三月瘋媽祖，各地的媽祖廟都非常熱鬧。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/uQ/Hs/20247-1-1.mp3"},
+        {id:"124",han:"伊才二十捅歲，就規頭白頭毛，看著足<b class='kw'>老相</b>的。",tailo:"I tsiah jī-tsa̍p-thóng huè, tō kui thâu pe̍h thâu-mn̂g, khuànn tio̍h tsiok <b class='kw'>lāu-siùnn</b>--ê.",def:"他才二十出頭就滿頭白髮，看起來很顯老。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ER/2F/29559-1-1.mp3"},
+        {id:"125",han:"囡仔人毋通佮人<b class='kw'>你兄我弟</b>烏白牽。",tailo:"Gín-á-lâng m̄-thang kah lâng <b class='kw'>lí-hiann-guá-tī</b> oo-pe̍h khan.",def:"小孩子不要跟人稱兄道弟亂攀關係。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/NI/9s/29212-1-1.mp3"},
+        {id:"126",han:"伊做代誌真有<b class='kw'>理氣</b>，毋才逐家攏信任伊。",tailo:"I tsò tāi-tsì tsin ū <b class='kw'>lí-khì</b>, m̄-tsiah ta̍k-ke lóng sìn-jīm--i.",def:"他做事都依照常理，所以大家都信任他。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/T0/YV/29098-1-1.mp3"},
+        {id:"127",han:"做進出口生理的<b class='kw'>利頭</b>袂䆀，毋過本錢誠粗，嘛有風險，欲投資著愛較斟酌咧。",tailo:"Tsò tsìn-tshut-kháu sing-lí ê <b class='kw'>lī-thâu</b> bē-bái, m̄-koh pún-tsînn tsiânn tshoo, mā ū hong-hiám, beh tâu-tsu tio̍h-ài khah tsim-tsiok--leh.",def:"做進出口生意的利潤很高，毋過本錢要夠多，也有風險，要投資得要小心一點。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/tr/td/29198-1-1.mp3"},
+        {id:"128",han:"囡仔考牢大學，欲揀佗一科系來讀，序大人仙都毋通共<b class='kw'>掠跤掠手</b>，無顧伊本人的意願。",tailo:"Gín-á khó-tiâu tāi-ha̍k, beh kíng tó tsi̍t kho-hē lâi tha̍k, sī-tuā-lâng sian to m̄-thang kā <b class='kw'>lia̍h-kha-lia̍h-tshiú</b>, bô kòo i pún-lâng ê ì-guān.",def:"兒女考上大學，要選讀哪一科系，做父母親千萬不要束縛兒女，不理會他本身的意願。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ab/Ag/29173-1-1.mp3"},
+        {id:"129",han:"救護車沿路<b class='kw'>掠車</b>佮爍紅火，誠緊就共病人送去病院的急診室。",tailo:"Kiù-hōo-tshia iân-lōo <b class='kw'>lia̍h-tshia</b> kah sih âng-hué, tsiânn kín tō kā pēnn-lâng sàng-khì pēnn-īnn ê kip-tsín-sik.",def:"救護車沿途超車和閃爍紅燈，很快就把病人送到醫院的急診室。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/IY/Y9/29591-1-1.mp3"},
+        {id:"130",han:"這軀洋裝的<b class='kw'>料身</b>袂䆀，色水閣真媠，價數應該無俗。",tailo:"Tsit su iûnn-tsong ê <b class='kw'>liāu-sin</b> bē-bái, sik-tsuí koh tsin suí, kè-siàu ing-kai bô sio̍k.",def:"這件洋裝的質料不錯，色澤又很美，價格應該不便宜。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ut/dW/18762-1-1.mp3"},
+        {id:"131",han:"阿母講我較<b class='kw'>冷底</b>，袂堪得食冰水佮西瓜這款的物件。",tailo:"A-bú kóng guá khah <b class='kw'>líng-té</b>, bē-kham-tit tsia̍h ping-tsuí kah si-kue tsit khuán ê mi̍h-kiānn.",def:"媽媽說我體質較虛寒，禁不起喝冰水和吃西瓜這類的東西。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Fd/6A/28268-1-1.mp3"},
+        {id:"132",han:"頭家有吩咐咱起工、<b class='kw'>落工</b>攏愛照時間。",tailo:"Thâu-ke ū huan-hù lán khí-kang, <b class='kw'>lo̍h-kang</b> lóng ài tsiàu sî-kan.",def:"老闆有交代我們要準時上下班。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dk/Wn/29096-1-1.mp3"},
+        {id:"133",han:"伊出門的時若有化妝，轉到厝就會隨<b class='kw'>落妝</b>。",tailo:"I tshut-mn̂g ê sî nā ū huà-tsong, tńg kàu tshù tō ē suî <b class='kw'>lo̍h-tsng</b>.",def:"他出門的時候要是化了妝，回到家就會隨即卸妝。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/tE/Ji/29378-1-1.mp3"},
+        {id:"134",han:"這<b class='kw'>馬鈴薯片</b>烘甲酥酥閣芳芳，食著有夠紲喙。",tailo:"Tse <b class='kw'>má-lîng-tsî-phìnn</b> hang kah soo-soo koh phang-phang, tsia̍h tio̍h ū-kàu suà-tshuì.",def:"這洋芋片烤得又脆又香，讓人一片接一片停不下來。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dR/7L/29450-1-1.mp3"},
+        {id:"135",han:"伊有夠<b class='kw'>硬鼻</b>的，別人的意見伊攏聽袂入去。",tailo:"I ū-kàu <b class='kw'>ngē-phīnn</b>--ê, pa̍t-lâng ê ì-kiàn i lóng thiann bē ji̍p--khì.",def:"他相當固執，別人的意見他都聽不進去。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/64/ZP/29103-1-1.mp3"},
+        {id:"136",han:"愛有本等佮實力才有法度予眾人服你，若干焦<b class='kw'>硬喙</b>死諍，是上無路用的步數。",tailo:"Ài ū pún-tíng kah si̍t-li̍k tsiah ū-huat-tōo hōo tsìng-lâng ho̍k--lí, nā kan-na <b class='kw'>ngē-tshuì</b> sí-tsènn, sī siōng bô-lōo-īng ê pōo-sòo.",def:"要有本領和實力才有辦法讓眾人服你，如果只是嘴硬爭論，是最無效的招式。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/py/j8/29214-1-1.mp3"},
+        {id:"137",han:"彼兩个人佇巷仔內相<b class='kw'>掩揜</b>，毋知欲創啥物歹代。",tailo:"Hit nn̄g ê lâng tī hāng-á-lāi sio-<b class='kw'>ng-iap</b>, m̄ tsai beh tshòng siánn-mih pháinn-tāi.",def:"那兩個人在巷子內互相遮掩，不知道要做什麼壞事情。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ON/Xo/28432-1-1.mp3"},
+        {id:"138",han:"伊生成<b class='kw'>懦懦</b>，看伊做代誌予人活欲急死。",tailo:"I senn-sîng <b class='kw'>nōo-nōo</b>, khuànn i tsò tāi-tsì hōo lâng ua̍h-beh kip--sí.",def:"他天生慢性子，看他做事真是急死人了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/TQ/xd/29422-1-1.mp3"},
+        {id:"139",han:"彼間厝真久無人蹛矣，厝頂早就<b class='kw'>爛朽朽</b>矣！",tailo:"Hit king tshù tsin kú bô lâng tuà--ah, tshù-tíng tsá tō <b class='kw'>nuā-hiú-hiú</b>--ah!",def:"那間房子很久沒有住人了，屋頂早已破破爛爛了！",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Zb/FO/29574-1-1.mp3"},
+        {id:"140",han:"<b class='kw'>爛蜞</b>會食青菜、果子的幼葉仔，是農業的害蟲。",tailo:"<b class='kw'>Nuā-khî</b> ē tsia̍h tshenn-tshài, kué-tsí ê iù-hio̍h-á, sī lông-gia̍p ê hāi-thâng.",def:"蛞蝓會吃青菜、水果的嫩葉，是農業的害蟲。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dp/W2/28169-1-1.mp3"},
+        {id:"141",han:"流感的病毒會綴<b class='kw'>瀾鬚</b>穢人，毋才講感著的人愛掛喙罨。",tailo:"Liû-kám ê pēnn-to̍k ē tuè <b class='kw'>nuā-tshiu</b> uè--lâng, m̄-tsiah kóng kám--tio̍h ê lâng ài kuà tshuì-am.",def:"流感的病毒會隨著飛沫傳染給別人，才會建議染病的人要戴口罩。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Em/va/29334-1-1.mp3"},
+        {id:"142",han:"伊本成就<b class='kw'>烏肉底</b>，毋是曝烏的。",tailo:"I pún-tsiânn tō <b class='kw'>oo-bah-té</b>, m̄ sī pha̍k oo--ê.",def:"他天生膚色黑，不是曬黑的。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/02/Fb/29595-1-1.mp3"},
+        {id:"143",han:"無證據的代誌毋通佇遐<b class='kw'>烏白講</b>。",tailo:"Bô tsìng-kì ê tāi-tsì m̄-thang tī hia <b class='kw'>oo-pe̍h-kóng</b>.",def:"沒有證據的事不要在那裡亂講。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/fk/Jp/18795-1-1.mp3"},
+        {id:"144",han:"石滬利用<b class='kw'>飽流</b>、洘流掠海產，予魚蝦會得入來，袂得出去。",tailo:"Tsio̍h-hōo lī-iōng <b class='kw'>pá-lâu</b>, khó-lâu lia̍h hái-sán, hōo hî-hê ē-tit ji̍p--lâi, bē-tit tshut--khì.",def:"石滬利用漲退潮捕獲海產，讓魚蝦進得來，出不去。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/DC/9C/20107-1-1.mp3"},
+        {id:"145",han:"這改風颱做大水，彼條溪仔的駁岸就按呢<b class='kw'>崩駁</b>去。",tailo:"Tsit kái hong-thai tsò-tuā-tsuí, hit tiâu khe-á ê poh-huānn tsiū-án-ne <b class='kw'>pang-poh</b>--khì.",def:"颱風造成水災，那條溪流的堤防因而潰堤了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/wa/N7/29464-1-1.mp3"},
+        {id:"146",han:"若欲睏愛先去<b class='kw'>放尿</b>，半暝仔才袂泄尿。",tailo:"Nā beh khùn ài sing khì <b class='kw'>pàng-jiō</b>, puànn-mê-á tsiah bē tshuā-jiō.",def:"如果要睡得先去尿尿，半夜才不會尿床。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/4r/Kd/18449-1-1.mp3"},
+        {id:"147",han:"今年的<b class='kw'>八月半</b>，阮規陣人相招欲來去烘肉佮賞月。",tailo:"Kin-nî ê <b class='kw'>Peh-gue̍h-puànn</b>, guán kui-tīn lâng sio-tsio beh lâi-khì hang-bah kah siúnn-gue̍h.",def:"今年的中秋節，我們一群人相約要一起去烤肉跟賞月。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Bm/ZG/17738-1-1.mp3"},
+        {id:"148",han:"伊生本就<b class='kw'>白肉底</b>，毋管按怎曝，都曝袂烏。",tailo:"I senn-pún tō <b class='kw'>pe̍h-bah-té</b>, m̄-kuán án-tsuánn pha̍k, to pha̍k bē oo.",def:"他天生皮膚就白，不論怎樣曬，都曬不黑。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/St/RB/29594-1-1.mp3"},
+        {id:"149",han:"阿母當咧用伊新買來的<b class='kw'>平鼎仔</b>炒菜。",tailo:"A-bú tng-teh īng i sin bé--lâi ê <b class='kw'>pênn-tiánn-á</b> tshá tshài.",def:"媽媽正在用他新買的平底鍋炒菜。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Zm/Ax/29448-1-1.mp3"},
+        {id:"150",han:"這領衫料身遮爾仔好，毋通烏白<b class='kw'>拍撋</b>。",tailo:"Tsit niá sann liāu-sin tsiah-nī-á hó, m̄-thang oo-pe̍h <b class='kw'>phah-nuá</b>.",def:"這件衣服材質這麼的好，不要胡亂粗暴搓洗。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/WB/Dk/29257-1-1.mp3"},
+        {id:"151",han:"伊這擺鉸頭鬃順紲<b class='kw'>拍層</b>，規个人看著閣較有氣質矣。",tailo:"I tsit pái ka thâu-tsang sūn-suà <b class='kw'>phah-tsân</b>, kui-ê lâng khuànn tio̍h koh-khah ū khì-tsit--ah.",def:"他這次剪頭髮順便打層次，整個人看起來更有氣質了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Jj/8X/29441-1-1.mp3"},
+        {id:"152",han:"這隻蠘仔捏著<b class='kw'>冇心</b>冇心，根本無肉。",tailo:"Tsit tsiah tshi̍h-á tēnn tio̍h <b class='kw'>phànn-sim</b>-phànn-sim, kin-pún bô bah.",def:"這隻梭子蟹捏起來並不紮實，根本沒什麼肉。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dY/e0/29499-1-1.mp3"},
+        {id:"153",han:"毋通提你的過去出來<b class='kw'>品捧</b>，無人會相信你。",tailo:"M̄-thang the̍h lí ê kuè-khì tshut-lâi <b class='kw'>phín-phóng</b>, bô lâng ē siong-sìn--lí.",def:"不要拿你的過去出來誇耀，沒有人會相信你的。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/wX/Vm/20046-1-1.mp3"},
+        {id:"154",han:"阮兜彼箍圍仔有黜塗機咧挖路，一四界<b class='kw'>蓬蓬坱</b>，厝內外專塗沙。",tailo:"Guán tau hit-khoo-uî-á ū thuh-thôo-ki teh óo lōo, tsi̍t-sì-kè <b class='kw'>phōng-phōng-ing</b>, tshù lāi-guā tsuan thôo-sua.",def:"我家附近有挖土機在挖馬路，到處塵土飛揚，屋子裡外都是灰塵。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/65/b7/29307-1-1.mp3"},
+        {id:"155",han:"海翁若欲喘氣，愛先<b class='kw'>浮頭</b>予鼻空離開水面。",tailo:"Hái-ang nā beh tshuán-khuì, ài sing <b class='kw'>phû-thâu</b> hōo phīnn-khang lī-khui tsuí-bīn.",def:"鯨魚要呼吸的話，得先把頭浮起來讓鼻孔離開水面。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/q0/98/29560-1-1.mp3"},
+        {id:"156",han:"今仔日並昨昏較生冷，你欲去公園散步，著共<b class='kw'>袚巾</b>幔佇肩胛頭才出門。",tailo:"Kin-á-ji̍t phīng tsa-hng khah tshenn-líng, lí beh khì kong-hn̂g sàn-pōo, tio̍h kā <b class='kw'>phua̍h-kin</b> mua tī king-kah-thâu tsiah tshut-mn̂g.",def:"今天比昨天更冷，你想去公園散步，得把披肩披在肩膀上再出門。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/YR/33/27275-1-1.mp3"},
+        {id:"157",han:"彼个外國人欲問路，那講那<b class='kw'>比手畫刀</b>。",tailo:"Hit ê guā-kok-lâng beh mn̄g-lōo, ná kóng ná <b class='kw'>pí-tshiú-uē-to</b>.",def:"那個外國人要問路，一邊說話一邊比手畫腳。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/De/MD/29527-1-1.mp3"},
+        {id:"158",han:"伊這擺的比賽拄著頂擺的金牌選手，真正是愛<b class='kw'>拚硬仔</b>矣。",tailo:"I tsit pái ê pí-sài tú-tio̍h tíng-pái ê kim-pâi suán-tshiú, tsin-tsiànn sī ài <b class='kw'>piànn-ngē-á</b>--ah.",def:"他這次比賽遇到上次的金牌選手，真的要硬碰硬了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/B4/Ar/28479-1-1.mp3"},
+        {id:"159",han:"抐桮的喙若像飯匙，規身軀白蔥蔥足成鵝，所以閣共伊號做<b class='kw'>飯匙鵝</b>。",tailo:"Lā-pue ê tshuì ná-tshiūnn pn̄g-sî, kui-sin-khu pe̍h-tshang-tshang tsiok sîng gô, sóo-í koh kā i hō-tsò <b class='kw'>pn̄g-sî-gô</b>.",def:"黑面琵鷺的鳥喙像飯匙，全身潔白很像鵝，所以又取名做飯匙鵝。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/p4/Og/29319-1-1.mp3"},
+        {id:"160",han:"人到中年目睭的<b class='kw'>玻璃清</b>有可能會退化，目睭前會有烏影。若有這種症頭，愛去揣醫生檢查。",tailo:"Lâng kàu tiong-liân ba̍k-tsiu ê <b class='kw'>po-lê-tshing</b> ū khó-lîng ē thè-huà, ba̍k-tsiu-tsîng ē ū oo-iánn. Nā ū tsit tsióng tsìng-thâu, ài khì tshuē i-sing kiám-tsa.",def:"人到中年眼睛的玻璃體可能會退化，眼前會有黑影。要是有這種症狀，得去找醫生檢查。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/oU/8U/29555-1-1.mp3"},
+        {id:"161",han:"伊大學出業了後，就轉來故鄉做一个<b class='kw'>薄本</b>的小生理。",tailo:"I tāi-ha̍k tshut-gia̍p liáu-āu, tō tńg-lâi kòo-hiong tsò tsi̍t ê <b class='kw'>po̍h-pún</b> ê sió-sing-lí.",def:"他大學畢業後，就回來故鄉做一個小本生意。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Wo/Ke/29106-1-1.mp3"},
+        {id:"162",han:"這領衫的<b class='kw'>布底</b>是誠幼膩的棉紗，穿著袂黏身軀閣會欶汗。",tailo:"Tsit niá sann ê <b class='kw'>pòo-té</b> sī tsiânn iù-jī ê mî-se, tshīng tio̍h bē liâm sin-khu koh ē suh-kuānn.",def:"這件衣服的質料是細緻的棉紗質，穿起來不黏身又會吸汗。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/wD/K6/29091-1-1.mp3"},
+        {id:"163",han:"同學選伊做班長，伊雖然<b class='kw'>半挨推</b>，落尾猶是答應矣。",tailo:"Tông-ha̍k suán i tsò pan-tiúnn, i sui-jiân <b class='kw'>puànn-e-the</b>, lo̍h-bué iáu-sī tah-ìng--ah.",def:"同學選他來當班長，他雖然半推半就，最後還是答應了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/nr/sr/29226-1-1.mp3"},
+        {id:"164",han:"伊這站當咧<b class='kw'>拔骨</b>，大甲有看著。",tailo:"I tsit-tsām tng-teh <b class='kw'>pue̍h-kut</b>, tuā kah ū khuànn--tio̍h.",def:"他這陣子在發育，明顯長高了許多。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/EX/SS/20016-1-1.mp3"},
+        {id:"165",han:"𪜶兩个袂輸<b class='kw'>犀牛照角</b>，見面就觸，凡若看著的人攏幌頭。",tailo:"In nn̄g ê bē-su <b class='kw'>sai-gû-tsiò-kak</b>, kìnn-bīn tō tak, huān-nā khuànn--tio̍h ê lâng lóng hàinn-thâu.",def:"那兩人宛如犀牛對峙，一見面就吵架，凡是看到的人都搖頭嘆息。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/u1/TC/29167-1-1.mp3"},
+        {id:"166",han:"社會愛分工，𠢕的人<b class='kw'>使喙</b>，普通人出力，運作才會順序。",tailo:"Siā-huē ài hun-kang, gâu ê lâng <b class='kw'>sái-tshuì</b>, phóo-thong lâng tshut-la̍t, ūn-tsok tsiah ē sūn-sī.",def:"社會需要分工，能力強的人指揮，普通人出力，運作才會順暢。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/EZ/98/29456-1-1.mp3"},
+        {id:"167",han:"這禮拜我欲去共許的<b class='kw'>送山</b>，你敢是嘛欲去送伊？",tailo:"Tsit lé-pài guá beh khì kā Khóo--ê <b class='kw'>sàng-suann</b>, lí kám-sī mā beh khì sàng--i?",def:"這星期日我要去參加老許的葬禮，你是不是也要去送他？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Xw/Xk/29261-1-1.mp3"},
+        {id:"168",han:"這个畫家<b class='kw'>三兩下手</b>就共人像畫好矣。",tailo:"Tsit ê uē-ka <b class='kw'>sann-nn̄g-ē-tshiú</b> tō kā jîn-siōng uē-hó--ah.",def:"這個畫家三兩下子就將人像畫好了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/um/A9/29415-1-1.mp3"},
+        {id:"169",han:"這件代誌明明就是你毋著，你閣<b class='kw'>死毋坐認</b>。",tailo:"Tsit kiānn tāi-tsì bîng-bîng tō sī lí m̄-tio̍h, lí koh <b class='kw'>sí-m̄-tshē-jīn</b>.",def:"這件事明明就是你的錯，你還死不認錯。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/8K/jl/29256-1-1.mp3"},
+        {id:"170",han:"咱的想法佮做法，著愛綴會著<b class='kw'>時世</b>，才袂予人講是老古董。",tailo:"Lán ê siūnn-huat kah tsò-huat, tio̍h-ài tuè ē tio̍h <b class='kw'>sî-sè</b>, tsiah bē hōo lâng kóng sī lāu-kóo-tóng.",def:"我們的想法與做法，得與時俱進，才不會被人說成老古董。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ID/N0/28475-1-1.mp3"},
+        {id:"171",han:"伊足驚注射，便若看著護士共<b class='kw'>射筒</b>攑出來，就會驚甲咇咇掣。",tailo:"I tsiok kiann tsù-siā, piān-nā khuànn-tio̍h hōo-sū kā <b class='kw'>siā-tâng</b> gia̍h--tshut-lâi, tō ē kiann kah phi̍h-phi̍h-tshuah.",def:"他很怕打針，只要看到護士拿出針筒，就會嚇得直發抖。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/mq/hm/29183-1-1.mp3"},
+        {id:"172",han:"你今仔日滿面春風，穿甲遮爾仔<b class='kw'>鑠奅</b>，是欲去佗位風騷咧？",tailo:"Lí kin-á-ji̍t muá-bīn tshun-hong, tshīng kah tsiah-nī-á <b class='kw'>siak-phānn</b>, sī beh khì tó-uī hong-so--leh?",def:"你今天滿臉笑容，又穿得這麼時髦，是要去哪裡遊玩啊？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/We/g8/29354-1-1.mp3"},
+        {id:"173",han:"聽講彼个田僑仔賣地有趁幾若億，就隨有咧走路的兄弟倚來共<b class='kw'>搧腹肚邊</b>，敲寡所費通用。",tailo:"Thiann-kóng hit ê tshân-kiâu-á bē tē ū thàn kuí-nā ik, tō suî ū teh tsáu-lōo ê hiann-tī uá-lâi kā <b class='kw'>siàn-pak-tóo-pinn</b>, khà kuá sóo-huì thang iōng.",def:"聽說那位大地主賣地賺了好幾億，馬上就有在逃亡的道上兄弟跑來敲竹槓，訛詐些錢財花用。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/3V/1U/29166-1-1.mp3"},
+        {id:"174",han:"代誌都未曾做咧，就按呢<b class='kw'>相挨推</b>，有影毋是款。",tailo:"Tāi-tsì to buē-tsîng tsò--leh, tsiū-án-ne <b class='kw'>sio-e-the</b>, ū-iánn m̄-sī-khuán.",def:"事情都還未進行，就彼此互相推諉，實在不像話。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ia/uI/29333-1-1.mp3"},
+        {id:"175",han:"路頭路尾佮人<b class='kw'>相拄頭</b>，準講是無蓋熟似的厝邊，嘛愛開喙相借問一下。",tailo:"Lōo-thâu-lōo-bué kah lâng <b class='kw'>sio-tú-thâu</b>, tsún-kóng sī bô kài si̍k-sāi ê tshù-pinn, mā ài khui-tshuì sio-tsioh-mn̄g--tsi̍t-ē.",def:"在半路上遇到人，即使是不太熟稔的鄰居，還是要開口問候一下。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/mU/Py/29157-1-1.mp3"},
+        {id:"176",han:"麵擔仔衛生無好害人客食了落屎猶<b class='kw'>小局</b>，上害的是濫會傷身體的化學添加物，害主顧客帶身命才是夭壽。",tailo:"Mī-tànn-á uē-sing bô hó hāi lâng-kheh tsia̍h-liáu làu-sái iáu <b class='kw'>sió-kio̍k</b>, siōng hāi--ê sī lām ē siong sin-thé ê huà-ha̍k thiam-ka-bu̍t, hāi tsú-kòo-kheh tài-sin-miā tsiah-sī iáu-siū.",def:"麵攤衛生不好害顧客拉肚子還算是小事一樁，最糟糕的是加進會傷身體的化學添加物，害老顧客染上慢性病才是缺德。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/uK/Lw/29081-1-1.mp3"},
+        {id:"177",han:"熱人到矣，有真濟人紮<b class='kw'>泅水箍仔</b>去海邊仔耍水。",tailo:"Jua̍h--lâng kàu--ah, ū tsin tsē lâng tsah <b class='kw'>siû-tsuí-khoo-á</b> khì hái-pinn-á sńg tsuí.",def:"夏天到了，有許多人帶游泳圈去海邊戲水。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/hs/OS/29273-1-1.mp3"},
+        {id:"178",han:"時計果食著<b class='kw'>酸甘</b>酸甘。",tailo:"Sî-kè-kó tsia̍h tio̍h <b class='kw'>sng-kam</b>-sng-kam.",def:"百香果吃起來酸酸甜甜的。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/eJ/oU/28559-1-1.mp3"},
+        {id:"179",han:"這改<b class='kw'>算講</b>是我毋著，請你寬諒。",tailo:"Tsit kái <b class='kw'>sǹg-kóng</b> sī guá m̄-tio̍h, tshiánn lí khuan-liōng.",def:"這次就當是我不對，請你原諒。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/zw/0l/29575-1-1.mp3"},
+        {id:"180",han:"因為伊枵過飢閣生狂食，<b class='kw'>所擺</b>胃腸袂堪得，這陣咧喝腹肚疼矣。",tailo:"In-uī i iau-kuè-ki koh tshenn-kông tsia̍h, <b class='kw'>sóo-pái</b> uī-tn̂g bē-kham--tit, tsit-tsūn teh huah pak-tóo thiànn--ah.",def:"因為他餓過頭又吃太急，以至於腸胃受不了，正在喊肚子痛。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Sa/XV/29421-1-1.mp3"},
+        {id:"181",han:"烏肉底的阿雪穿<b class='kw'>素色</b>的衫，看著誠蔭肉。",tailo:"Oo-bah-té ê A-suat tshīng <b class='kw'>sòo-sik</b> ê sann, khuànn tio̍h tsiânn ìm bah.",def:"皮膚黝黑的阿雪穿起素色的衣服，看起來皮膚的明亮度提高了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/kz/RT/27252-1-1.mp3"},
+        {id:"182",han:"阿母<b class='kw'>素常</b>佇食暗飽會去外口行行踅踅咧。",tailo:"A-bú <b class='kw'>sòo-siông</b> tī tsia̍h-àm pá ē khì guā-kháu kiânn-kiânn se̍h-se̍h--leh.",def:"媽媽平常在晚飯後會出去外面走一走晃一晃。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/UU/bw/28422-1-1.mp3"},
+        {id:"183",han:"若有心欲和解，袂使干焦會失禮就準過，對方損失偌濟嘛愛賠人，較袂有<b class='kw'>事尾</b>。",tailo:"Nā ū-sim beh hô-kái, bē-sái kan-na huē-sit-lé tō tsún--kuè, tuì-hong sún-sit guā-tsē mā ài puê--lâng, khah bē ū <b class='kw'>sū-bué</b>.",def:"若有誠意想和解，不能只道歉就想息事寧人，對方損失多少也得賠償，才不會有後遺症。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/I6/uW/29141-1-1.mp3"},
+        {id:"184",han:"阿明長期佇炭空作穡，攏無照規定咧澍水、掛喙罨，年久月深就致著<b class='kw'>沙肺</b>。",tailo:"A-bîng tn̂g-kî tī thuànn-khang tsoh-sit, lóng bô tsiàu kui-tīng teh tshū tsuí, kuà tshuì-am, nî-kú-gue̍h-tshim tō tì-tio̍h <b class='kw'>sua-hì</b>.",def:"小明長期在煤礦坑裡工作，都不依照規定噴水霧、戴口罩，久而久之就罹患塵肺症。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/om/4m/29089-1-1.mp3"},
+        {id:"185",han:"這攤啉煞，咱敢欲閣<b class='kw'>紲攤</b>？",tailo:"Tsit thuann lim-suah, lán kám beh koh <b class='kw'>suà-thuann</b>?",def:"這場喝完之後，我們還要續攤嗎？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/zx/T6/29600-1-1.mp3"},
+        {id:"186",han:"麻煩你佇今仔日<b class='kw'>煞工</b>進前共計畫書交予我。",tailo:"Mâ-huân lí tī kin-á-ji̍t <b class='kw'>suah-kang</b> tsìn-tsîng kā kè-uē-su kau hōo--guá.",def:"麻煩你在今天下班前將計畫書交給我。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/8b/RL/29094-1-1.mp3"},
+        {id:"187",han:"物件用了愛囥轉去原位，才袂一四界<b class='kw'>散掖掖</b>。",tailo:"Mi̍h-kiānn īng-liáu ài khǹg tńg-khì guân-uī, tsiah bē tsi̍t-sì-kè <b class='kw'>suànn-iā-iā</b>.",def:"物品使用後要放回原位，才不會到處一片凌亂。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/iD/LJ/29431-1-1.mp3"},
+        {id:"188",han:"自從老頭家過身了後，這个家族就漸漸<b class='kw'>衰頹</b>矣。",tailo:"Tsū-tsiông lāu thâu-ke kuè-sin liáu-āu, tsit ê ka-tso̍k tō tsiām-tsiām <b class='kw'>sue-tuê</b>--ah.",def:"自從老當家過世後，這個家族就漸漸沒落了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/7I/Vj/29502-1-1.mp3"},
+        {id:"189",han:"伊佮我是相黏蒂帶的好朋友，料袂到伊煞共我<b class='kw'>捽後炮</b>。",tailo:"I kah guá sī sio-liâm-tì-tuà ê hó-pîng-iú, liāu-bē-kàu i suah kā guá <b class='kw'>sut-āu-phàu</b>.",def:"他和我是很親密的好朋友，萬萬沒想到卻暗地裡傷害我。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Bt/Kf/29286-1-1.mp3"},
+        {id:"190",han:"這款細項代誌閣著愛經理出面來<b class='kw'>擔帶</b>，今公司遐的幹部敢攏無才調解決是毋？",tailo:"Tsit khuán sè hāng tāi-tsì koh tio̍h-ài king-lí tshut-bīn lâi <b class='kw'>tam-tài</b>, tann kong-si hia-ê kàn-pōo kám lóng bô tsâi-tiāu kái-kuat sī--m̄?",def:"這種小事情還要經理出面來負責，現在公司的那些幹部難道都沒辦法解決嗎？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/zs/86/29460-1-1.mp3"},
+        {id:"191",han:"灶跤的<b class='kw'>銅鼎仔</b>便若用過，一定愛洗予清氣，才通收起來囥。",tailo:"Tsàu-kha ê <b class='kw'>tâng-tiánn-á</b> piān-nā īng--kuè, it-tīng ài sé hōo tshing-khì, tsiah thang siu khí-lâi khǹg.",def:"廚房的炊具只要用過，絕對要把它洗乾淨，才能收起來。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ba/ja/29513-1-1.mp3"},
+        {id:"192",han:"黃金博物館彼塊金仔角<b class='kw'>重篤篤</b>，到今猶無人搬會振動得。",tailo:"N̂g-kim Phok-bu̍t-kuán hit tè kim-á-kak <b class='kw'>tāng-tauh-tauh</b>, kàu-tann iáu bô lâng puann ē-tín-tāng--tit.",def:"黃金博物館裡的那塊金塊非常的重，至今還沒有人能搬得動。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/9f/xD/28352-1-1.mp3"},
+        {id:"193",han:"手面去洗洗咧，<b class='kw'>通好</b>食飯。",tailo:"Tshiú-bīn khì sé-sé--leh, <b class='kw'>thang-hó</b> tsia̍h-pn̄g.",def:"手和臉去洗一洗，以便吃飯。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/on/we/20291-1-1.mp3"},
+        {id:"194",han:"伊開喙就欲共人<b class='kw'>體剔</b>，莫怪無人愛佮伊來去。",tailo:"I khui-tshuì tō beh kā lâng <b class='kw'>thé-thak</b>, bo̍k-kuài bô lâng ài kah i lâi-khì.",def:"他開口就責罵人，難怪沒人想跟他往來。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/8z/iA/28292-1-1.mp3"},
+        {id:"195",han:"有<b class='kw'>疼風</b>的人愛忌喙，腹內、蚶仔佮蚵仔較莫食咧。",tailo:"Ū <b class='kw'>thiànn-hong</b> ê lâng ài khī-tshuì, pak-lāi, ham-á kah ô-á khah mài tsia̍h--leh.",def:"患有痛風的人要忌口，內臟、蛤蜊、牡蠣盡量不要吃。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/lc/pV/29554-1-1.mp3"},
+        {id:"196",han:"你發遐濟<b class='kw'>𤶃仔子</b>，著較莫食傷燥的物件。",tailo:"Lí puh hiah tsē <b class='kw'>thiāu-á-tsí</b>, tio̍h khah mài tsia̍h siunn sò ê mi̍h-kiānn.",def:"你長那麼多的青春痘，應該少吃過於燥熱的東西。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/B2/yX/17715-1-1.mp3"},
+        {id:"197",han:"有偌濟力，就做偌濟代誌，千萬毋通<b class='kw'>逞性</b>。",tailo:"Ū guā-tsē la̍t, tō tsò guā-tsē tāi-tsì, tshian-bān m̄-thang <b class='kw'>thíng-sìng</b>.",def:"凡事量力而為，千萬不可逞強。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/s9/YH/29428-1-1.mp3"},
+        {id:"198",han:"人曷無請你，你煞家己坐起去大位，你是咧<b class='kw'>討衰</b>是無？",tailo:"Lâng a̍h bô tshiánn--lí, lí suah ka-kī tsē khí-khì tuā-uī, lí sī teh <b class='kw'>thó-sue</b> sī--bô?",def:"人家沒請你，你卻自己跑去坐主位，你是在自討沒趣嗎？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/qb/yL/28359-1-1.mp3"},
+        {id:"199",han:"伊做代誌誠𠢕<b class='kw'>拖帆</b>，定定佇交貨期限彼工才咧趕工。",tailo:"I tsò tāi-tsì tsiânn gâu <b class='kw'>thua-phâng</b>, tiānn-tiānn tī kau-huè kî-hān hit kang tsiah teh kuánn-kang.",def:"他做事情很會拖拖拉拉，常在交貨期限當日才加快工作速度。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/m7/v1/29185-1-1.mp3"},
+        {id:"200",han:"伊捌佇礦業公司做<b class='kw'>炭工</b>咧挖金仔礦。",tailo:"I bat tī khòng-gia̍p kong-si tsò <b class='kw'>thuànn-kang</b> teh óo kim-á-khòng.",def:"他曾經在礦業公司當礦工開採金礦。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/tT/ke/29607-1-1.mp3"},
+        {id:"201",han:"代誌會遮爾順序，攏是你𠢕<b class='kw'>推排</b>。",tailo:"Tāi-tsì ē tsiah-nī sūn-sī, lóng sī lí gâu <b class='kw'>thui-pâi</b>.",def:"事情會這麼順利，都是你很懂得處置安排。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/dJ/hO/29259-1-1.mp3"},
+        {id:"202",han:"伊當咧無閒<b class='kw'>摘抄</b>通過檢定的名單。",tailo:"I tng-teh bô-îng <b class='kw'>tiah-tshau</b> thong-kuè kiám-tīng ê miâ-tuann.",def:"他正忙著摘錄通過檢定的名單。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/KR/Rf/29466-1-1.mp3"},
+        {id:"203",han:"<b class='kw'>恬才</b>的人才做有好頭路。",tailo:"<b class='kw'>Tiām-tsâi</b> ê lâng tsiah tsò ū hó thâu-lōo.",def:"誠實莊重的人才能把工作做好。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/B4/we/29295-1-1.mp3"},
+        {id:"204",han:"頭家若受氣起來，員工就攏<b class='kw'>恬喌喌</b>出在伊罵。",tailo:"Thâu-ke nā siū-khì--khí-lâi, uân-kang tō lóng <b class='kw'>tiām-tsiuh-tsiuh</b> tshut-tsāi i mē.",def:"老闆如果生氣，員工就靜靜地讓他罵。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/4j/B2/28439-1-1.mp3"},
+        {id:"205",han:"業務員講的話若<b class='kw'>中聽</b>，業績一定會較好。",tailo:"Gia̍p-bū-uân kóng ê uē nā <b class='kw'>tìng-thiann</b>, gia̍p-tsik it-tīng ē khah hó.",def:"業務員說的話如果中聽，業績一定會比較好。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ET/QT/29561-1-1.mp3"},
+        {id:"206",han:"今仔日<b class='kw'>定規</b>愛共這項代誌辦予好勢。",tailo:"Kin-á-ji̍t <b class='kw'>tīng-kui</b> ài kā tsit hāng tāi-tsì pān hōo hó-sè.",def:"今天一定要把這件事情處理好。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Cz/px/29127-1-1.mp3"},
+        {id:"207",han:"阮去公園散步，行到<b class='kw'>中站</b>，看著人咧弄布袋戲尪仔，有影誠心適。",tailo:"Guán khì kong-hn̂g sàn-pōo, kiânn kàu <b class='kw'>tiong-tsām</b>, khuànn-tio̍h lâng teh lāng pòo-tē-hì ang-á, ū-iánn tsiânn sim-sik.",def:"我們到公園散步，走到半路，看到有人在操弄布袋戲偶，非常有趣。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Wu/S1/17879-1-1.mp3"},
+        {id:"208",han:"久無運動，小可仔走一下就喘甲袂得<b class='kw'>轉氣</b>。",tailo:"Kú bô ūn-tōng, sió-khuá-á tsáu--tsi̍t-ē tō tshuán kah bē-tit <b class='kw'>tńg-khuì</b>.",def:"太久沒運動，稍微跑一下就喘不過氣來。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/9W/V8/29302-1-1.mp3"},
+        {id:"209",han:"阮去𬦰山的時，有看著幾若隻<b class='kw'>長尾山娘</b>。",tailo:"Guán khì peh-suann ê sî, ū khuànn-tio̍h kuí-nā tsiah <b class='kw'>tn̂g-bué-suann-niû</b>.",def:"我們去爬山的時候，看到了好幾隻臺灣藍鵲。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ij/gR/29552-1-1.mp3"},
+        {id:"210",han:"這个工程因為疫情的關係煞<b class='kw'>斷站</b>去，毋知當時才會閣再振動。",tailo:"Tsit ê kang-tîng in-uī i̍k-tsîng ê kuan-hē suah <b class='kw'>tn̄g-tsām</b>--khì, m̄ tsai tang-sî tsiah ē koh-tsài tín-tāng.",def:"這個工程因為疫情的關係中斷掉了，不曉得何時才會再動工。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/MK/Kl/29299-1-1.mp3"},
+        {id:"211",han:"古早時代，若是<b class='kw'>倒頭生</b>，母仔囝定定會無性命。",tailo:"Kóo-tsá sî-tāi, nā-sī <b class='kw'>tò-thâu-senn</b>, bú-á-kiánn tiānn-tiānn ē bô sènn-miā.",def:"以前，若是足位分娩，母子常會失去生命。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/tP/2o/29255-1-1.mp3"},
+        {id:"212",han:"昨昏我轉去故鄉參加<b class='kw'>同窗會</b>，拄著足久無聯絡的同窗的，足歡喜的！",tailo:"Tsa-hng guá tńg-khì kòo-hiong tsham-ka <b class='kw'>tông-tshong-huē</b>, tú-tio̍h tsiok kú bô liân-lo̍k ê tông-tshong--ê, tsiok huann-hí--ê!",def:"昨天我回去故鄉參加同學會，遇到久未聯絡的同學，很開心！",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Wj/yD/29598-1-1.mp3"},
+        {id:"213",han:"我看伊咧欲<b class='kw'>纘</b>袂牢矣，你緊猛去共扶一下。",tailo:"Guá khuànn i teh-beh <b class='kw'>tsàn</b> bē tiâu--ah, lí kín-mé khì kā hû--tsi̍t-ē.",def:"我看他快支撐不住了，你趕快去扶他一下。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/wM/kw/29128-1-1.mp3"},
+        {id:"214",han:"孤伊一个人唱聲，無人<b class='kw'>贊喙</b>。",tailo:"Koo i tsi̍t ê lâng tshiàng-siann, bô lâng <b class='kw'>tsàn-tshuì</b>.",def:"就他一個人撂狠話，沒人聲援。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Wx/cD/29084-1-1.mp3"},
+        {id:"215",han:"下班時間，逐幫車攏櫼甲<b class='kw'>實捅捅</b>。",tailo:"Hā-pan sî-kan, ta̍k pang tshia lóng tsinn kah <b class='kw'>tsa̍t-thóng-thóng</b>.",def:"下班時間，每班車都擠得水洩不通。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/eF/O6/28481-1-1.mp3"},
+        {id:"216",han:"阮老母足𠢕<b class='kw'>插車</b>，閣較細的格仔位伊攏有才調共車停入去。",tailo:"Guán lāu-bú tsiok gâu <b class='kw'>tshah-tshia</b>, koh-khah sè ê keh-á-uī i lóng ū tsâi-tiāu kā tshia thîng--ji̍p-khì.",def:"我媽媽很會停車，再小的停車格，他都有本事把車停進去。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/sM/F0/29223-1-1.mp3"},
+        {id:"217",han:"彼塊田地無人種作，放咧<b class='kw'>臭生荒</b>，誠無彩。",tailo:"Hit tè tshân-tē bô lâng tsìng-tsoh, pàng leh <b class='kw'>tshàu-tshenn-hng</b>, tsiânn bô-tshái.",def:"那塊田地因為無人耕種，放著任其荒廢，真是可惜。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/HV/WM/29093-1-1.mp3"},
+        {id:"218",han:"狗蟻足<b class='kw'>脆命</b>，無細膩就予人踏死。",tailo:"Káu-hiā tsiok <b class='kw'>tshè-miā</b>, bô-sè-jī tō hōo lâng ta̍h--sí.",def:"螞蟻很容易死掉，一不小心就會被踩死。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Zv/7R/20168-1-1.mp3"},
+        {id:"219",han:"阮阿母買一塊新的<b class='kw'>冊桌仔</b>，欲予我看冊佮寫宿題較利便。",tailo:"Guán a-bú bé tsi̍t tè sin ê <b class='kw'>tsheh-toh-á</b>, beh hōo guá khuànn tsheh kah siá siok-tê khah lī-piān.",def:"我媽媽買了一張新的書桌，方便我看書跟寫功課。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/6h/ez/29220-1-1.mp3"},
+        {id:"220",han:"伊的個性誠<b class='kw'>生猴</b>，處理代誌予人袂放心。",tailo:"I ê kò-sìng tsiânn <b class='kw'>tshenn-kâu</b>, tshú-lí tāi-tsì hōo lâng bē hòng-sim.",def:"他的個性急躁，做事情讓人不放心。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/M6/5n/18124-1-1.mp3"},
+        {id:"221",han:"寒流一下來，<b class='kw'>生凊風</b>鑽入骨縫，予人強欲接載袂牢。",tailo:"Hân-liû tsi̍t-ē lâi, <b class='kw'>tshenn-tshìn-hong</b> tsǹg-ji̍p kut-phāng, hōo lâng kiōng-beh tsih-tsài bē tiâu.",def:"寒流一來，冷風刺入骨頭的縫隙，讓人快要支撐不住。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/qK/Xy/29469-1-1.mp3"},
+        {id:"222",han:"咱佮人鬥陣，若是講著話就<b class='kw'>刺夯夯</b>，定定會去得失人。",tailo:"Lán kah lâng tàu-tīn, nā-sī kóng-tio̍h uē tō <b class='kw'>tshì-giâ-giâ</b>, tiānn-tiānn ē khì tik-sit--lâng.",def:"我們與人交際往來，倘若一說話就咄咄逼人，常會得罪人。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/nf/NI/29388-1-1.mp3"},
+        {id:"223",han:"過晝無偌久，一陣西北雨<b class='kw'>捙桶倒</b>，隨淹過較低的坑溝佮圳仔。",tailo:"Kuè tàu bô-guā-kú, tsi̍t tsūn sai-pak-hōo <b class='kw'>tshia-tháng-tò</b>, suî im-kuè khah kē ê khenn-kau kah tsùn-á.",def:"午後沒多久，一場雷陣雨傾盆而下，即刻淹過較低窪的山溝和水圳。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/u8/JJ/29276-1-1.mp3"},
+        {id:"224",han:"溝仔愛較捷清咧，才袂積水生<b class='kw'>捙蛆</b>。",tailo:"Kau-á ài khah tsia̍p tshing--leh, tsiah bē tsik-tsuí senn <b class='kw'>tshia-tshi</b>.",def:"水溝要常清理，才不會積水長出孑孓。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/9x/z1/29115-1-1.mp3"},
+        {id:"225",han:"對方共我<b class='kw'>唱注</b>，講這擺比賽𪜶一定會著冠軍。",tailo:"Tuì-hong kā guá <b class='kw'>tshiàng-tù</b>, kóng tsit pái pí-sài in it-tīng ē tio̍h kuan-kun.",def:"對方向我叫囂，說這次比賽他們一定會得冠軍。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/aC/CC/29231-1-1.mp3"},
+        {id:"226",han:"伊一下出世就予人放捒，佳哉有牧師佮牧師娘共伊<b class='kw'>晟持</b>大漢。",tailo:"I tsi̍t-ē tshut-sì tō hōo lâng pàng-sak, ka-tsài ū bo̍k-su kah bo̍k-su-niû kā i <b class='kw'>tshiânn-tî</b> tuā-hàn.",def:"他一出生就被人拋棄，幸好有牧師夫妻將他扶養長大。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/qe/bq/29301-1-1.mp3"},
+        {id:"227",han:"阿瑋共你招遐濟擺，你煞按呢直直挨推，無的確會去<b class='kw'>觸</b>著人的好意。",tailo:"A-uí kā lí tsio hiah tsē pái, lí suah án-ne ti̍t-ti̍t e-the, bô-tik-khak ē khì <b class='kw'>tshik</b>-tio̍h lâng ê hó-ì.",def:"阿瑋邀了你那麼多次，你卻這樣一再推辭，說不定會辜負人家的一片好意。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ca/RB/17412-1-1.mp3"},
+        {id:"228",han:"伊定定激一个<b class='kw'>凊面</b>予人看，人緣呔會好？",tailo:"I tiānn-tiānn kik tsi̍t ê <b class='kw'>tshìn-bīn</b> hōo lâng khuànn, lâng-iân thài ē hó?",def:"他常常臭臉待人，人緣怎麼會好？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/5S/nu/29248-1-1.mp3"},
+        {id:"229",han:"現代人講究健康佮環保，開始食<b class='kw'>清菜</b>的人那來那濟。",tailo:"Hiān-tāi-lâng káng-kiù kiān-khong kah khuân-pó, khai-sí tsia̍h <b class='kw'>tshing-tshài</b> ê lâng ná lâi ná tsē.",def:"現代人講求健康與環保，開始吃素的人口越來越多。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/1J/gb/29473-1-1.mp3"},
+        {id:"230",han:"頭殼若咧楞的時，共<b class='kw'>手門</b>的穴道揤揤、掠掠咧，會當減輕無爽快的症頭。",tailo:"Thâu-khak nā teh gông ê sî, kā <b class='kw'>tshiú-mn̂g</b> ê hia̍t-tō tshi̍h-tshi̍h, lia̍h-lia̍h--leh, ē-tàng kiám-khin bô sóng-khuài ê tsìng-thâu.",def:"頭暈的時候，把手掌虎口的穴道按一按、抓一抓，可以減輕不舒適的症狀。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Wn/mh/29477-1-1.mp3"},
+        {id:"231",han:"伊咧做代誌<b class='kw'>粗跤重蹄</b>，較幼路的工課毋通交代予伊。",tailo:"I teh tsò tāi-tsì <b class='kw'>tshoo-kha-tāng-tê</b>, khah iù-lōo ê khang-khuè m̄-thang kau-tài hōo--i.",def:"他做事情笨手笨腳的，別把精細的工作交代給他。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/sP/Te/29229-1-1.mp3"},
+        {id:"232",han:"大多數的人攏是<b class='kw'>粗糠耳</b>。",tailo:"Tuā-to-sòo ê lâng lóng sī <b class='kw'>tshoo-khng-hīnn</b>.",def:"大多數的人都是乾耳朵。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ki/kM/29124-1-1.mp3"},
+        {id:"233",han:"阿母的手做粗重，閣欠保養，皮膚變甲<b class='kw'>粗耙耙</b>。",tailo:"A-bú ê tshiú tsò tshoo-tāng, koh khiàm pó-ióng, phuê-hu piàn kah <b class='kw'>tshoo-pê-pê</b>.",def:"媽媽的手做粗重的事，又沒保養，皮膚變得粗糙不平滑。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/cV/Zl/29400-1-1.mp3"},
+        {id:"234",han:"開建設公司是<b class='kw'>粗本</b>的投資，你嘛真冇手，一下就共答應。",tailo:"Khui kiàn-siat kong-si sī <b class='kw'>tshoo-pún</b> ê tâu-tsu, lí mā tsin phànn-tshiú, tsi̍t-ē tō kā tah-ìng.",def:"開建設公司是資本雄厚的投資，你手頭也真寬鬆，一下子就答應。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/SN/SI/29105-1-1.mp3"},
+        {id:"235",han:"這盤芹菜柯柯，食著較<b class='kw'>粗絲</b>。",tailo:"Tsit puânn khîn-tshài kua-kua, tsia̍h tio̍h khah <b class='kw'>tshoo-si</b>.",def:"這盤芹菜有點老，吃起來纖維比較粗糙。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/EB/Md/29292-1-1.mp3"},
+        {id:"236",han:"規陣粟鳥仔佇草埔跳來跳去咧<b class='kw'>揣食</b>。",tailo:"Kui-tīn tshik-tsiáu-á tī tsháu-poo thiàu lâi thiàu khì teh <b class='kw'>tshuē-tsia̍h</b>.",def:"一群麻雀在草地上跳來跳去正在覓食。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/1u/l1/29412-1-1.mp3"},
+        {id:"237",han:"伊寢頭佇遐講大聲話，有夠臭屁，尾仔予人掠著伊講的毋是實在話才<b class='kw'>喙扁</b>。",tailo:"I tshím-thâu tī hia kóng tuā-siann-uē, ū-kàu tshàu-phuì, bué-á hōo lâng lia̍h-tio̍h i kóng--ê m̄ sī si̍t-tsāi-uē tsiah <b class='kw'>tshuì-pínn</b>.",def:"他一開始在那裡說大話，神氣得很，後來被人逮到說的不是實話才啞口無言。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Qg/J6/29520-1-1.mp3"},
+        {id:"238",han:"伊大學出業了後，佇厝裡誠拚勢讀冊，無偌久就考牢司法官，這陣<b class='kw'>出腳</b>矣。",tailo:"I tāi-ha̍k tshut-gia̍p liáu-āu, tī tshù--lí tsiânn piànn-sè tha̍k-tsheh, bô-guā-kú tō khó-tiâu su-huat-kuann, tsit-tsūn <b class='kw'>tshut-kioh</b>--ah.",def:"他大學畢業後，在家很努力讀書，沒多久就考上司法官，現在可說是出人頭地了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/DV/sF/19935-1-1.mp3"},
+        {id:"239",han:"錢銀幾萬千，毋值囝孫<b class='kw'>出人前</b>。",tailo:"Tsînn-gîn kuí-bān tshian, m̄-ta̍t kiánn-sun <b class='kw'>tshut-lâng-tsîng</b>.",def:"錢財幾千萬，都不如子孫才能出眾。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/pM/9N/18003-1-1.mp3"},
+        {id:"240",han:"有一寡風景區對超過六十五歲的老大人，門票會當優待免<b class='kw'>支理</b>。",tailo:"Ū tsi̍t-kuá hong-kíng-khu tuì tshiau-kuè la̍k-tsa̍p-gōo huè ê lāu-tuā-lâng, mn̂g-phiò ē-tàng iu-thāi bián <b class='kw'>tsi-lí</b>.",def:"有一些風景區對超過六十五歲的長輩，有免收門票的優惠。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Yb/sV/29478-1-1.mp3"},
+        {id:"241",han:"佳哉伊較早趁的錢有儉起來，這馬無囡仔欲共飼，猶會當<b class='kw'>食老本</b>。",tailo:"Ka-tsài i khah-tsá thàn ê tsînn ū khiām--khí-lâi, tsit-má bô gín-á beh kā tshī, iáu ē-tàng <b class='kw'>tsia̍h-lāu-pún</b>.",def:"還好他之前賺的錢有存起來，現在沒有孩子要扶養他，還可以吃老本。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/wK/QJ/29088-1-1.mp3"},
+        {id:"242",han:"爸母若有認真管教，囡仔一定會<b class='kw'>成款</b>。",tailo:"Pē-bú nā ū jīn-tsin kuán-kà, gín-á it-tīng ē <b class='kw'>tsiânn-khuán</b>.",def:"父母要是認真管教，小孩一定會像樣。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/2I/3c/29490-1-1.mp3"},
+        {id:"243",han:"若欲招伴去𬦰懸山，物件佮裝備愛攢有<b class='kw'>齊透</b>才通出門，較袂有代誌。",tailo:"Nā beh tsio phuānn khì peh kuân suann, mi̍h-kiānn kah tsong-pī ài tshuân ū <b class='kw'>tsiâu-thàu</b> tsiah thang tshut-mn̂g, khah bē ū tāi-tsì.",def:"如果要找同伴去爬高山，物品和裝備要樣樣齊備才能出門，比較不會有事情。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/WY/8k/28472-1-1.mp3"},
+        {id:"244",han:"伊是拄入來咱公司的<b class='kw'>茈鳥仔</b>，逐項猶無啥捌，勞煩逐家費神共伊照顧囉。",tailo:"I sī tú ji̍p-lâi lán kong-si ê <b class='kw'>tsínn-tsiáu-á</b>, ta̍k hāng iáu bô siánn bat, lô-huân ta̍k-ke huì-sîn kā i tsiàu-kòo--looh.",def:"他是剛進來我們公司的新人，凡事都還不太清楚，麻煩大家費神照顧他囉。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/AC/2j/29179-1-1.mp3"},
+        {id:"245",han:"你銀行口座內底的<b class='kw'>錢額</b>無夠，毋才水電錢無法度對內底扣。",tailo:"Lí gîn-hâng kháu-tsō lāi-té ê <b class='kw'>tsînn-gia̍h</b> bô-kàu, m̄-tsiah tsuí-tiān-tsînn bô-huat-tōo tuì lāi-té khàu.",def:"你銀行帳戶裡面的金額不夠，所以水電費沒辦法從裡面扣款。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Ny/Fs/29245-1-1.mp3"},
+        {id:"246",han:"伊這款<b class='kw'>執硬</b>的性癖若攏毋改，緊縒慢會食著鹼。",tailo:"I tsit khuán <b class='kw'>tsip-ngē</b> ê sìng-phiah nā lóng m̄ kái, kín-tsua̍h-bān ē tsia̍h-tio̍h-kinn.",def:"他這種固執不知變通的個性若不改變，早晚會吃到苦頭。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ty/gW/29489-1-1.mp3"},
+        {id:"247",han:"<b class='kw'>一下仔</b>無斟酌，囡仔煞走無去。",tailo:"<b class='kw'>Tsi̍t-ē-á</b> bô tsim-tsiok, gín-á suah tsáu bô--khì.",def:"一下子沒注意，孩子就走失了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Rj/0v/17727-1-1.mp3"},
+        {id:"248",han:"伊是較貧惰讀冊爾爾，毋過猶有<b class='kw'>一步取</b>，就是做工課真頂真。",tailo:"I sī khah pîn-tuānn tha̍k-tsheh niā-niā, m̄-koh iáu-ū <b class='kw'>tsi̍t-pōo-tshú</b>, tō sī tsò khang-khuè tsin tíng-tsin.",def:"他是比較懶得讀書而已，不過還有一個可取之處，就是工作很細心。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Eh/an/29129-1-1.mp3"},
+        {id:"249",han:"<b class='kw'>這氣</b>的果子大豐收。",tailo:"<b class='kw'>Tsit-khuì</b> ê kué-tsí tuā hong-siu.",def:"這次的水果大豐收。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/oX/n3/29433-1-1.mp3"},
+        {id:"250",han:"警察佇彼間茶行搜著提煉毒品的原料佮家私，頭家<b class='kw'>咒死絕誓</b>講伊是予人冤枉的。",tailo:"Kíng-tshat tī hit king tê-hâng tshiau-tio̍h thê-liān to̍k-phín ê guân-liāu kah ke-si, thâu-ke <b class='kw'>tsiù-sí-tse̍h-tsuā</b> kóng i sī hōo lâng uan-óng--ê.",def:"警方在那間茶行查獲製煉毒品的原料佮家私，老闆發毒誓說他是被冤枉的。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/i5/M8/29194-1-1.mp3"},
+        {id:"251",han:"𪜶兜遐濟囡仔內底，干焦伊較<b class='kw'>上範</b>。",tailo:"In tau hiah tsē gín-á lāi-té, kan-na i khah <b class='kw'>tsiūnn-pān</b>.",def:"他們家眾多的小孩裡面，只有他比較像樣。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/3p/OT/29491-1-1.mp3"},
+        {id:"252",han:"𪜶兩个<b class='kw'>上算</b>的人額無仝，愛閣重頭來算。",tailo:"In nn̄g ê <b class='kw'>tsiūnn-sǹg</b> ê lâng-gia̍h bô kāng, ài koh tîng-thâu lâi sǹg.",def:"他們兩位計算的人數不同，要再重算。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/rz/A8/29389-1-1.mp3"},
+        {id:"253",han:"真濟<b class='kw'>庄跤人</b>為著生活，來佇都市趁食。",tailo:"Tsin tsē <b class='kw'>tsng-kha-lâng</b> uī-tio̍h sing-ua̍h, lâi tī too-tshī thàn-tsia̍h.",def:"很多鄉下人為了生計，來到都市賺錢過活。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/JC/Dg/19029-1-1.mp3"},
+        {id:"254",han:"四界攏咧窒車，<b class='kw'>做唯是</b>用行的較緊。",tailo:"Sì-kè lóng teh that-tshia, <b class='kw'>tsò-bî-sī</b> iōng kiânn--ê khah kín.",def:"到處都在塞車，乾脆用走的比較快。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/9o/Lq/29232-1-1.mp3"},
+        {id:"255",han:"伊今年若閣考袂牢大學，這聲無去<b class='kw'>做兵</b>袂煞矣。",tailo:"I kin-nî nā koh khó bē tiâu tāi-ha̍k, tsit-siann bô khì <b class='kw'>tsò-ping</b> bē suah--ah.",def:"他今年如果又考不上大學，這下子必定要當兵了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/IM/F9/29569-1-1.mp3"},
+        {id:"256",han:"阿榮仔退休了後，逐工閒仙仙，共後生鬥顧店罔<b class='kw'>做體藝</b>，順紲看頭看尾。",tailo:"A-îng--á thè-hiu liáu-āu, ta̍k-kang îng-sian-sian, kā hāu-senn tàu kòo tiàm bóng <b class='kw'>tsò-thé-gē</b>, sūn-suà khuànn-thâu-khuànn-bué.",def:"阿榮退休以後，成天閒著，幫兒子看店當做消遣，順便瞻前顧後有個照應。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/kt/6r/29480-1-1.mp3"},
+        {id:"257",han:"予知路的人<b class='kw'>做前</b>，咱綴尾後。",tailo:"Hōo tsai lōo ê lâng <b class='kw'>tsò-tsîng</b>, lán tuè bué-āu.",def:"讓認得路的人帶頭，我們跟在後面。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/xC/at/28362-1-1.mp3"},
+        {id:"258",han:"選舉的時陣，電視、報紙共候選人<b class='kw'>皂烏漆白</b>的事件不止仔濟，才予咱好歹人攏分袂清楚。",tailo:"Suán-kí ê sî-tsūn, tiān-sī, pò-tsuá kā hāu-suán-jîn <b class='kw'>tsō-oo-tshat-pe̍h</b> ê sū-kiānn put-tsí-á tsē, tsiah hōo lán hó-pháinn lâng lóng hun bē tshing-tshó.",def:"選舉期間，電視、報紙抹黑候選人的事件特別多，才讓我們好人壞人都分不清楚。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/M0/5r/29197-1-1.mp3"},
+        {id:"259",han:"欲解決問題，愛先揣著問題的<b class='kw'>總根頭</b>。",tailo:"Beh kái-kuat būn-tê, ài sing tshuē-tio̍h būn-tê ê <b class='kw'>tsóng-kin-thâu</b>.",def:"要解決問題，得先找出問題的要因。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/zk/fA/29548-1-1.mp3"},
+        {id:"260",han:"伊出車禍傷甲真食力，醫生講流傷濟血著愛緊共伊<b class='kw'>注血</b>，若無會無命去。",tailo:"I tshut tshia-hō siong kah tsin tsia̍h-la̍t, i-sing kóng lâu siunn tsē hueh tio̍h-ài kín kā i <b class='kw'>tsù-hueh</b>, nā-bô ē bô-miā--khì.",def:"他出車禍受重傷，醫生說流太多血要緊急輸血，不然會沒命。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/iB/AF/29339-1-1.mp3"},
+        {id:"261",han:"<b class='kw'>水洘</b>了後，海埔頂四常看會著螺仔。",tailo:"<b class='kw'>Tsuí-khó</b> liáu-āu, hái-poo-tíng sù-siông khuànn ē tio̍h lê-á.",def:"退潮之後，沙灘上經常看得到小海螺。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/sO/HE/17936-1-1.mp3"},
+        {id:"262",han:"聽講伊是佇火車頂生的，因由是𪜶母仔坐火車的時<b class='kw'>水帕</b>雄雄破去，拄好有旅客是醫生，緊猛走來鬥相共，佳哉母仔囝攏平安無代誌。",tailo:"Thiann-kóng i sī tī hué-tshia-tíng senn--ê, in-iû sī in bú--á tsē hué-tshia ê sî <b class='kw'>tsuí-phè</b> hiông-hiông phuà--khì, tú-hó ū lí-kheh sī i-sing, kín-mé tsáu-lâi tàu-sann-kāng, ka-tsài bú-á-kiánn lóng pîng-an bô tāi-tsì.",def:"聽說他是在火車上出生的，因為他媽媽搭火車的時候羊水突然破了，恰好有旅客是醫師，趕緊跑來幫忙，幸好母子都平安無事。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Oc/CW/29161-1-1.mp3"},
+        {id:"263",han:"這馬起厝攏縛鐵仔，灌khōng-ku-lí，無人咧做<b class='kw'>大木</b>矣。",tailo:"Tsit-má khí-tshù lóng pa̍k thih-á, kuàn khōng-ku-lí, bô lâng teh tsò <b class='kw'>tuā-ba̍k</b>--ah.",def:"現在蓋房子都綁鋼筋、灌混凝土，沒有人做蓋房子的木匠了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/9A/2y/29330-1-1.mp3"},
+        {id:"264",han:"這陣當咧出<b class='kw'>大日虎</b>，咱上好莫出去，較袂著痧。",tailo:"Tsit-tsūn tng-teh tshut <b class='kw'>tuā-ji̍t-hóo</b>, lán siōng-hó mài tshut--khì, khah bē tio̍h-sua.",def:"現在正值烈日當空，我們最好不要出門，以免中暑。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/wS/Jb/29207-1-1.mp3"},
+        {id:"265",han:"阿媽逐擺去廟裡拜拜，攏會祈求厝裡<b class='kw'>大細漢</b>平安順序。",tailo:"A-má ta̍k-pái khì biō--lí pài-pài, lóng ē kî-kiû tshù--lí <b class='kw'>tuā-sè-hàn</b> pîng-an sūn-sī.",def:"奶奶每次去廟裡拜拜，都會祈求一家大小平安順利。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/BC/lq/29570-1-1.mp3"},
+        {id:"266",han:"<b class='kw'>大厝起</b>的埕斗是以早曝粟的所在。",tailo:"<b class='kw'>Tuā-tshù-khí</b> ê tiânn-táu sī í-tsá pha̍k tshik ê sóo-tsāi.",def:"三合院的內埕是以前曬稻子的地方。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/HF/et/29252-1-1.mp3"},
+        {id:"267",han:"較早作田人攏放伴割稻仔，人若來鬥相共，愛攢三頓佮點心予人食，閣袂使驚人<b class='kw'>大食</b>。",tailo:"Khah-tsá tsoh-tshân-lâng lóng pàng-phuānn kuah-tiū-á, lâng nā lâi tàu-sann-kāng, ài tshuân sann tǹg kah tiám-sim hōo lâng tsia̍h, koh bē-sái kiann lâng <b class='kw'>tuā-tsia̍h</b>.",def:"從前農人都輪流協助割稻子，人家如果來幫忙，要準備三餐跟點心給人家吃，還不能怕人家食量大。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/L3/yu/19752-1-1.mp3"},
+        {id:"268",han:"雄雄一陣<b class='kw'>對面風</b>搧來，害我強欲徛袂在。",tailo:"Hiông-hiông tsi̍t tsūn <b class='kw'>tuì-bīn-hong</b> siàn--lâi, hāi guá kiōng-beh khiā bē tsāi.",def:"猛然一陣迎面風吹過來，害我差點站不穩。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/GW/Fb/20218-1-1.mp3"},
+        {id:"269",han:"藥仔若是有<b class='kw'>對路</b>，一帖就會行氣。",tailo:"Io̍h-á nā-sī ū <b class='kw'>tuì-lōo</b>, tsi̍t thiap tō ē kiânn-khì.",def:"如果能夠對症下藥，只需一帖就有功效。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/Eu/gU/29300-1-1.mp3"},
+        {id:"270",han:"這件糾紛經過宗親序大<b class='kw'>對摵</b>，兩爿攏有讓寡，代誌才煞去。",tailo:"Tsit kiānn kiù-hun king-kuè tsong-tshin sī-tuā <b class='kw'>tuì-tshi̍k</b>, nn̄g-pîng lóng ū niū--kuá, tāi-tsì tsiah suah--khì.",def:"這項糾紛透過親族長輩折衷縱橫，雙方都有退讓一些，事情才得以解決。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/xa/yc/29518-1-1.mp3"},
+        {id:"271",han:"伊拄學電腦的時<b class='kw'>鈍跤鈍手</b>，不而過這馬已經學甲真老矣。",tailo:"I tú o̍h tiān-náu ê sî <b class='kw'>tūn-kha-tūn-tshiú</b>, put-jî-kò tsit-má í-king o̍h kah tsin láu--ah.",def:"他剛學電腦時笨手笨腳的，不過現在已經學得非常熟練了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/pe/Fx/20134-1-1.mp3"},
+        {id:"272",han:"六月天講咧落大雪，實在誠<b class='kw'>有局</b>。",tailo:"La̍k-gue̍h-thinn kóng teh lo̍h tuā-seh, si̍t-tsāi tsiânn <b class='kw'>ū-kio̍k</b>.",def:"六月的大熱天竟在下大雪，實在很有趣。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/9C/UI/20320-1-1.mp3"},
+        {id:"273",han:"若講著選舉佮政治，伊就一支喙若機關銃，愈講愈<b class='kw'>有紲</b>，真正無伊法。",tailo:"Nā kóng-tio̍h suán-kí kah tsìng-tī, i tō tsi̍t ki tshuì ná ki-kuan-tshìng, jú kóng jú <b class='kw'>ū-suà</b>, tsin-tsiànn bô i huat.",def:"一談到選舉跟政治，他的嘴就如機關槍，愈說愈起勁，真是拿他沒辦法。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/iO/E5/29485-1-1.mp3"},
+        {id:"274",han:"修理電腦，伊是專門的，當然做<b class='kw'>有路來</b>。",tailo:"Siu-lí tiān-náu, i sī tsuan-bûn--ê, tong-jiân tsò <b class='kw'>ū-lōo-lâi</b>.",def:"修理電腦，他是專業的，當然有辦法做。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/we/V9/29410-1-1.mp3"},
+        {id:"275",han:"受著疫情的影響，致使真濟活動<b class='kw'>緩期</b>。",tailo:"Siū-tio̍h i̍k-tsîng ê íng-hióng, tì-sú tsin tsē ua̍h-tāng <b class='kw'>uān-kî</b>.",def:"受到疫情的影響，導致很多活動延期。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/ws/2R/29562-1-1.mp3"},
+        {id:"276",han:"食魚食肉，嘛著菜佮，攏無<b class='kw'>換喙</b>敢好？",tailo:"Tsia̍h hî tsia̍h bah, mā tio̍h tshài kah, lóng bô <b class='kw'>uānn-tshuì</b> kám hó?",def:"吃魚吃肉，蔬菜也要配合著吃，都沒有變化口味好嗎？",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/xi/YL/29346-1-1.mp3"},
+        {id:"277",han:"喙講<b class='kw'>話仁</b>咧激話仁。",tailo:"Tshuì kóng <b class='kw'>uē-jîn</b> teh kik-uē-jîn.",def:"嘴裡說著俏皮話在插科打諢。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/uk/6u/29083-1-1.mp3"},
+        {id:"278",han:"見若欲選舉，<b class='kw'>畫山畫水</b>的候選人濟甲窒倒街，咱目睭愛擘予金，毋通予𪜶騙去。",tailo:"Kiàn-nā beh suán-kí, <b class='kw'>uē-san-uē-suí</b> ê hāu-suán-jîn tsē kah that-tó-ke, lán ba̍k-tsiu ài peh hōo kim, m̄-thang hōo in phiàn--khì.",def:"每當要選舉，大吹法螺的候選人不勝枚舉，我們務必要睜大眼睛，不要被他們騙了。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/xS/yr/29483-1-1.mp3"},
+        {id:"279",han:"𪜶兜上細漢的囡仔看著生份人攏較<b class='kw'>畏羞人</b>，毋敢主動佮人相借問。",tailo:"In tau siōng sè-hàn ê gín-á khuànn-tio̍h senn-hūn-lâng lóng khah <b class='kw'>uì-siáu-jîn</b>, m̄ kánn tsú-tōng kah lâng sio-tsioh-mn̄g.",def:"他們家最小的孩子看到陌生人都比較害羞，不敢主動跟別人打招呼。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/1w/Hp/29087-1-1.mp3"},
+        {id:"280",han:"山路坎坎坷坷真歹行，你著<b class='kw'>勻聊仔</b>行。",tailo:"Suann-lōo khám-khám-khia̍t-khia̍t tsin pháinn kiânn, lí tio̍h <b class='kw'>ûn-liâu-á</b> kiânn.",def:"山路崎嶇不平很難走，你要慢慢地走。",audio:"https://sutian.moe.edu.tw/media/senn/mp3/imtong/QT/WZ/29578-1-1.mp3"}
+    ];
+
+    const screenLock = {
+        lock: null,
+        video: null,
+        init: function() {
+            // Create a tiny, hidden video element
+            if (!this.video) {
+                this.video = document.createElement('video');
+                this.video.setAttribute('playsinline', '');
+                this.video.setAttribute('muted', '');
+                this.video.setAttribute('loop', '');
+                // Minimal black mp4 base64 to trick browser
+                this.video.src = 'data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAAACVtZGF0ewAAHAAAABhjaGVhZO6AAAAYbnYxbQBAAAABAAEAAAAAAzBtb292AAAAbG12aGQAAAAA3W6avd1umrwAAQAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAFB0cmFrAAAAXHRraGQAAAAD3W6avd1umrwAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAQAAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABRlZHRzAAAAHGVsc3QAAAAAAAAAAQAAAQAAAAABAAAAAAABMmdkaW4AAAA7dm1oZAAAAAB2aWRlAAAAAAAAAAAAAAAzZGluZiAAAAAkaHJlZgAAAAAAAAAAAAAAAkF1cmwAAAAAAAABAAAAAAAEc3RibAAAAGRzdHNkAAAAAAAAAAEAAABgYXZjMQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAEASAAAAEgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABj//wAAADFhdmNjAAAABwEAAf//AAAAAHRzdHRzAAAAAAAAAAEAAAABAAAAAQAAABxzdHNjAAAAAAAAAAEAAAABAAAAAQAAAAEAAAA0c3RzegAAAAAAAAAAAAAAAQAAABRzdGNvAAAAAAAAAAEAAAAlAAAAYHVkdGEAAAA4bWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAbWRpcgAAAAAAAAAAAAAAAAAAAAA6aW xzdAAAACphcnRpAAAAAAAAd3JpdGVyX2FwcAAAAAAAZmZtcGVn';
+                this.video.style.cssText = 'position:fixed;width:1px;height:1px;top:0;left:0;opacity:0.01;pointer-events:none;z-index:-1;';
+                document.body.appendChild(this.video);
+            }
+        },
+        on: async function() {
+            this.init();
+            
+            // Strategy 1: Play fake video (Strongest method for Mobile Safari/Android)
+            try {
+                if(this.video.paused) await this.video.play();
+            } catch(e) { console.log('Video wake lock failed', e); }
+
+            // Strategy 2: Native Wake Lock API (Best for Desktop/Android)
+            if ('wakeLock' in navigator) {
+                try {
+                    if(this.lock) return;
+                    this.lock = await navigator.wakeLock.request('screen');
+                    this.lock.addEventListener('release', () => {
+                        this.lock = null;
+                        console.log('Screen lock released');
+                    });
+                    console.log('Screen Wake Lock active');
+                } catch(e) { console.log('Wake Lock API err', e); }
+            }
+        },
+        off: function() {
+            // Stop video
+            if(this.video) this.video.pause();
+            // Release API lock
+            if (this.lock) { this.lock.release(); this.lock = null; }
+        }
+    };
+
+    // Re-acquire lock if tab becomes visible again and lock should be active
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && window.menu.cfg.mode === 'auto' && !window.game.st.paused) {
+            screenLock.on();
+        }
+    });
+
+    const sfx = {
+        ctx: null,
+        init: function() { if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
+        play: function(type) {
+            this.init(); if (this.ctx.state === 'suspended') this.ctx.resume();
+            const o = this.ctx.createOscillator(), g = this.ctx.createGain();
+            o.connect(g); g.connect(this.ctx.destination);
+            const t = this.ctx.currentTime;
+            if (type === 'ok') {
+                o.type='sine'; o.frequency.setValueAtTime(500,t); o.frequency.exponentialRampToValueAtTime(1000,t+0.1);
+                g.gain.setValueAtTime(0.3,t); g.gain.exponentialRampToValueAtTime(0.01,t+0.5); o.start(); o.stop(t+0.5);
+            } else {
+                o.type='sawtooth'; o.frequency.setValueAtTime(150,t); o.frequency.linearRampToValueAtTime(100,t+0.3);
+                g.gain.setValueAtTime(0.3,t); g.gain.exponentialRampToValueAtTime(0.01,t+0.3); o.start(); o.stop(t+0.3);
+            }
+        }
+    };
+
+    window.menu = {
+        cfg: { mode: 'dual', count: 30 },
+        set: function(type, val, el) {
+            this.cfg[type] = val;
+            el.parentNode.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('sel'));
+            el.classList.add('sel');
+        }
+    };
+
+    window.game = {
+        st: { q: [], idx: 0, rec: false, tmr: null, t_st: 0, t_auto: null, paused: false },
+        el: id => document.getElementById(id),
+        
+        start: function() {
+            let n = window.menu.cfg.count;
+            n = n === 'all' ? db.length : parseInt(n);
+            let pool = [...db].sort(() => 0.5 - Math.random());
+            this.st.q = pool.slice(0, n);
+            this.st.idx = 0;
+            this.pg('game');
+
+            // Start Wake Lock immediately on user click
+            if (window.menu.cfg.mode === 'auto') {
+                screenLock.on();
+            }
+
+            this.render();
+        },
+        
+        pg: function(p) {
+            this.el('pg-menu').classList.toggle('active', p === 'menu');
+            this.el('pg-game').classList.toggle('active', p === 'game');
+        },
+
+        render: function() {
+            const d = this.st.q[this.st.idx];
+            const m = window.menu.cfg.mode;
+            this.el('lb-idx').innerText = `序號 ${this.st.idx+1} / ${this.st.q.length}`;
+            this.el('lb-mode').innerText = {'han':'台語字','tailo':'羅馬字','auto':'自動輪播','dual':'雙軌模式'}[m];
+            
+            let h = '';
+            const dm = m === 'auto' ? 'dual' : m;
+            if (dm === 'dual') h = `${d.han}<span class="sub-tailo">${d.tailo}</span>`;
+            else h = dm === 'han' ? d.han : d.tailo;
+
+            this.el('tx-main').innerHTML = h;
+            this.el('tx-main').className = 'q-text';
+            this.el('tx-def').innerText = d.def;
+            this.el('player').src = d.audio;
+            
+            this.el('fd-msg').innerHTML = "";
+            this.el('btn-mic').classList.remove('rec');
+            this.st.rec = false;
+            clearTimeout(this.st.tmr); clearTimeout(this.st.t_auto);
+            
+            this.el('btn-prev').style.visibility = this.st.idx > 0 ? 'visible' : 'hidden';
+            
+            if (m === 'auto') {
+                this.el('btn-mic').style.display = 'none'; 
+                const b = this.el('btn-auto');
+                b.style.display = 'flex'; b.innerText = '暫停';
+                this.st.paused = false;
+                this.auto();
+            } else {
+                this.el('btn-mic').style.display = 'flex';
+                this.el('btn-auto').style.display = 'none';
+                screenLock.off(); // Disable wake lock if not auto mode
+            }
+        },
+
+        toggle: function() {
+            const b = this.el('btn-auto'), p = this.el('player');
+            if (!this.st.paused) {
+                this.st.paused = true; b.innerText = '持續播放';
+                screenLock.off(); // Release lock on pause
+                if ('speechSynthesis' in window && window.speechSynthesis.speaking) window.speechSynthesis.pause();
+                p.pause(); clearTimeout(this.st.t_auto);
+            } else {
+                this.st.paused = false; b.innerText = '暫停';
+                screenLock.on(); // Re-enable lock on play
+                if ('speechSynthesis' in window && window.speechSynthesis.paused) window.speechSynthesis.resume();
+                if (p.ended || (p.duration > 0 && p.currentTime >= p.duration)) this.nav(1);
+                else p.play().catch(()=>{});
+            }
+        },
+
+        auto: function() {
+            const p = this.el('player'), d = this.st.q[this.st.idx];
+            const next = () => { 
+                if(this.st.paused) return;
+                this.st.t_auto = setTimeout(() => { if(!this.st.paused) this.nav(1); }, 1500); 
+            };
+            p.onended = next; p.onerror = () => { this.tts(d.han, next); };
+            p.play().catch(() => this.tts(d.han, next));
+        },
+
+        play: function() {
+            const p = this.el('player'), d = this.st.q[this.st.idx];
+            p.onended = null;
+            p.onerror = () => this.tts(d.han);
+            p.play().catch(() => this.tts(d.han));
+        },
+
+        tts: function(txt, cb) {
+            if ('speechSynthesis' in window) {
+                const u = new SpeechSynthesisUtterance(txt);
+                u.lang = 'zh-TW'; u.rate = 0.9;
+                if (cb) u.onend = cb;
+                window.speechSynthesis.speak(u);
+            } else if (cb) setTimeout(cb, 2000);
+        },
+
+        rec: function() { this.st.rec ? this.stop() : this.record(); },
+        
+        record: function() {
+            this.st.rec = true; this.st.t_st = Date.now();
+            this.el('btn-mic').classList.add('rec');
+            this.el('fd-msg').innerHTML = "錄音中...";
+            this.st.tmr = setTimeout(() => this.stop(), 20000);
+        },
+        
+        stop: function() {
+            if (!this.st.rec) return;
+            const dur = Date.now() - this.st.t_st;
+            this.st.rec = false;
+            this.el('btn-mic').classList.remove('rec');
+            clearTimeout(this.st.tmr);
+            this.el('fd-msg').innerHTML = "分析中...";
+            setTimeout(() => this.check(dur), 500);
+        },
+
+        check: function(dur) {
+            const d = this.st.q[this.st.idx], m = window.menu.cfg.mode;
+            const min = d.han.length * 150;
+            const score = dur < min ? 0 : Math.floor(Math.random() * 101);
+            
+            let h = '', dm = m === 'auto' ? 'dual' : m;
+            if (dm === 'dual') h = `${d.han}<span class="sub-tailo">${d.tailo}</span>`;
+            else h = dm === 'han' ? d.han : d.tailo;
+            
+            const res = (cls, msg, s) => {
+                this.el('tx-main').innerHTML = `<div class="${cls}">${h}</div>`;
+                this.el('fd-msg').innerHTML = `<span class="${cls}">${msg}</span>`;
+                sfx.play(s);
+            };
+
+            if (score < 10) res('c-no', dur < min ? "音節長度無合！" : "沒聽到聲音！", 'no');
+            else if (score >= 50) res('c-ok', "正確！共你拍噗仔！", 'ok');
+            else res('c-no', "毋著！你閣試一擺！", 'no');
+        },
+
+        nav: function(dir) {
+            const n = this.st.idx + dir;
+            if (n >= 0 && n < this.st.q.length) {
+                this.st.idx = n; this.render();
+            } else if (dir > 0) {
+                if (window.menu.cfg.mode !== 'auto') {
+                    alert("測驗結束！");
+                }
+                this.home();
+            }
+        },
+
+        home: function() {
+            this.st.q = []; this.pg('menu');
+            const p = this.el('player'); p.pause(); p.currentTime = 0; p.onended = null;
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+            clearTimeout(this.st.tmr); clearTimeout(this.st.t_auto);
+            this.st.rec = false; this.st.paused = false;
+            screenLock.off(); // Release all locks
+        }
+    };
+    </script>
+<script>
+/* 摘要同步 — © 2026 詹宗龍（臺中明道中學） */
+function mdSetMode(t) { document.getElementById('sum-mode').textContent = t; }
+function mdCount(t) { document.getElementById('sum-count').textContent = t; }
+</script>
+</body>
+</html>
