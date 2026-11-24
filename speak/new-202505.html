@@ -2,7 +2,7 @@
 <!--
   【著作權聲明】
   202505新增詞條｜進階口說練習 — 進階口說練習：202505 教育部辭典新增詞條（聽辭典錄音、跟讀、自動輪播）
-  詞條、俗諺、華語釋義與錄音連結取自教育部《臺灣台語常用詞辭典》，其著作權屬教育部（CC BY-NC-ND 2.5 TW）。
+  詞條、俗諺、華語釋義與錄音取自教育部《臺灣台語常用詞辭典》，其著作權屬教育部（CC BY-NC-ND 2.5 TW）；跟讀評分用的範例音為辭典原檔鏡像（ref/，未剪輯改作）。
   本網頁之程式碼、版面與教案設計 Copyright © 2026 詹宗龍（臺中明道中學）. All rights reserved.
   僅供非營利之教育教學使用；未經著作權人書面授權，不得重製、改作、散布或修改本網頁之全部或一部分。
 -->
@@ -109,6 +109,27 @@ button{font-family:inherit}
   font-size:clamp(15px,1.1vw,20px)}
 .nav-btn:hover{border-color:var(--yellow)}
 .nav-btn.next{background:var(--yellow);border-color:var(--yellow);color:var(--black)}
+
+.card.has-ev .q-def{flex:0 1 auto;min-height:56px}
+.ev-box{flex:0 1 auto;min-height:0;overflow-y:auto;width:100%;display:none;text-align:left;background:var(--white);color:var(--black);border-radius:14px;padding:clamp(10px,1vw,16px) clamp(12px,1.2vw,20px);
+  font-size:clamp(14px,1vw,18px);line-height:1.6}
+.ev-box.show{display:block}
+.ev-head{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.ev-score{font-size:1.5em;font-weight:900;padding:2px 14px;border-radius:999px;color:#fff;white-space:nowrap}
+.ev-score.score-excellent{background:#2f9e44}.ev-score.score-good{background:var(--yellow);color:var(--black)}.ev-score.score-retry{background:#888}
+.ev-fb{font-weight:700;flex:1 1 12em}
+.ev-play{border:2px solid var(--black);background:var(--black);color:var(--yellow);border-radius:999px;padding:3px 12px;font-weight:700;cursor:pointer;font-size:.95em}
+.ev-play:hover{background:var(--yellow);color:var(--black)}
+.ev-items{display:grid;grid-template-columns:max-content minmax(0,1fr) max-content;gap:2px 10px;margin-top:8px;padding-top:6px;border-top:1px dashed #ccc;align-items:baseline}
+.ev-item{display:contents}.ev-item .n{font-weight:900;white-space:nowrap}.ev-item .d{color:#555}.ev-item .s{font-weight:900;text-align:right;white-space:nowrap}
+.lv-ok{color:#2f9e44}.lv-mid{color:#b38f00}.lv-low{color:#c92a2a}
+.ev-chart{display:flex;align-items:center;gap:10px;margin-top:6px}
+.ev-chart svg{flex:1 1 auto;height:46px;background:#f5f5f5;border:1px solid #ddd;border-radius:8px}
+.ev-chart polyline{stroke-width:2;vector-effect:non-scaling-stroke;fill:none}
+.ev-chart .ref{stroke:#111;opacity:.55}.ev-chart .rec{stroke:#e6b800}
+.ev-leg{font-size:.85em;white-space:nowrap;line-height:1.4}.ev-leg .r1{color:#555}.ev-leg .r2{color:#b38f00;display:block}
+.ev-note{margin-top:4px;color:#777;font-size:.8em;line-height:1.5}
+@media (max-width:640px){.ev-items{grid-template-columns:max-content minmax(0,1fr) max-content;column-gap:6px}.ev-note{display:none}}
 </style>
 </head>
 <body oncontextmenu="return false;">
@@ -144,7 +165,7 @@ button{font-family:inherit}
       <aside class="panel"><h3><span class="num">3</span>開始練習</h3>
         <div class="sum"><div><span>方式</span><b id="sum-mode">雙軌模式</b></div><div><span>數量</span><b id="sum-count">30則</b></div><div><span>題庫</span><b>299 則</b></div></div>
         <button class="startbtn" id="md-start" onclick="game.start()">開始遊戲</button>
-        <p class="tip">按 <b>🔊</b> 聽教育部辭典錄音，按 <b>🎤</b> 錄音跟讀；<b>自動輪播</b>會一則接一則自動播放。</p>
+        <p class="tip">按 <b>🔊</b> 聽教育部辭典錄音，按 <b>🎤</b> 開始跟讀、唸完按 <b>⏹️</b>，就會和範例音比對評分（節奏音量走勢、音節數量、聲音長度）；<b>自動輪播</b>會一則接一則自動播放。</p>
       </aside>
     </div>
   </div>
@@ -153,6 +174,7 @@ button{font-family:inherit}
     <div class="card">
       <div id="tx-main" class="q-text"></div>
       <div id="tx-def" class="q-def"></div>
+      <div id="ev-box" class="ev-box"></div>
     </div>
     <div class="ctrl-area">
       <div class="feed-box"><div id="fd-msg" class="feed-msg"></div></div>
@@ -719,6 +741,193 @@ button{font-family:inherit}
         }
     };
     </script>
+
+<script>
+/* ===== 跟讀錄音與聲音相似度評分（同點讀筆 pen 的評分方式）— © 2026 詹宗龍（臺中明道中學） =====
+   不用語音辨識（對台語只會辨識出近似音的華語字），直接比對「錄音」與「教育部辭典範例音」兩段聲音：
+     1. 節奏音量走勢（50%）：RMS＋過零率特徵，DTW 對齊後的平均差距轉 0～100 分。
+     2. 音節數量（30%）：音量包絡峰數 vs. 臺羅應有音節數，抓漏字、吞字、多唸。
+     3. 聲音長度（20%）：裁掉頭尾靜音後的時長比，抓唸太快／太拖。
+   教育部音檔伺服器沒有開 CORS，瀏覽器無法讀取波形，所以範例音改讀本站鏡像的原檔（../ref/，與辭典音檔逐位元相同）。
+   ⚠️ 三項都是聲音層面的指標，不是逐字發音辨識，僅供練習參考。 */
+(function () {
+  const REF_BASE = '../ref/';
+  const SR = 16000, FRAME = 400, HOP = 160, MAX_SEC = 60, DTW_MAX = 2000;
+  const LATIN_CH = 'A-Za-z\\u00c0-\\u024f\\u1e00-\\u1eff';
+  const LATIN_TOKEN = new RegExp(`[${LATIN_CH}][${LATIN_CH}\\u0300-\\u036f]*(?:-[${LATIN_CH}][${LATIN_CH}\\u0300-\\u036f]*)*`, 'g');
+  let mr = null, chunks = [], stream = null, actx = null, recUrl = null;
+  const refCache = {};
+  const $ = id => document.getElementById(id);
+
+  function expectedSyl(tailo) {
+    const plain = String(tailo || '').replace(/<[^>]+>/g, ' ').replace(/[(（][^)）]*[)）]/g, ' ');
+    let n = 0;
+    (plain.match(LATIN_TOKEN) || []).forEach(t => { n += t.split('-').filter(s => s.trim()).length; });
+    return n;
+  }
+  function ctx() { if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)(); return actx; }
+  function decode(buf) {
+    return new Promise((res, rej) => ctx().decodeAudioData(buf.slice(0), b => {
+      let mono = b.getChannelData(0);
+      if (b.numberOfChannels > 1) {
+        mono = new Float32Array(b.length);
+        for (let c = 0; c < b.numberOfChannels; c++) { const d = b.getChannelData(c); for (let i = 0; i < b.length; i++) mono[i] += d[i] / b.numberOfChannels; }
+      }
+      res({ samples: mono, sampleRate: b.sampleRate });
+    }, rej));
+  }
+  function resample(s, from, to) {
+    if (from === to) return s;
+    const r = from / to, n = Math.max(1, Math.floor(s.length / r)), o = new Float32Array(n);
+    for (let i = 0; i < n; i++) { const p = i * r, i0 = Math.floor(p), i1 = Math.min(i0 + 1, s.length - 1), f = p - i0; o[i] = s[i0] * (1 - f) + s[i1] * f; }
+    return o;
+  }
+  function features(samples, rate) {
+    let sig = resample(samples, rate, SR);
+    if (sig.length > MAX_SEC * SR) sig = sig.subarray(0, MAX_SEC * SR);
+    const rms = [], zcr = [];
+    for (let st = 0; st + FRAME <= sig.length; st += HOP) {
+      let sq = 0, cr = 0;
+      for (let i = 0; i < FRAME; i++) { const v = sig[st + i]; sq += v * v; if (i > 0 && ((sig[st + i - 1] >= 0) !== (v >= 0))) cr++; }
+      rms.push(Math.sqrt(sq / FRAME)); zcr.push(cr / FRAME);
+    }
+    return { rms, zcr };
+  }
+  function trim(f, th) {
+    const max = Math.max(1e-6, ...f.rms), t = max * th; let a = 0, b = f.rms.length;
+    while (a < b && f.rms[a] < t) a++; while (b > a && f.rms[b - 1] < t) b--;
+    if (b - a < 3) return f;
+    return { rms: f.rms.slice(a, b), zcr: f.zcr.slice(a, b) };
+  }
+  function z(arr) { const n = arr.length; if (!n) return arr.slice(); const m = arr.reduce((a, b) => a + b, 0) / n; const sd = Math.sqrt(arr.reduce((a, b) => a + (b - m) * (b - m), 0) / n) || 1; return arr.map(v => (v - m) / sd); }
+  function pool(f, k) { const p = a => { const o = []; for (let i = 0; i < a.length; i += k) { const s = a.slice(i, i + k); o.push(s.reduce((x, y) => x + y, 0) / s.length); } return o; }; return { rms: p(f.rms), zcr: p(f.zcr) }; }
+  function dtw(A, B) {
+    const k = Math.ceil(Math.max(A.rms.length, B.rms.length) / DTW_MAX);
+    if (k > 1) { A = pool(A, k); B = pool(B, k); }
+    const n = A.rms.length, m = B.rms.length;
+    if (n < 2 || m < 2) return 0;
+    const ra = z(A.rms), rb = z(B.rms), za = z(A.zcr), zb = z(B.zcr);
+    const dp = []; for (let i = 0; i <= n; i++) dp[i] = new Float64Array(m + 1).fill(Infinity); dp[0][0] = 0;
+    for (let i = 1; i <= n; i++) for (let j = 1; j <= m; j++) {
+      const d1 = ra[i - 1] - rb[j - 1], d2 = za[i - 1] - zb[j - 1];
+      dp[i][j] = Math.sqrt(d1 * d1 + d2 * d2) + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+    }
+    let i = n, j = m, len = 0;
+    while (i > 0 || j > 0) {
+      len++;
+      if (i === 0) { j--; continue; } if (j === 0) { i--; continue; }
+      const dg = dp[i - 1][j - 1], up = dp[i - 1][j], lf = dp[i][j - 1];
+      if (dg <= up && dg <= lf) { i--; j--; } else if (up <= lf) i--; else j--;
+    }
+    const avg = dp[n][m] / Math.max(1, len);
+    return Math.round(Math.max(0, Math.min(100, 100 * Math.exp(-avg / 1.1) + 20)));
+  }
+  function movAvg(a, w) { const h = Math.floor(w / 2); return a.map((_, i) => { let s = 0, c = 0; for (let j = Math.max(0, i - h); j <= Math.min(a.length - 1, i + h); j++) { s += a[j]; c++; } return s / c; }); }
+  function sylPeaks(rms) {
+    if (!rms || rms.length < 3) return 0;
+    const env = movAvg(rms, 5), max = Math.max(1e-6, ...env), nm = env.map(v => v / max), pk = [];
+    for (let i = 1; i < nm.length - 1; i++) if (nm[i] >= nm[i - 1] && nm[i] > nm[i + 1] && nm[i] >= 0.15) pk.push(i);
+    const kept = [];
+    pk.forEach(p => {
+      if (!kept.length) { kept.push(p); return; }
+      const q = kept[kept.length - 1]; let v = Infinity; for (let i = q; i <= p; i++) v = Math.min(v, nm[i]);
+      if (p - q < 9 || v > Math.min(nm[p], nm[q]) * 0.78) { if (nm[p] > nm[q]) kept[kept.length - 1] = p; return; }
+      kept.push(p);
+    });
+    return kept.length;
+  }
+  function sylScore(d, e) { if (!e) return null; const al = Math.max(1.2, e * 0.12); const er = Math.max(0, Math.abs(d - e) - al) / e; return Math.round(100 * Math.max(0, 1 - er / 0.4)); }
+  const sec = f => f * HOP / SR;
+  function durScore(r, f) { if (!(r > 0) || !(f > 0)) return null; const dv = Math.max(0, Math.abs(Math.log(r / f)) - 0.15); return Math.round(100 * Math.max(0, 1 - dv / 0.55)); }
+  function refUrl(d) { const p = String(d.audio || '').split('/imtong/')[1]; return p ? REF_BASE + p : d.audio; }
+  function loadRef(d) {
+    const u = refUrl(d);
+    if (!refCache[u]) refCache[u] = fetch(u).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.arrayBuffer(); })
+      .then(decode).catch(e => { delete refCache[u]; e.stage = 'ref'; throw e; });
+    return refCache[u];
+  }
+  const cls = s => s >= 70 ? 'lv-ok' : s >= 40 ? 'lv-mid' : 'lv-low';
+  const item = (n, d, s) => `<div class="ev-item"><span class="n">${n}</span><span class="d">${d}</span><span class="s ${s === null ? '' : cls(s)}">${s === null ? '—' : s + ' 分'}</span></div>`;
+  function svg(a, b) {
+    const w = 300, h = 46, p = 2;
+    const pts = arr => { const mx = Math.max(1e-6, ...arr); return arr.map((v, i) => `${(arr.length > 1 ? i / (arr.length - 1) * (w - 2 * p) + p : w / 2).toFixed(1)},${(h - p - v / mx * (h - 2 * p)).toFixed(1)}`).join(' '); };
+    return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polyline class="ref" points="${pts(a)}"/><polyline class="rec" points="${pts(b)}"/></svg>`;
+  }
+  function show(d, r) {
+    const ss = sylScore(r.syl, r.exp), ds = durScore(r.recSec, r.refSec);
+    const parts = [{ s: r.contour, w: .5 }, { s: ss, w: .3 }, { s: ds, w: .2 }].filter(x => x.s !== null);
+    const ws = parts.reduce((a, x) => a + x.w, 0) || 1, total = Math.round(parts.reduce((a, x) => a + x.s * x.w, 0) / ws);
+    const weak = Math.min(...parts.map(x => x.s));
+    let fb, sc;
+    if (total >= 70 && weak >= 70) { fb = '🌟 太棒了，三項都很接近範例！'; sc = 'score-excellent'; }
+    else if (total >= 70) { fb = '🙂 整體不錯，但有一項還差一點，看下面明細補強！'; sc = 'score-excellent'; }
+    else if (total >= 40) { fb = '👍 有點像了，看下面哪一項分數較低再加強！'; sc = 'score-good'; }
+    else { fb = '💡 落差還蠻大的，建議先聽範例音、跟著慢慢唸！'; sc = 'score-retry'; }
+    let sh = !r.exp ? '沒有臺羅資料，無法比對' : r.syl < r.exp * .9 ? '音節偏少，可能有字漏唸或吞過去' : r.syl > r.exp * 1.1 ? '音節偏多，可能多唸了字或有雜音' : '音節數量對得上';
+    const sd = r.exp ? `唸出 ${r.syl}／應有 ${r.exp} 音節（範例音偵測 ${r.refSyl}）｜${sh}` : sh;
+    const ra = r.refSec > 0 ? r.recSec / r.refSec : 0;
+    const dh = !ra ? '長度算不出來' : ra < .85 ? `比範例快 ${(1 / ra).toFixed(2)} 倍，可能唸太趕` : ra > 1.18 ? `比範例慢 ${ra.toFixed(2)} 倍，可能拖太久或停頓太多` : '速度跟範例差不多';
+    const box = $('ev-box');
+    box.innerHTML = `<div class="ev-head"><span class="ev-score ${sc}">${total} 分</span><span class="ev-fb">${fb}</span><button type="button" class="ev-play" id="ev-play">▶️ 播放我的發音</button></div>
+      <div class="ev-items">${item('🎵 節奏音量走勢', '抑揚頓挫與音量起伏跟範例像不像', r.contour)}${item('🔢 音節數量', sd, ss)}${item('⏱️ 聲音長度', `我的 ${r.recSec.toFixed(1)} 秒／範例 ${r.refSec.toFixed(1)} 秒｜${dh}`, ds)}</div>
+      <div class="ev-chart">${svg(r.refRms, r.recRms)}<span class="ev-leg"><span class="r1">━ 範例音</span><span class="r2">━ 我的錄音</span></span></div>
+      <div class="ev-note">⚠️ 三項都是從聲音本身算出來的，不是逐字發音辨識，不代表每個字有沒有唸對；僅供練習參考。</div>`;
+    box.classList.add('show'); box.parentNode.classList.add('has-ev');
+    $('ev-play').onclick = () => { if (recUrl) new Audio(recUrl).play().catch(() => {}); };
+    const msg = $('fd-msg');
+    msg.innerHTML = `<span class="${total >= 70 ? 'c-ok' : 'c-no'}">${total >= 70 ? '正確！共你拍噗仔！' : total >= 40 ? '有較成矣，閣試一擺！' : '毋著！你閣試一擺！'}</span>`;
+    sfx.play(total >= 70 ? 'ok' : 'no');
+  }
+  function evaluate(blob, d) {
+    $('fd-msg').innerHTML = '⚙️ 正在比對聲音中…';
+    Promise.all([blob.arrayBuffer().then(decode).catch(e => { e.stage = 'rec'; throw e; }), loadRef(d)])
+      .then(([rec, ref]) => {
+        if (game.st.q[game.st.idx] !== d) return;   // 已換題
+        const fr = trim(features(rec.samples, rec.sampleRate), 0.08), ff = trim(features(ref.samples, ref.sampleRate), 0.08);
+        show(d, { contour: dtw(fr, ff), syl: sylPeaks(fr.rms), refSyl: sylPeaks(ff.rms), exp: expectedSyl(d.tailo),
+                  recSec: sec(fr.rms.length), refSec: sec(ff.rms.length), refRms: ff.rms, recRms: fr.rms });
+      })
+      .catch(e => {
+        console.error('聲音比對失敗:', e);
+        $('fd-msg').innerHTML = `<span class="c-no">${e && e.stage === 'ref' ? '⚠️ 讀不到範例音檔，請確認網路連線' : e && e.stage === 'rec' ? '⚠️ 錄音太短或沒錄到聲音，請重新錄一次' : '⚠️ 沒辦法完成比對，請重新錄音'}</span>`;
+      });
+  }
+  function release() { if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; } }
+
+  game.record = function () {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) { alert('這個瀏覽器不支援錄音功能，請改用電腦版 Chrome 或 Edge。'); return; }
+    const d = this.st.q[this.st.idx];
+    loadRef(d).catch(() => {});   // 先預載範例音
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(s => {
+      stream = s; chunks = []; mr = new MediaRecorder(s);
+      mr.ondataavailable = e => { if (e.data && e.data.size > 0) chunks.push(e.data); };
+      mr.onstop = () => {
+        release();
+        if (mr && mr._cancel) return;
+        const blob = new Blob(chunks, { type: (mr && mr.mimeType) || 'audio/webm' });
+        if (recUrl) URL.revokeObjectURL(recUrl);
+        recUrl = URL.createObjectURL(blob);
+        evaluate(blob, d);
+      };
+      mr.start();
+      this.st.rec = true;
+      $('btn-mic').classList.add('rec'); $('btn-mic').textContent = '⏹️';
+      $('fd-msg').innerHTML = '<span class="c-no">🔴 錄音中…跟著唸，唸完再按一次 ⏹️</span>';
+      $('ev-box').classList.remove('show'); $('ev-box').parentNode.classList.remove('has-ev');
+      clearTimeout(this.st.tmr); this.st.tmr = setTimeout(() => this.stop(), MAX_SEC * 1000);
+    }).catch(err => { console.error(err); alert('無法取得麥克風權限，請確認已允許瀏覽器使用麥克風。'); });
+  };
+  game.stop = function (cancel) {
+    if (!this.st.rec) return;
+    this.st.rec = false; clearTimeout(this.st.tmr);
+    $('btn-mic').classList.remove('rec'); $('btn-mic').textContent = '🎤';
+    if (mr && mr.state === 'recording') { mr._cancel = !!cancel; mr.stop(); } else release();
+  };
+  const _render = game.render.bind(game), _home = game.home.bind(game);
+  game.render = function () { if (this.st.rec) this.stop(true); $('ev-box').classList.remove('show'); $('ev-box').parentNode.classList.remove('has-ev'); $('ev-box').innerHTML = ''; $('btn-mic').textContent = '🎤'; return _render(); };
+  game.home = function () { if (this.st.rec) this.stop(true); release(); return _home(); };
+})();
+</script>
 <script>
 /* 摘要同步 — © 2026 詹宗龍（臺中明道中學） */
 function mdSetMode(t) { document.getElementById('sum-mode').textContent = t; }
