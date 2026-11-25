@@ -38,7 +38,7 @@ header.top p{margin:10px auto 0;max-width:46em;color:var(--light);font-size:clam
 .cat h2 .ic{flex:none;width:clamp(42px,3.4vw,60px);height:clamp(42px,3.4vw,60px);border-radius:50%;background:var(--black);border:3px solid var(--yellow);display:grid;place-items:center}
 .cat h2 .ic svg{width:58%;height:58%;fill:none;stroke:var(--yellow);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .cat h2 .n{margin-left:auto;color:var(--muted);font-size:.55em;font-weight:400}
-.badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:.55em;font-weight:900;padding:3px 10px;border-radius:999px;margin-left:4px}
+.badge-row{margin:-2px 0 2px}.badge .ph{display:inline-block}.badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:clamp(13px,1.15vw,18px);font-weight:900;padding:4px 14px;border-radius:999px;line-height:1.4}
 .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(200px,15vw,320px),1fr));gap:clamp(8px,.9vw,16px)}
 a.card{position:relative;display:flex;flex-direction:column;gap:4px;min-height:84px;padding:12px 40px 12px 22px;border-radius:14px;background:var(--white);color:var(--black);
   text-decoration:none;transition:transform .15s,background .15s,box-shadow .15s;overflow:hidden}
@@ -92,7 +92,8 @@ footer{margin-top:22px;padding:14px 12px 4px;border-top:2px solid var(--yellow);
     <div class="soon">Coming Soon</div>
   </section>
   <section class="cat" id="spell">
-    <h2><span class="ic"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M9 10h.01M12 10h.01M15 10h.01M18 10h.01M7 14h10"/></svg></span>拼寫練習<span class="badge">限台語輸入法</span><span class="n">2 組・848 詞</span></h2>
+    <h2><span class="ic"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h.01M9 10h.01M12 10h.01M15 10h.01M18 10h.01M7 14h10"/></svg></span>拼寫練習<span class="n">2 組・848 詞</span></h2>
+    <div class="badge-row"><span class="badge"><span class="ph">支援自動調符，</span><span class="ph">無須安裝台語輸入法</span></span></div>
     <div class="list">
       <a class="card" href="https://cyril-mingdao.github.io/advanced-practice/spell/c1-1.html" target="_blank" rel="noopener"><span class="t">C1詞庫1</span><span class="s">序號 001–442・442 詞</span><span class="go">→</span></a>
       <a class="card" href="https://cyril-mingdao.github.io/advanced-practice/spell/c1-2.html" target="_blank" rel="noopener"><span class="t">C1詞庫2</span><span class="s">序號 443–848・406 詞</span><span class="go">→</span></a>
