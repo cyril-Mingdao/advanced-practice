@@ -882,7 +882,7 @@ button,input,select,textarea{font-family:inherit}
   function sylScore(d, e) { if (!e) return null; const al = Math.max(1.2, e * 0.12); const er = Math.max(0, Math.abs(d - e) - al) / e; return Math.round(100 * Math.max(0, 1 - er / 0.4)); }
   const sec = f => f * HOP / SR;
   function durScore(r, f) { if (!(r > 0) || !(f > 0)) return null; const dv = Math.max(0, Math.abs(Math.log(r / f)) - 0.15); return Math.round(100 * Math.max(0, 1 - dv / 0.55)); }
-  function refUrl(d) { const p = String(d.audio || '').split('/imtong/')[1]; return p ? REF_BASE + p : d.audio; }
+  function refUrl(d) { const p = String(d.audio || '').split('/imtong/')[1]; return p ? REF_BASE + p.split('/').pop() : d.audio; }   // ref/ 平面檔名：imtong 兩層資料夾名只差大小寫，Windows 會合併 → 404
   function loadRef(d) {
     const u = refUrl(d);
     if (!refCache[u]) refCache[u] = fetch(u).then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.arrayBuffer(); })
