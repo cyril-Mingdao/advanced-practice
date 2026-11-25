@@ -164,7 +164,10 @@ button,input,select,textarea{font-family:inherit}
 <header class="topbar">
   <span class="cat">口說練習</span>
   <h1>教育部台語俗諺（序號001–200）</h1>
-  <a class="home" href="https://cyril-mingdao.github.io/advanced-practice/">← 進階練習</a>
+  <a class="home" href="https://sites.google.com/ms.mingdao.edu.tw/tsiam/%E9%80%B2%E9%9A%8E%E7%B7%B4%E7%BF%92" target="_top" onclick="return goHome(this)">← 進階練習</a>
+  <script>/* Sites 嵌入框沒有 allow-top-navigation，嵌入時改開新分頁 — © 2026 詹宗龍（臺中明道中學） */
+  function goHome(a) { var emb = true; try { emb = window.self !== window.top; } catch (e) {}
+    if (emb) { window.open(a.href, '_blank', 'noopener'); return false; } return true; }</script>
 </header>
 <div id="app">
   <div id="pg-menu" class="page active">

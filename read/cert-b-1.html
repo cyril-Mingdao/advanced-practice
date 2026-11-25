@@ -134,7 +134,10 @@ button,input,select,textarea{font-family:inherit}
   <h1>歷屆認證B卷題庫 Part1</h1>
   <div class="stat" id="status-bar"><span>題數 <b id="q-counter">1/30</b></span><span>得分 <b id="score-counter">0</b></span></div>
   <button class="tbtn" onclick="backToMenu()">選單</button>
-  <a class="home" href="https://cyril-mingdao.github.io/advanced-practice/">← 進階練習</a>
+  <a class="home" href="https://sites.google.com/ms.mingdao.edu.tw/tsiam/%E9%80%B2%E9%9A%8E%E7%B7%B4%E7%BF%92" target="_top" onclick="return goHome(this)">← 進階練習</a>
+  <script>/* Sites 嵌入框沒有 allow-top-navigation，嵌入時改開新分頁 — © 2026 詹宗龍（臺中明道中學） */
+  function goHome(a) { var emb = true; try { emb = window.self !== window.top; } catch (e) {}
+    if (emb) { window.open(a.href, '_blank', 'noopener'); return false; } return true; }</script>
 </header>
 <div id="app-container">
   <div id="menu-screen">
