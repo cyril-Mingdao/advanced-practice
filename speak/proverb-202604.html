@@ -218,6 +218,17 @@ button,input,select,textarea{font-family:inherit}
   </div>
 </div>
 <div class="corner">© 2026 詹宗龍（臺中明道中學）</div>
+<div id="emb-guard" style="display:none;position:fixed;inset:0;z-index:9999;background:#111;color:#fff;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:20px;text-align:center">
+  <div style="font-size:clamp(22px,3vw,40px);font-weight:900;color:#FFD400">請在新分頁練習</div>
+  <div style="font-size:clamp(15px,1.4vw,22px);color:#F5F5F5;line-height:1.6">嵌在網站裡的頁面不能使用麥克風，<br>請點下面按鈕，在新分頁開啟這個練習。</div>
+  <a id="emb-go" target="_blank" rel="noopener" style="background:#FFD400;color:#111;font-weight:900;font-size:clamp(20px,2vw,32px);padding:16px 40px;border-radius:14px;text-decoration:none;box-shadow:0 5px 0 #b39500">在新分頁開始練習 ↗</a>
+</div>
+<script>/* 嵌入偵測 — © 2026 詹宗龍（臺中明道中學） */
+(function () { var emb = true; try { emb = window.self !== window.top; } catch (e) {}
+  if (!emb || location.hash.indexOf('#st=') === 0) return;
+  var g = document.getElementById('emb-guard'), a = document.getElementById('emb-go');
+  a.href = location.href.split('#')[0]; g.style.display = 'flex'; })();
+</script>
 <audio id="player"></audio>
 <script>
     const db = [
