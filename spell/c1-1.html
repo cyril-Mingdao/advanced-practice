@@ -188,7 +188,7 @@ button,input,select,textarea{font-family:inherit}
       <aside class="panel"><h3><span class="num">3</span>開始練習</h3>
         <div class="sum"><div><span>方式</span><b id="sum-mode">看台語字拍羅馬字</b></div><div><span>題數</span><b id="sum-count" class="none">尚未選擇</b></div><div><span>題庫</span><b>442 詞</b></div></div>
         <button class="startbtn" id="md-start" disabled onclick="startGame(md.count)">開始遊戲</button>
-        <p class="tip"><b>限台語輸入法</b>：請先安裝教育部台語輸入法再作答（安裝連結在進階練習首頁）。按 Enter 送出、🔊 聽發音。</p>
+        <p class="tip"><b>羅馬字可打數字調</b>：例如輸入 ka-tsau2 會自動變成 ka-tsáu。台語字請用教育部台語輸入法（安裝連結在進階練習首頁）。按 Enter 送出、🔊 聽發音。</p>
       </aside>
     </div>
   </div>
@@ -935,7 +935,7 @@ function mdSetMode(label) { var s = document.getElementById('sum-mode'); if (s) 
         if (isAnswered) return; // 防止重複送出
 
         const q = currentGameData[currentIndex];
-        const userVal = document.getElementById('user-input').value.trim();
+        const userVal = tailoNumToMark(document.getElementById('user-input').value.trim());
         let correctVal = (currentMode === 'tw') ? q.ro : q.tw;
         
         // 處理多選答案 (ex: khin-gîn/khin-gûn)
@@ -1091,6 +1091,51 @@ function mdSetMode(label) { var s = document.getElementById('sum-mode'); if (s) 
         handle.addEventListener('touchstart', onTouchStart, { passive: false });
     }
 
+</script>
+<script>
+/*! 臺羅數字調→調符 自動轉換（tailo_tone.js）｜© 2026 詹宗龍（臺中明道中學） */
+// 例：ka-tsau2 → ka-tsáu；tsiah8 → tsia̍h；oo5 → ôo
+// 調符位置：a ＞ oo（第一個 o）＞ e ＞ o ＞ iu／ui 取後字 ＞ i／u ＞ ng 的 n ＞ m ＞ n
+var TAILO_MARK = { '2': '́', '3': '̀', '5': '̂', '6': '̌', '7': '̄', '8': '̍', '9': '̋' };
+function tailoMarkPos(syl) {
+  var s = syl.toLowerCase(), i;
+  if ((i = s.indexOf('a')) >= 0) return i;
+  if ((i = s.indexOf('oo')) >= 0) return i;
+  if ((i = s.indexOf('e')) >= 0) return i;
+  if ((i = s.indexOf('o')) >= 0) return i;
+  if ((i = s.indexOf('iu')) >= 0) return i + 1;
+  if ((i = s.indexOf('ui')) >= 0) return i + 1;
+  if ((i = s.indexOf('i')) >= 0) return i;
+  if ((i = s.indexOf('u')) >= 0) return i;
+  if ((i = s.indexOf('ng')) >= 0) return i;
+  if ((i = s.indexOf('m')) >= 0) return i;
+  if ((i = s.indexOf('n')) >= 0) return i;
+  return -1;
+}
+function tailoNumToMark(str) {
+  return str.replace(/([A-Za-z]+)([1-9])/g, function (all, syl, d) {
+    var mk = TAILO_MARK[d];
+    if (!mk) return syl;                       // 第1、4調不標調符，只去掉數字
+    var p = tailoMarkPos(syl);
+    if (p < 0) return all;
+    return syl.slice(0, p + 1) + mk + syl.slice(p + 1);
+  }).normalize('NFC');
+}
+// 綁在輸入框上：邊打邊轉，游標位置保持不跳
+function tailoAttach(el, enabled) {
+  if (!el) return;
+  el.addEventListener('input', function (e) {
+    if (e.isComposing || (enabled && !enabled())) return;
+    var v = el.value;
+    if (!/[A-Za-z][1-9]/.test(v)) return;
+    var c = el.selectionStart == null ? v.length : el.selectionStart;
+    var a = tailoNumToMark(v.slice(0, c)), b = tailoNumToMark(v.slice(c));
+    if (a + b === v) return;
+    el.value = a + b;
+    try { el.setSelectionRange(a.length, a.length); } catch (err) {}
+  });
+}
+tailoAttach(document.getElementById('user-input'), function () { return currentMode === 'tw'; });
 </script>
 </body>
 </html>

@@ -188,7 +188,7 @@ button,input,select,textarea{font-family:inherit}
       <aside class="panel"><h3><span class="num">3</span>開始練習</h3>
         <div class="sum"><div><span>方式</span><b id="sum-mode">看台語字拍羅馬字</b></div><div><span>題數</span><b id="sum-count" class="none">尚未選擇</b></div><div><span>題庫</span><b>406 詞</b></div></div>
         <button class="startbtn" id="md-start" disabled onclick="startGame(md.count)">開始遊戲</button>
-        <p class="tip"><b>限台語輸入法</b>：請先安裝教育部台語輸入法再作答（安裝連結在進階練習首頁）。按 Enter 送出、🔊 聽發音。</p>
+        <p class="tip"><b>羅馬字可打數字調</b>：例如輸入 ka-tsau2 會自動變成 ka-tsáu。台語字請用教育部台語輸入法（安裝連結在進階練習首頁）。按 Enter 送出、🔊 聽發音。</p>
       </aside>
     </div>
   </div>
@@ -331,7 +331,7 @@ function mdSetMode(label) { var s = document.getElementById('sum-mode'); if (s) 
 473,n̂g-ki-á-hue,黃梔仔花,(名。茜草科，黃梔子屬。常綠灌木或小喬木，高約三公尺，花瓣六枚，氣味幽香，初開時為白色，花謝時漸轉為乳黃色。春末至夏季為其花期，果實俗稱山梔子，為兩端尖瑞的橢圓形，有六條綾線，可作為黃色染料而得名，亦可入藥),
 474,n̂g-sng,黃酸,面黃肌瘦。形容人消瘦，營養不良的樣子。例：彼个囡仔黃酸黃酸，敢若飼袂啥會大漢。,
 475,nge̍h,挾,被其他物品夾在中間。例：我去予電梯門挾佇中央。,
-476,ngóo-lōo9,五路,(各路、各處。指東、西、南、北、中五個方向。例：臺北車頭內面五路的人攏有),
+476,ngóo-lōo,五路,(各路、各處。指東、西、南、北、中五個方向。例：臺北車頭內面五路的人攏有),
 477,ngóo-tshái/tsa̍p-hue-gōo-sik,五彩/十花五色,(形容顏色眾多繽紛)/(五花八門、形形色色),
 478,niau-sîn,貓神,(不乾脆；愛標新立異),
 479,niáu/hui-niáu/niáu-tshí/niáu-tshú,鳥/飛鳥/鳥鼠,,
@@ -506,7 +506,7 @@ function mdSetMode(label) { var s = document.getElementById('sum-mode'); if (s) 
 648,siau-tháu,消敨,1.疏通不流動的空氣、積水等。例：見擺落大雨，阮遮的溝仔水就消敨袂離。2.抒解情緒、壓力等。例：消敨鬱卒(抒解鬱悶)；3.解手、大小便。是開玩笑的說法。4.用各種方式發洩性慾。是戲謔的說法。,教育部
 649,siau-tî,,消除；消滅。例：消除疲勞,成大
 650,siau-tî/siau-tû,消除,消除；消滅。例：消除疲勞,教育部
-651,siau-tsh喘,消喘,(治氣喘),
+651,siau-tshuán,消喘,(治氣喘),
 652,siau-tú,,(抵銷),成大
 653,siau-tí/siau-tú,消抵,,教育部
 654,sim-sik,,有趣,成大
@@ -899,7 +899,7 @@ function mdSetMode(label) { var s = document.getElementById('sum-mode'); if (s) 
         if (isAnswered) return; // 防止重複送出
 
         const q = currentGameData[currentIndex];
-        const userVal = document.getElementById('user-input').value.trim();
+        const userVal = tailoNumToMark(document.getElementById('user-input').value.trim());
         let correctVal = (currentMode === 'tw') ? q.ro : q.tw;
         
         // 處理多選答案 (ex: khin-gîn/khin-gûn)
@@ -1055,6 +1055,51 @@ function mdSetMode(label) { var s = document.getElementById('sum-mode'); if (s) 
         handle.addEventListener('touchstart', onTouchStart, { passive: false });
     }
 
+</script>
+<script>
+/*! 臺羅數字調→調符 自動轉換（tailo_tone.js）｜© 2026 詹宗龍（臺中明道中學） */
+// 例：ka-tsau2 → ka-tsáu；tsiah8 → tsia̍h；oo5 → ôo
+// 調符位置：a ＞ oo（第一個 o）＞ e ＞ o ＞ iu／ui 取後字 ＞ i／u ＞ ng 的 n ＞ m ＞ n
+var TAILO_MARK = { '2': '́', '3': '̀', '5': '̂', '6': '̌', '7': '̄', '8': '̍', '9': '̋' };
+function tailoMarkPos(syl) {
+  var s = syl.toLowerCase(), i;
+  if ((i = s.indexOf('a')) >= 0) return i;
+  if ((i = s.indexOf('oo')) >= 0) return i;
+  if ((i = s.indexOf('e')) >= 0) return i;
+  if ((i = s.indexOf('o')) >= 0) return i;
+  if ((i = s.indexOf('iu')) >= 0) return i + 1;
+  if ((i = s.indexOf('ui')) >= 0) return i + 1;
+  if ((i = s.indexOf('i')) >= 0) return i;
+  if ((i = s.indexOf('u')) >= 0) return i;
+  if ((i = s.indexOf('ng')) >= 0) return i;
+  if ((i = s.indexOf('m')) >= 0) return i;
+  if ((i = s.indexOf('n')) >= 0) return i;
+  return -1;
+}
+function tailoNumToMark(str) {
+  return str.replace(/([A-Za-z]+)([1-9])/g, function (all, syl, d) {
+    var mk = TAILO_MARK[d];
+    if (!mk) return syl;                       // 第1、4調不標調符，只去掉數字
+    var p = tailoMarkPos(syl);
+    if (p < 0) return all;
+    return syl.slice(0, p + 1) + mk + syl.slice(p + 1);
+  }).normalize('NFC');
+}
+// 綁在輸入框上：邊打邊轉，游標位置保持不跳
+function tailoAttach(el, enabled) {
+  if (!el) return;
+  el.addEventListener('input', function (e) {
+    if (e.isComposing || (enabled && !enabled())) return;
+    var v = el.value;
+    if (!/[A-Za-z][1-9]/.test(v)) return;
+    var c = el.selectionStart == null ? v.length : el.selectionStart;
+    var a = tailoNumToMark(v.slice(0, c)), b = tailoNumToMark(v.slice(c));
+    if (a + b === v) return;
+    el.value = a + b;
+    try { el.setSelectionRange(a.length, a.length); } catch (err) {}
+  });
+}
+tailoAttach(document.getElementById('user-input'), function () { return currentMode === 'tw'; });
 </script>
 </body>
 </html>
