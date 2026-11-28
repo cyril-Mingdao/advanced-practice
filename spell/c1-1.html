@@ -188,7 +188,7 @@ button,input,select,textarea{font-family:inherit}
       <aside class="panel"><h3><span class="num">3</span>開始練習</h3>
         <div class="sum"><div><span>方式</span><b id="sum-mode">看台語字拍羅馬字</b></div><div><span>題數</span><b id="sum-count" class="none">尚未選擇</b></div><div><span>題庫</span><b>442 詞</b></div></div>
         <button class="startbtn" id="md-start" disabled onclick="startGame(md.count)">開始遊戲</button>
-        <p class="tip"><b>羅馬字可打數字調</b>：例如輸入 ka-tsau2 會自動變成 ka-tsáu。台語字請用教育部台語輸入法（安裝連結在進階練習首頁）。按 Enter 送出、🔊 聽發音。</p>
+        <p class="tip"><b>羅馬字可打數字調</b>：例如輸入 ka-tsau2 會自動變成 ka-tsáu；音節間的「-」可不打（或打空白），系統自動補上、不算錯。台語字請用教育部台語輸入法（安裝連結在進階練習首頁）。按 Enter 送出、🔊 聽發音。</p>
       </aside>
     </div>
   </div>
@@ -945,7 +945,7 @@ function mdSetMode(label) { var s = document.getElementById('sum-mode'); if (s) 
         let targetAnswer = possibleAnswers[0]; // 預設比對第一個
 
         for (let ans of possibleAnswers) {
-            if (normalizeString(userVal) === normalizeString(ans)) {
+            if (spellKey(userVal) === spellKey(ans)) {
                 isCorrect = true;
                 targetAnswer = ans;
                 break;
@@ -967,7 +967,7 @@ function mdSetMode(label) { var s = document.getElementById('sum-mode'); if (s) 
             // 答對邏輯
             playCorrectSound(); // 播放正確音效
             
-            diffHtml = `<span class="char-correct">${userVal}</span>`;
+            diffHtml = `<span class="char-correct">${targetAnswer}</span>`; // 答對顯示標準寫法（自動補上「-」）
             msgElem.innerHTML = '<span class="msg-correct">正確！共你拍噗仔！</span>';
             
             // 答對時，按鈕不再變成「下一頁」，維持「解答」狀態
@@ -983,9 +983,10 @@ function mdSetMode(label) { var s = document.getElementById('sum-mode'); if (s) 
             playWrongSound(); // 播放錯誤音效
             
             // 比對顯示錯誤字元
-            let maxLen = Math.max(userVal.length, targetAnswer.length);
+            const shown = (currentMode === 'tw') ? spellFill(userVal, targetAnswer) : userVal; // 「-」自動補上，不算錯
+            let maxLen = Math.max(shown.length, targetAnswer.length);
             for (let i = 0; i < maxLen; i++) {
-                let uChar = userVal[i] || '';
+                let uChar = shown[i] || '';
                 let tChar = targetAnswer[i] || '';
                 
                 if (uChar === '') {
@@ -1135,6 +1136,26 @@ function tailoAttach(el, enabled) {
     try { el.setSelectionRange(a.length, a.length); } catch (err) {}
   });
 }
+
+function spellKey(s) {
+  var k = normalizeString(s);
+  return (currentMode === 'tw') ? k.replace(/[-\s]+/g, '') : k;
+}
+function spellFill(u, t) {
+  u = String(u || '').replace(/\s+/g, ' ').trim();
+  var out = '', i = 0, j = 0, isSep = function (c) { return c === '-' || c === ' '; };
+  while (j < u.length) {
+    var us = isSep(u[j]), ts = i < t.length && isSep(t[i]);
+    if (ts) {                       // 標準答案此處是「-」：照答案補上，吃掉學生打的分隔
+      while (i < t.length && isSep(t[i])) out += t[i++];
+      while (j < u.length && isSep(u[j])) j++;
+    } else if (us) {                // 學生多打的分隔：略過
+      j++;
+    } else { out += u[j++]; i++; }
+  }
+  return out;
+}
+
 tailoAttach(document.getElementById('user-input'), function () { return currentMode === 'tw'; });
 </script>
 </body>
