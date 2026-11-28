@@ -101,16 +101,17 @@ button,input,select,textarea{font-family:inherit}
 .progress-container{flex:1 1 auto;height:14px;background:#333;border-radius:7px;overflow:hidden}
 .progress-bar{height:100%;width:0;background:var(--yellow);transition:width .3s}
 .progress-text{min-width:72px;text-align:right;font-weight:900;color:var(--yellow)}
-.game-content{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px clamp(10px,1.4vw,24px) 10px;overflow:hidden;position:relative}
+.game-content{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;align-items:center;gap:clamp(10px,1.8vh,22px);padding:6px clamp(10px,1.4vw,24px) 10px;overflow-x:hidden;overflow-y:auto;position:relative}
+.game-content>*{flex-shrink:0}
 .info-row{width:100%;display:flex;justify-content:space-between;align-items:center;font-size:clamp(13px,1vw,18px);color:var(--muted)}
 #q-cert{background:var(--yellow);color:var(--black);font-weight:700;border-radius:999px;padding:2px 12px}
 .definition-box{width:100%;min-height:64px;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--gray);
   border-left:6px solid var(--yellow);border-radius:14px;padding:8px 14px;color:var(--light);line-height:1.4}
-.question-container{flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:16px;width:100%;min-height:0}
+.question-container{flex:1 0 auto;display:flex;align-items:center;justify-content:center;gap:clamp(16px,1.6vw,28px);width:100%;padding:clamp(4px,1vh,14px) 0}
 .audio-btn{flex:none;width:52px;height:52px;border-radius:50%;border:none;background:var(--yellow);box-shadow:0 4px 0 #b39500;display:grid;place-items:center;cursor:pointer}
 .audio-btn:active{transform:translateY(3px);box-shadow:none}
 .audio-icon{font-size:1.4rem}
-.question-box{font-size:clamp(28px,4vw,80px);font-weight:900;color:var(--white);min-height:45px;display:flex;align-items:center;justify-content:center;text-align:center}
+.question-box{font-size:clamp(28px,min(4vw,7.5vh),80px);line-height:1.2;font-weight:900;color:var(--white);min-height:45px;display:flex;align-items:center;justify-content:center;text-align:center}
 .missing-text{color:var(--yellow);font-size:1rem;font-weight:700}
 .input-area{width:100%}
 #user-input{width:100%;padding:12px 16px;font-size:clamp(20px,1.7vw,32px);border:3px solid var(--white);border-radius:14px;background:var(--white);color:var(--black);
@@ -135,11 +136,17 @@ button,input,select,textarea{font-family:inherit}
 #drag-handle{display:none}
 @media (min-width:900px) and (min-height:600px){.definition-box{font-size:clamp(18px,1.5vw,30px)!important;min-height:clamp(64px,12vh,160px)}
   .audio-btn{width:clamp(52px,4.4vw,84px);height:clamp(52px,4.4vw,84px)}.audio-icon{font-size:clamp(1.4rem,2vw,2.4rem)}}
+@media (min-width:769px) and (max-height:600px){.top-bar{padding:6px clamp(10px,1.4vw,24px)}
+  .game-content{gap:6px;padding-top:2px}.info-row{font-size:13px}
+  .definition-box{min-height:0;padding:6px 14px;font-size:clamp(14px,1.2vw,18px)!important;line-height:1.3}
+  .question-container{padding:0}.question-box{font-size:clamp(24px,min(4vw,9vh),56px)}.audio-btn{width:42px;height:42px}.audio-icon{font-size:1.2rem}
+  #user-input,#result-display{padding:6px 14px;font-size:clamp(18px,1.6vw,26px)}.feedback-msg{min-height:22px;font-size:16px}
+  .ctrl-btn{padding:8px 0;font-size:16px}}
 @media (max-width:768px){
   .question-container{flex:none}
   #game-screen{height:50vh;position:absolute;top:0;left:0;right:0;z-index:100;border-bottom:3px solid var(--yellow)}
   .game-content{justify-content:space-evenly;padding-bottom:34px;gap:4px}
-  .definition-box,.question-container,.input-area,.info-row{flex-shrink:1}
+  .definition-box,.question-container,.input-area,.info-row{flex-shrink:0}
   #drag-handle{display:flex;position:absolute;bottom:0;left:0;width:100%;height:30px;background:var(--gray);justify-content:center;align-items:center;cursor:ns-resize;touch-action:none}
   #drag-handle::after{content:"";width:44px;height:5px;background:var(--yellow);border-radius:3px}
   .audio-btn{width:44px;height:44px}.audio-icon{font-size:1.2rem}
